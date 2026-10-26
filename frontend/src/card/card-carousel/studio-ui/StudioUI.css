@@ -1,20 +1,24 @@
 @import '@/card/common/studio-ui/secondary-content/IconSelector/index.css';
 @import '@/card/common/studio-ui/ModalFooter.css';
 @import '@/card/common/studio-ui/secondary-content/ImageForm.css';
+@import '@/shared/components/StudioHeader.css';
 @import '@/studio.scss';
 
 .card-carousel-studio {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* Take over the full height of the modal to sticky header/footer work correctly */
+  min-height: 635px;
 }
 
 .card-carousel-create-form {
   padding: var(--pgn-spacing-spacer-3, 16px);
 }
 
-.card-carousel-studio-title {
-  margin: 0 0 var(--pgn-spacing-spacer-4, 24px);
+.card-carousel-studio-tab-content {
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .card-carousel-studio-field {

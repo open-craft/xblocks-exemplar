@@ -1,6 +1,6 @@
 import json
 import re
-from typing import Any
+from typing import Any, Union
 from xml.sax.saxutils import quoteattr
 
 import nh3
@@ -66,3 +66,22 @@ def is_color(value: str) -> str:
     if COLOR_REGEX.match(value):
         return value
     raise ValueError(f"{repr(value)} is not a valid HTML hex color.")
+
+
+def loc_to_dot_sep(loc: tuple[Union[str, int], ...]) -> str:
+    """Converts Pyndantic error `loc` tuples into user-friendly string notation.
+
+    >>> loc_to_dot_sep(('cards', 0, 'title',))
+    'cards[0].title'
+    """
+    path = ""
+    for i, x in enumerate(loc):
+        if isinstance(x, str):
+            if i > 0:
+                path += "."
+            path += x
+        elif isinstance(x, int):
+            path += f"[{x}]"
+        else:
+            raise TypeError("Unexpected type")
+    return path

@@ -8,7 +8,6 @@ export default function CreateCarouselForm() {
 
   return (
     <div className="card-carousel-create-form">
-      <h3 className="card-carousel-studio-title">Create Card Carousel</h3>
       <Form.Group className="card-carousel-studio-field">
         <Form.Label>Display Name</Form.Label>
         <Form.Text muted>Name of the XBlock component in Studio.</Form.Text>
