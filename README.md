@@ -7,6 +7,7 @@ A collection of related XBlocks.
 - **Card Carousel XBlock**: an XBlock that can present a list of cards in a Carousel. The cards support multiple layouts for presenting the content.
 - **Card Grid XBlock**: an XBlock that renders a grid of cards.
 - **Cover XBlock**: an aesthetically pleasing block intended for use as a section introduction.
+- **External Resources XBlock**: an XBlock that lists curated external resources (type, publisher and expected time) that learners can mark as read.
 - **Ideas Overview XBlock**: an XBlock that renders a grid of dot-point ideas.
 - **Keypoint XBlock:** a sleek looking glossary xblock, which helps to list down keypoint and defination.
 - **Two Column XBlock** an aesthetically pleasing block intended to display engaging static HTML content in two columns.
@@ -51,6 +52,7 @@ In the Advanced module list, add the following entries, depending on which block
 | Card Carousel XBlock   | "card_carousel"         |
 | Card Grid XBlock       | "card_grid"             |
 | Cover XBlock           | "cover"                 |
+| External Resources XBlock | "external_resources"  |
 | Ideas Overview XBlock  | "ideas_overview"        |
 | Keypoint XBlock        | "keypoints"             |
 | Two Column XBlock      | "two_column"            |

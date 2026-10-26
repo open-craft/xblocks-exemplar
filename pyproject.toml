@@ -1,6 +1,6 @@
 [project]
 name = "exemplar-blocks"
-version = "0.12.1"
+version = "0.13.0"
 description = "A collection of XBlocks for managing and displaying aesthetically pleasing HTML content"
 readme = "README.md"
 license = "Apache-2.0"
@@ -19,6 +19,7 @@ keypoints = "keypoint_block:KeypointXBlock"
 two_column = "two_column_block:TwoColumnBlock"
 ideas_overview = "ideas_overview_block:IdeasOverviewBlock"
 unfolding_scenario = "unfolding_scenario:UnfoldingScenarioXBlock"
+external_resources = "external_resources:ExternalResourcesXBlock"
 
 [build-system]
 requires = ["uv_build>=0.10.3,<0.11.0"]
@@ -58,6 +59,7 @@ module-name = [
     "two_column_block",
     "ideas_overview_block",
     "unfolding_scenario",
+    "external_resources",
 ]
 wheel-exclude = [
     "keypoint_block/images/**"
