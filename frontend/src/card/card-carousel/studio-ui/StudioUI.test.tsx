@@ -4,6 +4,7 @@ import {
   type XBlockRuntime,
 } from '@opencraft/xblock-react-utils';
 import userEvent from '@testing-library/user-event';
+import { within } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import StudioUI from './StudioUI';
 import type { InitData } from '@/card/card-carousel/types';
@@ -26,6 +27,110 @@ beforeEach(() => {
 });
 
 describe('Studio UI', () => {
+  it('shows the Content tab with the carousel editor by default', () => {
+    render(
+      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
+    );
+
+    expect(
+      screen.getByRole('heading', { name: 'Editing: Carousel Editor' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: 'Content' })).toHaveAttribute(
+      'aria-selected',
+      'true',
+    );
+    expect(screen.getByRole('tab', { name: 'Settings' })).toHaveAttribute(
+      'aria-selected',
+      'false',
+    );
+    expect(screen.getByRole('tab', { name: 'JSON' })).toHaveAttribute(
+      'aria-selected',
+      'false',
+    );
+    expect(
+      screen.getByRole('button', { name: /Add Card/i }),
+    ).toBeInTheDocument();
+  });
+
+  it('renders a filled, correctly labelled panel for every tab', () => {
+    render(
+      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
+    );
+
+    const panels = Array.from(
+      document.querySelectorAll<HTMLElement>('[role="tabpanel"]'),
+    );
+    expect(panels).toHaveLength(3);
+    panels.forEach((panel) => {
+      expect(panel).not.toBeEmptyDOMElement();
+
+      const labelledBy = panel.getAttribute('aria-labelledby');
+      expect(labelledBy).toBeTruthy();
+
+      const tab = document.getElementById(labelledBy as string);
+      expect(tab).not.toBeNull();
+      expect(tab).toHaveAttribute('aria-controls', panel.id);
+    });
+
+    const visiblePanel = screen.getByRole('tabpanel', { name: 'Content' });
+    expect(
+      within(visiblePanel).getByRole('button', { name: /Add Card/i }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByRole('tabpanel')).toHaveLength(1);
+  });
+
+  it('supports arrow-key navigation between tabs', async () => {
+    const user = userEvent.setup();
+    render(
+      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
+    );
+
+    const contentTab = screen.getByRole('tab', { name: 'Content' });
+    contentTab.focus();
+    await user.keyboard('{ArrowRight}');
+
+    const settingsTab = screen.getByRole('tab', { name: 'Settings' });
+    expect(settingsTab).toHaveAttribute('aria-selected', 'true');
+    expect(settingsTab).toHaveFocus();
+  });
+
+  it('shows the carousel settings in the Settings tab', async () => {
+    const user = userEvent.setup();
+    render(
+      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
+    );
+
+    await user.click(screen.getByRole('tab', { name: 'Settings' }));
+
+    expect(screen.getByRole('textbox', { name: 'Display Name' })).toHaveValue(
+      'Carousel Editor',
+    );
+    expect(
+      screen.getByRole('checkbox', { name: 'Add card numbers' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText('Background Color')).toBeInTheDocument();
+    expect(
+      screen.queryByRole('button', { name: /Add Card/i }),
+    ).not.toBeInTheDocument();
+  });
+
+  it('keeps display name changes in sync with the Settings tab', async () => {
+    const user = userEvent.setup();
+    render(
+      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Edit display name' }));
+    const titleInput = screen.getByRole('textbox', { name: 'Display name' });
+    await user.clear(titleInput);
+    await user.type(titleInput, 'Renamed Carousel{Enter}');
+
+    await user.click(screen.getByRole('tab', { name: 'Settings' }));
+    expect(screen.getByRole('textbox', { name: 'Display Name' })).toHaveValue(
+      'Renamed Carousel',
+    );
+  });
+
   it('adds new cards using the fixed horizontal default orientation', async () => {
     const user = userEvent.setup();
     render(
@@ -46,7 +151,6 @@ describe('Studio UI', () => {
         }}
       />,
     );
-    await user.click(screen.getByRole('button', { name: 'Continue' }));
     expect(screen.getByRole('button', { name: /Vertical Card/ })).toHaveClass(
       'btn-outline-success',
     );
@@ -80,7 +184,6 @@ describe('Studio UI', () => {
         }}
       />,
     );
-    await user.click(screen.getByRole('button', { name: 'Continue' }));
     await user.click(screen.getByRole('button', { name: 'Save' }));
     expect(saveStudioBlock).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -94,39 +197,13 @@ describe('Studio UI', () => {
     expect(card.orientation).toBe('VERTICAL');
   });
 
-  it('gives the first placeholder card the fixed horizontal orientation', async () => {
-    const user = userEvent.setup();
+  it('gives the first placeholder card the fixed horizontal orientation', () => {
     render(
       <StudioUI runtime={mockRuntime} saveUrl="" initData={defaultInitData} />,
     );
-    await user.click(screen.getByRole('button', { name: 'Continue' }));
     expect(screen.getByRole('button', { name: /Horizontal Card/ })).toHaveClass(
       'btn-outline-success',
     );
     expect(defaultInitData.cards).toEqual([]);
-  });
-
-  it('shows CreateCarouselForm initially', () => {
-    render(
-      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
-    );
-    expect(
-      screen.getByRole('heading', { name: 'Create Card Carousel' }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('button', { name: 'Continue' }),
-    ).toBeInTheDocument();
-  });
-
-  it('clicking Continue shows the CarouselEditor', async () => {
-    const user = userEvent.setup();
-    render(
-      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
-    );
-    await user.click(screen.getByRole('button', { name: 'Continue' }));
-    expect(
-      screen.getByRole('button', { name: /Add Card/i }),
-    ).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Save' })).toBeInTheDocument();
   });
 });

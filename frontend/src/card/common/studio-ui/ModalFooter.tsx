@@ -1,6 +1,4 @@
-import Button from '@openedx/paragon/dist/Button';
-import Stack from '@openedx/paragon/dist/Stack';
-import Sticky from '@openedx/paragon/dist/Sticky';
+import { Button, ModalDialog, Stack } from '@openedx/paragon';
 import type { XBlockRuntime } from '@opencraft/xblock-react-utils';
 
 interface ModalFooterProps {
@@ -15,10 +13,7 @@ export default function ModalFooter({
   onContinue,
 }: ModalFooterProps) {
   return (
-    <Sticky
-      position="bottom"
-      className="p-4 border-top card-carousel-editor-modal-footer justify-content-end"
-    >
+    <ModalDialog.Footer className="border-top">
       <Stack direction="horizontal" gap={4}>
         <Button
           variant="light"
@@ -43,6 +38,6 @@ export default function ModalFooter({
           </Button>
         )}
       </Stack>
-    </Sticky>
+    </ModalDialog.Footer>
   );
 }

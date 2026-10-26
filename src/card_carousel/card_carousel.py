@@ -2,6 +2,7 @@
 Main module of the "Card Carousel" XBlock.
 """
 
+from collections import defaultdict
 import logging
 import json
 
@@ -9,6 +10,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 from web_fragments.fragment import Fragment
+from webob.response import Response
 from xblock.core import XBlock
 from xblock.exceptions import JsonHandlerError
 from xblock.fields import Scope, String, List, Boolean
@@ -20,7 +22,7 @@ from exemplar_common.card_types import (
     ContentHighlightData,
     Orientation,
 )
-from exemplar_common.utils import strip_html_for_search
+from exemplar_common.utils import loc_to_dot_sep, strip_html_for_search
 from .types import CarouselCardData, InitData
 
 
@@ -176,6 +178,20 @@ class CardCarouselXBlock(XBlock):
         )
         return frag
 
+    @XBlock.handler
+    def json_data(self, request, suffix=""):
+        """Return the JSON data or schema of the Pydantic model as a file download."""
+        res = Response()
+        data_type = request.GET.get("type", "data")
+        if data_type == "data":
+            res.json = self._card_view_data()
+            filename = "card-carousel-component.json"
+        else:
+            res.json = InitData.model_json_schema()
+            filename = "card-carousel-schema.json"
+        res.content_disposition = f'attachment; filename="{filename}"'
+        return res
+
     @XBlock.json_handler
     def studio_save(self, data: dict, suffix=""):
         """
@@ -187,10 +203,10 @@ class CardCarouselXBlock(XBlock):
             )
         except ValidationError as e:
             logger.exception("Invalid data received from studio.")
-            message = "\n".join(
-                f"Field: {err['loc']}. Error: {err['msg']}" for err in e.errors()
-            )
-            raise JsonHandlerError(400, message)
+            issues = defaultdict(list)
+            for item in e.errors():
+                issues[item["msg"]].append(loc_to_dot_sep(item["loc"]))
+            raise JsonHandlerError(400, issues)
 
         self.display_name = carousel.displayName
         self.cards = [c.model_dump() for c in carousel.cards]

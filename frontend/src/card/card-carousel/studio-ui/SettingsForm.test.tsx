@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { describe, it, expect } from 'vitest';
 import { Formik } from 'formik';
 import { type InitData } from '@/card/card-carousel/types';
-import CreateCarouselForm from './CreateCarouselForm';
+import SettingsForm from './SettingsForm';
 
 const makeInitData = (overrides: Partial<InitData> = {}): InitData => ({
   cards: [],
@@ -11,26 +11,22 @@ const makeInitData = (overrides: Partial<InitData> = {}): InitData => ({
   ...overrides,
 });
 
-const CreateCarouselFormWithContext = ({
-  initData,
-}: {
-  initData: InitData;
-}) => (
+const SettingsFormWithContext = ({ initData }: { initData: InitData }) => (
   <Formik initialValues={initData} onSubmit={() => {}}>
-    <CreateCarouselForm />
+    <SettingsForm />
   </Formik>
 );
 
-describe('CreateCarouselForm', () => {
+describe('Card Carousel > SettingsForm', () => {
   it('shows the Display Name field with the current value', () => {
-    render(<CreateCarouselFormWithContext initData={makeInitData()} />);
+    render(<SettingsFormWithContext initData={makeInitData()} />);
     expect(screen.getByRole('textbox', { name: 'Display Name' })).toHaveValue(
       'My Carousel',
     );
   });
 
   it('does not show carousel-level card layout buttons', () => {
-    render(<CreateCarouselFormWithContext initData={makeInitData()} />);
+    render(<SettingsFormWithContext initData={makeInitData()} />);
     expect(
       screen.queryByRole('button', { name: /Vertical Cards/ }),
     ).not.toBeInTheDocument();
@@ -41,7 +37,7 @@ describe('CreateCarouselForm', () => {
 
   describe('Add card numbers checkbox', () => {
     it('is checked by default when disableNumbering is not set', () => {
-      render(<CreateCarouselFormWithContext initData={makeInitData()} />);
+      render(<SettingsFormWithContext initData={makeInitData()} />);
       expect(
         screen.getByRole('checkbox', { name: 'Add card numbers' }),
       ).toBeChecked();
@@ -49,7 +45,7 @@ describe('CreateCarouselForm', () => {
 
     it('is unchecked when disableNumbering is true', () => {
       render(
-        <CreateCarouselFormWithContext
+        <SettingsFormWithContext
           initData={makeInitData({ disableNumbering: true })}
         />,
       );
@@ -60,7 +56,7 @@ describe('CreateCarouselForm', () => {
 
     it('can be toggled off and back on', async () => {
       const user = userEvent.setup();
-      render(<CreateCarouselFormWithContext initData={makeInitData()} />);
+      render(<SettingsFormWithContext initData={makeInitData()} />);
       const checkbox = screen.getByRole('checkbox', {
         name: 'Add card numbers',
       });
@@ -74,7 +70,7 @@ describe('CreateCarouselForm', () => {
   describe('Background color', () => {
     it('shows the color from the init data', () => {
       const { container } = render(
-        <CreateCarouselFormWithContext
+        <SettingsFormWithContext
           initData={makeInitData({ backgroundColor: '#12FF23' })}
         />,
       );

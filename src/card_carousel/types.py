@@ -42,7 +42,7 @@ class InitData(BaseModel):
     """
 
     # List of cards in the carousel
-    cards: list[CarouselCardData]
+    cards: list[CarouselCardData] = Field(min_length=1)
 
     # Title shown on top of the carousel
     displayName: str

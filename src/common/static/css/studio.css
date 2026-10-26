@@ -6,3 +6,12 @@
 html {
     font-size: 100%;
 }
+
+/* Remove the padding on of the modal window, we want the full control */
+[class*="view-"] .modal-window {
+    padding: 1px;
+}
+
+.btn-default.fullscreen-button {
+    margin-top: 1rem;
+}
