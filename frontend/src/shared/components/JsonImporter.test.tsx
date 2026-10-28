@@ -1,21 +1,32 @@
 import { mockRuntime, stubJquery } from '@opencraft/xblock-react-utils/testing';
-import type { XBlockRuntime } from '@opencraft/xblock-react-utils';
+import {
+  RuntimeContext,
+  type XBlockRuntime,
+} from '@opencraft/xblock-react-utils';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import type { RenderResult } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import JsonImporter from './JsonImporter';
 
 function renderImporter({
-  runtime = mockRuntime(),
-  saveUrl = '/handler/studio_save',
-}: { runtime?: XBlockRuntime; saveUrl?: string } = {}): RenderResult & {
+  runtime = {
+    ...mockRuntime(),
+    handlerUrl: vi.fn(
+      (_element: Element | null, handler: string) => `/handler/${handler}`,
+    ),
+  },
+}: { runtime?: XBlockRuntime } = {}): RenderResult & {
   runtime: XBlockRuntime;
 } {
   const result = render(
-    <IntlProvider locale="en">
-      <JsonImporter runtime={runtime} saveUrl={saveUrl} />
-    </IntlProvider>,
+    <RuntimeContext.Provider
+      value={{ runtime, element: document.createElement('div') }}
+    >
+      <IntlProvider locale="en">
+        <JsonImporter liveData={{ title: 'Hello' }} />
+      </IntlProvider>
+    </RuntimeContext.Provider>,
   );
   return { ...result, runtime };
 }
