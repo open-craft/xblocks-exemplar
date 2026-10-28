@@ -3,11 +3,14 @@ import {
   saveStudioBlock,
   type XBlockRuntime,
 } from '@opencraft/xblock-react-utils';
+import type { ReactElement } from 'react';
 import userEvent from '@testing-library/user-event';
 import { within } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import StudioUI from './StudioUI';
 import type { InitData } from '@/card/card-carousel/types';
+import { XBlockConfigContext } from '@/lib/context';
+import type { XBlockConfig } from '@/types';
 
 vi.mock('@opencraft/xblock-react-utils', async (importOriginal) => {
   const actual =
@@ -22,13 +25,27 @@ const defaultInitData: InitData = {
   displayName: 'Carousel Editor',
 };
 
+const defaultConfig = {
+  enable_json_editing: true,
+} as XBlockConfig;
+
+const renderWithConfig = (
+  ui: ReactElement,
+  config: XBlockConfig | null = defaultConfig,
+) =>
+  render(
+    <XBlockConfigContext.Provider value={config}>
+      {ui}
+    </XBlockConfigContext.Provider>,
+  );
+
 beforeEach(() => {
   vi.clearAllMocks();
 });
 
 describe('Studio UI', () => {
   it('shows the Content tab with the carousel editor by default', () => {
-    render(
+    renderWithConfig(
       <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
     );
 
@@ -53,7 +70,7 @@ describe('Studio UI', () => {
   });
 
   it('renders a filled, correctly labelled panel for every tab', () => {
-    render(
+    renderWithConfig(
       <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
     );
 
@@ -81,7 +98,7 @@ describe('Studio UI', () => {
 
   it('supports arrow-key navigation between tabs', async () => {
     const user = userEvent.setup();
-    render(
+    renderWithConfig(
       <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
     );
 
@@ -96,7 +113,7 @@ describe('Studio UI', () => {
 
   it('shows the carousel settings in the Settings tab', async () => {
     const user = userEvent.setup();
-    render(
+    renderWithConfig(
       <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
     );
 
@@ -116,7 +133,7 @@ describe('Studio UI', () => {
 
   it('keeps display name changes in sync with the Settings tab', async () => {
     const user = userEvent.setup();
-    render(
+    renderWithConfig(
       <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
     );
 
@@ -133,7 +150,7 @@ describe('Studio UI', () => {
 
   it('adds new cards using the fixed horizontal default orientation', async () => {
     const user = userEvent.setup();
-    render(
+    renderWithConfig(
       <StudioUI
         runtime={mockRuntime}
         saveUrl=""
@@ -174,7 +191,7 @@ describe('Studio UI', () => {
       orientation: 'VERTICAL' as const,
       secondaryContent: null,
     };
-    render(
+    renderWithConfig(
       <StudioUI
         runtime={mockRuntime}
         saveUrl="/save"
@@ -198,12 +215,33 @@ describe('Studio UI', () => {
   });
 
   it('gives the first placeholder card the fixed horizontal orientation', () => {
-    render(
+    renderWithConfig(
       <StudioUI runtime={mockRuntime} saveUrl="" initData={defaultInitData} />,
     );
     expect(screen.getByRole('button', { name: /Horizontal Card/ })).toHaveClass(
       'btn-outline-success',
     );
     expect(defaultInitData.cards).toEqual([]);
+  });
+
+  it('hides the JSON tab when JSON editing is disabled', () => {
+    renderWithConfig(
+      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
+      { enable_json_editing: false } as XBlockConfig,
+    );
+
+    expect(screen.getByRole('tab', { name: 'Content' })).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: 'Settings' })).toBeInTheDocument();
+    expect(screen.queryByRole('tab', { name: 'JSON' })).not.toBeInTheDocument();
+    expect(document.querySelectorAll('[role="tabpanel"]')).toHaveLength(2);
+  });
+
+  it('hides the JSON tab when no config is provided', () => {
+    renderWithConfig(
+      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
+      null,
+    );
+
+    expect(screen.queryByRole('tab', { name: 'JSON' })).not.toBeInTheDocument();
   });
 });

@@ -15,6 +15,7 @@ from xblock.core import XBlock
 from xblock.exceptions import JsonHandlerError
 from xblock.fields import Scope, String, List, Boolean
 from xblock.utils.resources import ResourceLoader
+from xblock.utils.settings import XBlockWithSettingsMixin
 
 from exemplar_common.xblock_config import get_xblock_config, XBlockView
 from exemplar_common.card_types import (
@@ -51,7 +52,8 @@ DEFAULT_CARD = CarouselCardData(
 )
 
 
-class CardCarouselXBlock(XBlock):
+@XBlock.needs("settings")
+class CardCarouselXBlock(XBlock, XBlockWithSettingsMixin):
     """
     The CardCarouselXblock presents content as a list of "cards" in a carousel.
 
@@ -65,6 +67,7 @@ class CardCarouselXBlock(XBlock):
     """
 
     has_author_view = True
+    block_settings_key = "card_carousel"
 
     display_name = String(default="Card Carousel")
     # Legacy field: keep the original scope/default for stored courses and OLX.
