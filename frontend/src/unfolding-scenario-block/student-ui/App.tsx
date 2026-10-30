@@ -19,6 +19,7 @@ export const App = ({ data, themeUrls, cssContent }: AppProps) => {
     <div className={rootClass}>
       {activityOpen && (
         <RenderInWindow
+          title={data.scenarioData.name}
           className={`${rootClass} min-vh-100`}
           themeUrls={themeUrls}
           cssContent={cssContent}

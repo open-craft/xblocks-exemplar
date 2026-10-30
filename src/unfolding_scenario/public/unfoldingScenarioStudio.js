@@ -1,79 +1,69 @@
-import { D as e, E as t, T as n, _ as r, a as i, c as a, d as o, f as s, g as c, h as l, i as u, m as d, n as f, o as p, p as m, r as h, s as g, t as _, u as v, v as y, y as b } from "./IconButton-Bd-D0icB.js";
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/icons/es5/Cancel.js
-var x = /* @__PURE__ */ e(n()), S = (e) => /* @__PURE__ */ x.createElement("svg", {
+import { D as e, E as t, O as n, _ as r, a as i, b as a, c as o, d as s, f as c, g as l, h as u, i as d, m as f, n as p, o as m, p as h, r as g, s as _, t as v, u as y, v as b, y as x } from "./IconButton-Cu-C9xMd.js";
+//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/icons/es5/Check.js
+var S = /* @__PURE__ */ n(t()), C = (e) => /* @__PURE__ */ S.createElement("svg", {
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
 	fill: "none",
 	xmlns: "http://www.w3.org/2000/svg",
 	...e
-}, /* @__PURE__ */ x.createElement("path", {
-	d: "M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2Zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59Z",
-	fill: "currentColor"
-})), C = (e) => /* @__PURE__ */ x.createElement("svg", {
-	width: 24,
-	height: 24,
-	viewBox: "0 0 24 24",
-	fill: "none",
-	xmlns: "http://www.w3.org/2000/svg",
-	...e
-}, /* @__PURE__ */ x.createElement("path", {
+}, /* @__PURE__ */ S.createElement("path", {
 	d: "M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2Z",
 	fill: "currentColor"
-})), w = (e) => /* @__PURE__ */ x.createElement("svg", {
+})), w = (e) => /* @__PURE__ */ S.createElement("svg", {
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
 	fill: "none",
 	xmlns: "http://www.w3.org/2000/svg",
 	...e
-}, /* @__PURE__ */ x.createElement("path", {
+}, /* @__PURE__ */ S.createElement("path", {
 	d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9Z",
 	fill: "currentColor"
-})), T = (e) => /* @__PURE__ */ x.createElement("svg", {
+})), T = (e) => /* @__PURE__ */ S.createElement("svg", {
 	xmlns: "http://www.w3.org/2000/svg",
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
 	fill: "none",
 	...e
-}, /* @__PURE__ */ x.createElement("path", {
+}, /* @__PURE__ */ S.createElement("path", {
 	d: "M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z",
 	fill: "currentColor"
-})), ee = (e) => /* @__PURE__ */ x.createElement("svg", {
+})), ee = (e) => /* @__PURE__ */ S.createElement("svg", {
 	xmlns: "http://www.w3.org/2000/svg",
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
 	fill: "none",
 	...e
-}, /* @__PURE__ */ x.createElement("path", {
+}, /* @__PURE__ */ S.createElement("path", {
 	d: "M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z",
 	fill: "currentColor"
-})), E = (e) => /* @__PURE__ */ x.createElement("svg", {
+})), E = (e) => /* @__PURE__ */ S.createElement("svg", {
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
 	fill: "none",
 	xmlns: "http://www.w3.org/2000/svg",
 	...e
-}, /* @__PURE__ */ x.createElement("path", {
+}, /* @__PURE__ */ S.createElement("path", {
 	d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8Z",
 	fill: "currentColor"
-})), D = (e) => /* @__PURE__ */ x.createElement("svg", {
+})), D = (e) => /* @__PURE__ */ S.createElement("svg", {
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
 	fill: "none",
 	xmlns: "http://www.w3.org/2000/svg",
 	...e
-}, /* @__PURE__ */ x.createElement("path", {
+}, /* @__PURE__ */ S.createElement("path", {
 	xmlns: "http://www.w3.org/2000/svg",
 	d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z",
 	fill: "currentColor"
-})), O = /* @__PURE__ */ e(s());
+})), O = /* @__PURE__ */ n(c());
 function k({ as: e = "div", isStacked: t = !1, children: n, ...r }) {
-	return /* @__PURE__ */ x.createElement(e, {
+	return /* @__PURE__ */ S.createElement(e, {
 		...r,
 		className: (0, O.default)(r.className, {
 			"pgn__action-row": !t,
@@ -82,7 +72,7 @@ function k({ as: e = "div", isStacked: t = !1, children: n, ...r }) {
 	}, n);
 }
 function A() {
-	return /* @__PURE__ */ x.createElement("span", { className: "pgn__action-row-spacer" });
+	return /* @__PURE__ */ S.createElement("span", { className: "pgn__action-row-spacer" });
 }
 k.Spacer = A;
 //#endregion
@@ -103,9 +93,9 @@ var N = [
 	return e[0].toUpperCase() + M(e).slice(1);
 };
 function te(e, t) {
-	var n = t === void 0 ? {} : t, r = n.displayName, i = r === void 0 ? P(e) : r, s = n.Component, c = n.defaultProps, l = /* @__PURE__ */ x.forwardRef(function(t, n) {
-		var r = t.className, i = t.bsPrefix, c = t.as, l = c === void 0 ? s || "div" : c, u = v(t, N), d = a(i, e);
-		return /* @__PURE__ */ x.createElement(l, o({
+	var n = t === void 0 ? {} : t, r = n.displayName, i = r === void 0 ? P(e) : r, a = n.Component, c = n.defaultProps, l = /* @__PURE__ */ S.forwardRef(function(t, n) {
+		var r = t.className, i = t.bsPrefix, c = t.as, l = c === void 0 ? a || "div" : c, u = y(t, N), d = o(i, e);
+		return /* @__PURE__ */ S.createElement(l, s({
 			ref: n,
 			className: (0, O.default)(r, d)
 		}, u));
@@ -114,7 +104,7 @@ function te(e, t) {
 }
 //#endregion
 //#region node_modules/.pnpm/prop-types-extra@1.1.1_react@18.3.1/node_modules/prop-types-extra/lib/utils/createChainableTypeChecker.js
-var ne = /* @__PURE__ */ t(((e, t) => {
+var ne = /* @__PURE__ */ e(((e, t) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.default = n;
 	function n(e) {
 		function t(t, n, r, i, a, o) {
@@ -133,7 +123,7 @@ var ne = /* @__PURE__ */ t(((e, t) => {
 		return n.isRequired = t.bind(null, !0), n;
 	}
 	t.exports = e.default;
-})), re = /* @__PURE__ */ t(((e, t) => {
+})), re = /* @__PURE__ */ e(((e, t) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.default = i;
 	var n = r(ne());
 	function r(e) {
@@ -153,7 +143,7 @@ var ne = /* @__PURE__ */ t(((e, t) => {
 		return (0, n.default)(t);
 	}
 	t.exports = e.default;
-})), F = /* @__PURE__ */ e(g()), ie = [
+})), F = /* @__PURE__ */ n(_()), ie = [
 	"as",
 	"className",
 	"type",
@@ -162,17 +152,17 @@ var ne = /* @__PURE__ */ t(((e, t) => {
 	type: F.default.string,
 	tooltip: F.default.bool,
 	as: F.default.elementType
-}, I = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.as, r = n === void 0 ? "div" : n, i = e.className, a = e.type, s = a === void 0 ? "valid" : a, c = e.tooltip, l = c === void 0 ? !1 : c, u = v(e, ie);
-	return /* @__PURE__ */ x.createElement(r, o({}, u, {
+}, I = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.as, r = n === void 0 ? "div" : n, i = e.className, a = e.type, o = a === void 0 ? "valid" : a, c = e.tooltip, l = c === void 0 ? !1 : c, u = y(e, ie);
+	return /* @__PURE__ */ S.createElement(r, s({}, u, {
 		ref: t,
-		className: (0, O.default)(i, s + "-" + (l ? "tooltip" : "feedback"))
+		className: (0, O.default)(i, o + "-" + (l ? "tooltip" : "feedback"))
 	}));
 });
 I.displayName = "Feedback", I.propTypes = ae;
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormContext.js
-var L = /* @__PURE__ */ x.createContext({ controlId: void 0 }), oe = [
+var L = /* @__PURE__ */ S.createContext({ controlId: void 0 }), oe = [
 	"id",
 	"bsPrefix",
 	"bsCustomPrefix",
@@ -182,13 +172,13 @@ var L = /* @__PURE__ */ x.createContext({ controlId: void 0 }), oe = [
 	"isInvalid",
 	"isStatic",
 	"as"
-], se = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, s = e.className, c = e.type, l = c === void 0 ? "checkbox" : c, u = e.isValid, d = u === void 0 ? !1 : u, f = e.isInvalid, p = f === void 0 ? !1 : f, m = e.isStatic, h = e.as, g = h === void 0 ? "input" : h, _ = v(e, oe), y = (0, x.useContext)(L), b = y.controlId, S = y.custom ? [i, "custom-control-input"] : [r, "form-check-input"], C = S[0], w = S[1];
-	return r = a(C, w), /* @__PURE__ */ x.createElement(g, o({}, _, {
+], se = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.className, c = e.type, l = c === void 0 ? "checkbox" : c, u = e.isValid, d = u === void 0 ? !1 : u, f = e.isInvalid, p = f === void 0 ? !1 : f, m = e.isStatic, h = e.as, g = h === void 0 ? "input" : h, _ = y(e, oe), v = (0, S.useContext)(L), b = v.controlId, x = v.custom ? [i, "custom-control-input"] : [r, "form-check-input"], C = x[0], w = x[1];
+	return r = o(C, w), /* @__PURE__ */ S.createElement(g, s({}, _, {
 		ref: t,
 		type: l,
 		id: n || b,
-		className: (0, O.default)(s, r, d && "is-valid", p && "is-invalid", m && "position-static")
+		className: (0, O.default)(a, r, d && "is-valid", p && "is-invalid", m && "position-static")
 	}));
 });
 se.displayName = "FormCheckInput";
@@ -199,11 +189,11 @@ var ce = [
 	"bsCustomPrefix",
 	"className",
 	"htmlFor"
-], le = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.className, s = e.htmlFor, c = v(e, ce), l = (0, x.useContext)(L), u = l.controlId, d = l.custom ? [r, "custom-control-label"] : [n, "form-check-label"], f = d[0], p = d[1];
-	return n = a(f, p), /* @__PURE__ */ x.createElement("label", o({}, c, {
+], le = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.className, a = e.htmlFor, c = y(e, ce), l = (0, S.useContext)(L), u = l.controlId, d = l.custom ? [r, "custom-control-label"] : [n, "form-check-label"], f = d[0], p = d[1];
+	return n = o(f, p), /* @__PURE__ */ S.createElement("label", s({}, c, {
 		ref: t,
-		htmlFor: s || u,
+		htmlFor: a || u,
 		className: (0, O.default)(i, n)
 	}));
 });
@@ -226,10 +216,10 @@ var ue = [
 	"children",
 	"custom",
 	"as"
-], R = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, s = e.inline, c = s === void 0 ? !1 : s, l = e.disabled, u = l === void 0 ? !1 : l, d = e.isValid, f = d === void 0 ? !1 : d, p = e.isInvalid, m = p === void 0 ? !1 : p, h = e.feedbackTooltip, g = h === void 0 ? !1 : h, _ = e.feedback, y = e.className, b = e.style, S = e.title, C = S === void 0 ? "" : S, w = e.type, T = w === void 0 ? "checkbox" : w, ee = e.label, E = e.children, D = e.custom, k = e.as, A = k === void 0 ? "input" : k, j = v(e, ue), M = T === "switch" ? !0 : D, N = M ? [i, "custom-control"] : [r, "form-check"], P = N[0], te = N[1];
-	r = a(P, te);
-	var ne = (0, x.useContext)(L).controlId, re = (0, x.useMemo)(function() {
+], R = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.inline, c = a === void 0 ? !1 : a, l = e.disabled, u = l === void 0 ? !1 : l, d = e.isValid, f = d === void 0 ? !1 : d, p = e.isInvalid, m = p === void 0 ? !1 : p, h = e.feedbackTooltip, g = h === void 0 ? !1 : h, _ = e.feedback, v = e.className, b = e.style, x = e.title, C = x === void 0 ? "" : x, w = e.type, T = w === void 0 ? "checkbox" : w, ee = e.label, E = e.children, D = e.custom, k = e.as, A = k === void 0 ? "input" : k, j = y(e, ue), M = T === "switch" ? !0 : D, N = M ? [i, "custom-control"] : [r, "form-check"], P = N[0], te = N[1];
+	r = o(P, te);
+	var ne = (0, S.useContext)(L).controlId, re = (0, S.useMemo)(function() {
 		return {
 			controlId: n || ne,
 			custom: M
@@ -238,7 +228,7 @@ var ue = [
 		ne,
 		M,
 		n
-	]), F = M || ee != null && ee !== !1 && !E, ie = /* @__PURE__ */ x.createElement(se, o({}, j, {
+	]), F = M || ee != null && ee !== !1 && !E, ie = /* @__PURE__ */ S.createElement(se, s({}, j, {
 		type: T === "switch" ? "checkbox" : T,
 		ref: t,
 		isValid: f,
@@ -247,10 +237,10 @@ var ue = [
 		disabled: u,
 		as: A
 	}));
-	return /* @__PURE__ */ x.createElement(L.Provider, { value: re }, /* @__PURE__ */ x.createElement("div", {
+	return /* @__PURE__ */ S.createElement(L.Provider, { value: re }, /* @__PURE__ */ S.createElement("div", {
 		style: b,
-		className: (0, O.default)(y, r, M && "custom-" + T, c && r + "-inline")
-	}, E || /* @__PURE__ */ x.createElement(x.Fragment, null, ie, F && /* @__PURE__ */ x.createElement(le, { title: C }, ee), (f || m) && /* @__PURE__ */ x.createElement(I, {
+		className: (0, O.default)(v, r, M && "custom-" + T, c && r + "-inline")
+	}, E || /* @__PURE__ */ S.createElement(S.Fragment, null, ie, F && /* @__PURE__ */ S.createElement(le, { title: C }, ee), (f || m) && /* @__PURE__ */ S.createElement(I, {
 		type: f ? "valid" : "invalid",
 		tooltip: g
 	}, _))));
@@ -267,14 +257,14 @@ var de = [
 	"isInvalid",
 	"lang",
 	"as"
-], fe = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, s = e.className, c = e.isValid, l = e.isInvalid, u = e.lang, d = e.as, f = d === void 0 ? "input" : d, p = v(e, de), m = (0, x.useContext)(L), h = m.controlId, g = m.custom, _ = "file", y = g ? [i, "custom-file-input"] : [r, "form-control-file"], b = y[0], S = y[1];
-	return r = a(b, S), /* @__PURE__ */ x.createElement(f, o({}, p, {
+], fe = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.className, c = e.isValid, l = e.isInvalid, u = e.lang, d = e.as, f = d === void 0 ? "input" : d, p = y(e, de), m = (0, S.useContext)(L), h = m.controlId, g = m.custom, _ = "file", v = g ? [i, "custom-file-input"] : [r, "form-control-file"], b = v[0], x = v[1];
+	return r = o(b, x), /* @__PURE__ */ S.createElement(f, s({}, p, {
 		ref: t,
 		id: n || h,
 		type: _,
 		lang: u,
-		className: (0, O.default)(s, r, c && "is-valid", l && "is-invalid")
+		className: (0, O.default)(a, r, c && "is-valid", l && "is-invalid")
 	}));
 });
 fe.displayName = "FormFileInput";
@@ -285,11 +275,11 @@ var pe = [
 	"bsCustomPrefix",
 	"className",
 	"htmlFor"
-], me = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.className, s = e.htmlFor, c = v(e, pe), l = (0, x.useContext)(L), u = l.controlId, d = l.custom ? [r, "custom-file-label"] : [n, "form-file-label"], f = d[0], p = d[1];
-	return n = a(f, p), /* @__PURE__ */ x.createElement("label", o({}, c, {
+], me = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.className, a = e.htmlFor, c = y(e, pe), l = (0, S.useContext)(L), u = l.controlId, d = l.custom ? [r, "custom-file-label"] : [n, "form-file-label"], f = d[0], p = d[1];
+	return n = o(f, p), /* @__PURE__ */ S.createElement("label", s({}, c, {
 		ref: t,
-		htmlFor: s || u,
+		htmlFor: a || u,
 		className: (0, O.default)(i, n),
 		"data-browse": c["data-browse"]
 	}));
@@ -315,19 +305,19 @@ var he = [
 	"data-browse",
 	"as",
 	"inputAs"
-], ge = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, s = e.disabled, c = s === void 0 ? !1 : s, l = e.isValid, u = l === void 0 ? !1 : l, d = e.isInvalid, f = d === void 0 ? !1 : d, p = e.feedbackTooltip, m = p === void 0 ? !1 : p, h = e.feedback, g = e.className, _ = e.style, y = e.label, b = e.children, S = e.custom, C = e.lang, w = e["data-browse"], T = e.as, ee = T === void 0 ? "div" : T, E = e.inputAs, D = E === void 0 ? "input" : E, k = v(e, he), A = S ? [i, "custom"] : [r, "form-file"], j = A[0], M = A[1];
-	r = a(j, M);
-	var N = "file", P = (0, x.useContext)(L).controlId, te = (0, x.useMemo)(function() {
+], ge = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.disabled, c = a === void 0 ? !1 : a, l = e.isValid, u = l === void 0 ? !1 : l, d = e.isInvalid, f = d === void 0 ? !1 : d, p = e.feedbackTooltip, m = p === void 0 ? !1 : p, h = e.feedback, g = e.className, _ = e.style, v = e.label, b = e.children, x = e.custom, C = e.lang, w = e["data-browse"], T = e.as, ee = T === void 0 ? "div" : T, E = e.inputAs, D = E === void 0 ? "input" : E, k = y(e, he), A = x ? [i, "custom"] : [r, "form-file"], j = A[0], M = A[1];
+	r = o(j, M);
+	var N = "file", P = (0, S.useContext)(L).controlId, te = (0, S.useMemo)(function() {
 		return {
 			controlId: n || P,
-			custom: S
+			custom: x
 		};
 	}, [
 		P,
-		S,
+		x,
 		n
-	]), ne = y != null && y !== !1 && !b, re = /* @__PURE__ */ x.createElement(fe, o({}, k, {
+	]), ne = v != null && v !== !1 && !b, re = /* @__PURE__ */ S.createElement(fe, s({}, k, {
 		ref: t,
 		isValid: u,
 		isInvalid: f,
@@ -335,10 +325,10 @@ var he = [
 		as: D,
 		lang: C
 	}));
-	return /* @__PURE__ */ x.createElement(L.Provider, { value: te }, /* @__PURE__ */ x.createElement(ee, {
+	return /* @__PURE__ */ S.createElement(L.Provider, { value: te }, /* @__PURE__ */ S.createElement(ee, {
 		style: _,
-		className: (0, O.default)(g, r, S && "custom-" + N)
-	}, b || /* @__PURE__ */ x.createElement(x.Fragment, null, S ? /* @__PURE__ */ x.createElement(x.Fragment, null, re, ne && /* @__PURE__ */ x.createElement(me, { "data-browse": w }, y)) : /* @__PURE__ */ x.createElement(x.Fragment, null, ne && /* @__PURE__ */ x.createElement(me, null, y), re), (u || f) && /* @__PURE__ */ x.createElement(I, {
+		className: (0, O.default)(g, r, x && "custom-" + N)
+	}, b || /* @__PURE__ */ S.createElement(S.Fragment, null, x ? /* @__PURE__ */ S.createElement(S.Fragment, null, re, ne && /* @__PURE__ */ S.createElement(me, { "data-browse": w }, v)) : /* @__PURE__ */ S.createElement(S.Fragment, null, ne && /* @__PURE__ */ S.createElement(me, null, v), re), (u || f) && /* @__PURE__ */ S.createElement(I, {
 		type: u ? "valid" : "invalid",
 		tooltip: m
 	}, h))));
@@ -358,9 +348,9 @@ var _e = [
 	"readOnly",
 	"custom",
 	"as"
-], ve = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.type, s = e.size, c = e.htmlSize, l = e.id, u = e.className, d = e.isValid, f = d === void 0 ? !1 : d, p = e.isInvalid, m = p === void 0 ? !1 : p, h = e.plaintext, g = e.readOnly, _ = e.custom, y = e.as, b = y === void 0 ? "input" : y, S = v(e, _e), C = (0, x.useContext)(L).controlId, w = _ ? [r, "custom"] : [n, "form-control"], T = w[0], ee = w[1];
-	n = a(T, ee);
+], ve = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.type, a = e.size, c = e.htmlSize, l = e.id, u = e.className, d = e.isValid, f = d === void 0 ? !1 : d, p = e.isInvalid, m = p === void 0 ? !1 : p, h = e.plaintext, g = e.readOnly, _ = e.custom, v = e.as, b = v === void 0 ? "input" : v, x = y(e, _e), C = (0, S.useContext)(L).controlId, w = _ ? [r, "custom"] : [n, "form-control"], T = w[0], ee = w[1];
+	n = o(T, ee);
 	var E;
 	if (h) {
 		var D;
@@ -373,12 +363,12 @@ var _e = [
 		E = (A = {}, A[n + "-range"] = !0, A);
 	} else if (b === "select" && _) {
 		var j;
-		E = (j = {}, j[n + "-select"] = !0, j[n + "-select-" + s] = s, j);
+		E = (j = {}, j[n + "-select"] = !0, j[n + "-select-" + a] = a, j);
 	} else {
 		var M;
-		E = (M = {}, M[n] = !0, M[n + "-" + s] = s, M);
+		E = (M = {}, M[n] = !0, M[n + "-" + a] = a, M);
 	}
-	return /* @__PURE__ */ x.createElement(b, o({}, S, {
+	return /* @__PURE__ */ S.createElement(b, s({}, x, {
 		type: i,
 		size: c,
 		ref: t,
@@ -394,13 +384,13 @@ var ye = Object.assign(ve, { Feedback: I }), be = [
 	"children",
 	"controlId",
 	"as"
-], xe = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.className, i = e.children, s = e.controlId, c = e.as, l = c === void 0 ? "div" : c, u = v(e, be);
-	n = a(n, "form-group");
-	var d = (0, x.useMemo)(function() {
-		return { controlId: s };
-	}, [s]);
-	return /* @__PURE__ */ x.createElement(L.Provider, { value: d }, /* @__PURE__ */ x.createElement(l, o({}, u, {
+], xe = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.className, i = e.children, a = e.controlId, c = e.as, l = c === void 0 ? "div" : c, u = y(e, be);
+	n = o(n, "form-group");
+	var d = (0, S.useMemo)(function() {
+		return { controlId: a };
+	}, [a]);
+	return /* @__PURE__ */ S.createElement(L.Provider, { value: d }, /* @__PURE__ */ S.createElement(l, s({}, u, {
 		ref: t,
 		className: (0, O.default)(r, n)
 	}), i));
@@ -418,18 +408,18 @@ var Se = [
 ], Ce = {
 	column: !1,
 	srOnly: !1
-}, we = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.as, r = n === void 0 ? "label" : n, i = e.bsPrefix, s = e.column, c = e.srOnly, l = e.className, u = e.htmlFor, d = v(e, Se), f = (0, x.useContext)(L).controlId;
-	i = a(i, "form-label");
-	var m = "col-form-label";
-	typeof s == "string" && (m = m + " " + m + "-" + s);
-	var h = (0, O.default)(l, i, c && "sr-only", s && m);
-	return u ||= f, s ? /* @__PURE__ */ x.createElement(p, o({
+}, we = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.as, r = n === void 0 ? "label" : n, i = e.bsPrefix, a = e.column, c = e.srOnly, l = e.className, u = e.htmlFor, d = y(e, Se), f = (0, S.useContext)(L).controlId;
+	i = o(i, "form-label");
+	var p = "col-form-label";
+	typeof a == "string" && (p = p + " " + p + "-" + a);
+	var h = (0, O.default)(l, i, c && "sr-only", a && p);
+	return u ||= f, a ? /* @__PURE__ */ S.createElement(m, s({
 		ref: t,
 		as: "label",
 		className: h,
 		htmlFor: u
-	}, d)) : /* @__PURE__ */ x.createElement(r, o({
+	}, d)) : /* @__PURE__ */ S.createElement(r, s({
 		ref: t,
 		className: h,
 		htmlFor: u
@@ -443,9 +433,9 @@ var Te = [
 	"className",
 	"as",
 	"muted"
-], Ee = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.className, i = e.as, s = i === void 0 ? "small" : i, c = e.muted, l = v(e, Te);
-	return n = a(n, "form-text"), /* @__PURE__ */ x.createElement(s, o({}, l, {
+], Ee = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.className, i = e.as, a = i === void 0 ? "small" : i, c = e.muted, l = y(e, Te);
+	return n = o(n, "form-text"), /* @__PURE__ */ S.createElement(a, s({}, l, {
 		ref: t,
 		className: (0, O.default)(r, n, c && "text-muted")
 	}));
@@ -453,8 +443,8 @@ var Te = [
 Ee.displayName = "FormText";
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Switch.js
-var De = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	return /* @__PURE__ */ x.createElement(R, o({}, e, {
+var De = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	return /* @__PURE__ */ S.createElement(R, s({}, e, {
 		ref: t,
 		type: "switch"
 	}));
@@ -468,11 +458,11 @@ var Oe = [
 	"className",
 	"validated",
 	"as"
-], ke = te("form-row"), Ae = { inline: !1 }, z = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.inline, i = e.className, s = e.validated, c = e.as, l = c === void 0 ? "form" : c, u = v(e, Oe);
-	return n = a(n, "form"), /* @__PURE__ */ x.createElement(l, o({}, u, {
+], ke = te("form-row"), Ae = { inline: !1 }, z = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.inline, i = e.className, a = e.validated, c = e.as, l = c === void 0 ? "form" : c, u = y(e, Oe);
+	return n = o(n, "form"), /* @__PURE__ */ S.createElement(l, s({}, u, {
 		ref: t,
-		className: (0, O.default)(i, s && "was-validated", r && n + "-inline")
+		className: (0, O.default)(i, a && "was-validated", r && n + "-inline")
 	}));
 });
 z.displayName = "Form", z.defaultProps = Ae, z.Row = ke, z.Group = xe, z.Control = ye, z.Check = R, z.File = ge, z.Switch = De, z.Label = we, z.Text = Ee;
@@ -486,11 +476,11 @@ var je = [
 	"children",
 	"as",
 	"className"
-], Me = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.variant, i = e.animation, s = e.size, c = e.children, l = e.as, u = l === void 0 ? "div" : l, d = e.className, f = v(e, je);
-	n = a(n, "spinner");
+], Me = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.variant, i = e.animation, a = e.size, c = e.children, l = e.as, u = l === void 0 ? "div" : l, d = e.className, f = y(e, je);
+	n = o(n, "spinner");
 	var p = n + "-" + i;
-	return /* @__PURE__ */ x.createElement(u, o({ ref: t }, f, { className: (0, O.default)(d, p, s && p + "-" + s, r && "text-" + r) }), c);
+	return /* @__PURE__ */ S.createElement(u, s({ ref: t }, f, { className: (0, O.default)(d, p, a && p + "-" + a, r && "text-" + r) }), c);
 });
 Me.displayName = "Spinner";
 //#endregion
@@ -2516,7 +2506,7 @@ var ct = {
 ], dt = lt.filter((e) => ut.indexOf(e) < 0);
 function ft(e) {
 	var t;
-	let n = (t = class extends x.Component {
+	let n = (t = class extends S.Component {
 		constructor(e) {
 			super(e), this._inputRef = this._inputRef.bind(this);
 		}
@@ -2568,13 +2558,13 @@ function ft(e) {
 			this.props.onComplete && this.maskRef && this.props.onComplete(this.maskValue, this.maskRef, e);
 		}
 		render() {
-			return x.createElement(e, {
+			return S.createElement(e, {
 				...this._extractNonMaskProps(this.props),
 				inputRef: this._inputRef
 			});
 		}
 	}, t.displayName = void 0, t.propTypes = void 0, t);
-	return n.displayName = "IMask(" + (e.displayName || e.name || "Component") + ")", n.propTypes = ct, x.forwardRef((e, t) => x.createElement(n, {
+	return n.displayName = "IMask(" + (e.displayName || e.name || "Component") + ")", n.propTypes = ct, S.forwardRef((e, t) => S.createElement(n, {
 		...e,
 		ref: t
 	}));
@@ -2583,43 +2573,43 @@ function ft(e) {
 //#region node_modules/.pnpm/react-imask@7.6.1_react@18.3.1/node_modules/react-imask/esm/input.js
 var pt = ft((e) => {
 	let { inputRef: t, ...n } = e;
-	return x.createElement("input", {
+	return S.createElement("input", {
 		...n,
 		ref: t
 	});
-}), mt = x.forwardRef((e, t) => x.createElement(pt, {
+}), mt = S.forwardRef((e, t) => S.createElement(pt, {
 	...e,
 	ref: t
 })), ht = (e = {}) => Object.entries(e).reduce((e, [t, n]) => (n !== void 0 && (e[t] = n), e), {}), gt = (...e) => (t) => {
 	e.filter((e) => typeof e == "function").forEach((e) => e(t));
 }, _t = ({ defaultValue: e, value: t }) => {
-	let [n, r] = (0, x.useState)(!!e || e === 0);
+	let [n, r] = (0, S.useState)(!!e || e === 0);
 	return [!!t || t === 0 || n, (e) => r(!!e.target.value)];
 }, vt = (e, t) => {
-	let [n, r] = (0, x.useState)(t || []), i = (e) => (r((t) => [...t, e]), e), a = () => i(u(`${e}-`)), o = (e) => {
+	let [n, r] = (0, S.useState)(t || []), i = (e) => (r((t) => [...t, e]), e), a = () => i(d(`${e}-`)), o = (e) => {
 		r((t) => t.filter((t) => t !== e));
 	};
 	return [n, (e) => {
-		let [t, n] = (0, x.useState)(e);
-		return (0, x.useEffect)(() => (e ? i(e) : t || n(a()), () => o(t)), [t, e]), t;
+		let [t, n] = (0, S.useState)(e);
+		return (0, S.useEffect)(() => (e ? i(e) : t || n(a()), () => o(t)), [t, e]), t;
 	}];
-}, yt = (e) => e, bt = /* @__PURE__ */ x.createContext({
+}, yt = (e) => e, bt = /* @__PURE__ */ S.createContext({
 	getControlProps: yt,
 	useSetIsControlGroupEffect: () => {},
 	getLabelProps: yt,
 	getDescriptorProps: yt,
 	hasFormGroupProvider: !1
-}), J = () => x.useContext(bt);
+}), J = () => S.useContext(bt);
 function xt(e) {
-	let [t, n] = (0, x.useState)(e);
+	let [t, n] = (0, S.useState)(e);
 	return [t, (e) => {
-		(0, x.useEffect)(() => n(e), [e]);
+		(0, S.useEffect)(() => n(e), [e]);
 	}];
 }
 function St({ children: e, controlId: t, isInvalid: n, isValid: r, size: i }) {
-	let a = (0, x.useMemo)(() => t || u("form-field"), [t]), [o, s] = vt(a), [c, l] = vt(a), [d, f] = xt(!1), p = {
-		getControlProps: (0, x.useCallback)((e) => {
-			let t = d ? c : void 0;
+	let a = (0, S.useMemo)(() => t || d("form-field"), [t]), [o, s] = vt(a), [c, l] = vt(a), [u, f] = xt(!1), p = {
+		getControlProps: (0, S.useCallback)((e) => {
+			let t = u ? c : void 0;
 			return ht({
 				...e,
 				"aria-describedby": (0, O.default)(e["aria-describedby"], o) || void 0,
@@ -2627,14 +2617,14 @@ function St({ children: e, controlId: t, isInvalid: n, isValid: r, size: i }) {
 				id: a
 			});
 		}, [
-			d,
+			u,
 			o,
 			c,
 			a
 		]),
 		getLabelProps: (e) => {
 			let t = l(e?.id);
-			return d ? {
+			return u ? {
 				...e,
 				id: t
 			} : {
@@ -2650,14 +2640,14 @@ function St({ children: e, controlId: t, isInvalid: n, isValid: r, size: i }) {
 			};
 		},
 		useSetIsControlGroupEffect: f,
-		isControlGroup: d,
+		isControlGroup: u,
 		controlId: a,
 		isInvalid: n,
 		isValid: r,
 		size: i,
 		hasFormGroupProvider: !0
 	};
-	return /* @__PURE__ */ x.createElement(bt.Provider, { value: p }, e);
+	return /* @__PURE__ */ S.createElement(bt.Provider, { value: p }, e);
 }
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/constants.js
@@ -2675,16 +2665,16 @@ var Ct = {
 }, wt = {
 	[Y.DEFAULT]: null,
 	[Y.VALID]: C,
-	[Y.INVALID]: m,
+	[Y.INVALID]: h,
 	[Y.WARNING]: D,
 	[Y.CRITERIA_EMPTY]: E,
 	[Y.CRITERIA_VALID]: w,
-	[Y.CRITERIA_INVALID]: S
+	[Y.CRITERIA_INVALID]: f
 }, Tt = ({ isInvalid: e, isValid: t }) => t ? Y.VALID : e ? Y.INVALID : Y.DEFAULT;
 function Et({ type: e, customIcon: t }) {
 	if (t) return t;
 	let n = wt[e];
-	return n ? /* @__PURE__ */ x.createElement(h, { src: n }) : null;
+	return n ? /* @__PURE__ */ S.createElement(g, { src: n }) : null;
 }
 Et.propTypes = {
 	type: F.default.oneOf(Object.values(Y)),
@@ -2695,13 +2685,13 @@ Et.propTypes = {
 };
 function Dt({ children: e, type: t, icon: n, muted: r, hasIcon: i, ...a }) {
 	let o = (0, O.default)(a.className, "pgn__form-text", `pgn__form-text-${t}`, { "text-muted": r });
-	return /* @__PURE__ */ x.createElement("div", {
+	return /* @__PURE__ */ S.createElement("div", {
 		...a,
 		className: o
-	}, i && /* @__PURE__ */ x.createElement(Et, {
+	}, i && /* @__PURE__ */ S.createElement(Et, {
 		customIcon: n,
 		type: t
-	}), /* @__PURE__ */ x.createElement("div", null, e));
+	}), /* @__PURE__ */ S.createElement("div", null, e));
 }
 Dt.propTypes = {
 	children: F.default.node.isRequired,
@@ -2732,7 +2722,7 @@ function X({ children: e, ...t }) {
 		isInvalid: r,
 		isValid: i
 	});
-	return /* @__PURE__ */ x.createElement(Dt, {
+	return /* @__PURE__ */ S.createElement(Dt, {
 		...a,
 		className: o,
 		type: s
@@ -2764,7 +2754,7 @@ X.propTypes = {
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlFloatingLabel.js
 function Ot({ children: e }) {
 	let { controlId: t } = J();
-	return /* @__PURE__ */ x.createElement("div", { className: "pgn__form-control-floating-label" }, /* @__PURE__ */ x.createElement("div", { className: "pgn__form-control-floating-label-content" }, /* @__PURE__ */ x.createElement("label", {
+	return /* @__PURE__ */ S.createElement("div", { className: "pgn__form-control-floating-label" }, /* @__PURE__ */ S.createElement("div", { className: "pgn__form-control-floating-label-content" }, /* @__PURE__ */ S.createElement("label", {
 		className: "pgn__form-control-floating-label-text",
 		htmlFor: t
 	}, e)));
@@ -2773,7 +2763,7 @@ Ot.propTypes = { children: F.default.node.isRequired };
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlDecorator.js
 function kt({ children: e, location: t }) {
-	return /* @__PURE__ */ x.createElement("div", { className: `pgn__form-control-decorator pgn__form-control-decorator-${t}` }, e);
+	return /* @__PURE__ */ S.createElement("div", { className: `pgn__form-control-decorator pgn__form-control-decorator-${t}` }, e);
 }
 kt.propTypes = {
 	children: F.default.node.isRequired,
@@ -2783,7 +2773,7 @@ kt.propTypes = {
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlDecoratorGroup.js
 function At({ children: e, leadingElement: t, trailingElement: n, floatingLabel: r, className: i, ...a }) {
 	let o = J(a), s = a.size || o.size;
-	return /* @__PURE__ */ x.createElement("div", {
+	return /* @__PURE__ */ S.createElement("div", {
 		className: (0, O.default)("pgn__form-control-decorator-group", {
 			"has-prepended-node": !!t,
 			"has-appended-node": !!n,
@@ -2794,7 +2784,7 @@ function At({ children: e, leadingElement: t, trailingElement: n, floatingLabel:
 			"pgn__form-control-decorator-group-sm": s === Ct.SMALL
 		}, i),
 		...a
-	}, e, t && /* @__PURE__ */ x.createElement(kt, { location: "leading" }, t), n && /* @__PURE__ */ x.createElement(kt, { location: "trailing" }, n), r && /* @__PURE__ */ x.createElement(Ot, null, r));
+	}, e, t && /* @__PURE__ */ S.createElement(kt, { location: "leading" }, t), n && /* @__PURE__ */ S.createElement(kt, { location: "trailing" }, n), r && /* @__PURE__ */ S.createElement(Ot, null, r));
 }
 At.propTypes = {
 	children: F.default.node.isRequired,
@@ -2812,33 +2802,33 @@ At.propTypes = {
 };
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControl.js
-var jt = /* @__PURE__ */ x.forwardRef(({ as: e, className: t, controlClassName: n, leadingElement: r, trailingElement: i, floatingLabel: a, autoResize: o, onChange: s, inputMask: c, ...l }, u) => {
-	let { isInvalid: d, isValid: f, getControlProps: p, ...m } = J(), h = x.useRef(), g = u || h, _ = l.size || m.size, [v, y] = _t({
+var jt = /* @__PURE__ */ S.forwardRef(({ as: e, className: t, controlClassName: n, leadingElement: r, trailingElement: i, floatingLabel: a, autoResize: o, onChange: s, inputMask: c, ...l }, u) => {
+	let { isInvalid: d, isValid: f, getControlProps: p, ...m } = J(), h = S.useRef(), g = u || h, _ = l.size || m.size, [v, y] = _t({
 		defaultValue: l.defaultValue,
 		value: l.value
-	}), b = (0, x.useCallback)(() => {
+	}), b = (0, S.useCallback)(() => {
 		e === "textarea" && o && (!g.current.initialHeight && !g.current.offsets && (g.current.initialHeight = g.current.offsetHeight, g.current.offsets = g.current.offsetHeight - g.current.clientHeight), g.current.style.height = `${g.current.initialHeight}px`, g.current.style.height = `${g.current.scrollHeight + g.current.offsets}px`);
 	}, [
 		e,
 		o,
 		g
 	]);
-	(0, x.useEffect)(() => {
+	(0, S.useEffect)(() => {
 		b();
 	}, [b]);
-	let S = p({
+	let x = p({
 		...l,
 		onBlur: gt(y, l.onBlur)
 	}), C = (e) => {
 		b(), s && s(e);
 	};
-	return /* @__PURE__ */ x.createElement(At, {
+	return /* @__PURE__ */ S.createElement(At, {
 		size: _,
 		leadingElement: r,
 		trailingElement: i,
 		floatingLabel: a,
 		className: t
-	}, /* @__PURE__ */ x.createElement(ye, {
+	}, /* @__PURE__ */ S.createElement(ye, {
 		as: c ? mt : e,
 		ref: g,
 		size: _,
@@ -2847,7 +2837,7 @@ var jt = /* @__PURE__ */ x.forwardRef(({ as: e, className: t, controlClassName: 
 		className: (0, O.default)(n, { "has-value": v }),
 		onChange: C,
 		mask: c,
-		...S
+		...x
 	}));
 });
 jt.Feedback = X, jt.Description = X, jt.propTypes = {
@@ -2896,25 +2886,25 @@ function Mt({ children: e, isInline: t = !1, ...n }) {
 		...n,
 		className: o
 	}), c = i ? "p" : "label";
-	return /* @__PURE__ */ x.createElement(c, s, e);
+	return /* @__PURE__ */ S.createElement(c, s, e);
 }
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormGroup.js
 function Nt({ children: e, controlId: t, isInvalid: n = !1, isValid: r = !1, size: i, as: a, ...o }) {
-	return /* @__PURE__ */ x.createElement(a ?? "div", {
+	return /* @__PURE__ */ S.createElement(a ?? "div", {
 		...o,
 		className: (0, O.default)("pgn__form-group", o.className)
-	}, /* @__PURE__ */ x.createElement(St, {
+	}, /* @__PURE__ */ S.createElement(St, {
 		controlId: t,
 		isInvalid: n,
 		isValid: r,
 		size: i
 	}, e));
 }
-var Pt = /* @__PURE__ */ x.createContext({
+var Pt = /* @__PURE__ */ S.createContext({
 	getRadioControlProps: (e) => e,
 	hasRadioSetProvider: !1
-}), Ft = () => (0, x.useContext)(Pt);
+}), Ft = () => (0, S.useContext)(Pt);
 function It({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a, defaultValue: o }) {
 	let s = !o && a !== void 0, c = {
 		name: t,
@@ -2934,7 +2924,7 @@ function It({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a
 		onChange: i,
 		hasRadioSetProvider: !0
 	};
-	return /* @__PURE__ */ x.createElement(Pt.Provider, { value: c }, e);
+	return /* @__PURE__ */ S.createElement(Pt.Provider, { value: c }, e);
 }
 It.propTypes = {
 	children: F.default.node.isRequired,
@@ -2953,31 +2943,31 @@ It.propTypes = {
 };
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormRadio.js
-var Lt = /* @__PURE__ */ x.forwardRef((e, t) => {
+var Lt = /* @__PURE__ */ S.forwardRef((e, t) => {
 	let { getControlProps: n } = J(), { getRadioControlProps: r, hasRadioSetProvider: i } = Ft(), a = n({
 		...e,
 		className: (0, O.default)("pgn__form-radio-input", e.className)
 	});
-	return i && (a = r(a)), /* @__PURE__ */ x.createElement("input", {
+	return i && (a = r(a)), /* @__PURE__ */ S.createElement("input", {
 		...a,
 		type: "radio",
 		ref: t
 	});
 });
 Lt.propTypes = { className: F.default.string }, Lt.defaultProps = { className: void 0 };
-var Rt = /* @__PURE__ */ x.forwardRef(({ children: e, className: t, controlClassName: n, labelClassName: r, description: i, isInvalid: a, isValid: o, ...s }, c) => /* @__PURE__ */ x.createElement(St, {
+var Rt = /* @__PURE__ */ S.forwardRef(({ children: e, className: t, controlClassName: n, labelClassName: r, description: i, isInvalid: a, isValid: o, ...s }, c) => /* @__PURE__ */ S.createElement(St, {
 	controlId: s.id,
 	isInvalid: a,
 	isValid: o
-}, /* @__PURE__ */ x.createElement("div", { className: (0, O.default)("pgn__form-radio", t, {
+}, /* @__PURE__ */ S.createElement("div", { className: (0, O.default)("pgn__form-radio", t, {
 	"pgn__form-control-valid": o,
 	"pgn__form-control-invalid": a,
 	"pgn__form-control-disabled": s.disabled
-}) }, /* @__PURE__ */ x.createElement(Lt, {
+}) }, /* @__PURE__ */ S.createElement(Lt, {
 	ref: c,
 	className: n,
 	...s
-}), /* @__PURE__ */ x.createElement("div", null, /* @__PURE__ */ x.createElement(Mt, { className: r }, e), i && /* @__PURE__ */ x.createElement(X, { hasIcon: !1 }, i)))));
+}), /* @__PURE__ */ S.createElement("div", null, /* @__PURE__ */ S.createElement(Mt, { className: r }, e), i && /* @__PURE__ */ S.createElement(X, { hasIcon: !1 }, i)))));
 Rt.propTypes = {
 	id: F.default.string,
 	children: F.default.node.isRequired,
@@ -3001,7 +2991,7 @@ Rt.propTypes = {
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlSet.js
 function zt({ as: e, className: t, isInline: n, children: r, ...i }) {
-	return /* @__PURE__ */ x.createElement(e, {
+	return /* @__PURE__ */ S.createElement(e, {
 		className: (0, O.default)(t, {
 			"pgn__form-control-set": !n,
 			"pgn__form-control-set-inline": n
@@ -3026,14 +3016,14 @@ function Bt({ children: e, name: t, value: n, defaultValue: r, isInline: i, onCh
 	let { getControlProps: l, useSetIsControlGroupEffect: u } = J();
 	u(!0);
 	let d = l(c);
-	return /* @__PURE__ */ x.createElement(It, {
+	return /* @__PURE__ */ S.createElement(It, {
 		name: t,
 		value: n,
 		defaultValue: r,
 		onFocus: o,
 		onBlur: s,
 		onChange: a
-	}, /* @__PURE__ */ x.createElement(zt, {
+	}, /* @__PURE__ */ S.createElement(zt, {
 		role: "radiogroup",
 		isInline: i,
 		...d
@@ -3088,16 +3078,16 @@ function Kt(e, t, n) {
 }
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/utils/propTypes/utils.js
-var qt = (e, t, n) => ((r, i, a, ...o) => t(r) && r[i] === void 0 ? /* @__PURE__ */ Error(`${a}: ${i} is required when ${n}`) : e(r, i, a, ...o)), Jt = (e, t) => t.every((t) => e[t] !== void 0), Yt = (e, t) => qt(e, (e) => Array.isArray(t) ? Jt(e, t) : e[t] === !0, `${t} ${Array.isArray(t) ? "are defined" : "is truthy"}`), Xt = /* @__PURE__ */ x.forwardRef(({ className: e, screenReaderText: t, ...n }, r) => {
+var qt = (e, t, n) => ((r, i, a, ...o) => t(r) && r[i] === void 0 ? /* @__PURE__ */ Error(`${a}: ${i} is required when ${n}`) : e(r, i, a, ...o)), Jt = (e, t) => t.every((t) => e[t] !== void 0), Yt = (e, t) => qt(e, (e) => Array.isArray(t) ? Jt(e, t) : e[t] === !0, `${t} ${Array.isArray(t) ? "are defined" : "is truthy"}`), Xt = /* @__PURE__ */ S.forwardRef(({ className: e, screenReaderText: t, ...n }, r) => {
 	let i = {
 		...n,
 		className: (0, O.default)("pgn__spinner", e),
 		role: t ? "status" : void 0
 	};
-	return /* @__PURE__ */ x.createElement(Me, {
+	return /* @__PURE__ */ S.createElement(Me, {
 		...i,
 		ref: r
-	}, t && /* @__PURE__ */ x.createElement("span", { className: "sr-only" }, t));
+	}, t && /* @__PURE__ */ S.createElement("span", { className: "sr-only" }, t));
 });
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/hooks/useArrowKeyNavigationHook.js
@@ -3137,8 +3127,8 @@ function $t({ event: e, ignoredKeys: t = [], parentNode: n, selectors: r = "a,bu
 	});
 }
 function en(e = {}) {
-	let { selectors: t, ignoredKeys: n } = e, r = (0, x.useRef)();
-	return (0, x.useEffect)(() => {
+	let { selectors: t, ignoredKeys: n } = e, r = (0, S.useRef)();
+	return (0, S.useEffect)(() => {
 		let e = (e) => {
 			$t({
 				event: e,
@@ -3152,7 +3142,7 @@ function en(e = {}) {
 }
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/messages.js
-var tn = y({
+var tn = x({
 	iconButtonOpened: {
 		id: "pgn.FormAutosuggest.iconButtonOpened",
 		defaultMessage: "Open the options menu",
@@ -3163,26 +3153,26 @@ var tn = y({
 		defaultMessage: "Close the options menu",
 		description: "A message shown in case when the autosuggest menu is opened."
 	}
-}), nn = /* @__PURE__ */ (0, x.forwardRef)(({ children: e, arrowKeyNavigationSelector: t, ignoredArrowKeysNames: n, screenReaderText: r, value: i, isLoading: a, isValueRequired: o, valueRequiredErrorMessageText: s, isSelectionRequired: c, selectionRequiredErrorMessageText: l, hasCustomError: u, customErrorMessageText: d, onChange: f, helpMessage: p, ...m }, g) => {
-	let v = b(), y = (0, x.useRef)(), S = en({
+}), nn = /* @__PURE__ */ (0, S.forwardRef)(({ children: e, arrowKeyNavigationSelector: t, ignoredArrowKeysNames: n, screenReaderText: r, value: i, isLoading: o, isValueRequired: s, valueRequiredErrorMessageText: c, isSelectionRequired: l, selectionRequiredErrorMessageText: u, hasCustomError: d, customErrorMessageText: f, onChange: p, helpMessage: m, ...h }, _) => {
+	let y = a(), b = (0, S.useRef)(), x = en({
 		selectors: t,
 		ignoredKeys: n
-	}), [C, w] = (0, x.useState)(!1), [E, D] = (0, x.useState)(!1), [O, k] = (0, x.useState)(!1), [A, j] = (0, x.useState)(!1), [M, N] = (0, x.useState)(i?.userProvidedText || ""), [P, te] = (0, x.useState)([]), [ne, re] = (0, x.useState)(null), [F, ie] = (0, x.useState)(!0), [ae, I] = (0, x.useState)(""), L = (e) => {
+	}), [C, w] = (0, S.useState)(!1), [E, D] = (0, S.useState)(!1), [O, k] = (0, S.useState)(!1), [A, j] = (0, S.useState)(!1), [M, N] = (0, S.useState)(i?.userProvidedText || ""), [P, te] = (0, S.useState)([]), [ne, re] = (0, S.useState)(null), [F, ie] = (0, S.useState)(!0), [ae, I] = (0, S.useState)(""), L = (e) => {
 		re(e);
 	}, oe = () => {
 		te([]), w(!1), re(null);
 	}, se = (e, t) => {
 		let n = e.currentTarget.getAttribute("data-value"), r = e.currentTarget.id;
-		k(!0), j(!0), N(n), f && (!i || i && n !== i.selectionValue) && f({
+		k(!0), j(!0), N(n), p && (!i || i && n !== i.selectionValue) && p({
 			userProvidedText: n,
 			selectionValue: n,
 			selectionId: r
 		}), oe(), t && t(e);
 	};
 	function ce(t = "") {
-		let n = x.Children.map(e, (e) => {
+		let n = S.Children.map(e, (e) => {
 			let { children: t, onClick: n, ...r } = e.props, i = e.props.id ?? Kt();
-			return /* @__PURE__ */ x.cloneElement(e, {
+			return /* @__PURE__ */ S.cloneElement(e, {
 				...r,
 				children: t,
 				"data-value": t,
@@ -3197,50 +3187,50 @@ var tn = y({
 		te(ce(M)), ie(!0), I(""), w(!0);
 	}, ue = () => {
 		C ? oe() : le();
-	}, R = /* @__PURE__ */ x.createElement(_, {
+	}, R = /* @__PURE__ */ S.createElement(v, {
 		className: "pgn__form-autosuggest__icon-button",
 		"data-testid": "autosuggest-iconbutton",
 		tabIndex: "-1",
 		src: C ? ee : T,
-		iconAs: h,
+		iconAs: g,
 		size: "sm",
 		variant: "secondary",
-		alt: C ? v.formatMessage(tn.iconButtonClosed) : v.formatMessage(tn.iconButtonOpened),
+		alt: C ? y.formatMessage(tn.iconButtonClosed) : y.formatMessage(tn.iconButtonOpened),
 		onClick: ue
 	}), de = () => {
 		D(!0);
 	}, fe = () => {
-		if (u) {
-			ie(!1), I(d);
+		if (d) {
+			ie(!1), I(f);
 			return;
 		}
-		if (o && !O) {
-			ie(!1), I(s);
+		if (s && !O) {
+			ie(!1), I(c);
 			return;
 		}
-		if (O && c && !A) {
-			ie(!1), I(l);
+		if (O && l && !A) {
+			ie(!1), I(u);
 			return;
 		}
 		ie(!0), I("");
 	};
-	(0, x.useImperativeHandle)(g, () => ({ updateErrorStateAndErrorMessage: fe }));
+	(0, S.useImperativeHandle)(_, () => ({ updateErrorStateAndErrorMessage: fe }));
 	let pe = () => {
 		D(!1), oe(), fe();
 	}, me = (e) => {
 		if (E) {
 			if (e.key === "Escape") {
-				e.preventDefault(), y && y.current.focus(), oe();
+				e.preventDefault(), b && b.current.focus(), oe();
 				return;
 			}
 			e.key === "Tab" && pe();
 		}
 	}, he = (e) => {
-		S.current && !S.current.contains(e.target) && E && pe();
+		x.current && !x.current.contains(e.target) && E && pe();
 	};
-	(0, x.useEffect)(() => (document.addEventListener("keydown", me), document.addEventListener("click", he, !0), () => {
+	(0, S.useEffect)(() => (document.addEventListener("keydown", me), document.addEventListener("click", he, !0), () => {
 		document.removeEventListener("click", he, !0), document.removeEventListener("keydown", me);
-	})), (0, x.useEffect)(() => {
+	})), (0, S.useEffect)(() => {
 		N(i ? i.userProvidedText ?? "" : ""), k(!!i && !!i.userProvidedText), j(!!i && !!i.selectionValue);
 	}, [i]);
 	let ge = () => {
@@ -3248,7 +3238,7 @@ var tn = y({
 	}, _e = (e) => {
 		let t = e.target.value;
 		if (!t.length) {
-			N(""), k(!1), j(!1), te([]), oe(), f && f({
+			N(""), k(!1), j(!1), te([]), oe(), p && p({
 				userProvidedText: "",
 				selectionValue: "",
 				selectionId: ""
@@ -3260,32 +3250,32 @@ var tn = y({
 		te(n);
 		let r = n.find((e) => e.props.children.toLowerCase() === t.toLowerCase());
 		if (!r) {
-			j(!1), N(t), f && f({
+			j(!1), N(t), p && p({
 				userProvidedText: t,
 				selectionValue: "",
 				selectionId: ""
 			});
 			return;
 		}
-		j(!0), N(r.props.children), f && f({
+		j(!0), N(r.props.children), p && p({
 			userProvidedText: r.props.children,
 			selectionValue: r.props.children,
 			selectionId: r.props.id
 		});
-	}, { getControlProps: ve } = J(), ye = ve(m);
-	return /* @__PURE__ */ x.createElement("div", {
+	}, { getControlProps: ve } = J(), ye = ve(h);
+	return /* @__PURE__ */ S.createElement("div", {
 		className: "pgn__form-autosuggest__wrapper",
-		ref: S,
+		ref: x,
 		onFocus: de
-	}, /* @__PURE__ */ x.createElement("div", {
+	}, /* @__PURE__ */ S.createElement("div", {
 		"aria-live": "assertive",
 		className: "sr-only",
 		"data-testid": "autosuggest-screen-reader-options-count"
-	}, `${P.length} options found`), /* @__PURE__ */ x.createElement(St, {
+	}, `${P.length} options found`), /* @__PURE__ */ S.createElement(St, {
 		controlId: ye.id,
 		isInvalid: !F
-	}, /* @__PURE__ */ x.createElement(jt, {
-		ref: y,
+	}, /* @__PURE__ */ S.createElement(jt, {
+		ref: b,
 		"aria-expanded": (P.length > 0).toString(),
 		"aria-owns": "pgn__form-autosuggest__dropdown-box",
 		role: "combobox",
@@ -3299,14 +3289,14 @@ var tn = y({
 		trailingElement: R,
 		"data-testid": "autosuggest-textbox-input",
 		...ye
-	}), p && F && /* @__PURE__ */ x.createElement(X, { type: "default" }, p), !F && /* @__PURE__ */ x.createElement(X, {
+	}), m && F && /* @__PURE__ */ S.createElement(X, { type: "default" }, m), !F && /* @__PURE__ */ S.createElement(X, {
 		type: "invalid",
 		"feedback-for": ye.name
-	}, ae)), /* @__PURE__ */ x.createElement("ul", {
+	}, ae)), /* @__PURE__ */ S.createElement("ul", {
 		id: "pgn__form-autosuggest__dropdown-box",
 		className: "pgn__form-autosuggest__dropdown",
 		role: "listbox"
-	}, a ? /* @__PURE__ */ x.createElement("div", { className: "pgn__form-autosuggest__dropdown-loading" }, /* @__PURE__ */ x.createElement(Xt, {
+	}, o ? /* @__PURE__ */ S.createElement("div", { className: "pgn__form-autosuggest__dropdown-loading" }, /* @__PURE__ */ S.createElement(Xt, {
 		animation: "border",
 		variant: "dark",
 		screenReaderText: r,
@@ -3362,13 +3352,13 @@ nn.defaultProps = {
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Menu/MenuItem.js
 function rn({ as: e = "button", children: t, defaultSelected: n = !1, iconAfter: r, iconBefore: i, ...a }) {
 	let o = (0, O.default)(a.className, "pgn__menu-item");
-	return /* @__PURE__ */ (0, x.createElement)(e, {
+	return /* @__PURE__ */ (0, S.createElement)(e, {
 		...a,
 		className: o
-	}, /* @__PURE__ */ x.createElement(x.Fragment, null, i && /* @__PURE__ */ x.createElement(h, {
+	}, /* @__PURE__ */ S.createElement(S.Fragment, null, i && /* @__PURE__ */ S.createElement(g, {
 		className: "btn-icon-before",
 		src: i
-	}), /* @__PURE__ */ x.createElement("span", { className: "pgn__menu-item-text" }, t), /* @__PURE__ */ x.createElement("span", { className: "pgn__menu-item-content-spacer" }), r && /* @__PURE__ */ x.createElement(h, {
+	}), /* @__PURE__ */ S.createElement("span", { className: "pgn__menu-item-text" }, t), /* @__PURE__ */ S.createElement("span", { className: "pgn__menu-item-content-spacer" }), r && /* @__PURE__ */ S.createElement(g, {
 		className: "btn-icon-after",
 		src: r
 	})));
@@ -3376,7 +3366,7 @@ function rn({ as: e = "button", children: t, defaultSelected: n = !1, iconAfter:
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormAutosuggestOption.js
 function an({ children: e, className: t, onClick: n, ...r }) {
-	return /* @__PURE__ */ x.createElement(rn, {
+	return /* @__PURE__ */ S.createElement(rn, {
 		as: "li",
 		"data-testid": "autosuggest-optionitem",
 		role: "option",
@@ -3395,10 +3385,10 @@ an.defaultProps = {
 	children: F.default.string,
 	onClick: F.default.func
 };
-var on = /* @__PURE__ */ x.createContext({
+var on = /* @__PURE__ */ S.createContext({
 	getCheckboxControlProps: (e) => e,
 	hasCheckboxSetProvider: !1
-}), sn = () => (0, x.useContext)(on);
+}), sn = () => (0, S.useContext)(on);
 function cn({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a, defaultValue: o }) {
 	let s = !o && Array.isArray(a), c = {
 		name: t,
@@ -3418,7 +3408,7 @@ function cn({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a
 		onChange: i,
 		hasCheckboxSetProvider: !0
 	};
-	return /* @__PURE__ */ x.createElement(on.Provider, { value: c }, e);
+	return /* @__PURE__ */ S.createElement(on.Provider, { value: c }, e);
 }
 cn.propTypes = {
 	children: F.default.node.isRequired,
@@ -3438,14 +3428,14 @@ cn.propTypes = {
 };
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormCheckbox.js
-var ln = /* @__PURE__ */ x.forwardRef(({ isIndeterminate: e, ...t }, n) => {
-	let { getCheckboxControlProps: r, hasCheckboxSetProvider: i } = sn(), a = x.useRef(), o = n || a, { getControlProps: s } = J(), c = s({
+var ln = /* @__PURE__ */ S.forwardRef(({ isIndeterminate: e, ...t }, n) => {
+	let { getCheckboxControlProps: r, hasCheckboxSetProvider: i } = sn(), a = S.useRef(), o = n || a, { getControlProps: s } = J(), c = s({
 		...t,
 		className: (0, O.default)("pgn__form-checkbox-input", t.className)
 	});
-	return i && (c = r(c)), x.useEffect(() => {
+	return i && (c = r(c)), S.useEffect(() => {
 		o.current && (o.current.indeterminate = e);
-	}, [o, e]), /* @__PURE__ */ x.createElement("input", {
+	}, [o, e]), /* @__PURE__ */ S.createElement("input", {
 		type: "checkbox",
 		...c,
 		ref: o
@@ -3458,22 +3448,22 @@ ln.propTypes = {
 	isIndeterminate: !1,
 	className: void 0
 };
-var un = /* @__PURE__ */ x.forwardRef(({ children: e, className: t, controlClassName: n, labelClassName: r, description: i, isInvalid: a, isValid: o, controlAs: s, floatLabelLeft: c, ...l }, u) => {
+var un = /* @__PURE__ */ S.forwardRef(({ children: e, className: t, controlClassName: n, labelClassName: r, description: i, isInvalid: a, isValid: o, controlAs: s, floatLabelLeft: c, ...l }, u) => {
 	let { hasCheckboxSetProvider: d } = sn(), { hasFormGroupProvider: f, useSetIsControlGroupEffect: p, getControlProps: m } = J();
 	p(!0);
 	let h = f && !d ? {
 		...m({}),
 		role: "group"
-	} : {}, g = /* @__PURE__ */ x.createElement(s, {
+	} : {}, g = /* @__PURE__ */ S.createElement(s, {
 		...l,
 		className: n,
 		ref: u
 	});
-	return /* @__PURE__ */ x.createElement(St, {
+	return /* @__PURE__ */ S.createElement(St, {
 		controlId: l.id,
 		isInvalid: a,
 		isValid: o
-	}, /* @__PURE__ */ x.createElement("div", {
+	}, /* @__PURE__ */ S.createElement("div", {
 		className: (0, O.default)("pgn__form-checkbox", t, {
 			"pgn__form-control-valid": o,
 			"pgn__form-control-invalid": a,
@@ -3481,7 +3471,7 @@ var un = /* @__PURE__ */ x.forwardRef(({ children: e, className: t, controlClass
 			"pgn__form-control-label-left": !!c
 		}),
 		...h
-	}, g, /* @__PURE__ */ x.createElement("div", null, /* @__PURE__ */ x.createElement(Mt, { className: r }, e), i && /* @__PURE__ */ x.createElement(X, { hasIcon: !1 }, i))));
+	}, g, /* @__PURE__ */ S.createElement("div", null, /* @__PURE__ */ S.createElement(Mt, { className: r }, e), i && /* @__PURE__ */ S.createElement(X, { hasIcon: !1 }, i))));
 });
 un.propTypes = {
 	id: F.default.string,
@@ -3509,14 +3499,14 @@ un.propTypes = {
 };
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormSwitch.js
-var dn = /* @__PURE__ */ x.forwardRef(({ isIndeterminate: e, ...t }, n) => {
-	let r = x.useRef(), i = n || r, { getControlProps: a } = J(), o = a({
+var dn = /* @__PURE__ */ S.forwardRef(({ isIndeterminate: e, ...t }, n) => {
+	let r = S.useRef(), i = n || r, { getControlProps: a } = J(), o = a({
 		...t,
 		className: (0, O.default)("pgn__form-switch-input", t.className)
 	});
-	return x.useEffect(() => {
+	return S.useEffect(() => {
 		i.current && (i.current.indeterminate = e);
-	}, [i, e]), /* @__PURE__ */ x.createElement("input", {
+	}, [i, e]), /* @__PURE__ */ S.createElement("input", {
 		type: "checkbox",
 		...o,
 		ref: i
@@ -3529,7 +3519,7 @@ dn.propTypes = {
 	isIndeterminate: !1,
 	className: void 0
 };
-var fn = /* @__PURE__ */ x.forwardRef(({ children: e, className: t, helperText: n, ...r }, i) => /* @__PURE__ */ x.createElement("div", { className: "d-inline-flex flex-column" }, /* @__PURE__ */ x.createElement(un, {
+var fn = /* @__PURE__ */ S.forwardRef(({ children: e, className: t, helperText: n, ...r }, i) => /* @__PURE__ */ S.createElement("div", { className: "d-inline-flex flex-column" }, /* @__PURE__ */ S.createElement(un, {
 	className: (0, O.default)("pgn__form-switch", t),
 	...r,
 	role: "switch",
@@ -3538,7 +3528,7 @@ var fn = /* @__PURE__ */ x.forwardRef(({ children: e, className: t, helperText: 
 	isValid: null,
 	isInvalid: null,
 	description: null
-}, e), n && /* @__PURE__ */ x.createElement("div", { className: "pgn__form-switch-helper-text" }, n)));
+}, e), n && /* @__PURE__ */ S.createElement("div", { className: "pgn__form-switch-helper-text" }, n)));
 fn.propTypes = {
 	children: F.default.node.isRequired,
 	className: F.default.string,
@@ -3557,14 +3547,14 @@ function pn({ children: e, name: t, value: n, defaultValue: r, isInline: i, onCh
 	let { getControlProps: l, useSetIsControlGroupEffect: u } = J();
 	u(!0);
 	let d = l(c);
-	return /* @__PURE__ */ x.createElement(cn, {
+	return /* @__PURE__ */ S.createElement(cn, {
 		name: t,
 		value: n,
 		defaultValue: r,
 		onFocus: o,
 		onBlur: s,
 		onChange: a
-	}, /* @__PURE__ */ x.createElement(zt, {
+	}, /* @__PURE__ */ S.createElement(zt, {
 		role: "group",
 		isInline: i,
 		...d
@@ -3595,9 +3585,9 @@ var mn = pn, Q = z;
 Q.Control = jt, Q.Radio = Rt, Q.RadioSet = Bt, Q.Autosuggest = nn, Q.AutosuggestOption = an, Q.Checkbox = un, Q.CheckboxSet = pn, Q.Switch = fn, Q.SwitchSet = mn, Q.Label = Mt, Q.Group = Nt, Q.Text = Dt;
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Sticky/index.js
-var hn = ["top", "bottom"], gn = /* @__PURE__ */ x.forwardRef(({ position: e, children: t, offset: n, className: r, ...i }, a) => {
-	let [o, s] = (0, x.useState)(!1), c = x.useRef(), l = a || c;
-	return (0, x.useLayoutEffect)(() => {
+var hn = ["top", "bottom"], gn = /* @__PURE__ */ S.forwardRef(({ position: e, children: t, offset: n, className: r, ...i }, a) => {
+	let [o, s] = (0, S.useState)(!1), c = S.useRef(), l = a || c;
+	return (0, S.useLayoutEffect)(() => {
 		if (l.current) {
 			let t = l.current, n = window.getComputedStyle(t)[e || "top"], r = 1 + (parseInt(n, 10) || 0), i = new IntersectionObserver(([e]) => s(e.intersectionRatio < 1), {
 				threshold: [1],
@@ -3607,7 +3597,7 @@ var hn = ["top", "bottom"], gn = /* @__PURE__ */ x.forwardRef(({ position: e, ch
 				i.unobserve(t);
 			};
 		}
-	}, [e, l]), /* @__PURE__ */ x.createElement("div", {
+	}, [e, l]), /* @__PURE__ */ S.createElement("div", {
 		className: (0, O.default)("pgn__sticky", `pgn__sticky-${e || "top"}`, n ? `pgn__sticky-offset--${n}` : "", { "pgn__sticky-shadow": o }, r),
 		ref: l,
 		...i
@@ -3625,8 +3615,8 @@ gn.propTypes = {
 };
 //#endregion
 //#region src/unfolding-scenario-block/studio-ui/App.tsx
-var $ = r(), _n = ({ initialData: e, onSave: t, onCancel: n }) => {
-	let [r, i] = (0, x.useState)(e);
+var $ = b(), _n = ({ initialData: e, onSave: t, onCancel: n }) => {
+	let [r, i] = (0, S.useState)(e);
 	return /* @__PURE__ */ (0, $.jsxs)("div", {
 		className: "unfolding-scenario-block-editor editor-with-buttons",
 		children: [/* @__PURE__ */ (0, $.jsxs)("div", {
@@ -3650,20 +3640,20 @@ var $ = r(), _n = ({ initialData: e, onSave: t, onCancel: n }) => {
 		}), /* @__PURE__ */ (0, $.jsx)(gn, {
 			position: "bottom",
 			className: "xblock-actions",
-			children: /* @__PURE__ */ (0, $.jsxs)(k, { children: [/* @__PURE__ */ (0, $.jsx)(f, {
+			children: /* @__PURE__ */ (0, $.jsxs)(k, { children: [/* @__PURE__ */ (0, $.jsx)(p, {
 				variant: "primary",
 				onClick: () => t(r),
 				children: "Save"
-			}), /* @__PURE__ */ (0, $.jsx)(f, {
+			}), /* @__PURE__ */ (0, $.jsx)(p, {
 				variant: "tertiary",
 				onClick: () => n(),
 				children: "Cancel"
 			})] })
 		})]
 	});
-}, vn = ".wrapper.xblock-iframe-content .xblock-v1-studio_view{display:flex}.xblock-root,.xblock-root .react-studio-block,.xblock-root .react-studio-block .container-fluid{height:100%}.react-studio-block{flex-grow:1}.react-studio-block *,.react-studio-block :before,.react-studio-block :after{box-sizing:border-box}.react-studio-block{margin-bottom:0!important}.xblock-actions{border-top:1px solid var(--pgn-color-gray-200);background:var(--pgn-color-white);z-index:1;justify-content:flex-end;gap:.5em;padding:.75em 1em;display:flex;position:sticky;bottom:0;box-shadow:0 -2px 6px #0000000d}.react-colorful{-webkit-user-select:none;user-select:none;cursor:default;flex-direction:column;width:200px;height:200px;display:flex;position:relative}.react-colorful__saturation{background-image:linear-gradient(#0000,#000),linear-gradient(90deg,#fff,#fff0);border-color:#0000 #0000 #000;border-bottom-style:solid;border-bottom-width:12px;border-radius:8px 8px 0 0;flex-grow:1;position:relative}.react-colorful__pointer-fill,.react-colorful__alpha-gradient{content:\"\";pointer-events:none;border-radius:inherit;position:absolute;inset:0}.react-colorful__alpha-gradient,.react-colorful__saturation{box-shadow:inset 0 0 0 1px #0000000d}.react-colorful__hue,.react-colorful__alpha{height:24px;position:relative}.react-colorful__hue{background:linear-gradient(90deg,red 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red 100%)}.react-colorful__last-control{border-radius:0 0 8px 8px}.react-colorful__interactive{border-radius:inherit;touch-action:none;outline:none;position:absolute;inset:0}.react-colorful__pointer{z-index:1;box-sizing:border-box;background-color:#fff;border:2px solid #fff;border-radius:50%;width:28px;height:28px;position:absolute;transform:translate(-50%,-50%);box-shadow:0 2px 4px #0003}.react-colorful__interactive:focus .react-colorful__pointer{transform:translate(-50%,-50%)scale(1.1)}.react-colorful__alpha,.react-colorful__alpha-pointer{background-color:#fff;background-image:url(\"data:image/svg+xml,<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill-opacity=\\\".05\\\"><rect x=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/><rect y=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/></svg>\")}.react-colorful__saturation-pointer{z-index:3}.react-colorful__hue-pointer{z-index:2}.edit-xblock-modal>.modal-actions{display:none!important}", yn = (0, x.createContext)(null), bn = (e, t, n) => {
-	let r = l(t), i = e.handlerUrl(r, "studio_save");
-	d({
+}, vn = ".wrapper.xblock-iframe-content .xblock-v1-studio_view{display:flex}.xblock-root,.xblock-root .react-studio-block,.xblock-root .react-studio-block .container-fluid{height:100%}.react-studio-block{flex-grow:1}.react-studio-block *,.react-studio-block :before,.react-studio-block :after{box-sizing:border-box}.react-studio-block{margin-bottom:0!important}.xblock-actions{border-top:1px solid var(--pgn-color-gray-200);background:var(--pgn-color-white);z-index:1;justify-content:flex-end;gap:.5em;padding:.75em 1em;display:flex;position:sticky;bottom:0;box-shadow:0 -2px 6px #0000000d}.react-colorful{-webkit-user-select:none;user-select:none;cursor:default;flex-direction:column;width:200px;height:200px;display:flex;position:relative}.react-colorful__saturation{background-image:linear-gradient(#0000,#000),linear-gradient(90deg,#fff,#fff0);border-color:#0000 #0000 #000;border-bottom-style:solid;border-bottom-width:12px;border-radius:8px 8px 0 0;flex-grow:1;position:relative}.react-colorful__pointer-fill,.react-colorful__alpha-gradient{content:\"\";pointer-events:none;border-radius:inherit;position:absolute;inset:0}.react-colorful__alpha-gradient,.react-colorful__saturation{box-shadow:inset 0 0 0 1px #0000000d}.react-colorful__hue,.react-colorful__alpha{height:24px;position:relative}.react-colorful__hue{background:linear-gradient(90deg,red 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red 100%)}.react-colorful__last-control{border-radius:0 0 8px 8px}.react-colorful__interactive{border-radius:inherit;touch-action:none;outline:none;position:absolute;inset:0}.react-colorful__pointer{z-index:1;box-sizing:border-box;background-color:#fff;border:2px solid #fff;border-radius:50%;width:28px;height:28px;position:absolute;transform:translate(-50%,-50%);box-shadow:0 2px 4px #0003}.react-colorful__interactive:focus .react-colorful__pointer{transform:translate(-50%,-50%)scale(1.1)}.react-colorful__alpha,.react-colorful__alpha-pointer{background-color:#fff;background-image:url(\"data:image/svg+xml,<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill-opacity=\\\".05\\\"><rect x=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/><rect y=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/></svg>\")}.react-colorful__saturation-pointer{z-index:3}.react-colorful__hue-pointer{z-index:2}.edit-xblock-modal>.modal-actions{display:none!important}", yn = (0, S.createContext)(null), bn = (e, t, n) => {
+	let i = l(t), a = e.handlerUrl(i, "studio_save");
+	u({
 		runtime: e,
 		element: t,
 		config: n.config,
@@ -3673,8 +3663,8 @@ var $ = r(), _n = ({ initialData: e, onSave: t, onCancel: n }) => {
 		children: /* @__PURE__ */ (0, $.jsx)(_n, {
 			initialData: n.data,
 			onSave: (t) => {
-				c({
-					saveUrl: i,
+				r({
+					saveUrl: a,
 					data: t,
 					runtime: e,
 					errorMessage: (e) => `Failed to save unfolding scenario block: ${e.responseJSON.error}`
