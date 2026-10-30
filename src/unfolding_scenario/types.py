@@ -1,7 +1,11 @@
 """Types for the Unfolding Scenario Block"""
 
 from enum import Enum
-from pydantic import BaseModel, ConfigDict
+from typing import Annotated
+
+from pydantic import AfterValidator, BaseModel, ConfigDict
+
+from exemplar_common.utils import sanitise_simple_html_body
 
 
 class InteractionType(Enum):
@@ -29,7 +33,7 @@ class Outcome(BaseModel):
     model_config = ConfigDict(use_enum_values=True, extra="forbid")
 
     heading: str
-    description: str  # TODO: this should be treated as html and sanitised
+    description: Annotated[str, AfterValidator(sanitise_simple_html_body)]
     displaySelectedOptions: bool
 
     def searchable_text(self) -> str:
@@ -61,9 +65,9 @@ class Scenario(BaseModel):
     model_config = ConfigDict(use_enum_values=True, extra="forbid")
 
     heading: str
-    description: str  # TODO: this should be treated as html and sanitised
+    description: Annotated[str, AfterValidator(sanitise_simple_html_body)]
     instructionTitle: str
-    instructionDescription: str  # TODO: this should be treated as html and sanitised
+    instructionDescription: Annotated[str, AfterValidator(sanitise_simple_html_body)]
     prompt: str
     options: list[Option]
 
@@ -89,7 +93,7 @@ class Introduction(BaseModel):
     model_config = ConfigDict(use_enum_values=True, extra="forbid")
 
     heading: str
-    description: str
+    description: Annotated[str, AfterValidator(sanitise_simple_html_body)]
     imageURL: str
 
     def searchable_text(self) -> str:
