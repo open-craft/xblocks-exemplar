@@ -14,7 +14,12 @@ const defaultData: Data = {
       imageURL: 'https://picsum.photos/id/82/300',
     },
     scenarios: [],
-    outcome: null,
+    outcome: {
+      heading: 'The outcome',
+      description: 'Just an example outcome.',
+      displaySelectedOptions: false,
+    },
+    interactionType: 'Explore',
   },
 };
 

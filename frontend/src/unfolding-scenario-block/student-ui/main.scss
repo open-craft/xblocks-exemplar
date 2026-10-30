@@ -95,6 +95,32 @@
     --pgn-unfolding-scenario-color-icon-action-sec-neutral,
     #1c3a5e
   );
+  --color-txt-feedback-negative: var(
+    --pgn-unfolding-scenario-color-txt-feedback-negative,
+    #db493d
+  );
+  --color-icon-interact-negative: var(
+    --pgn-unfolding-scenario-color-icon-interact-negative,
+    #db493d
+  );
+
+  // TODO determine the naming and colours for these positive and warning variables
+  --color-txt-feedback-positive: var(
+    --pgn-unfolding-scenario-color-txt-feedback-positive,
+    #149418
+  );
+  --color-icon-interact-positive: var(
+    --pgn-unfolding-scenario-color-icon-interact-positive,
+    #149418
+  );
+  --color-txt-feedback-warning: var(
+    --pgn-unfolding-scenario-color-txt-feedback-warning,
+    #ffd900
+  );
+  --color-icon-interact-warning: var(
+    --pgn-unfolding-scenario-color-icon-interact-warning,
+    #ffd900
+  );
 
   --btn-min-width: var(--pgn-unfolding-scenario-btn-min-width, 200px);
 
@@ -136,6 +162,30 @@
 
   .text-icon-action-sec-neutral {
     color: var(--color-icon-action-sec-neutral) !important;
+  }
+
+  .text-feedback-negative {
+    color: var(--color-txt-feedback-negative) !important;
+  }
+
+  .text-icon-interact-negative {
+    color: var(--color-icon-interact-negative) !important;
+  }
+
+  .text-feedback-positive {
+    color: var(--color-txt-feedback-positive) !important;
+  }
+
+  .text-icon-interact-positive {
+    color: var(--color-icon-interact-positive) !important;
+  }
+
+  .text-feedback-warning {
+    color: var(--color-txt-feedback-warning) !important;
+  }
+
+  .text-icon-interact-warning {
+    color: var(--color-icon-interact-warning) !important;
   }
 
   .bg-interact-raised-emphasis {
@@ -273,6 +323,7 @@
     ); // 12px if base size is 16px
   }
 
+  // TODO: do we want these in some shared base styles for reuse?
   // utility margins/paddings to complement existing bootstrap utility margins/paddings
   .m-4-5 {
     margin: var(--pgn-spacing-spacer-4-5) !important;
@@ -370,5 +421,75 @@
     &:focus-visible {
       outline: 2px solid var(--color-option-focus-border);
     }
+  }
+
+  .outcome-option-row + .outcome-option-row {
+    margin-top: var(--pgn-spacing-spacer-4);
+    padding-top: var(--pgn-spacing-spacer-4);
+    border-top: 1px solid var(--color-border-interact-default);
+  }
+
+  // Transitions for a scenario view, when the user clicks an option or clicks the return button.
+  .options-pane {
+    transition: left 0.5s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .options-pane {
+      transition: unset;
+    }
+  }
+
+  .options-pane-1 {
+    left: 0%;
+  }
+
+  .options-pane-2 {
+    left: 50%;
+  }
+
+  .options-pane-3 {
+    left: 100%;
+  }
+
+  .active.options-pane-1 {
+    left: -50%;
+  }
+
+  .active.options-pane-2 {
+    left: 0%;
+  }
+
+  .active.options-pane-3 {
+    left: 50%;
+  }
+
+  // Transitions for a *tablet* scenario view, when the user clicks an option or clicks the return button.
+  .tablet-options-pane {
+    transition: left 0.5s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tablet-options-pane {
+      transition: unset;
+    }
+  }
+
+  .tablet-options-pane-1 {
+    left: 0%;
+  }
+
+  .tablet-options-pane-2 {
+    left: 100%;
+
+    border-left: var(--pgn-spacing-spacer-3) solid var(--color-interact-default);
+  }
+
+  .active.tablet-options-pane-1 {
+    left: -100%;
+  }
+
+  .active.tablet-options-pane-2 {
+    left: 0%;
   }
 }

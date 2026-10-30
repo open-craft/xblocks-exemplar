@@ -1,18 +1,22 @@
 import { Button, Icon } from '@openedx/paragon';
-import { type Outcome } from '../../apiTypes';
+import { type Outcome, type Scenario } from '../../apiTypes';
 import { Close, Replay } from '@openedx/paragon/icons';
+import { OutcomeSelectedOptions } from './OutcomeSelectedOptions';
 
 interface OutcomeProps {
   outcome: Outcome;
+  scenarios: Scenario[];
+  selectedOptions: Map<number, number>;
   onRestart: () => void;
   onExit: () => void;
   imageURL: string;
 }
 
-// TODO: support the variant outcome where selected options are displayed (under discussion)
 // TODO: implement tablet and mobile variants
 export const OutcomeComponent = ({
   outcome,
+  scenarios,
+  selectedOptions,
   onRestart,
   onExit,
   imageURL,
@@ -23,6 +27,12 @@ export const OutcomeComponent = ({
         {outcome.heading}
       </p>
       <p className="pb-3 text-interact-content">{outcome.description}</p>
+      {outcome.displaySelectedOptions && (
+        <OutcomeSelectedOptions
+          scenarios={scenarios}
+          selectedOptions={selectedOptions}
+        />
+      )}
     </div>
     <div
       className="d-flex flex-column"

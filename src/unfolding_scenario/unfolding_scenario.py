@@ -11,7 +11,7 @@ from xblock.exceptions import JsonHandlerError
 from xblock.fields import Scope, String, Dict
 from xblock.utils.resources import ResourceLoader
 
-from unfolding_scenario.types import Data, ScenarioData
+from unfolding_scenario.types import Data, ScenarioData, InteractionType
 from exemplar_common.utils import strip_html_for_search
 from exemplar_common.xblock_config import get_xblock_config, XBlockView
 
@@ -36,11 +36,11 @@ DEFAULT_SCENARIO_DATA = ScenarioData(
             "instructionDescription": "Choose one of the options below.",
             "prompt": "What would you do next?",
             "options": [
-                {"value": "Do this", "feedback": "Not quite.", "icon": "placeholder"},
+                {"value": "Do this", "feedback": "Not quite.", "type": "Incorrect"},
                 {
                     "value": "Do that",
                     "feedback": "That's right!",
-                    "icon": "placeholder",
+                    "type": "Correct",
                 },
             ],
         },
@@ -51,11 +51,11 @@ DEFAULT_SCENARIO_DATA = ScenarioData(
             "instructionDescription": "Choose one of the options below.",
             "prompt": "What would you do next?",
             "options": [
-                {"value": "Do this", "feedback": "Not quite.", "icon": "placeholder"},
+                {"value": "Do this", "feedback": "Not quite.", "type": "Incorrect"},
                 {
                     "value": "Do that",
                     "feedback": "That's right!",
-                    "icon": "placeholder",
+                    "type": "Correct",
                 },
             ],
         },
@@ -66,11 +66,11 @@ DEFAULT_SCENARIO_DATA = ScenarioData(
             "instructionDescription": "Choose one of the options below.",
             "prompt": "What would you do next?",
             "options": [
-                {"value": "Do this", "feedback": "Not quite.", "icon": "placeholder"},
+                {"value": "Do this", "feedback": "Not quite.", "type": "Incorrect"},
                 {
                     "value": "Do that",
                     "feedback": "That's right!",
-                    "icon": "placeholder",
+                    "type": "Correct",
                 },
             ],
         },
@@ -78,7 +78,9 @@ DEFAULT_SCENARIO_DATA = ScenarioData(
     outcome={
         "heading": "Outcome",
         "description": "You have completed all the scenarios.",
+        "displaySelectedOptions": False,
     },
+    interactionType=InteractionType.Explore,
 )
 
 

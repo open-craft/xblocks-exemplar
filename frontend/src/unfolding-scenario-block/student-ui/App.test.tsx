@@ -15,7 +15,12 @@ describe('App.tsx', () => {
           imageURL: 'https://picsum.photos/id/82/300',
         },
         scenarios: [],
-        outcome: null,
+        outcome: {
+          heading: 'The outcome',
+          description: 'Just an example outcome.',
+          displaySelectedOptions: false,
+        },
+        interactionType: 'Explore',
       },
     };
     const screen = render(<App data={data} themeUrls={[]} cssContent="" />);
