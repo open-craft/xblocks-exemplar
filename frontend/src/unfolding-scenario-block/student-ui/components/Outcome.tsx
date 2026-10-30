@@ -26,7 +26,10 @@ export const OutcomeComponent = ({
       <p className="font-size-lg font-weight-bold text-interact-accent">
         {outcome.heading}
       </p>
-      <p className="pb-3 text-interact-content">{outcome.description}</p>
+      <div
+        className="text-interact-content pb-3"
+        dangerouslySetInnerHTML={{ __html: outcome.description }}
+      />
       {outcome.displaySelectedOptions && (
         <OutcomeSelectedOptions
           scenarios={scenarios}

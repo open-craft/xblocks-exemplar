@@ -1571,9 +1571,9 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 					className: "text-interact-accent",
 					children: t.heading
 				}),
-				/* @__PURE__ */ (0, $.jsx)("p", {
+				/* @__PURE__ */ (0, $.jsx)("div", {
 					className: "flex-grow-1 text-sec-content",
-					children: t.description
+					dangerouslySetInnerHTML: { __html: t.description }
 				}),
 				/* @__PURE__ */ (0, $.jsx)("div", {
 					className: "d-flex justify-content-end",
@@ -1667,9 +1667,9 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 				className: "font-size-lg font-weight-bold text-interact-accent",
 				children: e.heading
 			}),
-			/* @__PURE__ */ (0, $.jsx)("p", {
-				className: "pb-3 text-interact-content",
-				children: e.description
+			/* @__PURE__ */ (0, $.jsx)("div", {
+				className: "text-interact-content pb-3",
+				dangerouslySetInnerHTML: { __html: e.description }
 			}),
 			e.displaySelectedOptions && /* @__PURE__ */ (0, $.jsx)(Xr, {
 				scenarios: t,
@@ -1884,9 +1884,9 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 						className: "font-size-lg font-weight-bold text-interact-accent",
 						children: e.heading
 					}),
-					/* @__PURE__ */ (0, $.jsx)("p", {
+					/* @__PURE__ */ (0, $.jsx)("div", {
 						className: "text-interact-content pb-3",
-						children: e.description
+						dangerouslySetInnerHTML: { __html: e.description }
 					}),
 					/* @__PURE__ */ (0, $.jsxs)("div", {
 						className: "d-flex align-items-center mt-3 mb-2",
@@ -1898,9 +1898,9 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 							children: e.instructionTitle
 						})]
 					}),
-					/* @__PURE__ */ (0, $.jsx)("p", {
+					/* @__PURE__ */ (0, $.jsx)("div", {
 						className: "text-interact-content",
-						children: e.instructionDescription
+						dangerouslySetInnerHTML: { __html: e.instructionDescription }
 					})
 				] })
 			}),
@@ -1959,9 +1959,9 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 					className: "font-size-lg font-weight-bold text-interact-accent",
 					children: e.heading
 				}),
-				/* @__PURE__ */ (0, $.jsx)("p", {
+				/* @__PURE__ */ (0, $.jsx)("div", {
 					className: "text-interact-content pb-3",
-					children: e.description
+					dangerouslySetInnerHTML: { __html: e.description }
 				}),
 				/* @__PURE__ */ (0, $.jsxs)("div", {
 					className: "d-flex align-items-center mt-3 mb-2",
@@ -1974,9 +1974,9 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 					})]
 				})
 			] }),
-			/* @__PURE__ */ (0, $.jsx)("p", {
+			/* @__PURE__ */ (0, $.jsx)("div", {
 				className: "text-interact-content",
-				children: e.instructionDescription
+				dangerouslySetInnerHTML: { __html: e.instructionDescription }
 			}),
 			/* @__PURE__ */ (0, $.jsxs)("div", {
 				className: "flex-grow-1",
@@ -2032,9 +2032,9 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 						className: "font-size-lg font-weight-bold text-interact-accent",
 						children: e.heading
 					}),
-					/* @__PURE__ */ (0, $.jsx)("p", {
+					/* @__PURE__ */ (0, $.jsx)("div", {
 						className: "text-interact-content pb-3",
-						children: e.description
+						dangerouslySetInnerHTML: { __html: e.description }
 					}),
 					/* @__PURE__ */ (0, $.jsxs)("div", {
 						className: "d-flex align-items-center mt-3 mb-2",
@@ -2046,9 +2046,9 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 							children: e.instructionTitle
 						})]
 					}),
-					/* @__PURE__ */ (0, $.jsx)("p", {
+					/* @__PURE__ */ (0, $.jsx)("div", {
 						className: "text-interact-content",
-						children: e.instructionDescription
+						dangerouslySetInnerHTML: { __html: e.instructionDescription }
 					})
 				] })
 			}),

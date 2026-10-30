@@ -25,9 +25,10 @@ export const Intro = ({
           <span className="ml-3 small-heading">{name}</span>
         </div>
         <h4 className="text-interact-accent">{introduction.heading}</h4>
-        <p className="flex-grow-1 text-sec-content">
-          {introduction.description}
-        </p>
+        <div
+          className="flex-grow-1 text-sec-content"
+          dangerouslySetInnerHTML={{ __html: introduction.description }}
+        />
 
         <div className="d-flex justify-content-end">
           <Button
