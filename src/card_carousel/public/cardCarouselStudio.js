@@ -18679,7 +18679,7 @@ function ON({ runtime: e, saveUrl: t }) {
 //#endregion
 //#region src/card/card-carousel/studio-ui/StudioUI.tsx
 function kN({ saveUrl: e, runtime: t }) {
-	let n = Hy[0].key, [r, i] = (0, I.useState)(n), { values: a, setFieldValue: o } = oy();
+	let n = Hy[0].key, [r, i] = (0, I.useState)(n), { values: a, setFieldValue: o } = oy(), s = !!wp()?.enable_json_editing, c = s ? Hy : Hy.filter((e) => e.key !== "json");
 	return /* @__PURE__ */ (0, F.jsx)(Ay, { children: /* @__PURE__ */ (0, F.jsx)(Jn, {
 		id: "card-carousel-studio-tabs",
 		activeKey: r,
@@ -18691,7 +18691,8 @@ function kN({ saveUrl: e, runtime: t }) {
 				/* @__PURE__ */ (0, F.jsx)(Uy, {
 					activeTab: r,
 					title: a.displayName,
-					onTitleChange: (e) => o("displayName", e)
+					onTitleChange: (e) => o("displayName", e),
+					tabs: c
 				}),
 				/* @__PURE__ */ (0, F.jsx)($l.Body, { children: /* @__PURE__ */ (0, F.jsxs)(Xn, {
 					className: "card-carousel-studio-tab-content",
@@ -18704,7 +18705,7 @@ function kN({ saveUrl: e, runtime: t }) {
 							eventKey: "settings",
 							children: /* @__PURE__ */ (0, F.jsx)(Vy, {})
 						}),
-						/* @__PURE__ */ (0, F.jsx)(er, {
+						s && /* @__PURE__ */ (0, F.jsx)(er, {
 							eventKey: "json",
 							children: /* @__PURE__ */ (0, F.jsx)(ON, {
 								saveUrl: e,
