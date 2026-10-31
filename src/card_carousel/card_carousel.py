@@ -182,16 +182,11 @@ class CardCarouselXBlock(XBlock, XBlockWithSettingsMixin):
         return frag
 
     @XBlock.handler
-    def json_data(self, request, suffix=""):
+    def json_schema(self, request, suffix=""):
         """Return the JSON data or schema of the Pydantic model as a file download."""
         res = Response()
-        data_type = request.GET.get("type", "data")
-        if data_type == "data":
-            res.json = self._card_view_data()
-            filename = "card-carousel-component.json"
-        else:
-            res.json = InitData.model_json_schema()
-            filename = "card-carousel-schema.json"
+        res.json = InitData.model_json_schema()
+        filename = "card-carousel-schema.json"
         res.content_disposition = f'attachment; filename="{filename}"'
         return res
 

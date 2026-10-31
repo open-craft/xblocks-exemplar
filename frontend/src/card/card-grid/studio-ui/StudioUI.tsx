@@ -34,7 +34,6 @@ function StudioUI({ runtime, saveUrl, initData }: StudioUIProps) {
         <div className="studio-ui card-grid-studio">
           {showCardEditor ? <CarouselEditor /> : <CreateCardGridForm />}
           <ModalFooter
-            runtime={runtime}
             showingEditor={showCardEditor}
             onContinue={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
