@@ -32,7 +32,10 @@ export const MobileScenarioView = ({
             <p className="font-size-lg font-weight-bold text-interact-accent">
               {scenario.heading}
             </p>
-            <p className="text-interact-content pb-3">{scenario.description}</p>
+            <div
+              className="text-interact-content pb-3"
+              dangerouslySetInnerHTML={{ __html: scenario.description }}
+            />
             <div className="d-flex align-items-center mt-3 mb-2">
               <div className="arrow-bubble p-2 text-icon-interact-default">
                 <Icon src={ArrowOutward} />
@@ -41,9 +44,12 @@ export const MobileScenarioView = ({
                 {scenario.instructionTitle}
               </span>
             </div>
-            <p className="text-interact-content">
-              {scenario.instructionDescription}
-            </p>
+            <div
+              className="text-interact-content"
+              dangerouslySetInnerHTML={{
+                __html: scenario.instructionDescription,
+              }}
+            />
           </div>
         </div>
         <div
