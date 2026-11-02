@@ -20,7 +20,7 @@ var x = /* @__PURE__ */ n(t()), S = (e) => /* @__PURE__ */ x.createElement("svg"
 }, /* @__PURE__ */ x.createElement("path", {
 	d: "M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z",
 	fill: "currentColor"
-})), ee = (e) => /* @__PURE__ */ x.createElement("svg", {
+})), w = (e) => /* @__PURE__ */ x.createElement("svg", {
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
@@ -30,7 +30,7 @@ var x = /* @__PURE__ */ n(t()), S = (e) => /* @__PURE__ */ x.createElement("svg"
 }, /* @__PURE__ */ x.createElement("path", {
 	d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8-1.41-1.42Z",
 	fill: "currentColor"
-})), w = (e) => /* @__PURE__ */ x.createElement("svg", {
+})), T = (e) => /* @__PURE__ */ x.createElement("svg", {
 	xmlns: "http://www.w3.org/2000/svg",
 	width: 24,
 	height: 24,
@@ -40,7 +40,7 @@ var x = /* @__PURE__ */ n(t()), S = (e) => /* @__PURE__ */ x.createElement("svg"
 }, /* @__PURE__ */ x.createElement("path", {
 	d: "M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7h-2z",
 	fill: "currentColor"
-})), T = (e) => /* @__PURE__ */ x.createElement("svg", {
+})), E = (e) => /* @__PURE__ */ x.createElement("svg", {
 	xmlns: "http://www.w3.org/2000/svg",
 	width: 24,
 	height: 24,
@@ -50,7 +50,7 @@ var x = /* @__PURE__ */ n(t()), S = (e) => /* @__PURE__ */ x.createElement("svg"
 }, /* @__PURE__ */ x.createElement("path", {
 	d: "M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z",
 	fill: "currentColor"
-})), te = (e) => /* @__PURE__ */ x.createElement("svg", {
+})), ee = (e) => /* @__PURE__ */ x.createElement("svg", {
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
@@ -60,19 +60,19 @@ var x = /* @__PURE__ */ n(t()), S = (e) => /* @__PURE__ */ x.createElement("svg"
 }, /* @__PURE__ */ x.createElement("path", {
 	d: "M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z",
 	fill: "currentColor"
-})), E = /* @__PURE__ */ n(s()), ne = [
+})), D = /* @__PURE__ */ n(s()), te = [
 	"bsPrefix",
 	"fluid",
 	"as",
 	"className"
-], re = { fluid: !1 }, D = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.fluid, i = e.as, s = i === void 0 ? "div" : i, c = e.className, l = _(e, ne), u = a(n, "container"), d = typeof r == "string" ? "-" + r : "-fluid";
-	return /* @__PURE__ */ x.createElement(s, o({ ref: t }, l, { className: (0, E.default)(c, r ? "" + u + d : u) }));
+], ne = { fluid: !1 }, O = /* @__PURE__ */ x.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.fluid, i = e.as, s = i === void 0 ? "div" : i, c = e.className, l = _(e, te), u = a(n, "container"), d = typeof r == "string" ? "-" + r : "-fluid";
+	return /* @__PURE__ */ x.createElement(s, o({ ref: t }, l, { className: (0, D.default)(c, r ? "" + u + d : u) }));
 });
-D.displayName = "Container", D.defaultProps = re;
+O.displayName = "Container", O.defaultProps = ne;
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Image.js
-var O = /* @__PURE__ */ n(h()), ie = [
+var k = /* @__PURE__ */ n(h()), re = [
 	"bsPrefix",
 	"className",
 	"fluid",
@@ -80,46 +80,46 @@ var O = /* @__PURE__ */ n(h()), ie = [
 	"roundedCircle",
 	"thumbnail"
 ];
-O.default.string, O.default.bool, O.default.bool, O.default.bool, O.default.bool;
-var ae = {
+k.default.string, k.default.bool, k.default.bool, k.default.bool, k.default.bool;
+var ie = {
 	fluid: !1,
 	rounded: !1,
 	roundedCircle: !1,
 	thumbnail: !1
-}, k = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.className, i = e.fluid, s = e.rounded, c = e.roundedCircle, l = e.thumbnail, u = _(e, ie);
+}, A = /* @__PURE__ */ x.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.className, i = e.fluid, s = e.rounded, c = e.roundedCircle, l = e.thumbnail, u = _(e, re);
 	n = a(n, "img");
-	var d = (0, E.default)(i && n + "-fluid", s && "rounded", c && "rounded-circle", l && n + "-thumbnail");
-	return /* @__PURE__ */ x.createElement("img", o({ ref: t }, u, { className: (0, E.default)(r, d) }));
+	var d = (0, D.default)(i && n + "-fluid", s && "rounded", c && "rounded-circle", l && n + "-thumbnail");
+	return /* @__PURE__ */ x.createElement("img", o({ ref: t }, u, { className: (0, D.default)(r, d) }));
 });
-k.displayName = "Image", k.defaultProps = ae;
+A.displayName = "Image", A.defaultProps = ie;
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Row.js
-var oe = [
+var ae = [
 	"bsPrefix",
 	"className",
 	"noGutters",
 	"as"
-], se = [
+], oe = [
 	"xl",
 	"lg",
 	"md",
 	"sm",
 	"xs"
-], A = { noGutters: !1 }, j = /* @__PURE__ */ x.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.className, i = e.noGutters, s = e.as, c = s === void 0 ? "div" : s, l = _(e, oe), u = a(n, "row"), d = u + "-cols", f = [];
-	return se.forEach(function(e) {
+], se = { noGutters: !1 }, j = /* @__PURE__ */ x.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.className, i = e.noGutters, s = e.as, c = s === void 0 ? "div" : s, l = _(e, ae), u = a(n, "row"), d = u + "-cols", f = [];
+	return oe.forEach(function(e) {
 		var t = l[e];
 		delete l[e];
 		var n = typeof t == "object" && t ? t.cols : t, r = e === "xs" ? "" : "-" + e;
 		n != null && f.push("" + d + r + "-" + n);
-	}), /* @__PURE__ */ x.createElement(c, o({ ref: t }, l, { className: E.default.apply(void 0, [
+	}), /* @__PURE__ */ x.createElement(c, o({ ref: t }, l, { className: D.default.apply(void 0, [
 		r,
 		u,
 		i && "no-gutters"
 	].concat(f)) }));
 });
-j.displayName = "Row", j.defaultProps = A;
+j.displayName = "Row", j.defaultProps = se;
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/utils/breakpoints.js
 var { sm: ce, md: le, lg: ue, xl: de, xxl: fe } = {
@@ -161,13 +161,13 @@ Object.freeze({
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Container/index.js
 var pe = /* @__PURE__ */ function(e) {
 	return e.xs = "container-mw-xs", e.sm = "container-mw-sm", e.md = "container-mw-md", e.lg = "container-mw-lg", e.xl = "container-mw-xl", e;
-}(pe || {}), N = /* @__PURE__ */ (0, x.forwardRef)(({ size: e, children: t, as: n = "div", bsPrefix: r = "container", fluid: i = !0, ...a }, o) => /* @__PURE__ */ x.createElement(D, {
+}(pe || {}), N = /* @__PURE__ */ (0, x.forwardRef)(({ size: e, children: t, as: n = "div", bsPrefix: r = "container", fluid: i = !0, ...a }, o) => /* @__PURE__ */ x.createElement(O, {
 	...a,
 	as: n,
 	bsPrefix: r,
 	fluid: i,
 	ref: o,
-	className: (0, E.default)(a.className, e && pe[e])
+	className: (0, D.default)(a.className, e && pe[e])
 }, t)), P = "right-scroll-bar-position", F = "width-before-scroll-bar", me = "with-scroll-bars-hidden", he = "--removed-body-scroll-bar-size";
 //#endregion
 //#region node_modules/.pnpm/use-callback-ref@1.3.3_@types+react@18.3.28_react@18.3.1/node_modules/use-callback-ref/dist/es2015/assignRef.js
@@ -320,8 +320,8 @@ var De = we(), Oe = function() {}, ke = x.forwardRef(function(e, t) {
 		"allowPinchZoom",
 		"as",
 		"gapMode"
-	]), ee = p, w = be([n, t]), T = b(b({}, C), a);
-	return x.createElement(x.Fragment, null, d && x.createElement(ee, {
+	]), w = p, T = be([n, t]), E = b(b({}, C), a);
+	return x.createElement(x.Fragment, null, d && x.createElement(w, {
 		sideCar: De,
 		removeScrollBar: u,
 		shards: f,
@@ -332,9 +332,9 @@ var De = we(), Oe = function() {}, ke = x.forwardRef(function(e, t) {
 		allowPinchZoom: !!_,
 		lockRef: n,
 		gapMode: S
-	}), s ? x.cloneElement(x.Children.only(c), b(b({}, T), { ref: w })) : x.createElement(y, b({}, T, {
+	}), s ? x.cloneElement(x.Children.only(c), b(b({}, E), { ref: T })) : x.createElement(y, b({}, E, {
 		className: l,
-		ref: w
+		ref: T
 	}), c));
 });
 ke.defaultProps = {
@@ -383,19 +383,19 @@ var Ie = Ce({}, function(e) {
 }), Be = /* @__PURE__ */ (0, x.createContext)(void 0), Ve = [], He = /* @__PURE__ */ (0, x.forwardRef)(function(e, t) {
 	var n, r = (0, x.useState)(), i = r[0], a = r[1], s = (0, x.useRef)(), c = (0, x.useRef)(!1), l = (0, x.useRef)(null), u = (0, x.useState)({})[1], d = e.children, f = e.disabled, p = f === void 0 ? !1 : f, m = e.noFocusGuards, h = m === void 0 ? !1 : m, g = e.persistentFocus, _ = g === void 0 ? !1 : g, v = e.crossFrame, y = v === void 0 ? !0 : v, b = e.autoFocus, S = b === void 0 ? !0 : b;
 	e.allowTextSelection;
-	var C = e.group, ee = e.className, w = e.whiteList, T = e.hasPositiveIndices, te = e.shards, E = te === void 0 ? Ve : te, ne = e.as, re = ne === void 0 ? "div" : ne, D = e.lockProps, O = D === void 0 ? {} : D, ie = e.sideCar, ae = e.returnFocus, k = ae === void 0 ? !1 : ae, oe = e.focusOptions, se = e.onActivation, A = e.onDeactivation, j = (0, x.useState)({})[0], ce = (0, x.useCallback)(function(e) {
+	var C = e.group, w = e.className, T = e.whiteList, E = e.hasPositiveIndices, ee = e.shards, D = ee === void 0 ? Ve : ee, te = e.as, ne = te === void 0 ? "div" : te, O = e.lockProps, k = O === void 0 ? {} : O, re = e.sideCar, ie = e.returnFocus, A = ie === void 0 ? !1 : ie, ae = e.focusOptions, oe = e.onActivation, se = e.onDeactivation, j = (0, x.useState)({})[0], ce = (0, x.useCallback)(function(e) {
 		var t = e.captureFocusRestore;
 		if (!l.current) {
 			var n = document?.activeElement;
 			l.current = n, n !== document.body && (l.current = t(n));
 		}
-		s.current && se && se(s.current), c.current = !0, u();
-	}, [se]), le = (0, x.useCallback)(function() {
-		c.current = !1, A && A(s.current), u();
-	}, [A]), ue = (0, x.useCallback)(function(e) {
+		s.current && oe && oe(s.current), c.current = !0, u();
+	}, [oe]), le = (0, x.useCallback)(function() {
+		c.current = !1, se && se(s.current), u();
+	}, [se]), ue = (0, x.useCallback)(function(e) {
 		var t = l.current;
 		if (t) {
-			var n = (typeof t == "function" ? t() : t) || document.body, r = typeof k == "function" ? k(n) : k;
+			var n = (typeof t == "function" ? t() : t) || document.body, r = typeof A == "function" ? A(n) : A;
 			if (r) {
 				var i = typeof r == "object" ? r : void 0;
 				l.current = null, e ? Promise.resolve().then(function() {
@@ -403,14 +403,14 @@ var Ie = Ce({}, function(e) {
 				}) : n.focus(i);
 			}
 		}
-	}, [k]), de = (0, x.useCallback)(function(e) {
+	}, [A]), de = (0, x.useCallback)(function(e) {
 		c.current && Ie.useMedium(e);
 	}, []), fe = Le.useMedium, M = (0, x.useCallback)(function(e) {
 		s.current !== e && (s.current = e, a(e));
-	}, []), pe = o((n = {}, n[je] = p && "disabled", n[Ae] = C, n), O), N = h !== !0, P = N && h !== "tail", F = be([t, M]), me = (0, x.useMemo)(function() {
+	}, []), pe = o((n = {}, n[je] = p && "disabled", n[Ae] = C, n), k), N = h !== !0, P = N && h !== "tail", F = be([t, M]), me = (0, x.useMemo)(function() {
 		return {
 			observed: s,
-			shards: E,
+			shards: D,
 			enabled: !p,
 			get active() {
 				return c.current;
@@ -419,7 +419,7 @@ var Ie = Ce({}, function(e) {
 	}, [
 		p,
 		c,
-		E,
+		D,
 		s
 	]);
 	return /* @__PURE__ */ x.createElement(x.Fragment, null, N && [/* @__PURE__ */ x.createElement("div", {
@@ -427,12 +427,12 @@ var Ie = Ce({}, function(e) {
 		"data-focus-guard": !0,
 		tabIndex: p ? -1 : 0,
 		style: I
-	}), T ? /* @__PURE__ */ x.createElement("div", {
+	}), E ? /* @__PURE__ */ x.createElement("div", {
 		key: "guard-nearest",
 		"data-focus-guard": !0,
 		tabIndex: p ? -1 : 1,
 		style: I
-	}) : null], !p && /* @__PURE__ */ x.createElement(ie, {
+	}) : null], !p && /* @__PURE__ */ x.createElement(re, {
 		id: j,
 		sideCar: ze,
 		observed: i,
@@ -440,15 +440,15 @@ var Ie = Ce({}, function(e) {
 		persistentFocus: _,
 		crossFrame: y,
 		autoFocus: S,
-		whiteList: w,
-		shards: E,
+		whiteList: T,
+		shards: D,
 		onActivation: ce,
 		onDeactivation: le,
 		returnFocus: ue,
-		focusOptions: oe,
+		focusOptions: ae,
 		noFocusGuards: h
-	}), /* @__PURE__ */ x.createElement(re, o({ ref: F }, pe, {
-		className: ee,
+	}), /* @__PURE__ */ x.createElement(ne, o({ ref: F }, pe, {
+		className: w,
 		onBlur: fe,
 		onFocus: de
 	}), /* @__PURE__ */ x.createElement(Be.Provider, { value: me }, d)), P && /* @__PURE__ */ x.createElement("div", {
@@ -466,7 +466,7 @@ function Ue(e) {
 var We = function(e) {
 	return e && "current" in e ? e.current : e;
 }, Ge = He, Ke = we(), qe = "data-focus-on-hidden", Je = { preventScroll: !0 }, Ye = x.forwardRef(function(e, t) {
-	var n = x.useState(!1), i = n[0], a = n[1], o = x.useState(null), s = o[0], c = o[1], l = e.children, u = e.autoFocus, d = e.shards, f = e.crossFrame, p = e.enabled, m = p === void 0 ? !0 : p, h = e.scrollLock, g = h === void 0 ? !0 : h, _ = e.focusLock, v = _ === void 0 ? !0 : _, y = e.returnFocus, S = y === void 0 ? !0 : y, C = e.inert, ee = e.allowPinchZoom, w = e.sideCar, T = e.className, te = e.shouldIgnore, E = e.preventScrollOnFocus, ne = e.style, re = e.as, D = e.gapMode, O = r(e, [
+	var n = x.useState(!1), i = n[0], a = n[1], o = x.useState(null), s = o[0], c = o[1], l = e.children, u = e.autoFocus, d = e.shards, f = e.crossFrame, p = e.enabled, m = p === void 0 ? !0 : p, h = e.scrollLock, g = h === void 0 ? !0 : h, _ = e.focusLock, v = _ === void 0 ? !0 : _, y = e.returnFocus, S = y === void 0 ? !0 : y, C = e.inert, w = e.allowPinchZoom, T = e.sideCar, E = e.className, ee = e.shouldIgnore, D = e.preventScrollOnFocus, te = e.style, ne = e.as, O = e.gapMode, k = r(e, [
 		"children",
 		"autoFocus",
 		"shards",
@@ -484,36 +484,36 @@ var We = function(e) {
 		"style",
 		"as",
 		"gapMode"
-	]), ie = w, ae = b(b({}, i), {
-		as: re,
-		style: ne,
-		sideCar: w,
+	]), re = T, ie = b(b({}, i), {
+		as: ne,
+		style: te,
+		sideCar: T,
 		shards: d,
-		allowPinchZoom: ee,
-		gapMode: D,
+		allowPinchZoom: w,
+		gapMode: O,
 		inert: C,
 		enabled: m && g
-	}), k = x.useCallback(function(e) {
+	}), A = x.useCallback(function(e) {
 		c(e);
-	}, []), oe = x.useCallback(function() {
+	}, []), ae = x.useCallback(function() {
 		c(null);
 	}, []);
 	return x.createElement(x.Fragment, null, x.createElement(Ge, {
 		ref: t,
-		sideCar: w,
+		sideCar: T,
 		disabled: !(m && v),
 		returnFocus: S,
 		autoFocus: u,
 		shards: d,
 		crossFrame: f,
-		onActivation: k,
-		onDeactivation: oe,
-		className: T,
-		whiteList: te,
-		lockProps: ae,
-		focusOptions: E ? Je : void 0,
+		onActivation: A,
+		onDeactivation: ae,
+		className: E,
+		whiteList: ee,
+		lockProps: ie,
+		focusOptions: D ? Je : void 0,
 		as: ke
-	}, l), m && x.createElement(ie, b({}, O, {
+	}, l), m && x.createElement(re, b({}, k, {
 		sideCar: Ke,
 		setLockProps: a,
 		shards: d,
@@ -1590,7 +1590,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 			xs: "12",
 			md: "4",
 			className: "p-0",
-			children: /* @__PURE__ */ (0, $.jsx)(k, {
+			children: /* @__PURE__ */ (0, $.jsx)(A, {
 				src: t.imageURL,
 				style: {
 					objectFit: "cover",
@@ -1600,42 +1600,62 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 			})
 		})]
 	})
-}), Jr = ({ option: e }) => /* @__PURE__ */ (0, $.jsxs)("div", { children: [/* @__PURE__ */ (0, $.jsx)(Yr, { type: e.type }), /* @__PURE__ */ (0, $.jsx)("p", {
-	className: "text-interact-content",
-	children: e.feedback
-})] }), Yr = ({ type: e }) => {
-	switch (e) {
-		case "Correct": return /* @__PURE__ */ (0, $.jsxs)("p", {
-			className: "d-flex",
-			children: [/* @__PURE__ */ (0, $.jsx)(m, {
-				src: ee,
-				className: "text-icon-interact-positive mr-2"
-			}), /* @__PURE__ */ (0, $.jsx)("span", {
-				className: "text-feedback-positive",
-				children: "Correct"
-			})]
-		});
-		case "Incorrect": return /* @__PURE__ */ (0, $.jsxs)("p", {
-			className: "d-flex",
-			children: [/* @__PURE__ */ (0, $.jsx)(m, {
-				src: u,
-				className: "text-icon-interact-negative mr-2"
-			}), /* @__PURE__ */ (0, $.jsx)("span", {
-				className: "text-feedback-negative",
-				children: "Incorrect"
-			})]
-		});
-		case "Warning": return /* @__PURE__ */ (0, $.jsxs)("p", {
-			className: "d-flex",
-			children: [/* @__PURE__ */ (0, $.jsx)(m, {
-				src: te,
-				className: "text-icon-interact-warning mr-2"
-			}), /* @__PURE__ */ (0, $.jsx)("span", {
-				className: "text-feedback-warning",
-				children: "Warning"
-			})]
-		});
+}), Jr = ({ option: e, interactionType: t, isContinueEnabled: n, onContinue: r, onReturn: i }) => {
+	let a = Kr().width || window.innerWidth;
+	return /* @__PURE__ */ (0, $.jsx)("div", {
+		className: `option-feedback-wrapper position-fixed fixed-top fixed-bottom w-100 h-100 bg-interact-raised ${a < M.extraSmall.maxWidth ? "p-4" : "p-4-5"}`,
+		children: /* @__PURE__ */ (0, $.jsxs)("div", {
+			className: "w-100 h-100 position-relative d-flex flex-column justify-content-center",
+			children: [
+				/* @__PURE__ */ (0, $.jsx)("p", {
+					className: "text-interact-headings font-size-md font-weight-bold",
+					children: e.value
+				}),
+				/* @__PURE__ */ (0, $.jsx)(Yr, { option: e }),
+				/* @__PURE__ */ (0, $.jsx)(g, {
+					className: "text-icon-action-sec-neutral",
+					src: T,
+					alt: "Return",
+					onClick: i
+				}),
+				t == "SelectOne" && /* @__PURE__ */ (0, $.jsx)("div", {
+					className: "position-absolute w-100 text-right",
+					style: { bottom: 0 },
+					children: /* @__PURE__ */ (0, $.jsx)(d, {
+						variant: "unfolding-scenario-action",
+						className: `rounded-pill ${a < M.extraSmall.maxWidth ? "w-100" : ""}`,
+						disabled: !n,
+						onClick: r,
+						children: "Continue"
+					})
+				})
+			]
+		})
+	});
+}, Yr = ({ option: e }) => {
+	let t = null, n = "", r = "";
+	switch (e.type) {
+		case "Correct":
+			t = w, n = "Correct", r = "positive";
+			break;
+		case "Incorrect":
+			t = u, n = "Incorrect", r = "negative";
+			break;
+		case "Warning": t = ee, n = "Warning", r = "warning";
 	}
+	return /* @__PURE__ */ (0, $.jsxs)($.Fragment, { children: [/* @__PURE__ */ (0, $.jsxs)("p", {
+		className: "d-flex",
+		children: [/* @__PURE__ */ (0, $.jsx)(m, {
+			src: t,
+			className: `text-icon-interact-${r} mr-2`
+		}), /* @__PURE__ */ (0, $.jsx)("span", {
+			className: `text-feedback-${r}`,
+			children: n
+		})]
+	}), /* @__PURE__ */ (0, $.jsx)("p", {
+		className: "text-interact-content",
+		children: e.feedback
+	})] });
 }, Xr = ({ scenarios: e, selectedOptions: t }) => /* @__PURE__ */ (0, $.jsx)(N, {
 	fluid: !0,
 	children: e.map((e, n) => {
@@ -1653,7 +1673,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 				})]
 			}), /* @__PURE__ */ (0, $.jsx)(f, {
 				className: "",
-				children: /* @__PURE__ */ (0, $.jsx)(Jr, { option: r })
+				children: /* @__PURE__ */ (0, $.jsx)(Yr, { option: r })
 			})]
 		});
 	})
@@ -1689,7 +1709,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 				variant: "outline-unfolding-scenario-action",
 				className: "rounded-pill",
 				onClick: r,
-				children: ["Restart ", /* @__PURE__ */ (0, $.jsx)(m, { src: T })]
+				children: ["Restart ", /* @__PURE__ */ (0, $.jsx)(m, { src: E })]
 			}), /* @__PURE__ */ (0, $.jsxs)(d, {
 				variant: "unfolding-scenario-action",
 				className: "rounded-pill ml-3",
@@ -1703,7 +1723,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 	children: [
 		/* @__PURE__ */ (0, $.jsx)(g, {
 			className: "text-icon-action-default bg-main mr-3",
-			src: T,
+			src: E,
 			onClick: n,
 			alt: "Reset activity",
 			size: "inline"
@@ -1910,7 +1930,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 					className: "d-flex mr-3 align-items-center",
 					children: /* @__PURE__ */ (0, $.jsx)(g, {
 						className: "text-icon-action-sec-neutral",
-						src: w,
+						src: T,
 						alt: "Return",
 						onClick: () => a(null)
 					})
@@ -1945,23 +1965,23 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 			}),
 			/* @__PURE__ */ (0, $.jsx)("div", {
 				className: `w-50 h-100 p-6 position-absolute d-flex align-items-center ${t === null ? "" : "active"} options-pane options-pane-3`,
-				children: t === null ? null : /* @__PURE__ */ (0, $.jsx)(Jr, { option: e.options[t] })
+				children: t === null ? null : /* @__PURE__ */ (0, $.jsx)(Yr, { option: e.options[t] })
 			})
 		]
 	})
-}), si = ({ scenario: e, activeOptionIndex: t, preSelectedOptions: n, isContinueEnabled: r, onContinue: i, onSelectOption: a }) => /* @__PURE__ */ (0, $.jsxs)("div", {
+}), si = ({ interactionType: e, scenario: t, activeOptionIndex: n, preSelectedOptions: r, isContinueEnabled: i, onContinue: a, onSelectOption: o }) => /* @__PURE__ */ (0, $.jsxs)("div", {
 	className: "position-relative w-100 h-100 overflow-hidden",
 	children: [/* @__PURE__ */ (0, $.jsxs)("div", {
-		className: `w-100 h-100 position-absolute p-4 d-flex flex-column ${t === null ? "" : "active"} tablet-options-pane tablet-options-pane-1`,
+		className: `w-100 h-100 position-absolute p-4 d-flex flex-column ${n === null ? "" : "active"} tablet-options-pane tablet-options-pane-1`,
 		children: [
 			/* @__PURE__ */ (0, $.jsxs)("div", { children: [
 				/* @__PURE__ */ (0, $.jsx)("p", {
 					className: "font-size-lg font-weight-bold text-interact-accent",
-					children: e.heading
+					children: t.heading
 				}),
 				/* @__PURE__ */ (0, $.jsx)("div", {
 					className: "text-interact-content pb-3",
-					dangerouslySetInnerHTML: { __html: e.description }
+					dangerouslySetInnerHTML: { __html: t.description }
 				}),
 				/* @__PURE__ */ (0, $.jsxs)("div", {
 					className: "d-flex align-items-center mt-3 mb-2",
@@ -1970,136 +1990,155 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 						children: /* @__PURE__ */ (0, $.jsx)(m, { src: C })
 					}), /* @__PURE__ */ (0, $.jsx)("span", {
 						className: "text-interact-headings font-size-medium font-weight-bold pl-2",
-						children: e.instructionTitle
+						children: t.instructionTitle
 					})]
 				})
 			] }),
 			/* @__PURE__ */ (0, $.jsx)("div", {
 				className: "text-interact-content",
-				dangerouslySetInnerHTML: { __html: e.instructionDescription }
+				dangerouslySetInnerHTML: { __html: t.instructionDescription }
 			}),
 			/* @__PURE__ */ (0, $.jsxs)("div", {
 				className: "flex-grow-1",
 				children: [/* @__PURE__ */ (0, $.jsx)("p", {
 					className: "text-interact-headings font-size-md font-weight-bold",
-					children: e.prompt
+					children: t.prompt
 				}), /* @__PURE__ */ (0, $.jsx)("div", {
 					className: "d-flex flex-column flex-grow-1",
-					children: e.options.map((e, r) => /* @__PURE__ */ (0, $.jsx)(ai, {
-						active: t === r,
-						onClick: () => a(r),
-						preSelected: n.has(r),
+					children: t.options.map((e, t) => /* @__PURE__ */ (0, $.jsx)(ai, {
+						active: n === t,
+						onClick: () => o(t),
+						preSelected: r.has(t),
 						children: e.value
 					}))
 				})]
 			}),
-			/* @__PURE__ */ (0, $.jsx)("div", {
+			e != "SelectOne" && /* @__PURE__ */ (0, $.jsx)("div", {
 				className: "d-flex justify-content-end",
 				children: /* @__PURE__ */ (0, $.jsx)(d, {
 					variant: "unfolding-scenario-action",
 					className: "rounded-pill",
-					disabled: !r,
-					onClick: i,
+					disabled: !i,
+					onClick: a,
 					children: "Continue"
 				})
 			})
 		]
 	}), /* @__PURE__ */ (0, $.jsx)("div", {
-		className: `w-100 h-100 position-absolute d-flex flex-column justify-content-center p-4-5 bg-interact-raised ${t === null ? "" : "active"} tablet-options-pane tablet-options-pane-2`,
-		children: t !== null && /* @__PURE__ */ (0, $.jsxs)($.Fragment, { children: [
-			/* @__PURE__ */ (0, $.jsx)("p", {
-				className: "text-interact-headings font-size-md font-weight-bold",
-				children: e.options[t].value
-			}),
-			/* @__PURE__ */ (0, $.jsx)(Jr, { option: e.options[t] }),
+		className: `w-100 h-100 position-absolute d-flex flex-column justify-content-center p-4-5 bg-interact-raised ${n === null ? "" : "active"} tablet-options-pane tablet-options-pane-2`,
+		children: n !== null && /* @__PURE__ */ (0, $.jsxs)($.Fragment, { children: [/* @__PURE__ */ (0, $.jsx)(Jr, {
+			option: t.options[n],
+			interactionType: e,
+			isContinueEnabled: i,
+			onContinue: a,
+			onReturn: () => o(null)
+		}), e == "SelectOne" && /* @__PURE__ */ (0, $.jsx)("div", {
+			className: "d-flex justify-content-end",
+			children: /* @__PURE__ */ (0, $.jsx)(d, {
+				variant: "unfolding-scenario-action",
+				className: "rounded-pill",
+				disabled: !i,
+				onClick: a,
+				children: "Continue"
+			})
+		})] })
+	})]
+}), ci = ({ interactionType: e, scenario: t, activeOptionIndex: n, preSelectedOptions: r, isContinueEnabled: i, onContinue: a, onSelectOption: o }) => {
+	let [s, c] = (0, x.useState)("description");
+	return s == "description" ? /* @__PURE__ */ (0, $.jsx)(li, {
+		scenario: t,
+		onNext: () => c("options")
+	}) : /* @__PURE__ */ (0, $.jsx)(ui, {
+		interactionType: e,
+		scenario: t,
+		activeOptionIndex: n,
+		isContinueEnabled: i,
+		onContinue: a,
+		onSelectOption: o,
+		preSelectedOptions: r,
+		onBack: () => c("description")
+	});
+}, li = ({ scenario: e, onNext: t }) => /* @__PURE__ */ (0, $.jsxs)("div", {
+	className: "p-4 d-flex flex-column w-100 h-100",
+	children: [
+		/* @__PURE__ */ (0, $.jsx)("p", {
+			className: "font-size-lg font-weight-bold text-interact-accent",
+			children: e.heading
+		}),
+		/* @__PURE__ */ (0, $.jsx)("div", {
+			className: "text-interact-content pb-3",
+			dangerouslySetInnerHTML: { __html: e.description }
+		}),
+		/* @__PURE__ */ (0, $.jsxs)("div", {
+			className: "d-flex align-items-center mt-3 mb-2",
+			children: [/* @__PURE__ */ (0, $.jsx)("div", {
+				className: "arrow-bubble p-2 text-icon-interact-default",
+				children: /* @__PURE__ */ (0, $.jsx)(m, { src: C })
+			}), /* @__PURE__ */ (0, $.jsx)("span", {
+				className: "text-interact-headings font-size-medium font-weight-bold pl-2",
+				children: e.instructionTitle
+			})]
+		}),
+		/* @__PURE__ */ (0, $.jsx)("div", {
+			className: "text-interact-content",
+			dangerouslySetInnerHTML: { __html: e.instructionDescription }
+		}),
+		/* @__PURE__ */ (0, $.jsx)("div", {
+			className: "d-flex justify-content-end",
+			children: /* @__PURE__ */ (0, $.jsx)(d, {
+				variant: "unfolding-scenario-action",
+				className: "rounded-pill w-100",
+				onClick: t,
+				children: "Continue"
+			})
+		})
+	]
+}), ui = ({ interactionType: e, scenario: t, activeOptionIndex: n, preSelectedOptions: r, isContinueEnabled: i, onContinue: a, onSelectOption: o, onBack: s }) => /* @__PURE__ */ (0, $.jsxs)("div", {
+	className: "p-4 h-100 w-100",
+	children: [/* @__PURE__ */ (0, $.jsxs)("div", {
+		className: "flex-grow-1",
+		children: [
 			/* @__PURE__ */ (0, $.jsx)(g, {
 				className: "text-icon-action-sec-neutral",
-				src: w,
+				src: T,
 				alt: "Return",
-				onClick: () => a(null)
-			})
-		] })
-	})]
-}), ci = ({ scenario: e, activeOptionIndex: t, preSelectedOptions: n, isContinueEnabled: r, onContinue: i, onSelectOption: a }) => /* @__PURE__ */ (0, $.jsx)("div", {
-	className: "pt-3 mx-3 h-100",
-	children: /* @__PURE__ */ (0, $.jsxs)("div", {
-		className: "position-relative w-100 h-100 overflow-hidden",
-		children: [
-			/* @__PURE__ */ (0, $.jsx)("div", {
-				className: `d-flex h-100 w-50 position-absolute align-items-center ${t === null ? "" : "active"} options-pane options-pane-1`,
-				children: /* @__PURE__ */ (0, $.jsxs)("div", { children: [
-					/* @__PURE__ */ (0, $.jsx)("p", {
-						className: "font-size-lg font-weight-bold text-interact-accent",
-						children: e.heading
-					}),
-					/* @__PURE__ */ (0, $.jsx)("div", {
-						className: "text-interact-content pb-3",
-						dangerouslySetInnerHTML: { __html: e.description }
-					}),
-					/* @__PURE__ */ (0, $.jsxs)("div", {
-						className: "d-flex align-items-center mt-3 mb-2",
-						children: [/* @__PURE__ */ (0, $.jsx)("div", {
-							className: "arrow-bubble p-2 text-icon-interact-default",
-							children: /* @__PURE__ */ (0, $.jsx)(m, { src: C })
-						}), /* @__PURE__ */ (0, $.jsx)("span", {
-							className: "text-interact-headings font-size-medium font-weight-bold pl-2",
-							children: e.instructionTitle
-						})]
-					}),
-					/* @__PURE__ */ (0, $.jsx)("div", {
-						className: "text-interact-content",
-						dangerouslySetInnerHTML: { __html: e.instructionDescription }
-					})
-				] })
+				onClick: s
 			}),
-			/* @__PURE__ */ (0, $.jsxs)("div", {
-				className: `d-flex w-50 h-100 position-absolute align-items-center ${t === null ? "" : "active"} options-pane options-pane-2`,
-				children: [t !== null && /* @__PURE__ */ (0, $.jsx)("div", {
-					className: "d-flex mr-3 align-items-center",
-					children: /* @__PURE__ */ (0, $.jsx)(g, {
-						className: "text-icon-action-sec-neutral",
-						src: w,
-						alt: "Return",
-						onClick: () => a(null)
-					})
-				}), /* @__PURE__ */ (0, $.jsxs)("div", {
-					className: "flex-grow-1",
-					children: [
-						/* @__PURE__ */ (0, $.jsx)("p", {
-							className: "text-interact-headings font-size-md font-weight-bold",
-							children: e.prompt
-						}),
-						/* @__PURE__ */ (0, $.jsx)("div", {
-							className: "d-flex flex-column flex-grow-1",
-							children: e.options.map((e, r) => /* @__PURE__ */ (0, $.jsx)(ai, {
-								active: t === r,
-								onClick: () => a(r),
-								preSelected: n.has(r),
-								children: e.value
-							}))
-						}),
-						/* @__PURE__ */ (0, $.jsx)("div", {
-							className: "d-flex justify-content-end",
-							children: /* @__PURE__ */ (0, $.jsx)(d, {
-								variant: "unfolding-scenario-action",
-								className: "rounded-pill",
-								disabled: !r,
-								onClick: i,
-								children: "Continue"
-							})
-						})
-					]
-				})]
+			/* @__PURE__ */ (0, $.jsx)("p", {
+				className: "text-interact-headings font-size-md font-weight-bold",
+				children: t.prompt
 			}),
 			/* @__PURE__ */ (0, $.jsx)("div", {
-				className: `w-50 h-100 p-6 position-absolute d-flex align-items-center ${t === null ? "" : "active"} options-pane options-pane-3`,
-				children: t === null ? null : /* @__PURE__ */ (0, $.jsx)(Jr, { option: e.options[t] })
+				className: "d-flex flex-column flex-grow-1",
+				children: t.options.map((e, t) => /* @__PURE__ */ (0, $.jsx)(ai, {
+					active: n === t,
+					onClick: () => o(t),
+					preSelected: r.has(t),
+					children: e.value
+				}))
+			}),
+			e != "SelectOne" && /* @__PURE__ */ (0, $.jsx)("div", {
+				className: "d-flex justify-content-end",
+				children: /* @__PURE__ */ (0, $.jsx)(d, {
+					variant: "unfolding-scenario-action",
+					className: "rounded-pill w-100",
+					disabled: !i,
+					onClick: a,
+					children: "Continue"
+				})
 			})
 		]
-	})
-}), li = ({ interactionType: e, scenario: t, onContinue: n, onSelectOption: r }) => {
+	}), n === null ? null : /* @__PURE__ */ (0, $.jsx)(Jr, {
+		interactionType: e,
+		isContinueEnabled: i,
+		onContinue: a,
+		option: t.options[n],
+		onReturn: () => o(null)
+	})]
+}), di = ({ interactionType: e, scenario: t, onContinue: n, onSelectOption: r }) => {
 	let i = Kr(), [a, o] = (0, x.useState)(null), [s, c] = (0, x.useState)(/* @__PURE__ */ new Set()), l = e == "Explore" && s.size == t.options.length || e == "SelectOne" && a !== null, u = i.width || window.innerWidth;
 	return u < M.extraSmall.maxWidth ? /* @__PURE__ */ (0, $.jsx)(ci, {
+		interactionType: e,
 		scenario: t,
 		activeOptionIndex: a,
 		preSelectedOptions: s,
@@ -2109,6 +2148,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 			e === null ? o(null) : (c(new Set([...s, e])), o(e), r(e));
 		}
 	}) : u < M.large.maxWidth ? /* @__PURE__ */ (0, $.jsx)(si, {
+		interactionType: e,
 		scenario: t,
 		activeOptionIndex: a,
 		preSelectedOptions: s,
@@ -2127,7 +2167,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 			e === null ? o(null) : (c(new Set([...s, e])), o(e), r(e));
 		}
 	});
-}, ui = ({ onCancel: e, title: t, children: n }) => /* @__PURE__ */ (0, $.jsx)(Ur, {
+}, fi = ({ onCancel: e, title: t, children: n }) => /* @__PURE__ */ (0, $.jsx)(Ur, {
 	allowPinchZoom: !0,
 	scrollLock: !0,
 	enabled: !0,
@@ -2140,7 +2180,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 		className: "pgn__modal pgn__modal-md pgn__modal-default p-3",
 		children: n
 	})] })
-}), di = ({ onCancel: e, onConfirm: t }) => /* @__PURE__ */ (0, $.jsx)(ui, {
+}), pi = ({ onCancel: e, onConfirm: t }) => /* @__PURE__ */ (0, $.jsx)(fi, {
 	onCancel: e,
 	title: "Leave interactive?",
 	children: /* @__PURE__ */ (0, $.jsxs)("div", {
@@ -2170,7 +2210,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 			})
 		]
 	})
-}), fi = ({ onCancel: e, onConfirm: t }) => /* @__PURE__ */ (0, $.jsx)(ui, {
+}), mi = ({ onCancel: e, onConfirm: t }) => /* @__PURE__ */ (0, $.jsx)(fi, {
 	onCancel: e,
 	title: "Restart interactive?",
 	children: /* @__PURE__ */ (0, $.jsxs)("div", {
@@ -2200,7 +2240,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 			})
 		]
 	})
-}), pi = ({ data: e, onExit: t }) => {
+}), hi = ({ data: e, onExit: t }) => {
 	let [n, r] = (0, x.useState)(0), [i, a] = (0, x.useState)(null), [o, s] = (0, x.useState)(/* @__PURE__ */ new Map());
 	return /* @__PURE__ */ (0, $.jsxs)("div", {
 		className: "unfolding-scenario-activity-wrapper min-vh-100 bg-interact-default d-flex flex-column",
@@ -2212,7 +2252,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 				activeScenarioIndex: n,
 				totalScenarios: e.scenarios.length
 			}),
-			n < e.scenarios.length ? /* @__PURE__ */ (0, $.jsx)(li, {
+			n < e.scenarios.length ? /* @__PURE__ */ (0, $.jsx)(di, {
 				scenario: e.scenarios[n],
 				interactionType: e.interactionType,
 				onContinue: () => {
@@ -2229,11 +2269,11 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 				onExit: t,
 				imageURL: e.introduction.imageURL
 			}),
-			i == "leave" && /* @__PURE__ */ (0, $.jsx)(di, {
+			i == "leave" && /* @__PURE__ */ (0, $.jsx)(pi, {
 				onConfirm: t,
 				onCancel: () => a(null)
 			}),
-			i == "restart" && /* @__PURE__ */ (0, $.jsx)(fi, {
+			i == "restart" && /* @__PURE__ */ (0, $.jsx)(mi, {
 				onConfirm: () => {
 					r(0), a(null);
 				},
@@ -2241,7 +2281,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 			})
 		]
 	});
-}, mi = /* @__PURE__ */ n(i(), 1), hi = ({ children: e, className: t, cssContent: n, themeUrls: r, title: i, onClose: a }) => {
+}, gi = /* @__PURE__ */ n(i(), 1), _i = ({ children: e, className: t, cssContent: n, themeUrls: r, title: i, onClose: a }) => {
 	let [o, s] = (0, x.useState)(null);
 	if (o === null) {
 		let e = document.createElement("div");
@@ -2267,18 +2307,18 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 			let c = e.document.createElement("style");
 			return c.textContent = n, e.document.head.appendChild(c), () => e.close();
 		}
-	}, [o]), o && (0, mi.createPortal)(e, o);
-}, gi = ({ data: e, themeUrls: t, cssContent: n }) => {
+	}, [o]), o && (0, gi.createPortal)(e, o);
+}, vi = ({ data: e, themeUrls: t, cssContent: n }) => {
 	let [r, i] = (0, x.useState)(!1), a = "xblock-unfolding-scenario-wrapper";
 	return /* @__PURE__ */ (0, $.jsxs)("div", {
 		className: a,
-		children: [r && /* @__PURE__ */ (0, $.jsx)(hi, {
+		children: [r && /* @__PURE__ */ (0, $.jsx)(_i, {
 			title: e.scenarioData.name,
 			className: `${a} min-vh-100`,
 			themeUrls: t,
 			cssContent: n,
 			onClose: () => i(!1),
-			children: /* @__PURE__ */ (0, $.jsx)(pi, {
+			children: /* @__PURE__ */ (0, $.jsx)(hi, {
 				data: e.scenarioData,
 				onExit: () => i(!1)
 			})
@@ -2289,19 +2329,19 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 			activityOpen: r
 		})]
 	});
-}, _i = ".xblock-unfolding-scenario-wrapper{--color-action-default:var(--pgn-unfolding-scenario-color-action-default,#3874bc);--color-background-interactive:var(--pgn-unfolding-scenario-color-background-interactive,#8cc9d1);--color-text-interactive:var(--pgn-unfolding-scenario-color-text-interactive,#2f808e);--color-bg-emphasis:var(--pgn-unfolding-scenario-color-bg-emphasis,#223e5d);--color-bg-main:var(--pgn-unfolding-scenario-color-bg-main,#1b324a);--color-border-interact-default:var(--pgn-unfolding-scenario-color-border-interact-default,#b2d8de);--color-border-interact-emphasis:var(--pgn-unfolding-scenario-color-border-interact-emphasis,#327d8a);--color-border-sec-action-focus:var(--pgn-unfolding-scenario-color-border-sec-action-focus,#0e1d2f);--color-icon-action-sec-default:var(--pgn-unfolding-scenario-color-icon-action-sec-default,#3874bc);--color-icon-interact-default:var(--pgn-unfolding-scenario-color-icon-interact-default,#327d8a);--color-interact-default:var(--pgn-unfolding-scenario-color-interact-default,#ecf5f7);--color-interact-emphasis:var(--pgn-unfolding-scenario-color-interact-emphasis,#d9ebef);--color-interact-raised-emphasis:var(--pgn-unfolding-scenario-color-interact-raised-emphasis,#327d8a);--color-txt-interact-accent:var(--pgn-unfolding-scenario-color-txt-interact-accent,#2a578d);--color-txt-interact-content-inverse:var(--pgn-unfolding-scenario-color-txt-interact-content-inverse,#fff);--color-txt-interact-content:var(--pgn-unfolding-scenario-color-txt-interact-content,#223e5d);--color-txt-interact-headings:var(--pgn-unfolding-scenario-color-txt-interact-headings,#327d8a);--color-txt-action-prim-default:var(--pgn-unfolding-scenario-color-txt-action-prim-default,#fff);--color-txt-content:var(--pgn-unfolding-scenario-color-txt-content,#fff);--color-txt-sec-content:var(--pgn-unfolding-scenario-color-txt-sec-content,#223e5d);--color-icon-action-default:var(--pgn-unfolding-scenario-color-icon-action-default,#fff);--color-border-default:var(--pgn-unfolding-scenario-color-border-default,#4e657d);--color-interact-raised:var(--pgn-unfolding-scenario-color-interact-raised,#fff);--color-icon-inverse:var(--pgn-unfolding-scenario-color-icon-inverse,#fff);--color-icon-default:var(--pgn-unfolding-scenario-color-icon-default,#8cc4ce);--color-icon-action-sec-neutral:var(--pgn-unfolding-scenario-color-icon-action-sec-neutral,#1c3a5e);--color-txt-feedback-negative:var(--pgn-unfolding-scenario-color-txt-feedback-negative,#db493d);--color-icon-interact-negative:var(--pgn-unfolding-scenario-color-icon-interact-negative,#db493d);--color-txt-feedback-positive:var(--pgn-unfolding-scenario-color-txt-feedback-positive,#149418);--color-icon-interact-positive:var(--pgn-unfolding-scenario-color-icon-interact-positive,#149418);--color-txt-feedback-warning:var(--pgn-unfolding-scenario-color-txt-feedback-warning,#ffd900);--color-icon-interact-warning:var(--pgn-unfolding-scenario-color-icon-interact-warning,#ffd900);--btn-min-width:var(--pgn-unfolding-scenario-btn-min-width,200px)}.xblock-unfolding-scenario-wrapper .text-interact-headings{color:var(--color-txt-interact-headings)!important}.xblock-unfolding-scenario-wrapper .text-interact-accent{color:var(--color-txt-interact-accent)!important}.xblock-unfolding-scenario-wrapper .text-interact-content{color:var(--color-txt-interact-content)!important}.xblock-unfolding-scenario-wrapper .text-interact-content-inverse{color:var(--color-txt-interact-content-inverse)!important}.xblock-unfolding-scenario-wrapper .text-content{color:var(--color-txt-content)!important}.xblock-unfolding-scenario-wrapper .text-sec-content{color:var(--color-txt-sec-content)!important}.xblock-unfolding-scenario-wrapper .text-icon-inverse{color:var(--color-icon-inverse)!important}.xblock-unfolding-scenario-wrapper .text-icon-action-default{color:var(--color-icon-action-default)!important}.xblock-unfolding-scenario-wrapper .text-icon-action-sec-default{color:var(--color-icon-action-sec-default)!important}.xblock-unfolding-scenario-wrapper .text-icon-action-sec-neutral{color:var(--color-icon-action-sec-neutral)!important}.xblock-unfolding-scenario-wrapper .text-feedback-negative{color:var(--color-txt-feedback-negative)!important}.xblock-unfolding-scenario-wrapper .text-icon-interact-negative{color:var(--color-icon-interact-negative)!important}.xblock-unfolding-scenario-wrapper .text-feedback-positive{color:var(--color-txt-feedback-positive)!important}.xblock-unfolding-scenario-wrapper .text-icon-interact-positive{color:var(--color-icon-interact-positive)!important}.xblock-unfolding-scenario-wrapper .text-feedback-warning{color:var(--color-txt-feedback-warning)!important}.xblock-unfolding-scenario-wrapper .text-icon-interact-warning{color:var(--color-icon-interact-warning)!important}.xblock-unfolding-scenario-wrapper .bg-interact-raised-emphasis{background-color:var(--color-interact-raised-emphasis)!important}.xblock-unfolding-scenario-wrapper .bg-interact-raised{background-color:var(--color-interact-raised)!important}.xblock-unfolding-scenario-wrapper .bg-emphasis{background-color:var(--color-bg-emphasis)!important}.xblock-unfolding-scenario-wrapper .bg-icon-default{background-color:var(--color-icon-default)!important}.xblock-unfolding-scenario-wrapper .bg-interact-default{background-color:var(--color-interact-default)!important}.xblock-unfolding-scenario-wrapper .bg-main{background-color:var(--color-bg-main)!important}.xblock-unfolding-scenario-wrapper .rounded-lg-bottom{border-bottom-right-radius:var(--pgn-size-border-radius-lg)!important;border-bottom-left-radius:var(--pgn-size-border-radius-lg)!important}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name{color:var(--color-text-interactive);background-color:var(--color-interact-emphasis);border-radius:var(--pgn-spacing-spacer-base);border-bottom-left-radius:0;border-color:var(--color-border-interact-default)!important}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name .border-right{border-color:var(--color-border-interact-default)!important}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name .pgn__icon{color:var(--color-interact-raised-emphasis);zoom:2}.xblock-unfolding-scenario-wrapper .btn-unfolding-scenario-action{--pgn-btn-bg:var(--color-action-default);--pgn-btn-color:var(--color-txt-action-prim-default);--pgn-btn-hover-bg:var(--color-action-default);--pgn-btn-hover-color:var(--color-txt-action-prim-default);--pgn-btn-focus-bg:var(--color-action-default);--pgn-btn-focus-color:var(--color-txt-action-prim-default);--pgn-btn-focus-outline-color:var(--color-border-sec-action-focus);--pgn-btn-active-bg:var(--color-action-default);--pgn-btn-active-color:var(--color-txt-action-prim-default)}.xblock-unfolding-scenario-wrapper .btn-outline-unfolding-scenario-action{--pgn-size-btn-border-width:2px;--pgn-btn-bg:var(--color-txt-action-prim-default);--pgn-btn-color:var(--color-action-default);--pgn-btn-border-color:var(--color-action-default);--pgn-btn-hover-bg:var(--color-txt-action-prim-default);--pgn-btn-hover-color:var(--color-action-default);--pgn-btn-hover-border-color:var(--color-action-default);--pgn-btn-focus-bg:var(--color-txt-action-prim-default);--pgn-btn-focus-color:var(--color-action-default);--pgn-btn-focus-border-color:var(--color-action-default);--pgn-btn-focus-outline-color:var(--color-action-default);--pgn-btn-active-bg:var(--color-txt-action-prim-default);--pgn-btn-active-color:var(--color-action-default);--pgn-btn-active-border-color:var(--color-action-default)}.xblock-unfolding-scenario-wrapper .btn{min-width:var(--btn-min-width);padding:var(--pgn-spacing-spacer-2-5) var(--pgn-spacing-spacer-4-5)}.xblock-unfolding-scenario-wrapper .small-heading{font-size:calc(var(--pgn-typography-font-size-base) * 1.125);font-family:var(--pgn-typography-headings-font-family);font-weight:var(--pgn-typography-font-weight-bold)}.xblock-unfolding-scenario-wrapper .font-weight-lessbold{font-weight:calc(var(--pgn-typography-font-weight-bold) - 100)}.xblock-unfolding-scenario-wrapper .typography-headings{font-family:var(--pgn-typography-headings-font-family)}.xblock-unfolding-scenario-wrapper .font-size-lg{font-size:calc(var(--pgn-typography-font-size-base) * 1.25)}.xblock-unfolding-scenario-wrapper .font-size-md{font-size:calc(var(--pgn-typography-font-size-base) * 1.125)}.xblock-unfolding-scenario-wrapper .font-size-sm-md{font-size:calc(var(--pgn-typography-font-size-base) * .875)}.xblock-unfolding-scenario-wrapper .font-size-sm{font-size:calc(var(--pgn-typography-font-size-base) * .75)}.xblock-unfolding-scenario-wrapper .m-4-5{margin:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .ml-4-5,.xblock-unfolding-scenario-wrapper .mx-4-5{margin-left:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .mr-4-5,.xblock-unfolding-scenario-wrapper .mx-4-5{margin-right:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .mt-4-5,.xblock-unfolding-scenario-wrapper .my-4-5{margin-top:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .mb-4-5,.xblock-unfolding-scenario-wrapper .my-4-5{margin-bottom:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .p-4-5{padding:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .pl-4-5,.xblock-unfolding-scenario-wrapper .px-4-5{padding-left:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .pr-4-5,.xblock-unfolding-scenario-wrapper .px-4-5{padding-right:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .pt-4-5,.xblock-unfolding-scenario-wrapper .py-4-5{padding-top:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .pb-4-5,.xblock-unfolding-scenario-wrapper .py-4-5{padding-bottom:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .unfolding-scenario-activity-wrapper{height:100%}.xblock-unfolding-scenario-wrapper .step-indicator{height:var(--pgn-spacing-spacer-4-5);width:var(--pgn-spacing-spacer-4-5);font-size:calc(var(--pgn-typography-font-size-base) * 1.125)}.xblock-unfolding-scenario-wrapper .step-indicator-separator{background-color:var(--color-border-default);width:17px;height:1px}.xblock-unfolding-scenario-wrapper .arrow-bubble{background-color:var(--color-interact-emphasis);color:var(--color-icon-interact-default);border:1px solid var(--color-border-interact-default);border-radius:var(--pgn-spacing-spacer-base);border-bottom-left-radius:0;display:inline-block}.xblock-unfolding-scenario-wrapper .scenario-option-btn{height:calc(var(--pgn-typography-line-height-base) * var(--pgn-typography-font-size-base) * 3 + var(--pgn-spacing-spacer-base) * 2)}.xblock-unfolding-scenario-wrapper .scenario-option-btn.pre-selected{outline:2px solid var(--color-border-interact-emphasis)}.xblock-unfolding-scenario-wrapper .scenario-option-btn .hover-arrow{min-width:10px}.xblock-unfolding-scenario-wrapper .scenario-option-btn .hover-arrow .pgn__icon{display:none}.xblock-unfolding-scenario-wrapper .scenario-option-btn:hover .hover-arrow .pgn__icon,.xblock-unfolding-scenario-wrapper .scenario-option-btn.active .hover-arrow .pgn__icon{display:block}.xblock-unfolding-scenario-wrapper .scenario-option-btn:focus-visible{outline:2px solid var(--color-option-focus-border)}.xblock-unfolding-scenario-wrapper .outcome-option-row+.outcome-option-row{margin-top:var(--pgn-spacing-spacer-4);padding-top:var(--pgn-spacing-spacer-4);border-top:1px solid var(--color-border-interact-default)}.xblock-unfolding-scenario-wrapper .options-pane{transition:left .5s}@media (prefers-reduced-motion:reduce){.xblock-unfolding-scenario-wrapper .options-pane{transition:unset}}.xblock-unfolding-scenario-wrapper .options-pane-1{left:0%}.xblock-unfolding-scenario-wrapper .options-pane-2{left:50%}.xblock-unfolding-scenario-wrapper .options-pane-3{left:100%}.xblock-unfolding-scenario-wrapper .active.options-pane-1{left:-50%}.xblock-unfolding-scenario-wrapper .active.options-pane-2{left:0%}.xblock-unfolding-scenario-wrapper .active.options-pane-3{left:50%}.xblock-unfolding-scenario-wrapper .tablet-options-pane{transition:left .5s}@media (prefers-reduced-motion:reduce){.xblock-unfolding-scenario-wrapper .tablet-options-pane{transition:unset}}.xblock-unfolding-scenario-wrapper .tablet-options-pane-1{left:0%}.xblock-unfolding-scenario-wrapper .tablet-options-pane-2{border-left:var(--pgn-spacing-spacer-3) solid var(--color-interact-default);left:100%}.xblock-unfolding-scenario-wrapper .active.tablet-options-pane-1{left:-100%}.xblock-unfolding-scenario-wrapper .active.tablet-options-pane-2{left:0%}", vi = async (e, t, n) => {
-	let r = await yi(n.config.mfe_config_api);
+}, yi = ".xblock-unfolding-scenario-wrapper{--color-action-default:var(--pgn-unfolding-scenario-color-action-default,#3874bc);--color-background-interactive:var(--pgn-unfolding-scenario-color-background-interactive,#8cc9d1);--color-text-interactive:var(--pgn-unfolding-scenario-color-text-interactive,#2f808e);--color-bg-emphasis:var(--pgn-unfolding-scenario-color-bg-emphasis,#223e5d);--color-bg-main:var(--pgn-unfolding-scenario-color-bg-main,#1b324a);--color-border-interact-default:var(--pgn-unfolding-scenario-color-border-interact-default,#b2d8de);--color-border-interact-emphasis:var(--pgn-unfolding-scenario-color-border-interact-emphasis,#327d8a);--color-border-sec-action-focus:var(--pgn-unfolding-scenario-color-border-sec-action-focus,#0e1d2f);--color-icon-action-sec-default:var(--pgn-unfolding-scenario-color-icon-action-sec-default,#3874bc);--color-icon-interact-default:var(--pgn-unfolding-scenario-color-icon-interact-default,#327d8a);--color-interact-default:var(--pgn-unfolding-scenario-color-interact-default,#ecf5f7);--color-interact-emphasis:var(--pgn-unfolding-scenario-color-interact-emphasis,#d9ebef);--color-interact-raised-emphasis:var(--pgn-unfolding-scenario-color-interact-raised-emphasis,#327d8a);--color-txt-interact-accent:var(--pgn-unfolding-scenario-color-txt-interact-accent,#2a578d);--color-txt-interact-content-inverse:var(--pgn-unfolding-scenario-color-txt-interact-content-inverse,#fff);--color-txt-interact-content:var(--pgn-unfolding-scenario-color-txt-interact-content,#223e5d);--color-txt-interact-headings:var(--pgn-unfolding-scenario-color-txt-interact-headings,#327d8a);--color-txt-action-prim-default:var(--pgn-unfolding-scenario-color-txt-action-prim-default,#fff);--color-txt-content:var(--pgn-unfolding-scenario-color-txt-content,#fff);--color-txt-sec-content:var(--pgn-unfolding-scenario-color-txt-sec-content,#223e5d);--color-icon-action-default:var(--pgn-unfolding-scenario-color-icon-action-default,#fff);--color-border-default:var(--pgn-unfolding-scenario-color-border-default,#4e657d);--color-interact-raised:var(--pgn-unfolding-scenario-color-interact-raised,#fff);--color-icon-inverse:var(--pgn-unfolding-scenario-color-icon-inverse,#fff);--color-icon-default:var(--pgn-unfolding-scenario-color-icon-default,#8cc4ce);--color-icon-action-sec-neutral:var(--pgn-unfolding-scenario-color-icon-action-sec-neutral,#1c3a5e);--color-txt-feedback-negative:var(--pgn-unfolding-scenario-color-txt-feedback-negative,#db493d);--color-icon-interact-negative:var(--pgn-unfolding-scenario-color-icon-interact-negative,#db493d);--color-txt-feedback-positive:var(--pgn-unfolding-scenario-color-txt-feedback-positive,#149418);--color-icon-interact-positive:var(--pgn-unfolding-scenario-color-icon-interact-positive,#149418);--color-txt-feedback-warning:var(--pgn-unfolding-scenario-color-txt-feedback-warning,#ffd900);--color-icon-interact-warning:var(--pgn-unfolding-scenario-color-icon-interact-warning,#ffd900);--btn-min-width:var(--pgn-unfolding-scenario-btn-min-width,200px)}.xblock-unfolding-scenario-wrapper .text-interact-headings{color:var(--color-txt-interact-headings)!important}.xblock-unfolding-scenario-wrapper .text-interact-accent{color:var(--color-txt-interact-accent)!important}.xblock-unfolding-scenario-wrapper .text-interact-content{color:var(--color-txt-interact-content)!important}.xblock-unfolding-scenario-wrapper .text-interact-content-inverse{color:var(--color-txt-interact-content-inverse)!important}.xblock-unfolding-scenario-wrapper .text-content{color:var(--color-txt-content)!important}.xblock-unfolding-scenario-wrapper .text-sec-content{color:var(--color-txt-sec-content)!important}.xblock-unfolding-scenario-wrapper .text-icon-inverse{color:var(--color-icon-inverse)!important}.xblock-unfolding-scenario-wrapper .text-icon-action-default{color:var(--color-icon-action-default)!important}.xblock-unfolding-scenario-wrapper .text-icon-action-sec-default{color:var(--color-icon-action-sec-default)!important}.xblock-unfolding-scenario-wrapper .text-icon-action-sec-neutral{color:var(--color-icon-action-sec-neutral)!important}.xblock-unfolding-scenario-wrapper .text-feedback-negative{color:var(--color-txt-feedback-negative)!important}.xblock-unfolding-scenario-wrapper .text-icon-interact-negative{color:var(--color-icon-interact-negative)!important}.xblock-unfolding-scenario-wrapper .text-feedback-positive{color:var(--color-txt-feedback-positive)!important}.xblock-unfolding-scenario-wrapper .text-icon-interact-positive{color:var(--color-icon-interact-positive)!important}.xblock-unfolding-scenario-wrapper .text-feedback-warning{color:var(--color-txt-feedback-warning)!important}.xblock-unfolding-scenario-wrapper .text-icon-interact-warning{color:var(--color-icon-interact-warning)!important}.xblock-unfolding-scenario-wrapper .bg-interact-raised-emphasis{background-color:var(--color-interact-raised-emphasis)!important}.xblock-unfolding-scenario-wrapper .bg-interact-raised{background-color:var(--color-interact-raised)!important}.xblock-unfolding-scenario-wrapper .bg-emphasis{background-color:var(--color-bg-emphasis)!important}.xblock-unfolding-scenario-wrapper .bg-icon-default{background-color:var(--color-icon-default)!important}.xblock-unfolding-scenario-wrapper .bg-interact-default{background-color:var(--color-interact-default)!important}.xblock-unfolding-scenario-wrapper .bg-main{background-color:var(--color-bg-main)!important}.xblock-unfolding-scenario-wrapper .rounded-lg-bottom{border-bottom-right-radius:var(--pgn-size-border-radius-lg)!important;border-bottom-left-radius:var(--pgn-size-border-radius-lg)!important}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name{color:var(--color-text-interactive);background-color:var(--color-interact-emphasis);border-radius:var(--pgn-spacing-spacer-base);border-bottom-left-radius:0;border-color:var(--color-border-interact-default)!important}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name .border-right{border-color:var(--color-border-interact-default)!important}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name .pgn__icon{color:var(--color-interact-raised-emphasis);zoom:2}.xblock-unfolding-scenario-wrapper .btn-unfolding-scenario-action{--pgn-btn-bg:var(--color-action-default);--pgn-btn-color:var(--color-txt-action-prim-default);--pgn-btn-hover-bg:var(--color-action-default);--pgn-btn-hover-color:var(--color-txt-action-prim-default);--pgn-btn-focus-bg:var(--color-action-default);--pgn-btn-focus-color:var(--color-txt-action-prim-default);--pgn-btn-focus-outline-color:var(--color-border-sec-action-focus);--pgn-btn-active-bg:var(--color-action-default);--pgn-btn-active-color:var(--color-txt-action-prim-default)}.xblock-unfolding-scenario-wrapper .btn-outline-unfolding-scenario-action{--pgn-size-btn-border-width:2px;--pgn-btn-bg:var(--color-txt-action-prim-default);--pgn-btn-color:var(--color-action-default);--pgn-btn-border-color:var(--color-action-default);--pgn-btn-hover-bg:var(--color-txt-action-prim-default);--pgn-btn-hover-color:var(--color-action-default);--pgn-btn-hover-border-color:var(--color-action-default);--pgn-btn-focus-bg:var(--color-txt-action-prim-default);--pgn-btn-focus-color:var(--color-action-default);--pgn-btn-focus-border-color:var(--color-action-default);--pgn-btn-focus-outline-color:var(--color-action-default);--pgn-btn-active-bg:var(--color-txt-action-prim-default);--pgn-btn-active-color:var(--color-action-default);--pgn-btn-active-border-color:var(--color-action-default)}.xblock-unfolding-scenario-wrapper .btn{min-width:var(--btn-min-width);padding:var(--pgn-spacing-spacer-2-5) var(--pgn-spacing-spacer-4-5)}.xblock-unfolding-scenario-wrapper .small-heading{font-size:calc(var(--pgn-typography-font-size-base) * 1.125);font-family:var(--pgn-typography-headings-font-family);font-weight:var(--pgn-typography-font-weight-bold)}.xblock-unfolding-scenario-wrapper .font-weight-lessbold{font-weight:calc(var(--pgn-typography-font-weight-bold) - 100)}.xblock-unfolding-scenario-wrapper .typography-headings{font-family:var(--pgn-typography-headings-font-family)}.xblock-unfolding-scenario-wrapper .font-size-lg{font-size:calc(var(--pgn-typography-font-size-base) * 1.25)}.xblock-unfolding-scenario-wrapper .font-size-md{font-size:calc(var(--pgn-typography-font-size-base) * 1.125)}.xblock-unfolding-scenario-wrapper .font-size-sm-md{font-size:calc(var(--pgn-typography-font-size-base) * .875)}.xblock-unfolding-scenario-wrapper .font-size-sm{font-size:calc(var(--pgn-typography-font-size-base) * .75)}.xblock-unfolding-scenario-wrapper .m-4-5{margin:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .ml-4-5,.xblock-unfolding-scenario-wrapper .mx-4-5{margin-left:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .mr-4-5,.xblock-unfolding-scenario-wrapper .mx-4-5{margin-right:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .mt-4-5,.xblock-unfolding-scenario-wrapper .my-4-5{margin-top:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .mb-4-5,.xblock-unfolding-scenario-wrapper .my-4-5{margin-bottom:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .p-4-5{padding:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .pl-4-5,.xblock-unfolding-scenario-wrapper .px-4-5{padding-left:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .pr-4-5,.xblock-unfolding-scenario-wrapper .px-4-5{padding-right:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .pt-4-5,.xblock-unfolding-scenario-wrapper .py-4-5{padding-top:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .pb-4-5,.xblock-unfolding-scenario-wrapper .py-4-5{padding-bottom:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .unfolding-scenario-activity-wrapper{height:100%}.xblock-unfolding-scenario-wrapper .step-indicator{height:var(--pgn-spacing-spacer-4-5);width:var(--pgn-spacing-spacer-4-5);font-size:calc(var(--pgn-typography-font-size-base) * 1.125)}.xblock-unfolding-scenario-wrapper .step-indicator-separator{background-color:var(--color-border-default);width:17px;height:1px}.xblock-unfolding-scenario-wrapper .arrow-bubble{background-color:var(--color-interact-emphasis);color:var(--color-icon-interact-default);border:1px solid var(--color-border-interact-default);border-radius:var(--pgn-spacing-spacer-base);border-bottom-left-radius:0;display:inline-block}.xblock-unfolding-scenario-wrapper .scenario-option-btn{height:calc(var(--pgn-typography-line-height-base) * var(--pgn-typography-font-size-base) * 3 + var(--pgn-spacing-spacer-base) * 2)}.xblock-unfolding-scenario-wrapper .scenario-option-btn.pre-selected{outline:2px solid var(--color-border-interact-emphasis)}.xblock-unfolding-scenario-wrapper .scenario-option-btn .hover-arrow{min-width:10px}.xblock-unfolding-scenario-wrapper .scenario-option-btn .hover-arrow .pgn__icon{display:none}.xblock-unfolding-scenario-wrapper .scenario-option-btn:hover .hover-arrow .pgn__icon,.xblock-unfolding-scenario-wrapper .scenario-option-btn.active .hover-arrow .pgn__icon{display:block}.xblock-unfolding-scenario-wrapper .scenario-option-btn:focus-visible{outline:2px solid var(--color-option-focus-border)}.xblock-unfolding-scenario-wrapper .outcome-option-row+.outcome-option-row{margin-top:var(--pgn-spacing-spacer-4);padding-top:var(--pgn-spacing-spacer-4);border-top:1px solid var(--color-border-interact-default)}.xblock-unfolding-scenario-wrapper .options-pane{transition:left .5s}@media (prefers-reduced-motion:reduce){.xblock-unfolding-scenario-wrapper .options-pane{transition:unset}}.xblock-unfolding-scenario-wrapper .options-pane-1{left:0%}.xblock-unfolding-scenario-wrapper .options-pane-2{left:50%}.xblock-unfolding-scenario-wrapper .options-pane-3{left:100%}.xblock-unfolding-scenario-wrapper .active.options-pane-1{left:-50%}.xblock-unfolding-scenario-wrapper .active.options-pane-2{left:0%}.xblock-unfolding-scenario-wrapper .active.options-pane-3{left:50%}.xblock-unfolding-scenario-wrapper .tablet-options-pane{transition:left .5s}@media (prefers-reduced-motion:reduce){.xblock-unfolding-scenario-wrapper .tablet-options-pane{transition:unset}}.xblock-unfolding-scenario-wrapper .tablet-options-pane-1{left:0%}.xblock-unfolding-scenario-wrapper .tablet-options-pane-2{border-left:var(--pgn-spacing-spacer-3) solid var(--color-interact-default);left:100%}.xblock-unfolding-scenario-wrapper .active.tablet-options-pane-1{left:-100%}.xblock-unfolding-scenario-wrapper .active.tablet-options-pane-2{left:0%}.xblock-unfolding-scenario-wrapper .option-feedback-wrapper{border-left:var(--pgn-spacing-spacer-4) solid var(--color-interact-default)}", bi = async (e, t, n) => {
+	let r = await xi(n.config.mfe_config_api);
 	c({
 		runtime: e,
 		element: t,
 		config: n.config,
-		styles: _i
-	})(/* @__PURE__ */ (0, $.jsx)(gi, {
+		styles: yi
+	})(/* @__PURE__ */ (0, $.jsx)(vi, {
 		data: n.data,
 		themeUrls: r,
-		cssContent: _i
+		cssContent: yi
 	}));
-}, yi = async (e) => {
+}, xi = async (e) => {
 	let t = {};
 	try {
 		t = (await (await fetch(e)).json()).PARAGON_THEME_URLS;
@@ -2317,4 +2357,4 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 	].filter(Boolean);
 };
 //#endregion
-export { vi as renderBlock };
+export { bi as renderBlock };

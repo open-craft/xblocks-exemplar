@@ -1,6 +1,6 @@
 import type { Scenario } from '@/unfolding-scenario-block/apiTypes';
 import { Col, Container, Row } from '@openedx/paragon';
-import { OptionFeedback } from './scenario/OptionFeedback';
+import { OptionFeedbackContent } from './scenario/OptionFeedback';
 
 interface OutcomeSelectedOptionsProps {
   scenarios: Scenario[];
@@ -24,7 +24,7 @@ export const OutcomeSelectedOptions = ({
             <p className="text-interact-content">{option.value}</p>
           </Col>
           <Col className="">
-            <OptionFeedback option={option} />
+            <OptionFeedbackContent option={option} />
           </Col>
         </Row>
       );

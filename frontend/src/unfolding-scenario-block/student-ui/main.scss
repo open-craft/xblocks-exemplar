@@ -492,4 +492,8 @@
   .active.tablet-options-pane-2 {
     left: 0%;
   }
+
+  .option-feedback-wrapper {
+    border-left: var(--pgn-spacing-spacer-4) solid var(--color-interact-default);
+  }
 }
