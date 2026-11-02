@@ -1,0 +1,7 @@
+@import '../../studio';
+
+// Hide the "close" button at the bottom of the editor modal.
+// We want our own save and cancel buttons.
+.edit-xblock-modal > .modal-actions {
+  display: none !important;
+}
