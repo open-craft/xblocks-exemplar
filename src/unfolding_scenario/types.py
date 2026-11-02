@@ -5,7 +5,8 @@ from typing import Annotated
 
 from pydantic import AfterValidator, BaseModel, ConfigDict
 
-from exemplar_common.utils import sanitise_simple_html_body
+
+from .utils import sanitise_simple_html_body
 
 
 class InteractionType(Enum):
