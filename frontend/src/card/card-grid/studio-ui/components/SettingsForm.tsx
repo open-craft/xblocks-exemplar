@@ -10,8 +10,8 @@ export default function SettingsForm() {
   const { values, setFieldValue } = useFormikContext<InitData>();
 
   return (
-    <div className="card-grid-create-form">
-      <Form.Group className="card-grid-studio-field">
+    <div className="card-studio-form">
+      <Form.Group className="card-studio-field">
         <Form.Label>Card Layout</Form.Label>
         <Form.Text>
           Choose whether cards in this grid use a vertical or horizontal layout.
@@ -57,7 +57,7 @@ export default function SettingsForm() {
           </Button>
         </Stack>
       </Form.Group>
-      <Form.Group className="card-grid-studio-field card-grid-studio-field--last">
+      <Form.Group className="card-studio-field card-studio-field--last">
         <Form.Label>Background Color</Form.Label>
         <ColorPicker
           color={values.backgroundColor}

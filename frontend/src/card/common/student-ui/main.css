@@ -1,5 +1,6 @@
 @import '@/card/common/student-ui/ComplexCard.scss';
 @import '@/card/common/student-ui/HoverList.css';
+@import '@/card/common/material-icons.css';
 
 .card-carousel-xblock *,
 .card-carousel-xblock *::before,
@@ -69,29 +70,4 @@
 .card-grid-description > :last-child,
 .card-grid-footer-description > :last-child {
   margin-bottom: 0;
-}
-
-/*
-The Material Icons styles are supposed to be loaded directly using the injects <link> element.
-While the font loads as expected, the CSS doesn't reach the UI due to the shadow dom boundary.
-They are redefined here explicitly to make sure they are available inside the shadow DOM.
-
-The following is copied from the Google Fonts guide: https://developers.google.com/fonts/docs/material_icons
-*/
-.material-icons-outlined {
-  font-family: 'Material Icons Outlined';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
 }

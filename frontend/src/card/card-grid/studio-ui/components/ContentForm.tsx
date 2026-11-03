@@ -11,7 +11,7 @@ export default function ContentForm() {
   return (
     <div>
       <CardListEditor />
-      <Form.Group className="card-grid-studio-field">
+      <Form.Group className="card-studio-field">
         <Form.Label>Leading Content</Form.Label>
         <Form.Text muted>
           An optional title or description that can be shown above the cards.
@@ -25,7 +25,7 @@ export default function ContentForm() {
           height="200px"
         />
       </Form.Group>
-      <Form.Group className="card-grid-studio-field">
+      <Form.Group className="card-studio-field">
         <Form.Label>Trailing Content</Form.Label>
         <Form.Text muted>
           An optional description that can be shown below the cards.
