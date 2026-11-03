@@ -14942,7 +14942,7 @@ function eC({ title: e, onTitleChange: t, activeTab: n, tabs: r = $S }) {
 						className: "d-flex flex-row align-items-center mt-1",
 						children: [
 							"Editing: ",
-							e,
+							e || "<Untitled>",
 							/* @__PURE__ */ (0, A.jsx)(us, {
 								alt: "Edit display name",
 								className: "studio-header-title-edit",
