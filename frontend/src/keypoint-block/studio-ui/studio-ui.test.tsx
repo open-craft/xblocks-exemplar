@@ -6,11 +6,13 @@ import {
   stubJquery,
 } from '@opencraft/xblock-react-utils/testing';
 import userEvent from '@testing-library/user-event';
+import { within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import StudioUi from './studio-ui';
-import { type KeyPoint } from '../type';
+import { type KeyPoint, type XBlockData } from '../type';
 import { RuntimeContext } from '@opencraft/xblock-react-utils';
-import { XBlockConfigContext } from '../../lib/context';
+import { XBlockConfigContext } from '@/lib/context';
+import type { XBlockConfig } from '@/types';
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
@@ -19,29 +21,42 @@ const sampleKeypoints: KeyPoint[] = [
   { keypoint: 'Neural signaling', description: 'How neurons communicate.' },
 ];
 
+const defaultConfig = { enable_json_editing: true } as XBlockConfig;
+
 function renderStudio(
-  overrides: Partial<React.ComponentProps<typeof StudioUi>> = {},
+  overrides: Partial<XBlockData> = {},
+  config: XBlockConfig | null = defaultConfig,
 ) {
-  const props: React.ComponentProps<typeof StudioUi> = {
-    initialHeader: 'Key Concepts',
-    initialKeypoints: sampleKeypoints,
-    initialSummary: 'These concepts form a connected sequence.',
-    initialButtonText: 'Glossary',
-    initialButtonLink: 'https://example.com/glossary',
-    initialBackgroundColor: '#CCCCCC',
+  const data: XBlockData = {
+    header: 'Key Concepts',
+    keypoints: sampleKeypoints,
+    summary: 'These concepts form a connected sequence.',
+    button_text: 'Glossary',
+    button_link: 'https://example.com/glossary',
+    background_color: '#CCCCCC',
     ...overrides,
   };
   const runtime = mockRuntime();
   const result = render(
-    <XBlockConfigContext.Provider value={null}>
+    <XBlockConfigContext.Provider value={config}>
       <RuntimeContext.Provider
         value={{ runtime, element: document.createElement('div') }}
       >
-        <StudioUi {...props} />
+        <StudioUi data={data} />
       </RuntimeContext.Provider>
     </XBlockConfigContext.Provider>,
   );
   return { ...result, runtime };
+}
+
+async function renameHeader(
+  user: ReturnType<typeof userEvent.setup>,
+  value: string,
+) {
+  await user.click(screen.getByRole('button', { name: 'Edit display name' }));
+  const input = screen.getByRole('textbox', { name: 'Display name' });
+  await user.clear(input);
+  await user.type(input, `${value}{Enter}`);
 }
 
 // ── tests ────────────────────────────────────────────────────────────────────
@@ -50,10 +65,31 @@ describe('StudioUi', () => {
   // ─── initial rendering ───────────────────────────────────────────────────
   const { getLastDeferred, mockPost } = stubJquery();
   describe('initial rendering', () => {
-    it('renders the Block Header input with initial value', () => {
+    it('renders the header as the editor title', () => {
       renderStudio();
-      const input = screen.getByPlaceholderText('e.g. Key Concepts to Explore');
-      expect(input).toHaveValue('Key Concepts');
+      expect(
+        screen.getByRole('heading', { name: 'Editing: Key Concepts' }),
+      ).toBeInTheDocument();
+    });
+
+    it('shows a placeholder title when the header is empty', () => {
+      renderStudio({ header: '' });
+      expect(
+        screen.getByRole('heading', { name: 'Editing: <Untitled>' }),
+      ).toBeInTheDocument();
+    });
+
+    it('falls back to defaults when data fields are missing', () => {
+      renderStudio({
+        keypoints: undefined,
+        summary: undefined as unknown as string,
+      });
+      expect(screen.getByText(/No key terms added yet/)).toBeInTheDocument();
+      expect(
+        screen.getByPlaceholderText(
+          'e.g. These concepts form a connected sequence...',
+        ),
+      ).toHaveValue('');
     });
 
     it('renders Summary input with initial value', () => {
@@ -97,7 +133,7 @@ describe('StudioUi', () => {
     });
 
     it('shows empty state message when no keypoints', () => {
-      renderStudio({ initialKeypoints: [] });
+      renderStudio({ keypoints: [] });
       expect(screen.getByText(/No key terms added yet/)).toBeInTheDocument();
     });
 
@@ -120,7 +156,7 @@ describe('StudioUi', () => {
   describe('adding key terms', () => {
     it('adds a new empty keypoint entry when clicking Add Key Term', async () => {
       const user = userEvent.setup();
-      renderStudio({ initialKeypoints: [] });
+      renderStudio({ keypoints: [] });
 
       await user.click(screen.getByText('Add Key Term'));
 
@@ -135,7 +171,7 @@ describe('StudioUi', () => {
 
     it('empty state message disappears after adding a term', async () => {
       const user = userEvent.setup();
-      renderStudio({ initialKeypoints: [] });
+      renderStudio({ keypoints: [] });
 
       expect(screen.getByText(/No key terms added yet/)).toBeInTheDocument();
       await user.click(screen.getByText('Add Key Term'));
@@ -222,7 +258,7 @@ describe('StudioUi', () => {
     it('shows empty state message after removing all keypoints', async () => {
       const user = userEvent.setup();
       renderStudio({
-        initialKeypoints: [{ keypoint: 'Only term', description: 'Only desc' }],
+        keypoints: [{ keypoint: 'Only term', description: 'Only desc' }],
       });
 
       await user.click(screen.getByText('Remove'));
@@ -233,14 +269,14 @@ describe('StudioUi', () => {
   // ─── editing header, summary, and action button fields ───────────────────
 
   describe('editing header, summary, and action button fields', () => {
-    it('updates the Block Header input when typing', async () => {
+    it('updates the header from the title editor', async () => {
       const user = userEvent.setup();
       renderStudio();
 
-      const input = screen.getByPlaceholderText('e.g. Key Concepts to Explore');
-      await user.clear(input);
-      await user.type(input, 'New Header');
-      expect(input).toHaveValue('New Header');
+      await renameHeader(user, 'New Header');
+      expect(
+        screen.getByRole('heading', { name: 'Editing: New Header' }),
+      ).toBeInTheDocument();
     });
 
     it('updates the Summary input when typing', async () => {
@@ -355,7 +391,7 @@ describe('StudioUi', () => {
   describe('save reflects edits', () => {
     it('includes newly added and edited keypoints in the save payload', async () => {
       const user = userEvent.setup();
-      renderStudio({ initialKeypoints: [] });
+      renderStudio({ keypoints: [] });
 
       // Add a keypoint and fill it in
       await user.click(screen.getByText('Add Key Term'));
@@ -410,13 +446,9 @@ describe('StudioUi', () => {
 
     it('includes updated header, summary, and button fields in the save payload', async () => {
       const user = userEvent.setup();
-      renderStudio({ initialKeypoints: [] });
+      renderStudio({ keypoints: [] });
 
-      const headerInput = screen.getByPlaceholderText(
-        'e.g. Key Concepts to Explore',
-      );
-      await user.clear(headerInput);
-      await user.type(headerInput, 'Updated Header');
+      await renameHeader(user, 'Updated Header');
 
       const summaryInput = screen.getByPlaceholderText(
         'e.g. These concepts form a connected sequence...',
@@ -447,6 +479,110 @@ describe('StudioUi', () => {
           background_color: '#CCCCCC',
         }),
       );
+    });
+  });
+
+  // ─── tabs ────────────────────────────────────────────────────────────────
+
+  describe('tabs', () => {
+    it('shows the Content tab as selected by default', () => {
+      renderStudio();
+      expect(screen.getByRole('tab', { name: 'Content' })).toHaveAttribute(
+        'aria-selected',
+        'true',
+      );
+      expect(screen.getByRole('tab', { name: 'Settings' })).toHaveAttribute(
+        'aria-selected',
+        'false',
+      );
+      expect(screen.getByRole('tab', { name: 'JSON' })).toHaveAttribute(
+        'aria-selected',
+        'false',
+      );
+      const visiblePanel = screen.getByRole('tabpanel', { name: 'Content' });
+      expect(
+        within(visiblePanel).getByRole('button', { name: /Add Key Term/ }),
+      ).toBeInTheDocument();
+    });
+
+    it('renders a labelled panel for every tab', () => {
+      renderStudio();
+      const panels = Array.from(
+        document.querySelectorAll<HTMLElement>('[role="tabpanel"]'),
+      );
+      expect(panels).toHaveLength(3);
+      panels.forEach((panel) => {
+        expect(panel).not.toBeEmptyDOMElement();
+        const tab = document.getElementById(
+          panel.getAttribute('aria-labelledby') as string,
+        );
+        expect(tab).toHaveAttribute('aria-controls', panel.id);
+      });
+    });
+
+    it('shows the background color picker in the Settings tab', async () => {
+      const user = userEvent.setup();
+      renderStudio();
+
+      await user.click(screen.getByRole('tab', { name: 'Settings' }));
+
+      const visiblePanel = screen.getByRole('tabpanel', { name: 'Settings' });
+      expect(
+        within(visiblePanel).getByText('Background Color'),
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByRole('button', { name: /Add Key Term/ }),
+      ).not.toBeInTheDocument();
+    });
+
+    it('supports arrow-key navigation between tabs', async () => {
+      const user = userEvent.setup();
+      renderStudio();
+
+      screen.getByRole('tab', { name: 'Content' }).focus();
+      await user.keyboard('{ArrowRight}');
+
+      const settingsTab = screen.getByRole('tab', { name: 'Settings' });
+      expect(settingsTab).toHaveAttribute('aria-selected', 'true');
+      expect(settingsTab).toHaveFocus();
+    });
+
+    it('preserves edits when switching tabs', async () => {
+      const user = userEvent.setup();
+      renderStudio();
+
+      const summary = screen.getByPlaceholderText(
+        'e.g. These concepts form a connected sequence...',
+      );
+      await user.clear(summary);
+      await user.type(summary, 'Kept summary');
+
+      await user.click(screen.getByRole('tab', { name: 'Settings' }));
+      await user.click(screen.getByRole('tab', { name: 'Content' }));
+
+      expect(
+        screen.getByPlaceholderText(
+          'e.g. These concepts form a connected sequence...',
+        ),
+      ).toHaveValue('Kept summary');
+    });
+
+    it('hides the JSON tab when JSON editing is disabled', () => {
+      renderStudio({}, { enable_json_editing: false } as XBlockConfig);
+
+      expect(screen.getByRole('tab', { name: 'Content' })).toBeInTheDocument();
+      expect(screen.getByRole('tab', { name: 'Settings' })).toBeInTheDocument();
+      expect(
+        screen.queryByRole('tab', { name: 'JSON' }),
+      ).not.toBeInTheDocument();
+      expect(document.querySelectorAll('[role="tabpanel"]')).toHaveLength(2);
+    });
+
+    it('hides the JSON tab when no config is provided', () => {
+      renderStudio({}, null);
+      expect(
+        screen.queryByRole('tab', { name: 'JSON' }),
+      ).not.toBeInTheDocument();
     });
   });
 });
