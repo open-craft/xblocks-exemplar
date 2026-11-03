@@ -1,12 +1,13 @@
 @import '@/card/common/studio-ui/secondary-content/IconSelector/index.css';
-@import '@/card/common/studio-ui/ModalFooter.css';
 @import '@/card/common/studio-ui/secondary-content/ImageForm.css';
+@import '@/shared/components/StudioHeader.css';
 @import '@/studio.scss';
 
 .card-grid-studio {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 635px;
 }
 
 .card-grid-create-form {
@@ -72,4 +73,9 @@ The following is copied verbatime from the Google Fonts guide: https://developer
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
+}
+
+.tab-content {
+  flex: 1 1 auto;
+  min-height: 0;
 }

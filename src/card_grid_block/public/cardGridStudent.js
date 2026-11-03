@@ -1,14 +1,14 @@
-import { A as e, O as t, a as n, d as r, f as i, g as a, i as o, m as s, n as c, p as l, r as u, s as d, t as f, u as p, y as m } from "./Stack-CMSfB8yk.js";
+import { F as e, N as t, a as n, b as r, d as i, f as a, g as o, i as s, m as c, n as l, p as u, r as d, s as f, t as p, u as m } from "./Stack-CUJQJksK.js";
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Badge.js
-var h = /* @__PURE__ */ e(s()), g = /* @__PURE__ */ e(t()), _ = [
+var h = /* @__PURE__ */ e(c()), g = /* @__PURE__ */ e(t()), _ = [
 	"bsPrefix",
 	"variant",
 	"pill",
 	"className",
 	"as"
 ], v = { pill: !1 }, y = /* @__PURE__ */ g.forwardRef(function(e, t) {
-	var n = e.bsPrefix, a = e.variant, o = e.pill, s = e.className, c = e.as, u = c === void 0 ? "span" : c, d = i(e, _), f = r(n, "badge");
-	return /* @__PURE__ */ g.createElement(u, l({ ref: t }, d, { className: (0, h.default)(s, f, o && f + "-pill", a && f + "-" + a) }));
+	var n = e.bsPrefix, r = e.variant, o = e.pill, s = e.className, c = e.as, l = c === void 0 ? "span" : c, d = a(e, _), f = i(n, "badge");
+	return /* @__PURE__ */ g.createElement(l, u({ ref: t }, d, { className: (0, h.default)(s, f, o && f + "-pill", r && f + "-" + r) }));
 });
 y.displayName = "Badge", y.defaultProps = v;
 //#endregion
@@ -25,14 +25,14 @@ var b = [
 	"sm",
 	"xs"
 ], S = { noGutters: !1 }, C = /* @__PURE__ */ g.forwardRef(function(e, t) {
-	var n = e.bsPrefix, a = e.className, o = e.noGutters, s = e.as, c = s === void 0 ? "div" : s, u = i(e, b), d = r(n, "row"), f = d + "-cols", p = [];
+	var n = e.bsPrefix, r = e.className, o = e.noGutters, s = e.as, c = s === void 0 ? "div" : s, l = a(e, b), d = i(n, "row"), f = d + "-cols", p = [];
 	return x.forEach(function(e) {
-		var t = u[e];
-		delete u[e];
+		var t = l[e];
+		delete l[e];
 		var n = typeof t == "object" && t ? t.cols : t, r = e === "xs" ? "" : "-" + e;
 		n != null && p.push("" + f + r + "-" + n);
-	}), /* @__PURE__ */ g.createElement(c, l({ ref: t }, u, { className: h.default.apply(void 0, [
-		a,
+	}), /* @__PURE__ */ g.createElement(c, u({ ref: t }, l, { className: h.default.apply(void 0, [
+		r,
 		d,
 		o && "no-gutters"
 	].concat(p)) }));
@@ -47,7 +47,7 @@ var w = /* @__PURE__ */ g.forwardRef(({ as: e = "span", variant: t = "primary", 
 	bsPrefix: r,
 	...i,
 	ref: a
-})), T = /* @__PURE__ */ e(p()), E = /* @__PURE__ */ g.forwardRef(({ className: e, children: t, ...n }, r) => /* @__PURE__ */ g.createElement("div", {
+})), T = /* @__PURE__ */ e(m()), E = /* @__PURE__ */ g.forwardRef(({ className: e, children: t, ...n }, r) => /* @__PURE__ */ g.createElement("div", {
 	className: (0, h.default)("pgn__card-body", e),
 	ref: r,
 	...n
@@ -324,7 +324,7 @@ var J = /* @__PURE__ */ g.forwardRef(({ className: e, children: t, variant: n, i
 		className: (0, h.default)("pgn__card-status", `pgn__card-status__${n}`, e),
 		ref: s,
 		...o
-	}, /* @__PURE__ */ g.createElement("div", { className: "pgn__card-status__content" }, r && /* @__PURE__ */ g.createElement(u, {
+	}, /* @__PURE__ */ g.createElement("div", { className: "pgn__card-status__content" }, r && /* @__PURE__ */ g.createElement(d, {
 		className: "pgn__card-status__content-icon",
 		src: r
 	}), /* @__PURE__ */ g.createElement("div", { className: "pgn__card-status__message-content" }, i && /* @__PURE__ */ g.createElement("div", { className: "pgn__card-status__heading" }, i), t)), !!a && /* @__PURE__ */ g.createElement("div", { className: "pgn__card-status__actions" }, a));
@@ -387,13 +387,13 @@ X.propTypes = {
 	isLoading: !1
 };
 var Z = n(X, "Card", { muted: {
-	deprType: o.REMOVED,
+	deprType: s.REMOVED,
 	message: "Use \"variant\" prop instead, i.e. variant=\"muted\""
 } });
 Z.Status = J, Z.Header = R, Z.Divider = z, Z.Section = V, Z.Footer = U, Z.ImageCap = q, Z.Context = j, Z.Body = E;
 //#endregion
 //#region src/card/common/student-ui/ContentHighlight.tsx
-var Q = m();
+var Q = r();
 function ee({ title: e, subtitle: t, description: n, orientation: r }) {
 	return /* @__PURE__ */ (0, Q.jsxs)("div", {
 		className: `content-highlight ${r === "HORIZONTAL" ? "content-highlight--horizontal" : "content-highlight--vertical"}`,
@@ -436,7 +436,7 @@ function te({ items: e }) {
 		className: "rich-list",
 		children: e.map((t, n) => /* @__PURE__ */ (0, Q.jsxs)("div", {
 			className: "rich-list-item",
-			children: [/* @__PURE__ */ (0, Q.jsxs)(f, {
+			children: [/* @__PURE__ */ (0, Q.jsxs)(p, {
 				direction: "horizontal",
 				className: "rich-list-row",
 				children: [/* @__PURE__ */ (0, Q.jsx)($, { name: t.icon }), /* @__PURE__ */ (0, Q.jsxs)("div", {
@@ -555,7 +555,7 @@ function ie({ orientation: e, data: t, position: n }) {
 					t.description && /* @__PURE__ */ (0, Q.jsx)(Z.Section, { children: t.description }),
 					t.ctaLabel && t.ctaLink && /* @__PURE__ */ (0, Q.jsx)(Z.Section, {
 						className: "complex-card-cta-section",
-						children: /* @__PURE__ */ (0, Q.jsx)(c, {
+						children: /* @__PURE__ */ (0, Q.jsx)(l, {
 							variant: "accent",
 							className: "complex-card-cta-button rounded-pill",
 							href: t.ctaLink,
@@ -600,7 +600,7 @@ function ae({ initData: { cards: e, description: t, orientation: n, backgroundCo
 			children: [
 				/* @__PURE__ */ (0, Q.jsx)(C, {
 					className: "card-grid-description-row",
-					children: /* @__PURE__ */ (0, Q.jsx)(d, {
+					children: /* @__PURE__ */ (0, Q.jsx)(f, {
 						xs: 12,
 						children: /* @__PURE__ */ (0, Q.jsx)("div", {
 							className: "card-grid-description",
@@ -610,7 +610,7 @@ function ae({ initData: { cards: e, description: t, orientation: n, backgroundCo
 				}),
 				/* @__PURE__ */ (0, Q.jsx)(C, {
 					className: "card-grid-cards-row",
-					children: e.map((e, t) => /* @__PURE__ */ (0, g.createElement)(d, {
+					children: e.map((e, t) => /* @__PURE__ */ (0, g.createElement)(f, {
 						...a,
 						className: "card-grid-card-column",
 						...t === 0 && o,
@@ -623,7 +623,7 @@ function ae({ initData: { cards: e, description: t, orientation: n, backgroundCo
 				}),
 				/* @__PURE__ */ (0, Q.jsx)(C, {
 					className: "card-grid-footer-row",
-					children: /* @__PURE__ */ (0, Q.jsx)(d, {
+					children: /* @__PURE__ */ (0, Q.jsx)(f, {
 						xs: 12,
 						children: /* @__PURE__ */ (0, Q.jsx)("div", {
 							className: "card-grid-footer-description",
@@ -638,7 +638,7 @@ function ae({ initData: { cards: e, description: t, orientation: n, backgroundCo
 //#endregion
 //#region src/card/common/student-ui/main.css?inline
 var oe = ".complex-card{--pgn-color-headings-base:var(--ccblk-typography-headings-color);--ccblk-spacing-badge-spacer-x:var(--pgn-spacing-card-spacer-x);--ccblk-spacing-badge-spacer-y:var(--pgn-spacing-card-spacer-y);--ccblk-typography-headings-color:var(--pgn-color-headings-base);--ccblk-card-padding:var(--pgn-spacing-spacer-4-5,32px);--ccblk-grid-gap:var(--pgn-spacing-spacer-4-5,32px);--ccblk-card-radius-lg:var(--pgn-size-border-radius-lg,24px);height:100%}.complex-card .text-accent{color:var(--pgn-color-accent-a)}.complex-card .btn-accent{background-color:var(--pgn-color-accent-a);color:var(--pgn-color-light-100);background-image:unset}.complex-card .card-badge{margin:0 0 var(--pgn-spacing-spacer-3,16px)}.complex-card .card-badge .badge{padding:var(--ccblk-spacing-badge-spacer-y) var(--ccblk-spacing-badge-spacer-x);font-family:var(--pgn-typography-headings-font-family);font-size:var(--pgn-typography-font-size-h5-base);font-weight:var(--pgn-typography-headings-font-weight)}.complex-card.complex-card--image-background{background-image:var(--ccblk-card-background-image);color:var(--pgn-color-light-100);--ccblk-typography-headings-color:var(--pgn-color-light-100);background-position:50%;background-repeat:no-repeat;background-size:cover;position:relative;overflow:hidden}.complex-card.complex-card--image-background:before{content:\"\";z-index:0;pointer-events:none;background:#00000073;position:absolute;inset:0}.complex-card.complex-card--image-background>*{z-index:1;position:relative}.complex-card.complex-card--image-background .pgn__card-section,.complex-card.complex-card--image-background .pgn__card-header-subtitle-md{color:var(--pgn-color-light-100)}.complex-card .pgn__card{height:100%}.complex-card .pgn__card.horizontal{column-gap:var(--ccblk-grid-gap)}.complex-card .pgn__card .pgn__card-wrapper-image-cap.horizontal,.complex-card .pgn__card .complex-card-body--horizontal-image{flex:0 0 calc(50% - var(--ccblk-grid-gap) / 2);max-width:calc(50% - var(--ccblk-grid-gap) / 2)}.complex-card .pgn__card .pgn__card-wrapper-image-cap.horizontal .pgn__card-image-cap{object-fit:cover;width:100%;max-width:100%;height:100%}.complex-card .pgn__card .pgn__card-header .pgn__card-header-content{margin-top:var(--pgn-spacing-card-spacer-x)}.complex-card .pgn__card .pgn__card-header .pgn__card-header-title-md{font-family:var(--pgn-typography-headings-font-family);color:var(--ccblk-typography-headings-color);font-size:var(--pgn-typography-font-size-h4-base)}.complex-card .pgn__card .pgn__card-header .pgn__card-header-subtitle-md{color:var(--ccblk-typography-headings-color);font-size:var(--pgn-typography-font-size-base);font-weight:700;font-family:var(--pgn-typography-headings-font-family)}.complex-card .complex-card-body{padding:var(--ccblk-card-padding)}.complex-card .complex-card-layout{width:100%;height:100%}.complex-card .complex-card-layout--horizontal{column-gap:var(--ccblk-grid-gap);grid-template-columns:minmax(0,1fr) minmax(0,1fr);display:grid}.complex-card .complex-card-layout--vertical{flex-direction:column;justify-content:space-between;display:flex}.complex-card .complex-card-layout-panel{min-width:0}.complex-card .complex-card-layout-panel--primary,.complex-card .complex-card-layout-panel--secondary{flex:auto}.complex-card .complex-card-cta-section{justify-content:flex-end;display:flex}.complex-card .complex-card-cta-button{padding-inline:var(--ccblk-card-button-padding-inline,32px)}.content-highlight{height:100%;padding:var(--pgn-spacing-spacer-4-5,32px);background-color:var(--pgn-color-primary-500)}.content-highlight--horizontal{border-top-right-radius:var(--pgn-size-border-radius-lg,24px);border-bottom-right-radius:var(--pgn-size-border-radius-lg,24px)}.content-highlight--vertical{border-bottom-right-radius:var(--pgn-size-border-radius-lg,24px);border-bottom-left-radius:var(--pgn-size-border-radius-lg,24px)}.content-highlight-subtitle,.content-highlight-title,.content-highlight-description{margin-top:0}.content-highlight-title{margin-bottom:var(--pgn-spacing-spacer-3,16px);color:var(--pgn-color-light-100)}.content-highlight-description{color:var(--pgn-color-light-100);margin-bottom:0}.rich-list{padding:var(--pgn-spacing-spacer-4-5,32px)}.rich-list-content{margin-left:var(--pgn-spacing-spacer-4,24px)}.rich-list-title{margin-top:0}.rich-list-description{margin-bottom:0}.rich-list-divider{margin-block:var(--pgn-spacing-spacer-3,16px)}.horizontal .hover-list{column-gap:var(--pgn-spacing-spacer-4-5,32px)}.hover-list-description,.hover-content{padding:calc(var(--pgn-spacing-spacer-base))}.hover-list-content-wrapper{min-height:calc(( var(--pgn-spacing-spacer-base) + var(--pgn-typography-font-size-base) * var(--pgn-typography-line-height-base) ) * 2);position:relative}.hover-list-description{opacity:1;visibility:visible;z-index:0}.hover-content{background-color:var(--pgn-color-primary-500);width:100%;color:var(--pgn-color-light-100);border-radius:var(--pgn-size-border-radius-base);opacity:0;visibility:hidden;z-index:10;align-items:center;display:flex;position:absolute;top:0;left:0}.hover-list-item:has(.hover-content){cursor:pointer}:is(.hover-list-item:has(.hover-content):hover,.hover-list-item:has(.hover-content).is-active){margin-left:calc(var(--pgn-spacing-spacer-base) * -2.5);list-style:none}.hover-list-item:has(.hover-content):hover .hover-list-description{opacity:0;visibility:hidden}.hover-list-item:has(.hover-content):hover .hover-content{opacity:1;visibility:visible}.hover-content-icon-wrapper{color:var(--pgn-color-light-100);margin-right:var(--pgn-spacing-spacer-base)}.hover-content-text{margin-left:var(--pgn-spacing-spacer-2,8px)}.card-carousel-xblock *,.card-carousel-xblock :before,.card-carousel-xblock :after{box-sizing:border-box}.card-carousel-container{max-width:1280px;padding:var(--pgn-spacing-spacer-4-5,32px);margin:0 auto}.card-carousel-container .pgn__card-carousel-title{margin-bottom:var(--pgn-spacing-spacer-4-5,32px)}.card-grid-xblock{--card-grid-gap:var(--pgn-spacing-spacer-4-5,32px)}.card-grid-xblock *,.card-grid-xblock :before,.card-grid-xblock :after{box-sizing:border-box}.card-grid-container{max-width:1280px;padding:var(--pgn-spacing-spacer-4-5,32px);margin:0 auto}.card-grid-description-row,.card-grid-footer-row,.card-grid-cards-row{margin-inline:calc(var(--card-grid-gap) / -2)}.card-grid-description-row>[class*=col],.card-grid-footer-row>[class*=col],.card-grid-card-column{padding-inline:calc(var(--card-grid-gap) / 2)}.card-grid-description-row{margin-bottom:var(--pgn-spacing-spacer-4-5,32px)}.card-grid-cards-row{row-gap:var(--card-grid-gap)}.card-grid-card-column{display:flex}.card-grid-footer-row{margin-top:var(--pgn-spacing-spacer-4-5,32px)}.card-grid-description,.card-grid-footer-description{line-height:var(--pgn-typography-line-height-base,1.5)}.card-grid-description>:last-child,.card-grid-footer-description>:last-child{margin-bottom:0}.material-icons-outlined{text-transform:none;letter-spacing:normal;word-wrap:normal;white-space:nowrap;-webkit-font-smoothing:antialiased;text-rendering:optimizelegibility;-moz-osx-font-smoothing:grayscale;font-feature-settings:\"liga\";direction:ltr;font-family:Material Icons Outlined;font-size:24px;font-style:normal;font-weight:400;line-height:1;display:inline-block}", se = (e, t, n) => {
-	a({
+	o({
 		runtime: t,
 		element: e,
 		config: n.config,

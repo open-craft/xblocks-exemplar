@@ -42,7 +42,7 @@ function StudioForm() {
         id="card-carousel-studio-tabs"
         activeKey={activeTab}
         onSelect={(eventKey: string | null) =>
-          setActiveTab(eventKey ? eventKey : defaultTab)
+          setActiveTab(eventKey || defaultTab)
         }
         transition={false}
       >

@@ -1,22 +1,83 @@
-import { useState } from 'react';
-import { Form, Formik } from 'formik';
+import { useContext, useState } from 'react';
+import { Form, Formik, useFormikContext } from 'formik';
 import { type InitData } from '../types';
 import {
+  RuntimeContext,
   saveStudioBlock,
-  type XBlockRuntime,
+  useHandlerUrl,
 } from '@opencraft/xblock-react-utils';
-import CreateCardGridForm from './components/CreateCardGridForm';
-import CarouselEditor from '@/card/common/studio-ui/CardListEditor';
+import { type XBlockConfig } from '@/types';
 import ModalFooter from '@/card/common/studio-ui/ModalFooter';
+import {
+  ModalDialog,
+  TabContainer,
+  TabContent,
+  TabPane,
+} from '@openedx/paragon';
+import { EDITOR_TABS } from '@/shared/components/constants';
+import StudioHeader from '@/shared/components/StudioHeader';
+import { useXBlockConfig } from '@/lib/context';
+import JsonImporter from '@/shared/components/JsonImporter';
+
+import SettingsForm from './components/SettingsForm';
+import ContentForm from './components/ContentForm.tsx';
 
 interface StudioUIProps {
-  saveUrl: string;
-  runtime: XBlockRuntime;
   initData: InitData;
 }
 
-function StudioUI({ runtime, saveUrl, initData }: StudioUIProps) {
-  const [showCardEditor, setShowCardEditor] = useState(false);
+function StudioForm() {
+  const defaultTab = EDITOR_TABS[0].key;
+  const [activeTab, setActiveTab] = useState<string>(defaultTab);
+  const { values, setFieldValue } = useFormikContext<InitData>();
+  const config = useXBlockConfig<XBlockConfig>();
+  const enableJsonEditing = Boolean(config?.enable_json_editing);
+  const tabs = enableJsonEditing
+    ? EDITOR_TABS
+    : EDITOR_TABS.filter((t) => t.key !== 'json');
+
+  return (
+    <Form>
+      <TabContainer
+        id="card-grid-studio-tabs"
+        activeKey={activeTab}
+        onSelect={(eventKey: string | null) =>
+          setActiveTab(eventKey || defaultTab)
+        }
+        transition={false}
+      >
+        <div className="studio-ui card-grid-studio">
+          <StudioHeader
+            activeTab={activeTab}
+            title={values.displayName}
+            onTitleChange={(value) => setFieldValue('displayName', value)}
+            tabs={tabs}
+          />
+          <ModalDialog.Body>
+            <TabContent className="tab-content">
+              <TabPane eventKey="content">
+                <ContentForm />
+              </TabPane>
+              <TabPane eventKey="settings">
+                <SettingsForm />
+              </TabPane>
+              {enableJsonEditing && (
+                <TabPane eventKey="json">
+                  <JsonImporter liveData={values} />
+                </TabPane>
+              )}
+            </TabContent>
+          </ModalDialog.Body>
+          <ModalFooter showingEditor onContinue={() => {}} />
+        </div>
+      </TabContainer>
+    </Form>
+  );
+}
+
+function StudioUI({ initData }: StudioUIProps) {
+  const { runtime } = useContext(RuntimeContext);
+  const saveUrl = useHandlerUrl('studio_save');
 
   return (
     <Formik
@@ -30,18 +91,7 @@ function StudioUI({ runtime, saveUrl, initData }: StudioUIProps) {
         });
       }}
     >
-      <Form>
-        <div className="studio-ui card-grid-studio">
-          {showCardEditor ? <CarouselEditor /> : <CreateCardGridForm />}
-          <ModalFooter
-            showingEditor={showCardEditor}
-            onContinue={(e: React.MouseEvent<HTMLButtonElement>) => {
-              e.preventDefault();
-              setShowCardEditor(true);
-            }}
-          />
-        </div>
-      </Form>
+      <StudioForm />
     </Formik>
   );
 }

@@ -2,6 +2,7 @@
 Ideally we shouldn't need to define any HTML as the React App StudioUI should take care of everything.
 However, the Studio Runtime for the XBlock looks for certain elements in the DOM to render it's wrapper.
 
-So, "editor-with-buttons" is defined to prevent the footer nativations from showing up.
+* "editor-with-buttons" prevents the modal footer from rendering
+* "editor-with-tabs" prevents the modal header
 -->
-<div class="editor-with-buttons is-active"></div>
+<div class="editor-with-tabs editor-with-buttons is-active"></div>
