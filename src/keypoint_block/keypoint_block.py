@@ -2,16 +2,23 @@
 An XBlock for key point glossary.
 """
 
-from exemplar_common.utils import strip_html_for_search
+import logging
 
+from collections import defaultdict
 from importlib.resources import files
 
+from pydantic import ValidationError
 from web_fragments.fragment import Fragment
+from webob.response import Response
 from xblock.core import XBlock
+from xblock.exceptions import JsonHandlerError
 from xblock.fields import List, Scope, String
 
+from exemplar_common.utils import strip_html_for_search, loc_to_dot_sep
 from exemplar_common.xblock_config import get_xblock_config, XBlockView
-from .types import WorkbenchScenario
+from .types import WorkbenchScenario, KeyPointBlockData
+
+logger = logging.getLogger(__name__)
 
 
 class KeypointXBlock(XBlock):
@@ -90,15 +97,31 @@ class KeypointXBlock(XBlock):
         )
         return frag
 
+    @XBlock.handler
+    def json_schema(self, request, suffix=""):
+        return Response(
+            json=KeyPointBlockData.model_json_schema(),
+            content_disposition='attachment; filename="keypoint-block-schema.json"',
+        )
+
     @XBlock.json_handler
     def studio_save(self, data, suffix=""):
         """Save configuration data from the studio editor."""
-        self.header = data.get("header", self.header)
-        self.keypoints = data.get("keypoints", self.keypoints)
-        self.summary = data.get("summary", self.summary)
-        self.button_text = data.get("button_text", self.button_text)
-        self.button_link = data.get("button_link", self.button_link)
-        self.background_color = data.get("background_color", self.background_color)
+        try:
+            valid_data = KeyPointBlockData.model_validate(data)
+        except ValidationError as e:
+            logger.exception("Invalid data received from studio.")
+            issues = defaultdict(list)
+            for item in e.errors():
+                issues[item["msg"]].append(loc_to_dot_sep(item["loc"]))
+            raise JsonHandlerError(400, issues)
+
+        self.header = valid_data.header
+        self.keypoints = [k.model_dump() for k in valid_data.keypoints]
+        self.summary = valid_data.summary
+        self.button_text = valid_data.button_text
+        self.button_link = valid_data.button_link
+        self.background_color = valid_data.background_color
         return {"result": "success"}
 
     def index_dictionary(self):
