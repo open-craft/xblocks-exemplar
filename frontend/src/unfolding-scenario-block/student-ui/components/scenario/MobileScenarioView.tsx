@@ -83,7 +83,7 @@ const ScenarioDescription = ({
         __html: scenario.instructionDescription,
       }}
     />
-    <div className="d-flex justify-content-end">
+    <div className="d-flex flex-column justify-content-end flex-grow-1">
       <Button
         variant="unfolding-scenario-action"
         className="rounded-pill w-100"

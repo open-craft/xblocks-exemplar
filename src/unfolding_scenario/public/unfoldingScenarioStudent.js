@@ -2084,7 +2084,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => /* @__P
 			dangerouslySetInnerHTML: { __html: e.instructionDescription }
 		}),
 		/* @__PURE__ */ (0, $.jsx)("div", {
-			className: "d-flex justify-content-end",
+			className: "d-flex flex-column justify-content-end flex-grow-1",
 			children: /* @__PURE__ */ (0, $.jsx)(d, {
 				variant: "unfolding-scenario-action",
 				className: "rounded-pill w-100",
