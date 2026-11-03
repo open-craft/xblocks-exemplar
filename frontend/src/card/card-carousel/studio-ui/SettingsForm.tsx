@@ -7,8 +7,8 @@ export default function CreateCarouselForm() {
   const { values, setFieldValue, handleChange } = useFormikContext<InitData>();
 
   return (
-    <div className="card-carousel-create-form">
-      <Form.Group className="card-carousel-studio-field">
+    <div className="card-studio-form">
+      <Form.Group className="card-studio-field">
         <Form.Label>Display Name</Form.Label>
         <Form.Text muted>Name of the XBlock component in Studio.</Form.Text>
         <Form.Control
@@ -19,7 +19,7 @@ export default function CreateCarouselForm() {
         />
       </Form.Group>
 
-      <Form.Group className="card-carousel-studio-field">
+      <Form.Group className="card-studio-field">
         <Form.Checkbox
           name="disableNumbering"
           checked={!values.disableNumbering}
@@ -34,7 +34,7 @@ export default function CreateCarouselForm() {
         </Form.Text>
       </Form.Group>
 
-      <Form.Group className="card-carousel-studio-field card-carousel-studio-field--last">
+      <Form.Group className="card-studio-field card-studio-field--last">
         <Form.Label>Background Color</Form.Label>
         <ColorPicker
           color={values.backgroundColor}

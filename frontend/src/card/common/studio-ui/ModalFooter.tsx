@@ -13,7 +13,7 @@ export default function ModalFooter({
 }: ModalFooterProps) {
   const { runtime } = useContext(RuntimeContext);
   return (
-    <ModalDialog.Footer className="border-top">
+    <ModalDialog.Footer className="border-top" style={{ zIndex: '3' }}>
       <Stack direction="horizontal" gap={4}>
         <Button
           variant="light"

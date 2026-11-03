@@ -16,7 +16,6 @@ export const renderBlock = (
   context: { data: InitData; config: XBlockConfig },
 ) => {
   const container = getRoot(element);
-  const saveUrl = runtime.handlerUrl(element, 'studio_save');
   if (!context.data.cards || !context.data.cards.length) {
     context.data.cards = [newCard()];
   }
@@ -38,7 +37,7 @@ export const renderBlock = (
     styles,
   })(
     <XBlockConfigContext.Provider value={context.config}>
-      <StudioUI saveUrl={saveUrl} runtime={runtime} initData={context.data} />
+      <StudioUI initData={context.data} />
     </XBlockConfigContext.Provider>,
   );
 };

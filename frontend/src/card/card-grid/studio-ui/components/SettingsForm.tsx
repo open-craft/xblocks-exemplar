@@ -5,44 +5,16 @@ import ColorPicker from '@openedx/paragon/dist/ColorPicker';
 
 import { useFormikContext } from 'formik';
 import type { InitData } from '@/card/card-grid/types';
-import { SimpleRichTextEditor } from '@/shared/components/TinyMCE';
 
-export default function CreateCardGridForm() {
-  const { values, setFieldValue, handleChange } = useFormikContext<InitData>();
+export default function SettingsForm() {
+  const { values, setFieldValue } = useFormikContext<InitData>();
 
   return (
-    <div className="card-grid-create-form">
-      <Form.Group className="card-grid-studio-field">
-        <Form.Label>Display Name</Form.Label>
-        <Form.Text muted>
-          Name displayed on the block in Studio. Not shown to the learners.
-        </Form.Text>
-        <Form.Control
-          type="text"
-          name="displayName"
-          value={values.displayName}
-          onChange={handleChange}
-        />
-      </Form.Group>
-      <Form.Group className="card-grid-studio-field">
-        <Form.Label>Description</Form.Label>
-        <Form.Text muted>
-          An optional description that can be shown above the cards.
-        </Form.Text>
-        <SimpleRichTextEditor
-          ariaLabel="Rich text editor for the description content."
-          value={values.description}
-          onEditorChange={(value: string) =>
-            setFieldValue('description', value)
-          }
-          height="200px"
-        />
-      </Form.Group>
-      <Form.Group className="card-grid-studio-field">
+    <div className="card-studio-form">
+      <Form.Group className="card-studio-field">
         <Form.Label>Card Layout</Form.Label>
         <Form.Text>
           Choose whether cards in this grid use a vertical or horizontal layout.
-          You'll add and edit the cards in the next step.
         </Form.Text>
         <Stack direction="horizontal" className="card-grid-layout-options">
           <Button
@@ -85,19 +57,7 @@ export default function CreateCardGridForm() {
           </Button>
         </Stack>
       </Form.Group>
-      <Form.Group className="card-grid-studio-field">
-        <Form.Label>Footer Description</Form.Label>
-        <Form.Text muted>Text that's shown below the cards.</Form.Text>
-        <SimpleRichTextEditor
-          ariaLabel="Rich text editor for the footer description content."
-          value={values.footerDescription}
-          onEditorChange={(value: string) =>
-            setFieldValue('footerDescription', value)
-          }
-          height="200px"
-        />
-      </Form.Group>
-      <Form.Group className="card-grid-studio-field card-grid-studio-field--last">
+      <Form.Group className="card-studio-field card-studio-field--last">
         <Form.Label>Background Color</Form.Label>
         <ColorPicker
           color={values.backgroundColor}

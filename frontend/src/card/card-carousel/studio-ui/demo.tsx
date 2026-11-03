@@ -1,32 +1,24 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { IntlProvider } from 'react-intl';
-import StudioUI from './StudioUI';
-import {
-  RuntimeContext,
-  type XBlockRuntime,
-} from '@opencraft/xblock-react-utils';
-import { type InitData } from '@/card/card-carousel/types.ts';
-import { newCard } from '@/card/common/utils.ts';
+import { type XBlockRuntime } from '@opencraft/xblock-react-utils';
+import { type XBlockConfig } from '@/types.ts';
+
+import { renderBlock } from './main.tsx';
 
 const mockRuntime: XBlockRuntime = {
   handlerUrl: () => 'save-data',
   notify: (action: string, data: object) => console.log(action, data),
 };
-const initData: InitData = {
-  displayName: 'Demo Carousel',
-  cards: [newCard([], { orientation: 'HORIZONTAL' })],
-  backgroundColor: '#ccc',
+
+const mockConfig: XBlockConfig = {
+  mfe_config_api: '',
+  file_picker_url: '',
+  enable_json_editing: true,
 };
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <IntlProvider locale="en">
-      <RuntimeContext.Provider
-        value={{ runtime: mockRuntime, element: document.createElement('div') }}
-      >
-        <StudioUI initData={initData} />
-      </RuntimeContext.Provider>
-    </IntlProvider>
-  </StrictMode>,
-);
+renderBlock(document.getElementById('root')!, mockRuntime, {
+  data: {
+    backgroundColor: '#CCFFDD',
+    cards: [],
+    displayName: 'Demo Carousel',
+  },
+  config: mockConfig,
+});
