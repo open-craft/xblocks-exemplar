@@ -18654,7 +18654,7 @@ function kN({ title: e, onTitleChange: t, activeTab: n, tabs: r = ON }) {
 						className: "d-flex flex-row align-items-center mt-1",
 						children: [
 							"Editing: ",
-							e,
+							e || "<Untitled>",
 							/* @__PURE__ */ (0, F.jsx)(le, {
 								alt: "Edit display name",
 								className: "studio-header-title-edit",
