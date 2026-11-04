@@ -1,0 +1,27 @@
+@import '../common/materialIcons';
+@import '../common/ResourceCard';
+
+.xblock-external-resources {
+  .external-resources-title {
+    span {
+      color: var(--pgn-wgu-color-lake-800, var(--pgn-color-info-700));
+      line-height: 1.5833;
+    }
+
+    margin-bottom: var(--pgn-spacing-spacer-4);
+  }
+
+  .external-resource-card {
+    &.first-card,
+    &.middle-card {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &.last-card,
+    &.middle-card {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}

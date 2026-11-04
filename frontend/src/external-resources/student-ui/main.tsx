@@ -3,14 +3,15 @@ import {
   type XBlockConfig,
   type XBlockRuntime,
 } from '@opencraft/xblock-react-utils';
-import type { Data } from '../apiTypes.ts';
+import { App, type StudentData } from './App.tsx';
+import styles from './main.scss?inline';
 
 export const renderBlock = (
   runtime: XBlockRuntime,
   element: Element,
-  context: { data: Data & { readResources: string[] }; config: XBlockConfig },
+  context: { data: StudentData; config: XBlockConfig },
 ) => {
-  createXBlockRoot({ runtime, element, config: context.config })(
-    <h2>{context.data.displayName}</h2>,
+  createXBlockRoot({ runtime, element, config: context.config, styles })(
+    <App data={context.data} />,
   );
 };

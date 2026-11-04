@@ -18,6 +18,8 @@ from exemplar_common.xblock_config import get_xblock_config, XBlockView
 logger = logging.getLogger(__name__)
 resource_loader = ResourceLoader(__name__)
 
+MATERIAL_ICONS_URL = "https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+
 DEFAULT_RESOURCES = [
     Resource(
         id="example-article",
@@ -88,6 +90,7 @@ class ExternalResourcesXBlock(XBlock):
         """
         html = resource_loader.load_unicode("static/html/external_resources.html")
         frag = Fragment(html)
+        frag.add_resource_url(MATERIAL_ICONS_URL, "text/css", "head")
 
         frag.add_javascript(resource_loader.load_unicode("static/js/entrypoint.js"))
         view = XBlockView.STUDENT
@@ -129,6 +132,7 @@ class ExternalResourcesXBlock(XBlock):
             "static/html/external_resources_editor.html"
         )
         frag = Fragment(html)
+        frag.add_resource_url(MATERIAL_ICONS_URL, "text/css", "head")
         frag.add_css(resource_loader.load_unicode("static/css/studio.css"))
         frag.add_javascript(resource_loader.load_unicode("static/js/entrypoint.js"))
 

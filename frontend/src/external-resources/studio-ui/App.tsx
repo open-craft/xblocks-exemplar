@@ -5,7 +5,7 @@ import type { Data } from "../apiTypes";
 import { EmptyState } from "./components/EmptyState";
 import { Plus } from "@openedx/paragon/icons";
 import { createEmptyResource, ResourceForm } from "./components/ResourceForm";
-import { ResourceCard } from "./components/ResourceCard";
+import { ResourceCard } from "../common/ResourceCard";
 
 type AppProps = {
   initialData: Data;
@@ -18,7 +18,7 @@ export const App = ({ initialData, onSave, onCancel }: AppProps) => {
   const [isShowForm, showForm, hideForm] = useToggle(false);
 
   return (
-    <div className="external-resources-block-editor editor-with-buttons bg-light-200">
+    <div className="external-resources-xblock-editor editor-with-buttons bg-light-200">
       <div className="wrapper-comp-settings is-active external-resources-editor-body p-4">
         {data.resources.length < 0 ? (
           <EmptyState />
