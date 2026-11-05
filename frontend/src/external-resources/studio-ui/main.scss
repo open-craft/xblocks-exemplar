@@ -1,6 +1,9 @@
 @import '../../studio';
 @import '../common/materialIcons';
 @import '../common/ResourceCard';
+@import '../common/IconThumbnail';
+@import './components/ContentTypeSelect';
+@import './components/ThumbnailSelect';
 
 // Hide the "close" button at the bottom of the editor modal.
 // We want our own save and cancel buttons.

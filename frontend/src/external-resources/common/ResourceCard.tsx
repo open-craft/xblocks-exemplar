@@ -2,27 +2,8 @@ import type { ReactElement } from "react";
 import { Card, Stack } from "@openedx/paragon";
 
 import { FileType, type Resource } from "@/external-resources/apiTypes";
-
-export const FILE_TYPE_LABELS: Record<Exclude<FileType, FileType.CUSTOM>, string> = {
-  [FileType.ARTICLE]: 'Articles',
-  [FileType.VIDEO]: 'Video',
-  [FileType.PDF]: 'PDF',
-  [FileType.TEXTBOOK]: 'Textbook / Book',
-  [FileType.VIRTUAL_MACHINE]: 'Virtual machines',
-  [FileType.INTERACTIVE_ACTIVITY]: 'Interactive activities',
-  [FileType.WGU_LIBRARY]: 'WGU Library',
-};
-
-export const FILE_TYPE_ICONS: Record<FileType, string> = {
-  [FileType.ARTICLE]: 'article',
-  [FileType.VIDEO]: 'smart_display',
-  [FileType.PDF]: 'picture_as_pdf',
-  [FileType.TEXTBOOK]: 'menu_book',
-  [FileType.VIRTUAL_MACHINE]: 'laptop',
-  [FileType.INTERACTIVE_ACTIVITY]: 'touch_app',
-  [FileType.WGU_LIBRARY]: 'local_library',
-  [FileType.CUSTOM]: 'description',
-};
+import { IconThumbnail } from "./IconThumbnail";
+import { FILE_TYPE_ICONS, FILE_TYPE_LABELS } from "./fileTypes";
 
 export interface ResourceCardProps {
   resource: Resource;
@@ -54,16 +35,7 @@ export const ResourceCard = ({
             src={resource.thumbnailUrl}
             srcAlt={resource.thumbnailAltText}
           />
-        ) :
-        (
-          <Card.Section className="card-icon-section">
-            <div className="card-icon rounded h-100 d-flex align-items-center justify-content-center">
-              <span className="material-icons-outlined" aria-hidden="true">
-                {iconName}
-              </span>
-            </div>
-          </Card.Section>
-        )
+        ) : ( <IconThumbnail iconName={iconName} /> )
       }
       <Card.Body>
         <Card.Section>

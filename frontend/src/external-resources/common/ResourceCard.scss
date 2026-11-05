@@ -26,17 +26,4 @@
     font-weight: var(--pgn-typography-font-weight-bold);
     line-height: 1.6;
   }
-
-  .card-icon-section {
-    &.pgn__card-section {
-      padding: 0;
-    }
-    
-    .card-icon {
-      width: 102px;
-      background-color: var(--pgn-wgu-color-lake-50, var(--pgn-color-secondary-200));
-      color: var(--pgn-wgu-color-blue-muted, var(--pgn-color-info-400));
-    }
-  }
-  
 }
