@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { ActionRow, Button, Stack, Sticky, useToggle } from "@openedx/paragon";
 
-import type { Data } from "../apiTypes";
+import type { Data, Resource } from "../apiTypes";
 import { Plus } from "@openedx/paragon/icons";
 import { createEmptyResource, ResourceForm } from "./components/ResourceForm";
 import { ResourceCard } from "../common/ResourceCard";
+import { ResourceActions } from "./components/ResourceActions";
+import { DeleteResourceModal } from "./components/DeleteResourceModal";
+import { SortableResource } from "./components/SortableResource";
+import { DragDropProvider } from "@dnd-kit/react";
+import { move } from "@dnd-kit/helpers";
 
 type AppProps = {
   initialData: Data;
@@ -14,7 +19,21 @@ type AppProps = {
 
 export const App = ({ initialData, onSave, onCancel }: AppProps) => {
   const [data, setData] = useState(initialData);
-  const [isShowForm, showForm, hideForm] = useToggle(false);
+  const [addNewFormIsShow, showAddNewForm, hideAddNewForm] = useToggle(false);
+  const [editFormIsShow, showEditForm, hideEditForm] = useToggle(false);
+  const [editingResourceId, setEditingResourceId] = useState<string | undefined>();
+  const [resourceToDelete, setResourceToDelete] = useState<Resource | undefined>();
+
+  const deleteResource = (resource: Resource) => {
+    setData((current) => ({
+      ...current,
+      resources: current.resources.filter((r) => r.id !== resource.id),
+    }));
+    setResourceToDelete(undefined);
+    if (editingResourceId === resource.id) {
+      hideEditForm();
+    }
+  };
 
   return (
     <div className="external-resources-xblock-editor editor-with-buttons bg-light-200">
@@ -27,31 +46,82 @@ export const App = ({ initialData, onSave, onCancel }: AppProps) => {
             Learners see resources in the order they're added and can mark each as read.
           </p>
         </div>
-        <Stack gap={2}>
-          {
-            data.resources.map((resource) => (
-              <ResourceCard
-                key={resource.id}
-                resource={resource}
-              />
-            ))
+        <DragDropProvider
+          onDragOver={(event) =>
+            setData((current) => ({
+              ...current,
+              resources: move(current.resources, event),
+            }))
           }
-        </Stack>
-        {isShowForm ? (
+        >
+          <Stack gap={2}>
+            {
+              data.resources.map((resource, index) => (
+                editFormIsShow && editingResourceId === resource.id ? (
+                  <ResourceForm 
+                    key={resource.id}
+                    initialResource={resource}
+                    onCancel={hideEditForm}
+                    onSave={((resource) => {
+                      setData((current) => ({
+                        ...current,
+                        resources: current.resources.map((r) =>
+                          r.id === resource.id ? resource : r,
+                        ),
+                      }));
+                      hideEditForm();
+                    })}
+                    onDelete={() => setResourceToDelete(resource)}
+                  />
+                ) : (
+                  <SortableResource
+                    key={resource.id}
+                    id={resource.id}
+                    index={index}
+                    disabled={editFormIsShow}
+                  >
+                    {(dragHandleRef) => (
+                      <ResourceCard
+                        resource={resource}
+                        actions={(
+                          <ResourceActions
+                            onDelete={() => setResourceToDelete(resource)}
+                            onEdit={() => {
+                              setEditingResourceId(resource.id);
+                              showEditForm();
+                            }}
+                            disableEdit={editFormIsShow}
+                            dragHandleRef={dragHandleRef}
+                          />
+                        )}
+                      />
+                    )}
+                  </SortableResource>
+                )
+              ))
+            }
+          </Stack>
+        </DragDropProvider>
+        <DeleteResourceModal
+          resource={resourceToDelete}
+          onConfirm={deleteResource}
+          onClose={() => setResourceToDelete(undefined)}
+        />
+        {addNewFormIsShow ? (
           <ResourceForm
             initialResource={createEmptyResource()}
-            onCancel={hideForm}
+            onCancel={hideAddNewForm}
             onSave={((resource) => {
               setData((current) => ({
                 ...current,
                 resources: [...current.resources, resource],
               }));
-              hideForm();
+              hideAddNewForm();
             })}
             isNewResource
           />   
         ) : (
-          <Button variant="outline-primary" iconBefore={Plus} onClick={showForm}>
+          <Button variant="outline-primary" iconBefore={Plus} onClick={showAddNewForm}>
             Add resource link
           </Button>
         )}

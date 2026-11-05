@@ -54,9 +54,10 @@ const validateResource = (resource: Resource): ResourceErrors => {
 
 export interface ResourceFormProps {
   initialResource: Resource;
-  isNewResource: boolean;
+  isNewResource?: boolean;
   onCancel: () => void;
   onSave: (resource: Resource) => void;
+  onDelete?: () => void;
 }
 
 export const ResourceForm = ({
@@ -64,6 +65,7 @@ export const ResourceForm = ({
   isNewResource = false,
   onCancel,
   onSave,
+  onDelete,
 }: ResourceFormProps) => {
   const [resource, setResource] = useState(initialResource);
   // Errors are shown after the first save attempt, and then update as the author types.
@@ -108,13 +110,15 @@ export const ResourceForm = ({
   return (
     <Container>
       <div className="d-flex w-100 justify-content-between">
-        <span className="h3 text-primary-500">Add resource1</span>
+        <span className="h3 text-primary-500">
+          {isNewResource ? "Add resource" : "Edit resource"}
+        </span>
         {!isNewResource && (
           <IconButton
             variant="primary"
             src={DeleteOutline}
-            alt={isNewResource ? "Cancel" : "Delete"}
-            onClick={onCancel}
+            alt={"Delete"}
+            onClick={onDelete}
           />
         )}
       </div>
