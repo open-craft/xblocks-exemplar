@@ -1687,7 +1687,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 	})
 }), Zr = ({ outcome: e, scenarios: t, selectedOptions: n, onRestart: r, onExit: i, imageURL: o }) => {
 	let s = $().width || window.innerWidth, c = "desktop";
-	return s < j.extraSmall.maxWidth && (c = "mobile"), /* @__PURE__ */ (0, Q.jsxs)("div", {
+	return s < j.extraSmall.maxWidth ? c = "mobile" : s < j.large.maxWidth && (c = "tablet"), /* @__PURE__ */ (0, Q.jsxs)("div", {
 		className: "d-flex flex-grow-1 flex-wrap",
 		children: [/* @__PURE__ */ (0, Q.jsxs)("div", {
 			className: "p-4-5 bg-interact-default",

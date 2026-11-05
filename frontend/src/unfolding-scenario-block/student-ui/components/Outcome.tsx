@@ -24,9 +24,11 @@ export const OutcomeComponent = ({
   const windowSize = useWindowSize();
   const width = windowSize.width || window.innerWidth;
 
-  let variant: 'mobile' | 'desktop' = 'desktop';
+  let variant: 'mobile' | 'tablet' | 'desktop' = 'desktop';
   if (width < breakpoints.extraSmall.maxWidth!) {
     variant = 'mobile';
+  } else if (width < breakpoints.large.maxWidth!) {
+    variant = 'tablet';
   }
 
   return (
