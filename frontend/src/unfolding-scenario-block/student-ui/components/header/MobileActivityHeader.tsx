@@ -9,7 +9,7 @@ export const MobileActivityHeader = ({
   totalScenarios,
 }: Omit<ActivityHeaderProps, 'onReset'>) => {
   return (
-    <div className="sticky-top d-flex mx-2 mt-4 pb-2 bg-interact-default">
+    <div className="sticky-top d-flex mx-2 pt-4 pb-2 bg-interact-default">
       <Container fluid className="d-flex align-items-center">
         <ProgressCircle
           current={Math.min(activeScenarioIndex + 1, totalScenarios)}
