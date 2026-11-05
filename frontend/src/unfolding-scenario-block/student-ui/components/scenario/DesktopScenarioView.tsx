@@ -2,7 +2,7 @@ import { Icon, IconButton, Button } from '@openedx/paragon';
 import { ArrowOutward, KeyboardReturn } from '@openedx/paragon/icons';
 import { OptionComponent } from './OptionComponent';
 import { type Scenario } from '@/unfolding-scenario-block/apiTypes';
-import { OptionFeedback } from './OptionFeedback';
+import { OptionFeedbackContent } from './OptionFeedback';
 
 interface DesktopScenarioViewProps {
   scenario: Scenario;
@@ -95,7 +95,9 @@ export const DesktopScenarioView = ({
           className={`w-50 h-100 p-6 position-absolute d-flex align-items-center ${activeOptionIndex !== null ? 'active' : ''} options-pane options-pane-3`}
         >
           {activeOptionIndex !== null ? (
-            <OptionFeedback option={scenario.options[activeOptionIndex]} />
+            <OptionFeedbackContent
+              option={scenario.options[activeOptionIndex]}
+            />
           ) : null}
         </div>
       </div>

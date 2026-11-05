@@ -41,6 +41,7 @@ export const ResponsiveScenarioView = ({
   if (width < breakpoints.extraSmall.maxWidth!) {
     return (
       <MobileScenarioView
+        interactionType={interactionType}
         scenario={scenario}
         activeOptionIndex={activeOptionIndex}
         preSelectedOptions={preSelectedOptions}
@@ -60,6 +61,7 @@ export const ResponsiveScenarioView = ({
   } else if (width < breakpoints.large.maxWidth!) {
     return (
       <TabletScenarioView
+        interactionType={interactionType}
         scenario={scenario}
         activeOptionIndex={activeOptionIndex}
         preSelectedOptions={preSelectedOptions}

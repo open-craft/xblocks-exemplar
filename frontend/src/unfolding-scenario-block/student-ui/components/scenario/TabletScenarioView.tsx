@@ -1,10 +1,14 @@
-import { Icon, IconButton, Button } from '@openedx/paragon';
-import { ArrowOutward, KeyboardReturn } from '@openedx/paragon/icons';
+import { Icon, Button } from '@openedx/paragon';
+import { ArrowOutward } from '@openedx/paragon/icons';
 import { OptionComponent } from './OptionComponent';
-import { type Scenario } from '@/unfolding-scenario-block/apiTypes';
+import {
+  type InteractionType,
+  type Scenario,
+} from '@/unfolding-scenario-block/apiTypes';
 import { OptionFeedback } from './OptionFeedback';
 
 interface TabletScenarioViewProps {
+  interactionType: InteractionType;
   scenario: Scenario;
   activeOptionIndex: number | null;
   preSelectedOptions: Set<number>;
@@ -14,6 +18,7 @@ interface TabletScenarioViewProps {
 }
 
 export const TabletScenarioView = ({
+  interactionType,
   scenario,
   activeOptionIndex,
   preSelectedOptions,
@@ -63,32 +68,43 @@ export const TabletScenarioView = ({
             ))}
           </div>
         </div>
-        <div className="d-flex justify-content-end">
-          <Button
-            variant="unfolding-scenario-action"
-            className="rounded-pill"
-            disabled={!isContinueEnabled}
-            onClick={onContinue}
-          >
-            Continue
-          </Button>
-        </div>
+        {interactionType != 'SelectOne' && (
+          <div className="d-flex justify-content-end">
+            <Button
+              variant="unfolding-scenario-action"
+              className="rounded-pill"
+              disabled={!isContinueEnabled}
+              onClick={onContinue}
+            >
+              Continue
+            </Button>
+          </div>
+        )}
       </div>
       <div
         className={`w-100 h-100 position-absolute d-flex flex-column justify-content-center p-4-5 bg-interact-raised ${activeOptionIndex !== null ? 'active' : ''} tablet-options-pane tablet-options-pane-2`}
       >
         {activeOptionIndex !== null && (
           <>
-            <p className="text-interact-headings font-size-md font-weight-bold">
-              {scenario.options[activeOptionIndex].value}
-            </p>
-            <OptionFeedback option={scenario.options[activeOptionIndex]} />
-            <IconButton
-              className="text-icon-action-sec-neutral"
-              src={KeyboardReturn}
-              alt="Return"
-              onClick={() => onSelectOption(null)}
+            <OptionFeedback
+              option={scenario.options[activeOptionIndex]}
+              interactionType={interactionType}
+              isContinueEnabled={isContinueEnabled}
+              onContinue={onContinue}
+              onReturn={() => onSelectOption(null)}
             />
+            {interactionType == 'SelectOne' && (
+              <div className="d-flex justify-content-end">
+                <Button
+                  variant="unfolding-scenario-action"
+                  className="rounded-pill"
+                  disabled={!isContinueEnabled}
+                  onClick={onContinue}
+                >
+                  Continue
+                </Button>
+              </div>
+            )}
           </>
         )}
       </div>
