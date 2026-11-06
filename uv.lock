@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.11.8"
 resolution-markers = [
     "python_full_version >= '3.13'",
@@ -384,7 +384,7 @@ wheels = [
 
 [[package]]
 name = "exemplar-blocks"
-version = "0.13.0"
+version = "0.13.1"
 source = { editable = "." }
 dependencies = [
     { name = "nh3" },

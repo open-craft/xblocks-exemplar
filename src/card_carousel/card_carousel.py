@@ -247,6 +247,9 @@ class CardCarouselXBlock(XBlock, XBlockWithSettingsMixin):
         xblock_body["content_type"] = "Card Carousel"
         return xblock_body
 
+    # Alias needed for client's "Data Bricks" indexer project.
+    student_view_data = index_dictionary
+
     @staticmethod
     def workbench_scenarios():
         """A canned scenario for display in the workbench."""
