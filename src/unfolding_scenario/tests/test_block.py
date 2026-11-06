@@ -181,6 +181,13 @@ def test_index_dictionary():
     assert "Outcome" in content
 
 
+def test_student_view_data():
+    """Test that the index_dictionary alias works."""
+    block = make_block(scenario_data=VALID_DATA)
+    result = block.student_view_data()
+    assert result["content_type"] == "Unfolding Scenario"
+
+
 def test_index_dictionary_malformed_content():
     """Malformed data is ignored rather than breaking indexing."""
     block = make_block(scenario_data={"invalid": "data"})

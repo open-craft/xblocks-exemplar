@@ -123,6 +123,9 @@ class KeypointXBlock(XBlock):
         xblock_body["content_type"] = "Key Points"
         return xblock_body
 
+    # Alias needed for client's "Data Bricks" indexer project.
+    student_view_data = index_dictionary
+
     def studio_view(self, context=None):
         """
         The studio view for the XBlock, which loads a component to edit and generate the data.
