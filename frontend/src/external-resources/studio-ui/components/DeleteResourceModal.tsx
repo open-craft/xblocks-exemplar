@@ -1,5 +1,5 @@
-import { ActionRow, AlertModal, Button } from "@openedx/paragon";
-import type { Resource } from "@/external-resources/apiTypes";
+import { ActionRow, AlertModal, Button } from '@openedx/paragon';
+import type { Resource } from '@/external-resources/apiTypes';
 
 export interface DeleteResourceModalProps {
   resource?: Resource;
@@ -19,19 +19,23 @@ export const DeleteResourceModal = ({
     title="Delete resource?"
     isOpen={resource !== undefined}
     onClose={onClose}
-    footerNode={(
+    footerNode={
       <ActionRow>
         <Button variant="tertiary" onClick={onClose}>
           Cancel
         </Button>
-        <Button variant="primary" onClick={() => resource && onConfirm(resource)}>
+        <Button
+          variant="primary"
+          onClick={() => resource && onConfirm(resource)}
+        >
           Delete resource
         </Button>
       </ActionRow>
-    )}
+    }
   >
     <p>
-      “{resource?.title}” will be permanently deleted. This action cannot be undone.
+      “{resource?.title}” will be permanently deleted. This action cannot be
+      undone.
     </p>
   </AlertModal>
 );

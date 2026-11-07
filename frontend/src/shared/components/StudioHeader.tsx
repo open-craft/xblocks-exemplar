@@ -10,9 +10,9 @@ export interface StudioHeaderProps {
   title: string;
   /** Called with the updated name whenever the user edits the title. */
   onTitleChange: (title: string) => void;
-  /** Key of the currently active tab. */
-  activeTab: string;
-  /** Tabs to render in the navigation, in display order. */
+  /** Key of the currently active tab. Not needed without tabs. */
+  activeTab?: string;
+  /** Tabs to render in the navigation, in display order. Pass `[]` for no tabs. */
   tabs?: StudioTab[];
 }
 
@@ -61,25 +61,27 @@ export default function StudioHeader({
           )}
         </ActionRow>
         <ActionRow.Spacer />
-        <Nav
-          role="tablist"
-          variant="button-group"
-          activeKey={activeTab}
-          className="studio-header-tabs-nav pgn__tabs"
-          aria-label="Editor Sections"
-        >
-          {tabs.map(({ key, label }) => (
-            <Nav.Link
-              key={key}
-              as="button"
-              type="button"
-              eventKey={key}
-              tabIndex={activeTab === key ? 0 : -1}
-            >
-              {label}
-            </Nav.Link>
-          ))}
-        </Nav>
+        {tabs.length > 0 && (
+          <Nav
+            role="tablist"
+            variant="button-group"
+            activeKey={activeTab}
+            className="studio-header-tabs-nav pgn__tabs"
+            aria-label="Editor Sections"
+          >
+            {tabs.map(({ key, label }) => (
+              <Nav.Link
+                key={key}
+                as="button"
+                type="button"
+                eventKey={key}
+                tabIndex={activeTab === key ? 0 : -1}
+              >
+                {label}
+              </Nav.Link>
+            ))}
+          </Nav>
+        )}
       </div>
     </ModalDialog.Header>
   );

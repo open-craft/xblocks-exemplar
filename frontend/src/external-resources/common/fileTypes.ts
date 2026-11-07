@@ -1,6 +1,9 @@
-import { FileType } from "@/external-resources/apiTypes";
+import { FileType } from '@/external-resources/apiTypes';
 
-export const FILE_TYPE_LABELS: Record<Exclude<FileType, FileType.CUSTOM>, string> = {
+export const FILE_TYPE_LABELS: Record<
+  Exclude<FileType, FileType.CUSTOM>,
+  string
+> = {
   [FileType.ARTICLE]: 'Articles',
   [FileType.VIDEO]: 'Video',
   [FileType.PDF]: 'PDF',

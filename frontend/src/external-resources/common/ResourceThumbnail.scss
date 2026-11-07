@@ -1,0 +1,27 @@
+.external-resource-thumbnail {
+  flex-shrink: 0;
+  width: 102px;
+  height: 102px;
+  overflow: hidden;
+
+  .external-resource-icon-container,
+  .external-resource-icon {
+    width: 100%;
+    height: 100%;
+  }
+
+  .external-resource-icon {
+    background-color: var(
+      --pgn-wgu-color-lake-50,
+      var(--pgn-color-secondary-200)
+    );
+    color: var(--pgn-wgu-color-blue-muted, var(--pgn-color-info-400));
+  }
+
+  .external-resource-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

@@ -35,8 +35,8 @@ export const App = ({ data }: AppProps) => {
 
   return (
     <div className="xblock-external-resources">
-      <div className='external-resources-title'>
-        <span className='h4'>{data.displayName}</span>
+      <div className="external-resources-title">
+        <span className="h4">{data.displayName}</span>
       </div>
       {data.resources.map((resource, index) => {
         let className: string | undefined = undefined;
@@ -45,26 +45,31 @@ export const App = ({ data }: AppProps) => {
             className = 'first-card';
           } else if (index == data.resources.length - 1) {
             className = 'last-card';
-          }
-          else {
+          } else {
             className = 'middle-card';
           }
         }
-        
+
         return (
           <ResourceCard
             key={resource.id}
             resource={resource}
-            actions={(
-              <Form.Checkbox
-                checked={readResources.includes(resource.id)}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setRead(resource.id, e.target.checked)
-                }
-                aria-label={`Mark "${resource.title}" as read`}
-                controlClassName="rounded"
-              />
-            )}
+            actions={
+              <div className="read-checkbox">
+                <Form.Checkbox
+                  checked={readResources.includes(resource.id)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setRead(resource.id, e.target.checked)
+                  }
+                  aria-label={`Mark "${resource.title}" as read`}
+                  controlClassName="rounded"
+                />
+                {/* Visual only: the checkbox's aria-label already says it. */}
+                <span className="read-checkbox-tooltip" aria-hidden="true">
+                  Mark as read
+                </span>
+              </div>
+            }
             className={className}
             isClickable
           />

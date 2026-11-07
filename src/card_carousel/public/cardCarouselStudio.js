@@ -12742,7 +12742,7 @@ function Uy({ title: e, onTitleChange: t, activeTab: n, tabs: r = Hy }) {
 					})
 				}) }),
 				/* @__PURE__ */ (0, F.jsx)(Oe.Spacer, {}),
-				/* @__PURE__ */ (0, F.jsx)(gu, {
+				r.length > 0 && /* @__PURE__ */ (0, F.jsx)(gu, {
 					role: "tablist",
 					variant: "button-group",
 					activeKey: n,

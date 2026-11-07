@@ -1,6 +1,6 @@
 @import '../common/materialIcons';
 @import '../common/ResourceCard';
-@import '../common/IconThumbnail';
+@import '../common/ResourceThumbnail';
 
 .xblock-external-resources {
   .external-resources-title {
@@ -24,5 +24,42 @@
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
+  }
+}
+
+// "Mark as read" tooltip, shown on the right while hovering an unchecked checkbox.
+// Made with CSS instead of Paragon's OverlayTrigger: Paragon renders tooltips in
+// document.body, outside the shadow DOM, where these styles don't reach.
+.read-checkbox {
+  position: relative;
+
+  .read-checkbox-tooltip {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: calc(100% + var(--pgn-spacing-spacer-2));
+    z-index: 10;
+    transform: translateY(-50%);
+    padding: var(--pgn-spacing-spacer-2) var(--pgn-spacing-spacer-3);
+    border-radius: var(--pgn-size-border-radius-base);
+    background-color: var(--pgn-wgu-color-blue-muted, #3874bc);
+    color: var(--pgn-color-white);
+    font-size: var(--pgn-typography-font-size-sm);
+    white-space: nowrap;
+
+    // Arrow pointing to the checkbox.
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-right-color: var(--pgn-wgu-color-blue-muted, #3874bc);
+    }
+  }
+
+  &:hover:has(input:not(:checked)) .read-checkbox-tooltip {
+    display: block;
   }
 }

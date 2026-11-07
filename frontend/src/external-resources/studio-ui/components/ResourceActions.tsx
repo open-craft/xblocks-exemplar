@@ -1,6 +1,10 @@
-import { ActionRow, IconButton } from "@openedx/paragon";
-import { DeleteOutline, DragIndicator, EditOutline } from "@openedx/paragon/icons";
-import type { DragHandleRef } from "./SortableResource";
+import { ActionRow, IconButton } from '@openedx/paragon';
+import {
+  DeleteOutline,
+  DragIndicator,
+  EditOutline,
+} from '@openedx/paragon/icons';
+import type { DragHandleRef } from './SortableResource';
 
 export interface ResourceActionsProps {
   onDelete: () => void;
@@ -23,11 +27,7 @@ export const ResourceActions = ({
         onClick={onEdit}
         disabled={disableEdit}
       />
-      <IconButton
-        src={DeleteOutline}
-        alt="Delete"
-        onClick={onDelete}
-      />
+      <IconButton src={DeleteOutline} alt="Delete" onClick={onDelete} />
       {dragHandleRef && (
         <IconButton
           ref={dragHandleRef}
