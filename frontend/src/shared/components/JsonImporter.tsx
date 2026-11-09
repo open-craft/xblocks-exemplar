@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Dropzone from '@openedx/paragon/dist/Dropzone';
+import Button from '@openedx/paragon/dist/Button';
 import Form from '@openedx/paragon/dist/Form';
 import { Alert } from '@openedx/paragon';
-import type { XBlockRuntime } from '@opencraft/xblock-react-utils';
+import { RuntimeContext } from '@opencraft/xblock-react-utils';
 
 interface JsonIOTabContentProps {
-  runtime: XBlockRuntime;
-  saveUrl: string;
+  liveData: unknown;
 }
 
 /**
@@ -51,11 +51,10 @@ function ValidationError({ error }: { error: ValidationIssues }) {
   );
 }
 
-export default function JsonImporter({
-  runtime,
-  saveUrl,
-}: JsonIOTabContentProps) {
+export default function JsonImporter({ liveData }: JsonIOTabContentProps) {
   const [uploadError, setUploadError] = useState<UploadError | null>(null);
+  const { runtime, element } = useContext(RuntimeContext);
+
   async function validateJson(file: File): Promise<string | null> {
     return new Promise((resolve) => {
       const reader = new FileReader();
@@ -77,6 +76,7 @@ export default function JsonImporter({
    * modal instead of relying on the runtime's error presentation.
    */
   const saveJson = ({ fileData, handleError }: ProcessUploadParam) => {
+    const saveUrl = runtime.handlerUrl(element, 'studio_save');
     runtime.notify('save', { state: 'start' });
     setUploadError(null);
     const blob = fileData.get('file');
@@ -90,6 +90,24 @@ export default function JsonImporter({
           setUploadError(e.responseJSON?.error ?? e.responseText);
         });
     });
+  };
+
+  /**
+   * Triggers the download of the "liveData" passed to the component by using
+   * a temporary link node.
+   */
+  const exportJson = (jsonData: unknown) => {
+    const blob = new Blob([JSON.stringify(jsonData, null, 2)], {
+      type: 'application/json',
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'data.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 100);
   };
 
   return (
@@ -117,12 +135,13 @@ export default function JsonImporter({
       <div className="mt-3">
         <h4>JSON Templates</h4>
         <p>
-          <a
-            className="m-2 btn btn-secondary"
-            href={saveUrl.replace('studio_save', 'json_data?type=data')}
+          <Button
+            variant="secondary"
+            className="m-2"
+            onClick={() => exportJson(liveData)}
           >
             Download component data
-          </a>
+          </Button>
           <br />
           <small>
             The component data files contain the data of the current component
@@ -132,7 +151,7 @@ export default function JsonImporter({
         <p>
           <a
             className="m-2 btn btn-secondary"
-            href={saveUrl.replace('studio_save', 'json_data?type=schema')}
+            href={runtime.handlerUrl(element, 'json_schema')}
           >
             Download Schema
           </a>

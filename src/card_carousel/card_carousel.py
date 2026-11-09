@@ -15,6 +15,7 @@ from xblock.core import XBlock
 from xblock.exceptions import JsonHandlerError
 from xblock.fields import Scope, String, List, Boolean
 from xblock.utils.resources import ResourceLoader
+from xblock.utils.settings import XBlockWithSettingsMixin
 
 from exemplar_common.xblock_config import get_xblock_config, XBlockView
 from exemplar_common.card_types import (
@@ -51,7 +52,8 @@ DEFAULT_CARD = CarouselCardData(
 )
 
 
-class CardCarouselXBlock(XBlock):
+@XBlock.needs("settings")
+class CardCarouselXBlock(XBlock, XBlockWithSettingsMixin):
     """
     The CardCarouselXblock presents content as a list of "cards" in a carousel.
 
@@ -65,6 +67,7 @@ class CardCarouselXBlock(XBlock):
     """
 
     has_author_view = True
+    block_settings_key = "card_carousel"
 
     display_name = String(default="Card Carousel")
     # Legacy field: keep the original scope/default for stored courses and OLX.
@@ -179,16 +182,11 @@ class CardCarouselXBlock(XBlock):
         return frag
 
     @XBlock.handler
-    def json_data(self, request, suffix=""):
+    def json_schema(self, request, suffix=""):
         """Return the JSON data or schema of the Pydantic model as a file download."""
         res = Response()
-        data_type = request.GET.get("type", "data")
-        if data_type == "data":
-            res.json = self._card_view_data()
-            filename = "card-carousel-component.json"
-        else:
-            res.json = InitData.model_json_schema()
-            filename = "card-carousel-schema.json"
+        res.json = InitData.model_json_schema()
+        filename = "card-carousel-schema.json"
         res.content_disposition = f'attachment; filename="{filename}"'
         return res
 
@@ -248,6 +246,9 @@ class CardCarouselXBlock(XBlock):
             xblock_body["content"] = index_body
         xblock_body["content_type"] = "Card Carousel"
         return xblock_body
+
+    # Alias needed for client's "Data Bricks" indexer project.
+    student_view_data = index_dictionary
 
     @staticmethod
     def workbench_scenarios():

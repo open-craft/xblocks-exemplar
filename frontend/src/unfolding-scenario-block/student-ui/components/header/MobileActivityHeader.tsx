@@ -1,6 +1,6 @@
 import { Container } from '@openedx/paragon';
 import { type ActivityHeaderProps } from './header-common';
-import { ActivityCloseButton } from './ActivityCloseButton';
+import { ActivityCloseButton } from '../ActivityCloseButton';
 
 export const MobileActivityHeader = ({
   onClose,

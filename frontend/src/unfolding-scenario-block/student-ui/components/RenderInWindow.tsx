@@ -6,6 +6,7 @@ interface RenderInWindowProps {
   cssContent: string; // css content specific to this xblock, in addition to the theming css
   className: string;
   themeUrls: string[];
+  title: string;
   onClose: () => void; // called when the window itself is closed by the user
 }
 
@@ -15,6 +16,7 @@ export const RenderInWindow = ({
   className,
   cssContent,
   themeUrls,
+  title,
   onClose,
 }: RenderInWindowProps) => {
   const [container, setContainer] = useState<HTMLDivElement | null>(null);
@@ -43,6 +45,17 @@ export const RenderInWindow = ({
       newWindow.addEventListener('beforeunload', () => {
         onClose();
       });
+
+      // set the viewport config, especially so it scales properly on mobile
+      const metaViewport = newWindow.document.createElement('meta');
+      metaViewport.name = 'viewport';
+      metaViewport.content = 'width=device-width,initial-scale=1';
+      newWindow.document.head.appendChild(metaViewport);
+
+      // set a proper title for the new window
+      const titleEl = newWindow.document.createElement('title');
+      titleEl.textContent = title;
+      newWindow.document.head.appendChild(titleEl);
 
       // Inject the container and styles into the new window
       newWindow.document.body.appendChild(container);

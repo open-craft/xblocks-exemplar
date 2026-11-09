@@ -1,17 +1,17 @@
+import { useContext } from 'react';
 import { Button, ModalDialog, Stack } from '@openedx/paragon';
-import type { XBlockRuntime } from '@opencraft/xblock-react-utils';
+import { RuntimeContext } from '@opencraft/xblock-react-utils';
 
 interface ModalFooterProps {
-  runtime: XBlockRuntime;
   showingEditor: boolean;
   onContinue: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function ModalFooter({
-  runtime,
   showingEditor,
   onContinue,
 }: ModalFooterProps) {
+  const { runtime } = useContext(RuntimeContext);
   return (
     <ModalDialog.Footer className="border-top">
       <Stack direction="horizontal" gap={4}>

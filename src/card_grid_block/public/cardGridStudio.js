@@ -57117,7 +57117,8 @@ function zN({ enableCardOrientation: e = !1 }) {
 }
 //#endregion
 //#region src/card/common/studio-ui/ModalFooter.tsx
-function BN({ runtime: e, showingEditor: t, onContinue: n }) {
+function BN({ showingEditor: e, onContinue: t }) {
+	let { runtime: n } = (0, D.useContext)(p);
 	return /* @__PURE__ */ (0, Z.jsx)(af.Footer, {
 		className: "border-top",
 		children: /* @__PURE__ */ (0, Z.jsxs)(S, {
@@ -57126,10 +57127,10 @@ function BN({ runtime: e, showingEditor: t, onContinue: n }) {
 			children: [/* @__PURE__ */ (0, Z.jsx)(_, {
 				variant: "light",
 				className: "action-button",
-				onClick: () => e.notify("cancel", {}),
+				onClick: () => n.notify("cancel", {}),
 				type: "button",
 				children: "Cancel"
-			}), t ? /* @__PURE__ */ (0, Z.jsx)(_, {
+			}), e ? /* @__PURE__ */ (0, Z.jsx)(_, {
 				variant: "primary",
 				type: "submit",
 				className: "save-button",
@@ -57138,7 +57139,7 @@ function BN({ runtime: e, showingEditor: t, onContinue: n }) {
 				type: "button",
 				variant: "primary",
 				className: "save-button",
-				onClick: n,
+				onClick: t,
 				children: "Continue"
 			})]
 		})
@@ -57161,7 +57162,6 @@ function VN({ runtime: e, saveUrl: t, initData: n }) {
 		children: /* @__PURE__ */ (0, Z.jsx)(ly, { children: /* @__PURE__ */ (0, Z.jsxs)("div", {
 			className: "studio-ui card-grid-studio",
 			children: [r ? /* @__PURE__ */ (0, Z.jsx)(zN, {}) : /* @__PURE__ */ (0, Z.jsx)(qy, {}), /* @__PURE__ */ (0, Z.jsx)(BN, {
-				runtime: e,
 				showingEditor: r,
 				onContinue: (e) => {
 					e.preventDefault(), i(!0);

@@ -15,7 +15,6 @@ export const renderBlock = (
   context: { data: InitData; config: XBlockConfig },
 ) => {
   const container = getRoot(element);
-  const saveUrl = runtime.handlerUrl(element, 'studio_save');
 
   // The Modal Body has a hardcoded value of 435px in studio-main-v1.css
   // This effect updates that height to match make sure the full content is visible.
@@ -34,7 +33,7 @@ export const renderBlock = (
     styles,
   })(
     <XBlockConfigContext.Provider value={context.config}>
-      <StudioUI saveUrl={saveUrl} runtime={runtime} initData={context.data} />
+      <StudioUI initData={context.data} />
     </XBlockConfigContext.Provider>,
   );
 };

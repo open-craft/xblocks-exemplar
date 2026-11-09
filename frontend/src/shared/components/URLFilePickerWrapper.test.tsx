@@ -29,6 +29,7 @@ const renderComponent = (): RenderResult & { handleSetValue: Mock } => {
   const runtimeConfig: FilePickerConfig = {
     mfe_config_api: '',
     file_picker_url: 'http://file.picker.com/',
+    enable_json_editing: false,
   };
   const renderResult = render(
     <IntlProvider locale={'en'}>

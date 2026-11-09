@@ -1,6 +1,6 @@
-import { F as e, G as t, H as n, I as r, J as i, U as a, V as o, Y as s, Z as c, a as l, c as u, k as d, lt as f, n as p, o as m, s as h, st as g, t as _ } from "./Stack-CeJT3khC.js";
+import { F as e, G as t, H as n, I as r, Q as i, U as a, V as o, X as s, Y as c, a as l, c as u, ct as d, k as f, n as p, o as m, s as h, t as g, ut as _ } from "./Stack-BfrKfZaB.js";
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Badge.js
-var v = /* @__PURE__ */ f(a()), y = /* @__PURE__ */ f(g()), b = [
+var v = /* @__PURE__ */ _(a()), y = /* @__PURE__ */ _(d()), b = [
 	"bsPrefix",
 	"variant",
 	"pill",
@@ -13,7 +13,7 @@ var v = /* @__PURE__ */ f(a()), y = /* @__PURE__ */ f(g()), b = [
 S.displayName = "Badge", S.defaultProps = x;
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Row.js
-var C = /* @__PURE__ */ f(e()), w = [
+var C = /* @__PURE__ */ _(e()), w = [
 	"bsPrefix",
 	"className",
 	"noGutters",
@@ -658,7 +658,7 @@ W.propTypes = {
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Card/CardDeck.js
 var G = /* @__PURE__ */ y.forwardRef(({ className: e, children: t, columnSizes: n, hasInteractiveChildren: r, canScrollHorizontal: i, hasOverflowScrollItems: a, hasEqualColumnHeights: o }, s) => {
-	let c = (0, y.useMemo)(() => y.Children.map(t, (e) => /* @__PURE__ */ y.createElement(d, {
+	let c = (0, y.useMemo)(() => y.Children.map(t, (e) => /* @__PURE__ */ y.createElement(f, {
 		...n,
 		className: (0, v.default)("pgn__card-deck__card-item", { "pgn__card__disable-equal-column-heights": !o })
 	}, e)), [
@@ -782,21 +782,21 @@ var De = s({
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Card/CardCarousel/CardCarouselControls.js
 function Oe() {
-	let { isScrolledToStart: e, isScrolledToEnd: t, scrollToPrevious: n, scrollToNext: r } = (0, y.useContext)(K), i = c();
-	return e && t ? null : /* @__PURE__ */ y.createElement("div", { className: "pgn__card-carousel-controls" }, /* @__PURE__ */ y.createElement(_, {
+	let { isScrolledToStart: e, isScrolledToEnd: t, scrollToPrevious: n, scrollToNext: r } = (0, y.useContext)(K), a = i();
+	return e && t ? null : /* @__PURE__ */ y.createElement("div", { className: "pgn__card-carousel-controls" }, /* @__PURE__ */ y.createElement(g, {
 		direction: "horizontal",
 		gap: 1
 	}, /* @__PURE__ */ y.createElement(p, {
 		disabled: e,
 		src: te,
 		iconAs: m,
-		alt: i.formatMessage(De.scrollToPrevious),
+		alt: a.formatMessage(De.scrollToPrevious),
 		onClick: n
 	}), /* @__PURE__ */ y.createElement(p, {
 		disabled: t,
 		src: ne,
 		iconAs: m,
-		alt: i.formatMessage(De.scrollToNext),
+		alt: a.formatMessage(De.scrollToNext),
 		onClick: r
 	})));
 }
@@ -925,7 +925,7 @@ var Z = u(X, "Card", { muted: {
 Z.Status = W, Z.Header = B, Z.Divider = ye, Z.Section = V, Z.Footer = H, Z.ImageCap = U, Z.Context = R, Z.Body = P;
 //#endregion
 //#region src/card/common/student-ui/ContentHighlight.tsx
-var Q = i();
+var Q = c();
 function Ne({ title: e, subtitle: t, description: n, orientation: r }) {
 	return /* @__PURE__ */ (0, Q.jsxs)("div", {
 		className: `content-highlight ${r === "HORIZONTAL" ? "content-highlight--horizontal" : "content-highlight--vertical"}`,
@@ -968,7 +968,7 @@ function Pe({ items: e }) {
 		className: "rich-list",
 		children: e.map((t, n) => /* @__PURE__ */ (0, Q.jsxs)("div", {
 			className: "rich-list-item",
-			children: [/* @__PURE__ */ (0, Q.jsxs)(_, {
+			children: [/* @__PURE__ */ (0, Q.jsxs)(g, {
 				direction: "horizontal",
 				className: "rich-list-row",
 				children: [/* @__PURE__ */ (0, Q.jsx)($, { name: t.icon }), /* @__PURE__ */ (0, Q.jsxs)("div", {

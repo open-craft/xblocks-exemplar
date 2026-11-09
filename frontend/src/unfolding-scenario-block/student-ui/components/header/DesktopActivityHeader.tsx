@@ -1,33 +1,31 @@
 import { Row, Col, Container } from '@openedx/paragon';
 import { type ActivityHeaderProps } from './header-common';
 import { ScenarioStepper } from './ScenarioStepper';
-import { ActivityCloseButton } from './ActivityCloseButton';
+import { ActivityCloseButton } from '../ActivityCloseButton';
 
-export const TabletActivityHeader = ({
+export const DesktopActivityHeader = ({
   onClose,
   title,
   onReset,
   activeScenarioIndex,
   totalScenarios,
 }: ActivityHeaderProps) => (
-  <div className="sticky-top d-flex w-100 pb-2 bg-interact-default">
-    <Container className="mx-3" fluid>
-      <Row>
-        <Col className="d-flex align-items-center small-heading text-interact-headings">
+  <div className="sticky-top d-flex w-100 bg-interact-default">
+    <Container fluid>
+      <Row className="px-3">
+        <Col className="d-flex align-items-center mx-3 small-heading text-interact-headings">
           {title}
         </Col>
-        <Col className="d-flex justify-content-end align-items-center">
-          <ActivityCloseButton onClose={onClose} />
-        </Col>
-      </Row>
-      <Row>
         <Col className="d-flex justify-content-center">
           <ScenarioStepper
             onReset={onReset}
             index={activeScenarioIndex}
             total={totalScenarios}
-            className="d-flex w-100 p-3 rounded-lg"
+            className="d-inline-flex rounded-lg-bottom py-3 pl-2 pr-3"
           />
+        </Col>
+        <Col className="d-flex justify-content-end align-items-center mx-3">
+          <ActivityCloseButton onClose={onClose} />
         </Col>
       </Row>
     </Container>

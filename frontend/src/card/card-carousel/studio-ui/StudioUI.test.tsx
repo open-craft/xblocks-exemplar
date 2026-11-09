@@ -1,13 +1,17 @@
 import { render, screen } from '@opencraft/xblock-react-utils/testing';
 import {
+  RuntimeContext,
   saveStudioBlock,
   type XBlockRuntime,
 } from '@opencraft/xblock-react-utils';
+import type { ReactElement } from 'react';
 import userEvent from '@testing-library/user-event';
 import { within } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import StudioUI from './StudioUI';
 import type { InitData } from '@/card/card-carousel/types';
+import { XBlockConfigContext } from '@/lib/context';
+import type { XBlockConfig } from '@/types';
 
 vi.mock('@opencraft/xblock-react-utils', async (importOriginal) => {
   const actual =
@@ -15,12 +19,35 @@ vi.mock('@opencraft/xblock-react-utils', async (importOriginal) => {
   return { ...actual, saveStudioBlock: vi.fn() };
 });
 
-const mockRuntime: XBlockRuntime = { handlerUrl: vi.fn(), notify: vi.fn() };
+const mockRuntime: XBlockRuntime = {
+  handlerUrl: vi.fn(
+    (_element: Element | null, handler: string) => `/${handler}`,
+  ),
+  notify: vi.fn(),
+};
 
 const defaultInitData: InitData = {
   cards: [],
   displayName: 'Carousel Editor',
 };
+
+const defaultConfig = {
+  enable_json_editing: true,
+} as XBlockConfig;
+
+const renderWithConfig = (
+  ui: ReactElement,
+  config: XBlockConfig | null = defaultConfig,
+) =>
+  render(
+    <RuntimeContext.Provider
+      value={{ runtime: mockRuntime, element: document.createElement('div') }}
+    >
+      <XBlockConfigContext.Provider value={config}>
+        {ui}
+      </XBlockConfigContext.Provider>
+    </RuntimeContext.Provider>,
+  );
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -28,9 +55,7 @@ beforeEach(() => {
 
 describe('Studio UI', () => {
   it('shows the Content tab with the carousel editor by default', () => {
-    render(
-      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
-    );
+    renderWithConfig(<StudioUI initData={defaultInitData} />);
 
     expect(
       screen.getByRole('heading', { name: 'Editing: Carousel Editor' }),
@@ -53,9 +78,7 @@ describe('Studio UI', () => {
   });
 
   it('renders a filled, correctly labelled panel for every tab', () => {
-    render(
-      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
-    );
+    renderWithConfig(<StudioUI initData={defaultInitData} />);
 
     const panels = Array.from(
       document.querySelectorAll<HTMLElement>('[role="tabpanel"]'),
@@ -81,9 +104,7 @@ describe('Studio UI', () => {
 
   it('supports arrow-key navigation between tabs', async () => {
     const user = userEvent.setup();
-    render(
-      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
-    );
+    renderWithConfig(<StudioUI initData={defaultInitData} />);
 
     const contentTab = screen.getByRole('tab', { name: 'Content' });
     contentTab.focus();
@@ -96,9 +117,7 @@ describe('Studio UI', () => {
 
   it('shows the carousel settings in the Settings tab', async () => {
     const user = userEvent.setup();
-    render(
-      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
-    );
+    renderWithConfig(<StudioUI initData={defaultInitData} />);
 
     await user.click(screen.getByRole('tab', { name: 'Settings' }));
 
@@ -116,9 +135,7 @@ describe('Studio UI', () => {
 
   it('keeps display name changes in sync with the Settings tab', async () => {
     const user = userEvent.setup();
-    render(
-      <StudioUI runtime={mockRuntime} initData={defaultInitData} saveUrl="" />,
-    );
+    renderWithConfig(<StudioUI initData={defaultInitData} />);
 
     await user.click(screen.getByRole('button', { name: 'Edit display name' }));
     const titleInput = screen.getByRole('textbox', { name: 'Display name' });
@@ -133,10 +150,8 @@ describe('Studio UI', () => {
 
   it('adds new cards using the fixed horizontal default orientation', async () => {
     const user = userEvent.setup();
-    render(
+    renderWithConfig(
       <StudioUI
-        runtime={mockRuntime}
-        saveUrl=""
         initData={{
           displayName: 'Legacy',
           cards: [
@@ -174,10 +189,8 @@ describe('Studio UI', () => {
       orientation: 'VERTICAL' as const,
       secondaryContent: null,
     };
-    render(
+    renderWithConfig(
       <StudioUI
-        runtime={mockRuntime}
-        saveUrl="/save"
         initData={{
           displayName: 'Legacy',
           cards: [card],
@@ -187,7 +200,7 @@ describe('Studio UI', () => {
     await user.click(screen.getByRole('button', { name: 'Save' }));
     expect(saveStudioBlock).toHaveBeenCalledWith(
       expect.objectContaining({
-        saveUrl: '/save',
+        saveUrl: '/studio_save',
         data: {
           displayName: 'Legacy',
           cards: [card],
@@ -198,12 +211,27 @@ describe('Studio UI', () => {
   });
 
   it('gives the first placeholder card the fixed horizontal orientation', () => {
-    render(
-      <StudioUI runtime={mockRuntime} saveUrl="" initData={defaultInitData} />,
-    );
+    renderWithConfig(<StudioUI initData={defaultInitData} />);
     expect(screen.getByRole('button', { name: /Horizontal Card/ })).toHaveClass(
       'btn-outline-success',
     );
     expect(defaultInitData.cards).toEqual([]);
+  });
+
+  it('hides the JSON tab when JSON editing is disabled', () => {
+    renderWithConfig(<StudioUI initData={defaultInitData} />, {
+      enable_json_editing: false,
+    } as XBlockConfig);
+
+    expect(screen.getByRole('tab', { name: 'Content' })).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: 'Settings' })).toBeInTheDocument();
+    expect(screen.queryByRole('tab', { name: 'JSON' })).not.toBeInTheDocument();
+    expect(document.querySelectorAll('[role="tabpanel"]')).toHaveLength(2);
+  });
+
+  it('hides the JSON tab when no config is provided', () => {
+    renderWithConfig(<StudioUI initData={defaultInitData} />, null);
+
+    expect(screen.queryByRole('tab', { name: 'JSON' })).not.toBeInTheDocument();
   });
 });

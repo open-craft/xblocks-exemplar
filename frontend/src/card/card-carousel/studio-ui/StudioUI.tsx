@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { Form, Formik, useFormikContext } from 'formik';
 import {
   ModalDialog,
@@ -9,8 +9,9 @@ import {
 import { type InitData } from '@/card/card-carousel/types';
 import { newCard } from '@/card/common/utils';
 import {
+  RuntimeContext,
   saveStudioBlock,
-  type XBlockRuntime,
+  useHandlerUrl,
 } from '@opencraft/xblock-react-utils';
 import SettingsForm from '@/card/card-carousel/studio-ui/SettingsForm';
 import StudioHeader from '@/shared/components/StudioHeader';
@@ -18,22 +19,22 @@ import { EDITOR_TABS } from '@/shared/components/constants';
 import CarouselEditor from '@/card/common/studio-ui/CardListEditor';
 import ModalFooter from '@/card/common/studio-ui/ModalFooter';
 import JsonImporter from '@/shared/components/JsonImporter';
+import { type XBlockConfig } from '@/types';
+import { useXBlockConfig } from '@/lib/context';
 
 interface StudioUIProps {
-  saveUrl: string;
-  runtime: XBlockRuntime;
   initData: InitData;
 }
 
-interface StudioFormProps {
-  saveUrl: string;
-  runtime: XBlockRuntime;
-}
-
-function StudioForm({ saveUrl, runtime }: StudioFormProps) {
+function StudioForm() {
   const defaultTab = EDITOR_TABS[0].key;
   const [activeTab, setActiveTab] = useState<string>(defaultTab);
   const { values, setFieldValue } = useFormikContext<InitData>();
+  const config = useXBlockConfig<XBlockConfig>();
+  const enableJsonEditing = Boolean(config?.enable_json_editing);
+  const tabs = enableJsonEditing
+    ? EDITOR_TABS
+    : EDITOR_TABS.filter((t) => t.key !== 'json');
 
   return (
     <Form>
@@ -50,6 +51,7 @@ function StudioForm({ saveUrl, runtime }: StudioFormProps) {
             activeTab={activeTab}
             title={values.displayName}
             onTitleChange={(value) => setFieldValue('displayName', value)}
+            tabs={tabs}
           />
           <ModalDialog.Body>
             <TabContent className="card-carousel-studio-tab-content">
@@ -59,19 +61,23 @@ function StudioForm({ saveUrl, runtime }: StudioFormProps) {
               <TabPane eventKey="settings">
                 <SettingsForm />
               </TabPane>
-              <TabPane eventKey="json">
-                <JsonImporter saveUrl={saveUrl} runtime={runtime} />
-              </TabPane>
+              {enableJsonEditing && (
+                <TabPane eventKey="json">
+                  <JsonImporter liveData={values} />
+                </TabPane>
+              )}
             </TabContent>
           </ModalDialog.Body>
-          <ModalFooter runtime={runtime} showingEditor onContinue={() => {}} />
+          <ModalFooter showingEditor onContinue={() => {}} />
         </div>
       </TabContainer>
     </Form>
   );
 }
 
-function StudioUI({ runtime, saveUrl, initData }: StudioUIProps) {
+function StudioUI({ initData }: StudioUIProps) {
+  const { runtime } = useContext(RuntimeContext);
+  const saveUrl = useHandlerUrl('studio_save');
   const initialData = useMemo(
     () =>
       initData.cards.length
@@ -95,7 +101,7 @@ function StudioUI({ runtime, saveUrl, initData }: StudioUIProps) {
         });
       }}
     >
-      <StudioForm saveUrl={saveUrl} runtime={runtime} />
+      <StudioForm />
     </Formik>
   );
 }

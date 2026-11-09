@@ -23,11 +23,11 @@ VALID_DATA = {
             "instructionDescription": "Choose one of the options below.",
             "prompt": "What would you do next?",
             "options": [
-                {"value": "Do this", "feedback": "Not quite.", "icon": "placeholder"},
+                {"value": "Do this", "feedback": "Not quite.", "type": "Incorrect"},
                 {
                     "value": "Do that",
                     "feedback": "That's right!",
-                    "icon": "placeholder",
+                    "type": "Correct",
                 },
             ],
         },
@@ -35,7 +35,9 @@ VALID_DATA = {
     "outcome": {
         "heading": "Outcome",
         "description": "You have completed all the scenarios.",
+        "displaySelectedOptions": False,
     },
+    "interactionType": "Explore",
 }
 
 
@@ -112,7 +114,7 @@ def test_block_update_data():
                 "displayName": "test",
                 "scenarioData": {
                     **VALID_DATA,
-                    "outcome": None,
+                    "interactionType": "SelectOne",
                 },
             },
         ),
@@ -123,7 +125,7 @@ def test_block_update_data():
 
     assert block.display_name == "test"
     assert block.scenario_data["introduction"]["heading"] == "Introduction"
-    assert block.scenario_data["outcome"] is None
+    assert block.scenario_data["interactionType"] == "SelectOne"
 
 
 def test_block_update_data_reject_invalid():
@@ -177,6 +179,13 @@ def test_index_dictionary():
     assert "What would you do next?" in content
     assert "That's right!" in content
     assert "Outcome" in content
+
+
+def test_student_view_data():
+    """Test that the index_dictionary alias works."""
+    block = make_block(scenario_data=VALID_DATA)
+    result = block.student_view_data()
+    assert result["content_type"] == "Unfolding Scenario"
 
 
 def test_index_dictionary_malformed_content():

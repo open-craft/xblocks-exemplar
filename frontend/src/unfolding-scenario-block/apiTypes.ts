@@ -5,6 +5,9 @@
 /* Do not modify it by hand - just update the pydantic models and then re-run the script
 */
 
+export type FeedbackType = "Correct" | "Incorrect" | "Warning";
+export type InteractionType = "SelectOne" | "Explore";
+
 /**
  * Full payload sent by the studio editor when saving the block.
  */
@@ -19,7 +22,8 @@ export interface ScenarioData {
   name: string;
   introduction: Introduction;
   scenarios: Scenario[];
-  outcome: Outcome | null;
+  outcome: Outcome;
+  interactionType: InteractionType;
 }
 /**
  * Introduction content that's presented by default by the XBlock.
@@ -46,7 +50,7 @@ export interface Scenario {
 export interface Option {
   value: string;
   feedback: string;
-  icon: string;
+  type: FeedbackType;
 }
 /**
  * An optional "outcomes" slide at the end of scenarios.
@@ -54,4 +58,5 @@ export interface Option {
 export interface Outcome {
   heading: string;
   description: string;
+  displaySelectedOptions: boolean;
 }
