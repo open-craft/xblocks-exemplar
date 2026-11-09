@@ -1,110 +1,49 @@
-import { D as e, E as t, O as n, _ as r, a as i, b as a, c as o, d as s, f as c, g as l, h as u, i as d, m as f, n as p, o as m, p as h, r as g, s as _, t as v, u as y, v as b, y as x } from "./IconButton-Cu-C9xMd.js";
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/icons/es5/Check.js
-var S = /* @__PURE__ */ n(t()), C = (e) => /* @__PURE__ */ S.createElement("svg", {
-	width: 24,
-	height: 24,
-	viewBox: "0 0 24 24",
-	fill: "none",
-	xmlns: "http://www.w3.org/2000/svg",
-	...e
-}, /* @__PURE__ */ S.createElement("path", {
-	d: "M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2Z",
-	fill: "currentColor"
-})), w = (e) => /* @__PURE__ */ S.createElement("svg", {
-	width: 24,
-	height: 24,
-	viewBox: "0 0 24 24",
-	fill: "none",
-	xmlns: "http://www.w3.org/2000/svg",
-	...e
-}, /* @__PURE__ */ S.createElement("path", {
-	d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9Z",
-	fill: "currentColor"
-})), T = (e) => /* @__PURE__ */ S.createElement("svg", {
-	xmlns: "http://www.w3.org/2000/svg",
-	width: 24,
-	height: 24,
-	viewBox: "0 0 24 24",
-	fill: "none",
-	...e
-}, /* @__PURE__ */ S.createElement("path", {
-	d: "M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z",
-	fill: "currentColor"
-})), ee = (e) => /* @__PURE__ */ S.createElement("svg", {
-	xmlns: "http://www.w3.org/2000/svg",
-	width: 24,
-	height: 24,
-	viewBox: "0 0 24 24",
-	fill: "none",
-	...e
-}, /* @__PURE__ */ S.createElement("path", {
-	d: "M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z",
-	fill: "currentColor"
-})), E = (e) => /* @__PURE__ */ S.createElement("svg", {
-	width: 24,
-	height: 24,
-	viewBox: "0 0 24 24",
-	fill: "none",
-	xmlns: "http://www.w3.org/2000/svg",
-	...e
-}, /* @__PURE__ */ S.createElement("path", {
-	d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8Z",
-	fill: "currentColor"
-})), D = (e) => /* @__PURE__ */ S.createElement("svg", {
-	width: 24,
-	height: 24,
-	viewBox: "0 0 24 24",
-	fill: "none",
-	xmlns: "http://www.w3.org/2000/svg",
-	...e
-}, /* @__PURE__ */ S.createElement("path", {
-	xmlns: "http://www.w3.org/2000/svg",
-	d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z",
-	fill: "currentColor"
-})), O = /* @__PURE__ */ n(c());
-function k({ as: e = "div", isStacked: t = !1, children: n, ...r }) {
+import { D as e, E as t, O as n, _ as r, a as i, b as a, c as o, f as s, g as c, h as l, i as u, l as d, m as f, n as p, o as m, p as h, r as g, s as _, t as v, u as y, v as b, y as x } from "./IconButton-D64hFEcm.js";
+//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/ActionRow/index.js
+var S = /* @__PURE__ */ n(t()), C = /* @__PURE__ */ n(f());
+function w({ as: e = "div", isStacked: t = !1, children: n, ...r }) {
 	return /* @__PURE__ */ S.createElement(e, {
 		...r,
-		className: (0, O.default)(r.className, {
+		className: (0, C.default)(r.className, {
 			"pgn__action-row": !t,
 			"pgn__action-row-stacked": t
 		})
 	}, n);
 }
-function A() {
+function T() {
 	return /* @__PURE__ */ S.createElement("span", { className: "pgn__action-row-spacer" });
 }
-k.Spacer = A;
+w.Spacer = T;
 //#endregion
 //#region node_modules/.pnpm/dom-helpers@5.2.1/node_modules/dom-helpers/esm/camelize.js
-var j = /-(.)/g;
-function M(e) {
-	return e.replace(j, function(e, t) {
+var E = /-(.)/g;
+function D(e) {
+	return e.replace(E, function(e, t) {
 		return t.toUpperCase();
 	});
 }
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/createWithBsPrefix.js
-var N = [
+var O = [
 	"className",
 	"bsPrefix",
 	"as"
-], P = function(e) {
-	return e[0].toUpperCase() + M(e).slice(1);
+], k = function(e) {
+	return e[0].toUpperCase() + D(e).slice(1);
 };
-function te(e, t) {
-	var n = t === void 0 ? {} : t, r = n.displayName, i = r === void 0 ? P(e) : r, a = n.Component, c = n.defaultProps, l = /* @__PURE__ */ S.forwardRef(function(t, n) {
-		var r = t.className, i = t.bsPrefix, c = t.as, l = c === void 0 ? a || "div" : c, u = y(t, N), d = o(i, e);
-		return /* @__PURE__ */ S.createElement(l, s({
+function A(e, t) {
+	var n = t === void 0 ? {} : t, r = n.displayName, i = r === void 0 ? k(e) : r, a = n.Component, o = n.defaultProps, c = /* @__PURE__ */ S.forwardRef(function(t, n) {
+		var r = t.className, i = t.bsPrefix, o = t.as, c = o === void 0 ? a || "div" : o, l = s(t, O), u = y(i, e);
+		return /* @__PURE__ */ S.createElement(c, h({
 			ref: n,
-			className: (0, O.default)(r, d)
-		}, u));
+			className: (0, C.default)(r, u)
+		}, l));
 	});
-	return l.defaultProps = c, l.displayName = i, l;
+	return c.defaultProps = o, c.displayName = i, c;
 }
 //#endregion
 //#region node_modules/.pnpm/prop-types-extra@1.1.1_react@18.3.1/node_modules/prop-types-extra/lib/utils/createChainableTypeChecker.js
-var ne = /* @__PURE__ */ e(((e, t) => {
+var j = /* @__PURE__ */ e(((e, t) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.default = n;
 	function n(e) {
 		function t(t, n, r, i, a, o) {
@@ -123,9 +62,9 @@ var ne = /* @__PURE__ */ e(((e, t) => {
 		return n.isRequired = t.bind(null, !0), n;
 	}
 	t.exports = e.default;
-})), re = /* @__PURE__ */ e(((e, t) => {
+})), M = /* @__PURE__ */ e(((e, t) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.default = i;
-	var n = r(ne());
+	var n = r(j());
 	function r(e) {
 		return e && e.__esModule ? e : { default: e };
 	}
@@ -143,26 +82,26 @@ var ne = /* @__PURE__ */ e(((e, t) => {
 		return (0, n.default)(t);
 	}
 	t.exports = e.default;
-})), F = /* @__PURE__ */ n(_()), ie = [
+})), N = /* @__PURE__ */ n(d()), P = [
 	"as",
 	"className",
 	"type",
 	"tooltip"
-], ae = {
-	type: F.default.string,
-	tooltip: F.default.bool,
-	as: F.default.elementType
-}, I = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.as, r = n === void 0 ? "div" : n, i = e.className, a = e.type, o = a === void 0 ? "valid" : a, c = e.tooltip, l = c === void 0 ? !1 : c, u = y(e, ie);
-	return /* @__PURE__ */ S.createElement(r, s({}, u, {
+], ee = {
+	type: N.default.string,
+	tooltip: N.default.bool,
+	as: N.default.elementType
+}, te = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.as, r = n === void 0 ? "div" : n, i = e.className, a = e.type, o = a === void 0 ? "valid" : a, c = e.tooltip, l = c === void 0 ? !1 : c, u = s(e, P);
+	return /* @__PURE__ */ S.createElement(r, h({}, u, {
 		ref: t,
-		className: (0, O.default)(i, o + "-" + (l ? "tooltip" : "feedback"))
+		className: (0, C.default)(i, o + "-" + (l ? "tooltip" : "feedback"))
 	}));
 });
-I.displayName = "Feedback", I.propTypes = ae;
+te.displayName = "Feedback", te.propTypes = ee;
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormContext.js
-var L = /* @__PURE__ */ S.createContext({ controlId: void 0 }), oe = [
+var F = /* @__PURE__ */ S.createContext({ controlId: void 0 }), I = [
 	"id",
 	"bsPrefix",
 	"bsCustomPrefix",
@@ -172,33 +111,33 @@ var L = /* @__PURE__ */ S.createContext({ controlId: void 0 }), oe = [
 	"isInvalid",
 	"isStatic",
 	"as"
-], se = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.className, c = e.type, l = c === void 0 ? "checkbox" : c, u = e.isValid, d = u === void 0 ? !1 : u, f = e.isInvalid, p = f === void 0 ? !1 : f, m = e.isStatic, h = e.as, g = h === void 0 ? "input" : h, _ = y(e, oe), v = (0, S.useContext)(L), b = v.controlId, x = v.custom ? [i, "custom-control-input"] : [r, "form-check-input"], C = x[0], w = x[1];
-	return r = o(C, w), /* @__PURE__ */ S.createElement(g, s({}, _, {
+], ne = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.className, o = e.type, c = o === void 0 ? "checkbox" : o, l = e.isValid, u = l === void 0 ? !1 : l, d = e.isInvalid, f = d === void 0 ? !1 : d, p = e.isStatic, m = e.as, g = m === void 0 ? "input" : m, _ = s(e, I), v = (0, S.useContext)(F), b = v.controlId, x = v.custom ? [i, "custom-control-input"] : [r, "form-check-input"], w = x[0], T = x[1];
+	return r = y(w, T), /* @__PURE__ */ S.createElement(g, h({}, _, {
 		ref: t,
-		type: l,
+		type: c,
 		id: n || b,
-		className: (0, O.default)(a, r, d && "is-valid", p && "is-invalid", m && "position-static")
+		className: (0, C.default)(a, r, u && "is-valid", f && "is-invalid", p && "position-static")
 	}));
 });
-se.displayName = "FormCheckInput";
+ne.displayName = "FormCheckInput";
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormCheckLabel.js
-var ce = [
+var L = [
 	"bsPrefix",
 	"bsCustomPrefix",
 	"className",
 	"htmlFor"
-], le = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.className, a = e.htmlFor, c = y(e, ce), l = (0, S.useContext)(L), u = l.controlId, d = l.custom ? [r, "custom-control-label"] : [n, "form-check-label"], f = d[0], p = d[1];
-	return n = o(f, p), /* @__PURE__ */ S.createElement("label", s({}, c, {
+], re = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.className, a = e.htmlFor, o = s(e, L), c = (0, S.useContext)(F), l = c.controlId, u = c.custom ? [r, "custom-control-label"] : [n, "form-check-label"], d = u[0], f = u[1];
+	return n = y(d, f), /* @__PURE__ */ S.createElement("label", h({}, o, {
 		ref: t,
-		htmlFor: a || u,
-		className: (0, O.default)(i, n)
+		htmlFor: a || l,
+		className: (0, C.default)(i, n)
 	}));
 });
-le.displayName = "FormCheckLabel", re();
-var ue = [
+re.displayName = "FormCheckLabel", M();
+var ie = [
 	"id",
 	"bsPrefix",
 	"bsCustomPrefix",
@@ -217,38 +156,38 @@ var ue = [
 	"custom",
 	"as"
 ], R = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.inline, c = a === void 0 ? !1 : a, l = e.disabled, u = l === void 0 ? !1 : l, d = e.isValid, f = d === void 0 ? !1 : d, p = e.isInvalid, m = p === void 0 ? !1 : p, h = e.feedbackTooltip, g = h === void 0 ? !1 : h, _ = e.feedback, v = e.className, b = e.style, x = e.title, C = x === void 0 ? "" : x, w = e.type, T = w === void 0 ? "checkbox" : w, ee = e.label, E = e.children, D = e.custom, k = e.as, A = k === void 0 ? "input" : k, j = y(e, ue), M = T === "switch" ? !0 : D, N = M ? [i, "custom-control"] : [r, "form-check"], P = N[0], te = N[1];
-	r = o(P, te);
-	var ne = (0, S.useContext)(L).controlId, re = (0, S.useMemo)(function() {
+	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.inline, o = a === void 0 ? !1 : a, c = e.disabled, l = c === void 0 ? !1 : c, u = e.isValid, d = u === void 0 ? !1 : u, f = e.isInvalid, p = f === void 0 ? !1 : f, m = e.feedbackTooltip, g = m === void 0 ? !1 : m, _ = e.feedback, v = e.className, b = e.style, x = e.title, w = x === void 0 ? "" : x, T = e.type, E = T === void 0 ? "checkbox" : T, D = e.label, O = e.children, k = e.custom, A = e.as, j = A === void 0 ? "input" : A, M = s(e, ie), N = E === "switch" ? !0 : k, P = N ? [i, "custom-control"] : [r, "form-check"], ee = P[0], I = P[1];
+	r = y(ee, I);
+	var L = (0, S.useContext)(F).controlId, R = (0, S.useMemo)(function() {
 		return {
-			controlId: n || ne,
-			custom: M
+			controlId: n || L,
+			custom: N
 		};
 	}, [
-		ne,
-		M,
+		L,
+		N,
 		n
-	]), F = M || ee != null && ee !== !1 && !E, ie = /* @__PURE__ */ S.createElement(se, s({}, j, {
-		type: T === "switch" ? "checkbox" : T,
+	]), ae = N || D != null && D !== !1 && !O, oe = /* @__PURE__ */ S.createElement(ne, h({}, M, {
+		type: E === "switch" ? "checkbox" : E,
 		ref: t,
-		isValid: f,
-		isInvalid: m,
-		isStatic: !F,
-		disabled: u,
-		as: A
+		isValid: d,
+		isInvalid: p,
+		isStatic: !ae,
+		disabled: l,
+		as: j
 	}));
-	return /* @__PURE__ */ S.createElement(L.Provider, { value: re }, /* @__PURE__ */ S.createElement("div", {
+	return /* @__PURE__ */ S.createElement(F.Provider, { value: R }, /* @__PURE__ */ S.createElement("div", {
 		style: b,
-		className: (0, O.default)(v, r, M && "custom-" + T, c && r + "-inline")
-	}, E || /* @__PURE__ */ S.createElement(S.Fragment, null, ie, F && /* @__PURE__ */ S.createElement(le, { title: C }, ee), (f || m) && /* @__PURE__ */ S.createElement(I, {
-		type: f ? "valid" : "invalid",
+		className: (0, C.default)(v, r, N && "custom-" + E, o && r + "-inline")
+	}, O || /* @__PURE__ */ S.createElement(S.Fragment, null, oe, ae && /* @__PURE__ */ S.createElement(re, { title: w }, D), (d || p) && /* @__PURE__ */ S.createElement(te, {
+		type: d ? "valid" : "invalid",
 		tooltip: g
 	}, _))));
 });
-R.displayName = "FormCheck", R.Input = se, R.Label = le;
+R.displayName = "FormCheck", R.Input = ne, R.Label = re;
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormFileInput.js
-var de = [
+var ae = [
 	"id",
 	"bsPrefix",
 	"bsCustomPrefix",
@@ -257,37 +196,37 @@ var de = [
 	"isInvalid",
 	"lang",
 	"as"
-], fe = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.className, c = e.isValid, l = e.isInvalid, u = e.lang, d = e.as, f = d === void 0 ? "input" : d, p = y(e, de), m = (0, S.useContext)(L), h = m.controlId, g = m.custom, _ = "file", v = g ? [i, "custom-file-input"] : [r, "form-control-file"], b = v[0], x = v[1];
-	return r = o(b, x), /* @__PURE__ */ S.createElement(f, s({}, p, {
+], oe = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.className, o = e.isValid, c = e.isInvalid, l = e.lang, u = e.as, d = u === void 0 ? "input" : u, f = s(e, ae), p = (0, S.useContext)(F), m = p.controlId, g = p.custom, _ = "file", v = g ? [i, "custom-file-input"] : [r, "form-control-file"], b = v[0], x = v[1];
+	return r = y(b, x), /* @__PURE__ */ S.createElement(d, h({}, f, {
 		ref: t,
-		id: n || h,
+		id: n || m,
 		type: _,
-		lang: u,
-		className: (0, O.default)(a, r, c && "is-valid", l && "is-invalid")
+		lang: l,
+		className: (0, C.default)(a, r, o && "is-valid", c && "is-invalid")
 	}));
 });
-fe.displayName = "FormFileInput";
+oe.displayName = "FormFileInput";
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormFileLabel.js
-var pe = [
+var se = [
 	"bsPrefix",
 	"bsCustomPrefix",
 	"className",
 	"htmlFor"
-], me = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.className, a = e.htmlFor, c = y(e, pe), l = (0, S.useContext)(L), u = l.controlId, d = l.custom ? [r, "custom-file-label"] : [n, "form-file-label"], f = d[0], p = d[1];
-	return n = o(f, p), /* @__PURE__ */ S.createElement("label", s({}, c, {
+], ce = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.className, a = e.htmlFor, o = s(e, se), c = (0, S.useContext)(F), l = c.controlId, u = c.custom ? [r, "custom-file-label"] : [n, "form-file-label"], d = u[0], f = u[1];
+	return n = y(d, f), /* @__PURE__ */ S.createElement("label", h({}, o, {
 		ref: t,
-		htmlFor: a || u,
-		className: (0, O.default)(i, n),
-		"data-browse": c["data-browse"]
+		htmlFor: a || l,
+		className: (0, C.default)(i, n),
+		"data-browse": o["data-browse"]
 	}));
 });
-me.displayName = "FormFileLabel";
+ce.displayName = "FormFileLabel";
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormFile.js
-var he = [
+var le = [
 	"id",
 	"bsPrefix",
 	"bsCustomPrefix",
@@ -305,36 +244,36 @@ var he = [
 	"data-browse",
 	"as",
 	"inputAs"
-], ge = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.disabled, c = a === void 0 ? !1 : a, l = e.isValid, u = l === void 0 ? !1 : l, d = e.isInvalid, f = d === void 0 ? !1 : d, p = e.feedbackTooltip, m = p === void 0 ? !1 : p, h = e.feedback, g = e.className, _ = e.style, v = e.label, b = e.children, x = e.custom, C = e.lang, w = e["data-browse"], T = e.as, ee = T === void 0 ? "div" : T, E = e.inputAs, D = E === void 0 ? "input" : E, k = y(e, he), A = x ? [i, "custom"] : [r, "form-file"], j = A[0], M = A[1];
-	r = o(j, M);
-	var N = "file", P = (0, S.useContext)(L).controlId, te = (0, S.useMemo)(function() {
+], ue = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.disabled, o = a === void 0 ? !1 : a, c = e.isValid, l = c === void 0 ? !1 : c, u = e.isInvalid, d = u === void 0 ? !1 : u, f = e.feedbackTooltip, p = f === void 0 ? !1 : f, m = e.feedback, g = e.className, _ = e.style, v = e.label, b = e.children, x = e.custom, w = e.lang, T = e["data-browse"], E = e.as, D = E === void 0 ? "div" : E, O = e.inputAs, k = O === void 0 ? "input" : O, A = s(e, le), j = x ? [i, "custom"] : [r, "form-file"], M = j[0], N = j[1];
+	r = y(M, N);
+	var P = "file", ee = (0, S.useContext)(F).controlId, I = (0, S.useMemo)(function() {
 		return {
-			controlId: n || P,
+			controlId: n || ee,
 			custom: x
 		};
 	}, [
-		P,
+		ee,
 		x,
 		n
-	]), ne = v != null && v !== !1 && !b, re = /* @__PURE__ */ S.createElement(fe, s({}, k, {
+	]), ne = v != null && v !== !1 && !b, L = /* @__PURE__ */ S.createElement(oe, h({}, A, {
 		ref: t,
-		isValid: u,
-		isInvalid: f,
-		disabled: c,
-		as: D,
-		lang: C
+		isValid: l,
+		isInvalid: d,
+		disabled: o,
+		as: k,
+		lang: w
 	}));
-	return /* @__PURE__ */ S.createElement(L.Provider, { value: te }, /* @__PURE__ */ S.createElement(ee, {
+	return /* @__PURE__ */ S.createElement(F.Provider, { value: I }, /* @__PURE__ */ S.createElement(D, {
 		style: _,
-		className: (0, O.default)(g, r, x && "custom-" + N)
-	}, b || /* @__PURE__ */ S.createElement(S.Fragment, null, x ? /* @__PURE__ */ S.createElement(S.Fragment, null, re, ne && /* @__PURE__ */ S.createElement(me, { "data-browse": w }, v)) : /* @__PURE__ */ S.createElement(S.Fragment, null, ne && /* @__PURE__ */ S.createElement(me, null, v), re), (u || f) && /* @__PURE__ */ S.createElement(I, {
-		type: u ? "valid" : "invalid",
-		tooltip: m
-	}, h))));
+		className: (0, C.default)(g, r, x && "custom-" + P)
+	}, b || /* @__PURE__ */ S.createElement(S.Fragment, null, x ? /* @__PURE__ */ S.createElement(S.Fragment, null, L, ne && /* @__PURE__ */ S.createElement(ce, { "data-browse": T }, v)) : /* @__PURE__ */ S.createElement(S.Fragment, null, ne && /* @__PURE__ */ S.createElement(ce, null, v), L), (l || d) && /* @__PURE__ */ S.createElement(te, {
+		type: l ? "valid" : "invalid",
+		tooltip: p
+	}, m))));
 });
-ge.displayName = "FormFile", ge.Input = fe, ge.Label = me, i();
-var _e = [
+ue.displayName = "FormFile", ue.Input = oe, ue.Label = ce, _();
+var de = [
 	"bsPrefix",
 	"bsCustomPrefix",
 	"type",
@@ -348,127 +287,127 @@ var _e = [
 	"readOnly",
 	"custom",
 	"as"
-], ve = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.type, a = e.size, c = e.htmlSize, l = e.id, u = e.className, d = e.isValid, f = d === void 0 ? !1 : d, p = e.isInvalid, m = p === void 0 ? !1 : p, h = e.plaintext, g = e.readOnly, _ = e.custom, v = e.as, b = v === void 0 ? "input" : v, x = y(e, _e), C = (0, S.useContext)(L).controlId, w = _ ? [r, "custom"] : [n, "form-control"], T = w[0], ee = w[1];
-	n = o(T, ee);
-	var E;
-	if (h) {
-		var D;
-		E = (D = {}, D[n + "-plaintext"] = !0, D);
-	} else if (i === "file") {
+], fe = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.type, a = e.size, o = e.htmlSize, c = e.id, l = e.className, u = e.isValid, d = u === void 0 ? !1 : u, f = e.isInvalid, p = f === void 0 ? !1 : f, m = e.plaintext, g = e.readOnly, _ = e.custom, v = e.as, b = v === void 0 ? "input" : v, x = s(e, de), w = (0, S.useContext)(F).controlId, T = _ ? [r, "custom"] : [n, "form-control"], E = T[0], D = T[1];
+	n = y(E, D);
+	var O;
+	if (m) {
 		var k;
-		E = (k = {}, k[n + "-file"] = !0, k);
-	} else if (i === "range") {
+		O = (k = {}, k[n + "-plaintext"] = !0, k);
+	} else if (i === "file") {
 		var A;
-		E = (A = {}, A[n + "-range"] = !0, A);
-	} else if (b === "select" && _) {
+		O = (A = {}, A[n + "-file"] = !0, A);
+	} else if (i === "range") {
 		var j;
-		E = (j = {}, j[n + "-select"] = !0, j[n + "-select-" + a] = a, j);
-	} else {
+		O = (j = {}, j[n + "-range"] = !0, j);
+	} else if (b === "select" && _) {
 		var M;
-		E = (M = {}, M[n] = !0, M[n + "-" + a] = a, M);
+		O = (M = {}, M[n + "-select"] = !0, M[n + "-select-" + a] = a, M);
+	} else {
+		var N;
+		O = (N = {}, N[n] = !0, N[n + "-" + a] = a, N);
 	}
-	return /* @__PURE__ */ S.createElement(b, s({}, x, {
+	return /* @__PURE__ */ S.createElement(b, h({}, x, {
 		type: i,
-		size: c,
+		size: o,
 		ref: t,
 		readOnly: g,
-		id: l || C,
-		className: (0, O.default)(u, E, f && "is-valid", m && "is-invalid")
+		id: c || w,
+		className: (0, C.default)(l, O, d && "is-valid", p && "is-invalid")
 	}));
 });
-ve.displayName = "FormControl";
-var ye = Object.assign(ve, { Feedback: I }), be = [
+fe.displayName = "FormControl";
+var pe = Object.assign(fe, { Feedback: te }), me = [
 	"bsPrefix",
 	"className",
 	"children",
 	"controlId",
 	"as"
-], xe = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.className, i = e.children, a = e.controlId, c = e.as, l = c === void 0 ? "div" : c, u = y(e, be);
-	n = o(n, "form-group");
-	var d = (0, S.useMemo)(function() {
+], he = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.className, i = e.children, a = e.controlId, o = e.as, c = o === void 0 ? "div" : o, l = s(e, me);
+	n = y(n, "form-group");
+	var u = (0, S.useMemo)(function() {
 		return { controlId: a };
 	}, [a]);
-	return /* @__PURE__ */ S.createElement(L.Provider, { value: d }, /* @__PURE__ */ S.createElement(l, s({}, u, {
+	return /* @__PURE__ */ S.createElement(F.Provider, { value: u }, /* @__PURE__ */ S.createElement(c, h({}, l, {
 		ref: t,
-		className: (0, O.default)(r, n)
+		className: (0, C.default)(r, n)
 	}), i));
 });
-xe.displayName = "FormGroup";
+he.displayName = "FormGroup";
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormLabel.js
-var Se = [
+var ge = [
 	"as",
 	"bsPrefix",
 	"column",
 	"srOnly",
 	"className",
 	"htmlFor"
-], Ce = {
+], _e = {
 	column: !1,
 	srOnly: !1
-}, we = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.as, r = n === void 0 ? "label" : n, i = e.bsPrefix, a = e.column, c = e.srOnly, l = e.className, u = e.htmlFor, d = y(e, Se), f = (0, S.useContext)(L).controlId;
-	i = o(i, "form-label");
+}, ve = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.as, r = n === void 0 ? "label" : n, i = e.bsPrefix, a = e.column, c = e.srOnly, l = e.className, u = e.htmlFor, d = s(e, ge), f = (0, S.useContext)(F).controlId;
+	i = y(i, "form-label");
 	var p = "col-form-label";
 	typeof a == "string" && (p = p + " " + p + "-" + a);
-	var h = (0, O.default)(l, i, c && "sr-only", a && p);
-	return u ||= f, a ? /* @__PURE__ */ S.createElement(m, s({
+	var m = (0, C.default)(l, i, c && "sr-only", a && p);
+	return u ||= f, a ? /* @__PURE__ */ S.createElement(o, h({
 		ref: t,
 		as: "label",
-		className: h,
+		className: m,
 		htmlFor: u
-	}, d)) : /* @__PURE__ */ S.createElement(r, s({
+	}, d)) : /* @__PURE__ */ S.createElement(r, h({
 		ref: t,
-		className: h,
+		className: m,
 		htmlFor: u
 	}, d));
 });
-we.displayName = "FormLabel", we.defaultProps = Ce;
+ve.displayName = "FormLabel", ve.defaultProps = _e;
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormText.js
-var Te = [
+var ye = [
 	"bsPrefix",
 	"className",
 	"as",
 	"muted"
-], Ee = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.className, i = e.as, a = i === void 0 ? "small" : i, c = e.muted, l = y(e, Te);
-	return n = o(n, "form-text"), /* @__PURE__ */ S.createElement(a, s({}, l, {
+], be = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.className, i = e.as, a = i === void 0 ? "small" : i, o = e.muted, c = s(e, ye);
+	return n = y(n, "form-text"), /* @__PURE__ */ S.createElement(a, h({}, c, {
 		ref: t,
-		className: (0, O.default)(r, n, c && "text-muted")
+		className: (0, C.default)(r, n, o && "text-muted")
 	}));
 });
-Ee.displayName = "FormText";
+be.displayName = "FormText";
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Switch.js
-var De = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	return /* @__PURE__ */ S.createElement(R, s({}, e, {
+var xe = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	return /* @__PURE__ */ S.createElement(R, h({}, e, {
 		ref: t,
 		type: "switch"
 	}));
 });
-De.displayName = "Switch", De.Input = R.Input, De.Label = R.Label;
+xe.displayName = "Switch", xe.Input = R.Input, xe.Label = R.Label;
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Form.js
-var Oe = [
+var Se = [
 	"bsPrefix",
 	"inline",
 	"className",
 	"validated",
 	"as"
-], ke = te("form-row"), Ae = { inline: !1 }, z = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.inline, i = e.className, a = e.validated, c = e.as, l = c === void 0 ? "form" : c, u = y(e, Oe);
-	return n = o(n, "form"), /* @__PURE__ */ S.createElement(l, s({}, u, {
+], Ce = A("form-row"), we = { inline: !1 }, z = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.inline, i = e.className, a = e.validated, o = e.as, c = o === void 0 ? "form" : o, l = s(e, Se);
+	return n = y(n, "form"), /* @__PURE__ */ S.createElement(c, h({}, l, {
 		ref: t,
-		className: (0, O.default)(i, a && "was-validated", r && n + "-inline")
+		className: (0, C.default)(i, a && "was-validated", r && n + "-inline")
 	}));
 });
-z.displayName = "Form", z.defaultProps = Ae, z.Row = ke, z.Group = xe, z.Control = ye, z.Check = R, z.File = ge, z.Switch = De, z.Label = we, z.Text = Ee;
+z.displayName = "Form", z.defaultProps = we, z.Row = Ce, z.Group = he, z.Control = pe, z.Check = R, z.File = ue, z.Switch = xe, z.Label = ve, z.Text = be;
 //#endregion
 //#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Spinner.js
-var je = [
+var Te = [
 	"bsPrefix",
 	"variant",
 	"animation",
@@ -476,13 +415,77 @@ var je = [
 	"children",
 	"as",
 	"className"
-], Me = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.variant, i = e.animation, a = e.size, c = e.children, l = e.as, u = l === void 0 ? "div" : l, d = e.className, f = y(e, je);
-	n = o(n, "spinner");
-	var p = n + "-" + i;
-	return /* @__PURE__ */ S.createElement(u, s({ ref: t }, f, { className: (0, O.default)(d, p, a && p + "-" + a, r && "text-" + r) }), c);
+], Ee = /* @__PURE__ */ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.variant, i = e.animation, a = e.size, o = e.children, c = e.as, l = c === void 0 ? "div" : c, u = e.className, d = s(e, Te);
+	n = y(n, "spinner");
+	var f = n + "-" + i;
+	return /* @__PURE__ */ S.createElement(l, h({ ref: t }, d, { className: (0, C.default)(u, f, a && f + "-" + a, r && "text-" + r) }), o);
 });
-Me.displayName = "Spinner";
+Ee.displayName = "Spinner";
+//#endregion
+//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/icons/es5/Check.js
+var De = (e) => /* @__PURE__ */ S.createElement("svg", {
+	width: 24,
+	height: 24,
+	viewBox: "0 0 24 24",
+	fill: "none",
+	xmlns: "http://www.w3.org/2000/svg",
+	...e
+}, /* @__PURE__ */ S.createElement("path", {
+	d: "M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2Z",
+	fill: "currentColor"
+})), Oe = (e) => /* @__PURE__ */ S.createElement("svg", {
+	width: 24,
+	height: 24,
+	viewBox: "0 0 24 24",
+	fill: "none",
+	xmlns: "http://www.w3.org/2000/svg",
+	...e
+}, /* @__PURE__ */ S.createElement("path", {
+	d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9Z",
+	fill: "currentColor"
+})), ke = (e) => /* @__PURE__ */ S.createElement("svg", {
+	xmlns: "http://www.w3.org/2000/svg",
+	width: 24,
+	height: 24,
+	viewBox: "0 0 24 24",
+	fill: "none",
+	...e
+}, /* @__PURE__ */ S.createElement("path", {
+	d: "M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z",
+	fill: "currentColor"
+})), Ae = (e) => /* @__PURE__ */ S.createElement("svg", {
+	xmlns: "http://www.w3.org/2000/svg",
+	width: 24,
+	height: 24,
+	viewBox: "0 0 24 24",
+	fill: "none",
+	...e
+}, /* @__PURE__ */ S.createElement("path", {
+	d: "M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z",
+	fill: "currentColor"
+})), je = (e) => /* @__PURE__ */ S.createElement("svg", {
+	width: 24,
+	height: 24,
+	viewBox: "0 0 24 24",
+	fill: "none",
+	xmlns: "http://www.w3.org/2000/svg",
+	...e
+}, /* @__PURE__ */ S.createElement("path", {
+	d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8Z",
+	fill: "currentColor"
+})), Me = (e) => /* @__PURE__ */ S.createElement("svg", {
+	width: 24,
+	height: 24,
+	viewBox: "0 0 24 24",
+	fill: "none",
+	xmlns: "http://www.w3.org/2000/svg",
+	...e
+}, /* @__PURE__ */ S.createElement("path", {
+	xmlns: "http://www.w3.org/2000/svg",
+	d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z",
+	fill: "currentColor"
+}));
 //#endregion
 //#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/core/utils.js
 function B(e) {
@@ -2451,52 +2454,52 @@ try {
 //#endregion
 //#region node_modules/.pnpm/react-imask@7.6.1_react@18.3.1/node_modules/react-imask/esm/mixin.js
 var ct = {
-	mask: F.default.oneOfType([
-		F.default.array,
-		F.default.func,
-		F.default.string,
-		F.default.instanceOf(RegExp),
-		F.default.oneOf([
+	mask: N.default.oneOfType([
+		N.default.array,
+		N.default.func,
+		N.default.string,
+		N.default.instanceOf(RegExp),
+		N.default.oneOf([
 			Date,
 			Number,
 			H.Masked
 		]),
-		F.default.instanceOf(H.Masked)
+		N.default.instanceOf(H.Masked)
 	]),
-	value: F.default.any,
-	unmask: F.default.oneOfType([F.default.bool, F.default.oneOf(["typed"])]),
-	prepare: F.default.func,
-	prepareChar: F.default.func,
-	validate: F.default.func,
-	commit: F.default.func,
-	overwrite: F.default.oneOfType([F.default.bool, F.default.oneOf(["shift"])]),
-	eager: F.default.oneOfType([F.default.bool, F.default.oneOf(["append", "remove"])]),
-	skipInvalid: F.default.bool,
-	onAccept: F.default.func,
-	onComplete: F.default.func,
-	placeholderChar: F.default.string,
-	displayChar: F.default.string,
-	lazy: F.default.bool,
-	definitions: F.default.object,
-	blocks: F.default.object,
-	enum: F.default.arrayOf(F.default.string),
-	maxLength: F.default.number,
-	from: F.default.number,
-	to: F.default.number,
-	pattern: F.default.string,
-	format: F.default.func,
-	parse: F.default.func,
-	autofix: F.default.oneOfType([F.default.bool, F.default.oneOf(["pad"])]),
-	radix: F.default.string,
-	thousandsSeparator: F.default.string,
-	mapToRadix: F.default.arrayOf(F.default.string),
-	scale: F.default.number,
-	normalizeZeros: F.default.bool,
-	padFractionalZeros: F.default.bool,
-	min: F.default.oneOfType([F.default.number, F.default.instanceOf(Date)]),
-	max: F.default.oneOfType([F.default.number, F.default.instanceOf(Date)]),
-	dispatch: F.default.func,
-	inputRef: F.default.oneOfType([F.default.func, F.default.shape({ current: F.default.object })])
+	value: N.default.any,
+	unmask: N.default.oneOfType([N.default.bool, N.default.oneOf(["typed"])]),
+	prepare: N.default.func,
+	prepareChar: N.default.func,
+	validate: N.default.func,
+	commit: N.default.func,
+	overwrite: N.default.oneOfType([N.default.bool, N.default.oneOf(["shift"])]),
+	eager: N.default.oneOfType([N.default.bool, N.default.oneOf(["append", "remove"])]),
+	skipInvalid: N.default.bool,
+	onAccept: N.default.func,
+	onComplete: N.default.func,
+	placeholderChar: N.default.string,
+	displayChar: N.default.string,
+	lazy: N.default.bool,
+	definitions: N.default.object,
+	blocks: N.default.object,
+	enum: N.default.arrayOf(N.default.string),
+	maxLength: N.default.number,
+	from: N.default.number,
+	to: N.default.number,
+	pattern: N.default.string,
+	format: N.default.func,
+	parse: N.default.func,
+	autofix: N.default.oneOfType([N.default.bool, N.default.oneOf(["pad"])]),
+	radix: N.default.string,
+	thousandsSeparator: N.default.string,
+	mapToRadix: N.default.arrayOf(N.default.string),
+	scale: N.default.number,
+	normalizeZeros: N.default.bool,
+	padFractionalZeros: N.default.bool,
+	min: N.default.oneOfType([N.default.number, N.default.instanceOf(Date)]),
+	max: N.default.oneOfType([N.default.number, N.default.instanceOf(Date)]),
+	dispatch: N.default.func,
+	inputRef: N.default.oneOfType([N.default.func, N.default.shape({ current: N.default.object })])
 }, lt = Object.keys(ct).filter((e) => e !== "value"), ut = [
 	"value",
 	"unmask",
@@ -2586,7 +2589,7 @@ var pt = ft((e) => {
 	let [n, r] = (0, S.useState)(!!e || e === 0);
 	return [!!t || t === 0 || n, (e) => r(!!e.target.value)];
 }, vt = (e, t) => {
-	let [n, r] = (0, S.useState)(t || []), i = (e) => (r((t) => [...t, e]), e), a = () => i(d(`${e}-`)), o = (e) => {
+	let [n, r] = (0, S.useState)(t || []), i = (e) => (r((t) => [...t, e]), e), a = () => i(m(`${e}-`)), o = (e) => {
 		r((t) => t.filter((t) => t !== e));
 	};
 	return [n, (e) => {
@@ -2607,13 +2610,13 @@ function xt(e) {
 	}];
 }
 function St({ children: e, controlId: t, isInvalid: n, isValid: r, size: i }) {
-	let a = (0, S.useMemo)(() => t || d("form-field"), [t]), [o, s] = vt(a), [c, l] = vt(a), [u, f] = xt(!1), p = {
+	let a = (0, S.useMemo)(() => t || m("form-field"), [t]), [o, s] = vt(a), [c, l] = vt(a), [u, d] = xt(!1), f = {
 		getControlProps: (0, S.useCallback)((e) => {
 			let t = u ? c : void 0;
 			return ht({
 				...e,
-				"aria-describedby": (0, O.default)(e["aria-describedby"], o) || void 0,
-				"aria-labelledby": (0, O.default)(e["aria-labelledby"], t) || void 0,
+				"aria-describedby": (0, C.default)(e["aria-describedby"], o) || void 0,
+				"aria-labelledby": (0, C.default)(e["aria-labelledby"], t) || void 0,
 				id: a
 			});
 		}, [
@@ -2639,7 +2642,7 @@ function St({ children: e, controlId: t, isInvalid: n, isValid: r, size: i }) {
 				id: t
 			};
 		},
-		useSetIsControlGroupEffect: f,
+		useSetIsControlGroupEffect: d,
 		isControlGroup: u,
 		controlId: a,
 		isInvalid: n,
@@ -2647,7 +2650,7 @@ function St({ children: e, controlId: t, isInvalid: n, isValid: r, size: i }) {
 		size: i,
 		hasFormGroupProvider: !0
 	};
-	return /* @__PURE__ */ S.createElement(bt.Provider, { value: p }, e);
+	return /* @__PURE__ */ S.createElement(bt.Provider, { value: f }, e);
 }
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/constants.js
@@ -2664,27 +2667,27 @@ var Ct = {
 	CRITERIA_INVALID: "criteria-invalid"
 }, wt = {
 	[Y.DEFAULT]: null,
-	[Y.VALID]: C,
-	[Y.INVALID]: h,
-	[Y.WARNING]: D,
-	[Y.CRITERIA_EMPTY]: E,
-	[Y.CRITERIA_VALID]: w,
-	[Y.CRITERIA_INVALID]: f
+	[Y.VALID]: De,
+	[Y.INVALID]: p,
+	[Y.WARNING]: Me,
+	[Y.CRITERIA_EMPTY]: je,
+	[Y.CRITERIA_VALID]: Oe,
+	[Y.CRITERIA_INVALID]: g
 }, Tt = ({ isInvalid: e, isValid: t }) => t ? Y.VALID : e ? Y.INVALID : Y.DEFAULT;
 function Et({ type: e, customIcon: t }) {
 	if (t) return t;
 	let n = wt[e];
-	return n ? /* @__PURE__ */ S.createElement(g, { src: n }) : null;
+	return n ? /* @__PURE__ */ S.createElement(i, { src: n }) : null;
 }
 Et.propTypes = {
-	type: F.default.oneOf(Object.values(Y)),
-	customIcon: F.default.node
+	type: N.default.oneOf(Object.values(Y)),
+	customIcon: N.default.node
 }, Et.defaultProps = {
 	type: void 0,
 	customIcon: void 0
 };
 function Dt({ children: e, type: t, icon: n, muted: r, hasIcon: i, ...a }) {
-	let o = (0, O.default)(a.className, "pgn__form-text", `pgn__form-text-${t}`, { "text-muted": r });
+	let o = (0, C.default)(a.className, "pgn__form-text", `pgn__form-text-${t}`, { "text-muted": r });
 	return /* @__PURE__ */ S.createElement("div", {
 		...a,
 		className: o
@@ -2694,10 +2697,10 @@ function Dt({ children: e, type: t, icon: n, muted: r, hasIcon: i, ...a }) {
 	}), /* @__PURE__ */ S.createElement("div", null, e));
 }
 Dt.propTypes = {
-	children: F.default.node.isRequired,
-	className: F.default.string,
-	hasIcon: F.default.bool,
-	type: F.default.oneOf([
+	children: N.default.node.isRequired,
+	className: N.default.string,
+	hasIcon: N.default.bool,
+	type: N.default.oneOf([
 		"default",
 		"valid",
 		"invalid",
@@ -2706,8 +2709,8 @@ Dt.propTypes = {
 		"criteria-valid",
 		"criteria-invalid"
 	]),
-	icon: F.default.node,
-	muted: F.default.bool
+	icon: N.default.node,
+	muted: N.default.bool
 }, Dt.defaultProps = {
 	hasIcon: !0,
 	type: "default",
@@ -2718,7 +2721,7 @@ Dt.propTypes = {
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlFeedback.js
 function X({ children: e, ...t }) {
-	let { getDescriptorProps: n, isInvalid: r, isValid: i } = J(), a = n(t), o = (0, O.default)("pgn__form-control-description", t.className), s = t.type || Tt({
+	let { getDescriptorProps: n, isInvalid: r, isValid: i } = J(), a = n(t), o = (0, C.default)("pgn__form-control-description", t.className), s = t.type || Tt({
 		isInvalid: r,
 		isValid: i
 	});
@@ -2729,10 +2732,10 @@ function X({ children: e, ...t }) {
 	}, e);
 }
 X.propTypes = {
-	children: F.default.node.isRequired,
-	className: F.default.string,
-	hasIcon: F.default.bool,
-	type: F.default.oneOf([
+	children: N.default.node.isRequired,
+	className: N.default.string,
+	hasIcon: N.default.bool,
+	type: N.default.oneOf([
 		"default",
 		"valid",
 		"invalid",
@@ -2741,8 +2744,8 @@ X.propTypes = {
 		"criteria-valid",
 		"criteria-invalid"
 	]),
-	icon: F.default.node,
-	muted: F.default.bool
+	icon: N.default.node,
+	muted: N.default.bool
 }, X.defaultProps = {
 	hasIcon: !0,
 	type: void 0,
@@ -2759,22 +2762,22 @@ function Ot({ children: e }) {
 		htmlFor: t
 	}, e)));
 }
-Ot.propTypes = { children: F.default.node.isRequired };
+Ot.propTypes = { children: N.default.node.isRequired };
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlDecorator.js
 function kt({ children: e, location: t }) {
 	return /* @__PURE__ */ S.createElement("div", { className: `pgn__form-control-decorator pgn__form-control-decorator-${t}` }, e);
 }
 kt.propTypes = {
-	children: F.default.node.isRequired,
-	location: F.default.oneOf(["leading", "trailing"])
+	children: N.default.node.isRequired,
+	location: N.default.oneOf(["leading", "trailing"])
 }, kt.defaultProps = { location: "leading" };
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlDecoratorGroup.js
 function At({ children: e, leadingElement: t, trailingElement: n, floatingLabel: r, className: i, ...a }) {
 	let o = J(a), s = a.size || o.size;
 	return /* @__PURE__ */ S.createElement("div", {
-		className: (0, O.default)("pgn__form-control-decorator-group", {
+		className: (0, C.default)("pgn__form-control-decorator-group", {
 			"has-prepended-node": !!t,
 			"has-appended-node": !!n,
 			"has-leading-element": !!t,
@@ -2787,12 +2790,12 @@ function At({ children: e, leadingElement: t, trailingElement: n, floatingLabel:
 	}, e, t && /* @__PURE__ */ S.createElement(kt, { location: "leading" }, t), n && /* @__PURE__ */ S.createElement(kt, { location: "trailing" }, n), r && /* @__PURE__ */ S.createElement(Ot, null, r));
 }
 At.propTypes = {
-	children: F.default.node.isRequired,
-	leadingElement: F.default.node,
-	trailingElement: F.default.node,
-	floatingLabel: F.default.node,
-	className: F.default.string,
-	size: F.default.oneOf([Ct.SMALL, Ct.LARGE])
+	children: N.default.node.isRequired,
+	leadingElement: N.default.node,
+	trailingElement: N.default.node,
+	floatingLabel: N.default.node,
+	className: N.default.string,
+	size: N.default.oneOf([Ct.SMALL, Ct.LARGE])
 }, At.defaultProps = {
 	leadingElement: void 0,
 	trailingElement: void 0,
@@ -2819,7 +2822,7 @@ var jt = /* @__PURE__ */ S.forwardRef(({ as: e, className: t, controlClassName: 
 	let x = p({
 		...l,
 		onBlur: gt(y, l.onBlur)
-	}), C = (e) => {
+	}), w = (e) => {
 		b(), s && s(e);
 	};
 	return /* @__PURE__ */ S.createElement(At, {
@@ -2828,35 +2831,35 @@ var jt = /* @__PURE__ */ S.forwardRef(({ as: e, className: t, controlClassName: 
 		trailingElement: i,
 		floatingLabel: a,
 		className: t
-	}, /* @__PURE__ */ S.createElement(ye, {
+	}, /* @__PURE__ */ S.createElement(pe, {
 		as: c ? mt : e,
 		ref: g,
 		size: _,
 		isInvalid: d,
 		isValid: f,
-		className: (0, O.default)(n, { "has-value": v }),
-		onChange: C,
+		className: (0, C.default)(n, { "has-value": v }),
+		onChange: w,
 		mask: c,
 		...x
 	}));
 });
 jt.Feedback = X, jt.Description = X, jt.propTypes = {
-	className: F.default.string,
-	as: F.default.elementType,
-	onChange: F.default.func,
-	defaultValue: F.default.oneOfType([F.default.string, F.default.number]),
-	value: F.default.oneOfType([F.default.string, F.default.number]),
-	id: F.default.string,
-	controlClassName: F.default.string,
-	size: F.default.oneOf(["sm", "lg"]),
-	leadingElement: F.default.node,
-	trailingElement: F.default.node,
-	floatingLabel: F.default.node,
-	plaintext: F.default.bool,
-	isValid: F.default.bool,
-	isInvalid: F.default.bool,
-	autoResize: F.default.bool,
-	inputMask: F.default.string
+	className: N.default.string,
+	as: N.default.elementType,
+	onChange: N.default.func,
+	defaultValue: N.default.oneOfType([N.default.string, N.default.number]),
+	value: N.default.oneOfType([N.default.string, N.default.number]),
+	id: N.default.string,
+	controlClassName: N.default.string,
+	size: N.default.oneOf(["sm", "lg"]),
+	leadingElement: N.default.node,
+	trailingElement: N.default.node,
+	floatingLabel: N.default.node,
+	plaintext: N.default.bool,
+	isValid: N.default.bool,
+	isInvalid: N.default.bool,
+	autoResize: N.default.bool,
+	inputMask: N.default.string
 }, jt.defaultProps = {
 	as: "input",
 	className: void 0,
@@ -2878,7 +2881,7 @@ jt.Feedback = X, jt.Description = X, jt.propTypes = {
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormLabel.js
 function Mt({ children: e, isInline: t = !1, ...n }) {
-	let { size: r, isControlGroup: i, getLabelProps: a } = J(), o = (0, O.default)("pgn__form-label", {
+	let { size: r, isControlGroup: i, getLabelProps: a } = J(), o = (0, C.default)("pgn__form-label", {
 		"pgn__form-label-inline": t,
 		"pgn__form-label-lg": r === Ct.LARGE,
 		"pgn__form-label-sm": r === Ct.SMALL
@@ -2893,7 +2896,7 @@ function Mt({ children: e, isInline: t = !1, ...n }) {
 function Nt({ children: e, controlId: t, isInvalid: n = !1, isValid: r = !1, size: i, as: a, ...o }) {
 	return /* @__PURE__ */ S.createElement(a ?? "div", {
 		...o,
-		className: (0, O.default)("pgn__form-group", o.className)
+		className: (0, C.default)("pgn__form-group", o.className)
 	}, /* @__PURE__ */ S.createElement(St, {
 		controlId: t,
 		isInvalid: n,
@@ -2927,13 +2930,13 @@ function It({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a
 	return /* @__PURE__ */ S.createElement(Pt.Provider, { value: c }, e);
 }
 It.propTypes = {
-	children: F.default.node.isRequired,
-	name: F.default.string.isRequired,
-	onBlur: F.default.func,
-	onFocus: F.default.func,
-	onChange: F.default.func,
-	value: F.default.string,
-	defaultValue: F.default.string
+	children: N.default.node.isRequired,
+	name: N.default.string.isRequired,
+	onBlur: N.default.func,
+	onFocus: N.default.func,
+	onChange: N.default.func,
+	value: N.default.string,
+	defaultValue: N.default.string
 }, It.defaultProps = {
 	onBlur: void 0,
 	onFocus: void 0,
@@ -2946,7 +2949,7 @@ It.propTypes = {
 var Lt = /* @__PURE__ */ S.forwardRef((e, t) => {
 	let { getControlProps: n } = J(), { getRadioControlProps: r, hasRadioSetProvider: i } = Ft(), a = n({
 		...e,
-		className: (0, O.default)("pgn__form-radio-input", e.className)
+		className: (0, C.default)("pgn__form-radio-input", e.className)
 	});
 	return i && (a = r(a)), /* @__PURE__ */ S.createElement("input", {
 		...a,
@@ -2954,12 +2957,12 @@ var Lt = /* @__PURE__ */ S.forwardRef((e, t) => {
 		ref: t
 	});
 });
-Lt.propTypes = { className: F.default.string }, Lt.defaultProps = { className: void 0 };
+Lt.propTypes = { className: N.default.string }, Lt.defaultProps = { className: void 0 };
 var Rt = /* @__PURE__ */ S.forwardRef(({ children: e, className: t, controlClassName: n, labelClassName: r, description: i, isInvalid: a, isValid: o, ...s }, c) => /* @__PURE__ */ S.createElement(St, {
 	controlId: s.id,
 	isInvalid: a,
 	isValid: o
-}, /* @__PURE__ */ S.createElement("div", { className: (0, O.default)("pgn__form-radio", t, {
+}, /* @__PURE__ */ S.createElement("div", { className: (0, C.default)("pgn__form-radio", t, {
 	"pgn__form-control-valid": o,
 	"pgn__form-control-invalid": a,
 	"pgn__form-control-disabled": s.disabled
@@ -2969,15 +2972,15 @@ var Rt = /* @__PURE__ */ S.forwardRef(({ children: e, className: t, controlClass
 	...s
 }), /* @__PURE__ */ S.createElement("div", null, /* @__PURE__ */ S.createElement(Mt, { className: r }, e), i && /* @__PURE__ */ S.createElement(X, { hasIcon: !1 }, i)))));
 Rt.propTypes = {
-	id: F.default.string,
-	children: F.default.node.isRequired,
-	className: F.default.string,
-	controlClassName: F.default.string,
-	labelClassName: F.default.string,
-	description: F.default.node,
-	isInvalid: F.default.bool,
-	isValid: F.default.bool,
-	disabled: F.default.bool
+	id: N.default.string,
+	children: N.default.node.isRequired,
+	className: N.default.string,
+	controlClassName: N.default.string,
+	labelClassName: N.default.string,
+	description: N.default.node,
+	isInvalid: N.default.bool,
+	isValid: N.default.bool,
+	disabled: N.default.bool
 }, Rt.defaultProps = {
 	id: void 0,
 	className: void 0,
@@ -2992,7 +2995,7 @@ Rt.propTypes = {
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlSet.js
 function zt({ as: e, className: t, isInline: n, children: r, ...i }) {
 	return /* @__PURE__ */ S.createElement(e, {
-		className: (0, O.default)(t, {
+		className: (0, C.default)(t, {
 			"pgn__form-control-set": !n,
 			"pgn__form-control-set-inline": n
 		}),
@@ -3000,10 +3003,10 @@ function zt({ as: e, className: t, isInline: n, children: r, ...i }) {
 	}, r);
 }
 zt.propTypes = {
-	as: F.default.elementType,
-	className: F.default.string,
-	isInline: F.default.bool,
-	children: F.default.node
+	as: N.default.elementType,
+	className: N.default.string,
+	isInline: N.default.bool,
+	children: N.default.node
 }, zt.defaultProps = {
 	as: "div",
 	className: void 0,
@@ -3030,15 +3033,15 @@ function Bt({ children: e, name: t, value: n, defaultValue: r, isInline: i, onCh
 	}, e));
 }
 Bt.propTypes = {
-	children: F.default.node.isRequired,
-	className: F.default.string,
-	name: F.default.string.isRequired,
-	value: F.default.string,
-	defaultValue: F.default.string,
-	isInline: F.default.bool,
-	onChange: F.default.func,
-	onFocus: F.default.func,
-	onBlur: F.default.func
+	children: N.default.node.isRequired,
+	className: N.default.string,
+	name: N.default.string.isRequired,
+	value: N.default.string,
+	defaultValue: N.default.string,
+	isInline: N.default.bool,
+	onChange: N.default.func,
+	onFocus: N.default.func,
+	onBlur: N.default.func
 }, Bt.defaultProps = {
 	className: void 0,
 	value: void 0,
@@ -3081,10 +3084,10 @@ function Kt(e, t, n) {
 var qt = (e, t, n) => ((r, i, a, ...o) => t(r) && r[i] === void 0 ? /* @__PURE__ */ Error(`${a}: ${i} is required when ${n}`) : e(r, i, a, ...o)), Jt = (e, t) => t.every((t) => e[t] !== void 0), Yt = (e, t) => qt(e, (e) => Array.isArray(t) ? Jt(e, t) : e[t] === !0, `${t} ${Array.isArray(t) ? "are defined" : "is truthy"}`), Xt = /* @__PURE__ */ S.forwardRef(({ className: e, screenReaderText: t, ...n }, r) => {
 	let i = {
 		...n,
-		className: (0, O.default)("pgn__spinner", e),
+		className: (0, C.default)("pgn__spinner", e),
 		role: t ? "status" : void 0
 	};
-	return /* @__PURE__ */ S.createElement(Me, {
+	return /* @__PURE__ */ S.createElement(Ee, {
 		...i,
 		ref: r
 	}, t && /* @__PURE__ */ S.createElement("span", { className: "sr-only" }, t));
@@ -3153,155 +3156,155 @@ var tn = x({
 		defaultMessage: "Close the options menu",
 		description: "A message shown in case when the autosuggest menu is opened."
 	}
-}), nn = /* @__PURE__ */ (0, S.forwardRef)(({ children: e, arrowKeyNavigationSelector: t, ignoredArrowKeysNames: n, screenReaderText: r, value: i, isLoading: o, isValueRequired: s, valueRequiredErrorMessageText: c, isSelectionRequired: l, selectionRequiredErrorMessageText: u, hasCustomError: d, customErrorMessageText: f, onChange: p, helpMessage: m, ...h }, _) => {
+}), nn = /* @__PURE__ */ (0, S.forwardRef)(({ children: e, arrowKeyNavigationSelector: t, ignoredArrowKeysNames: n, screenReaderText: r, value: o, isLoading: s, isValueRequired: c, valueRequiredErrorMessageText: l, isSelectionRequired: u, selectionRequiredErrorMessageText: d, hasCustomError: f, customErrorMessageText: p, onChange: m, helpMessage: h, ...g }, _) => {
 	let y = a(), b = (0, S.useRef)(), x = en({
 		selectors: t,
 		ignoredKeys: n
-	}), [C, w] = (0, S.useState)(!1), [E, D] = (0, S.useState)(!1), [O, k] = (0, S.useState)(!1), [A, j] = (0, S.useState)(!1), [M, N] = (0, S.useState)(i?.userProvidedText || ""), [P, te] = (0, S.useState)([]), [ne, re] = (0, S.useState)(null), [F, ie] = (0, S.useState)(!0), [ae, I] = (0, S.useState)(""), L = (e) => {
-		re(e);
-	}, oe = () => {
-		te([]), w(!1), re(null);
-	}, se = (e, t) => {
+	}), [C, w] = (0, S.useState)(!1), [T, E] = (0, S.useState)(!1), [D, O] = (0, S.useState)(!1), [k, A] = (0, S.useState)(!1), [j, M] = (0, S.useState)(o?.userProvidedText || ""), [N, P] = (0, S.useState)([]), [ee, te] = (0, S.useState)(null), [F, I] = (0, S.useState)(!0), [ne, L] = (0, S.useState)(""), re = (e) => {
+		te(e);
+	}, ie = () => {
+		P([]), w(!1), te(null);
+	}, R = (e, t) => {
 		let n = e.currentTarget.getAttribute("data-value"), r = e.currentTarget.id;
-		k(!0), j(!0), N(n), p && (!i || i && n !== i.selectionValue) && p({
+		O(!0), A(!0), M(n), m && (!o || o && n !== o.selectionValue) && m({
 			userProvidedText: n,
 			selectionValue: n,
 			selectionId: r
-		}), oe(), t && t(e);
+		}), ie(), t && t(e);
 	};
-	function ce(t = "") {
+	function ae(t = "") {
 		let n = S.Children.map(e, (e) => {
 			let { children: t, onClick: n, ...r } = e.props, i = e.props.id ?? Kt();
 			return /* @__PURE__ */ S.cloneElement(e, {
 				...r,
 				children: t,
 				"data-value": t,
-				onClick: (e) => se(e, n),
+				onClick: (e) => R(e, n),
 				id: i,
-				onFocus: () => L(i)
+				onFocus: () => re(i)
 			});
 		});
 		return t.length > 0 && (n = n.filter((e) => e.props.children.toLowerCase().includes(t.toLowerCase()))), n;
 	}
-	let le = () => {
-		te(ce(M)), ie(!0), I(""), w(!0);
-	}, ue = () => {
-		C ? oe() : le();
-	}, R = /* @__PURE__ */ S.createElement(v, {
+	let oe = () => {
+		P(ae(j)), I(!0), L(""), w(!0);
+	}, se = () => {
+		C ? ie() : oe();
+	}, ce = /* @__PURE__ */ S.createElement(v, {
 		className: "pgn__form-autosuggest__icon-button",
 		"data-testid": "autosuggest-iconbutton",
 		tabIndex: "-1",
-		src: C ? ee : T,
-		iconAs: g,
+		src: C ? Ae : ke,
+		iconAs: i,
 		size: "sm",
 		variant: "secondary",
 		alt: C ? y.formatMessage(tn.iconButtonClosed) : y.formatMessage(tn.iconButtonOpened),
-		onClick: ue
-	}), de = () => {
-		D(!0);
-	}, fe = () => {
-		if (d) {
-			ie(!1), I(f);
+		onClick: se
+	}), le = () => {
+		E(!0);
+	}, ue = () => {
+		if (f) {
+			I(!1), L(p);
 			return;
 		}
-		if (s && !O) {
-			ie(!1), I(c);
+		if (c && !D) {
+			I(!1), L(l);
 			return;
 		}
-		if (O && l && !A) {
-			ie(!1), I(u);
+		if (D && u && !k) {
+			I(!1), L(d);
 			return;
 		}
-		ie(!0), I("");
+		I(!0), L("");
 	};
-	(0, S.useImperativeHandle)(_, () => ({ updateErrorStateAndErrorMessage: fe }));
-	let pe = () => {
-		D(!1), oe(), fe();
-	}, me = (e) => {
-		if (E) {
+	(0, S.useImperativeHandle)(_, () => ({ updateErrorStateAndErrorMessage: ue }));
+	let de = () => {
+		E(!1), ie(), ue();
+	}, fe = (e) => {
+		if (T) {
 			if (e.key === "Escape") {
-				e.preventDefault(), b && b.current.focus(), oe();
+				e.preventDefault(), b && b.current.focus(), ie();
 				return;
 			}
-			e.key === "Tab" && pe();
+			e.key === "Tab" && de();
 		}
-	}, he = (e) => {
-		x.current && !x.current.contains(e.target) && E && pe();
+	}, pe = (e) => {
+		x.current && !x.current.contains(e.target) && T && de();
 	};
-	(0, S.useEffect)(() => (document.addEventListener("keydown", me), document.addEventListener("click", he, !0), () => {
-		document.removeEventListener("click", he, !0), document.removeEventListener("keydown", me);
+	(0, S.useEffect)(() => (document.addEventListener("keydown", fe), document.addEventListener("click", pe, !0), () => {
+		document.removeEventListener("click", pe, !0), document.removeEventListener("keydown", fe);
 	})), (0, S.useEffect)(() => {
-		N(i ? i.userProvidedText ?? "" : ""), k(!!i && !!i.userProvidedText), j(!!i && !!i.selectionValue);
-	}, [i]);
-	let ge = () => {
-		le();
-	}, _e = (e) => {
+		M(o ? o.userProvidedText ?? "" : ""), O(!!o && !!o.userProvidedText), A(!!o && !!o.selectionValue);
+	}, [o]);
+	let me = () => {
+		oe();
+	}, he = (e) => {
 		let t = e.target.value;
 		if (!t.length) {
-			N(""), k(!1), j(!1), te([]), oe(), p && p({
+			M(""), O(!1), A(!1), P([]), ie(), m && m({
 				userProvidedText: "",
 				selectionValue: "",
 				selectionId: ""
 			});
 			return;
 		}
-		k(!0);
-		let n = ce(t);
-		te(n);
+		O(!0);
+		let n = ae(t);
+		P(n);
 		let r = n.find((e) => e.props.children.toLowerCase() === t.toLowerCase());
 		if (!r) {
-			j(!1), N(t), p && p({
+			A(!1), M(t), m && m({
 				userProvidedText: t,
 				selectionValue: "",
 				selectionId: ""
 			});
 			return;
 		}
-		j(!0), N(r.props.children), p && p({
+		A(!0), M(r.props.children), m && m({
 			userProvidedText: r.props.children,
 			selectionValue: r.props.children,
 			selectionId: r.props.id
 		});
-	}, { getControlProps: ve } = J(), ye = ve(h);
+	}, { getControlProps: ge } = J(), _e = ge(g);
 	return /* @__PURE__ */ S.createElement("div", {
 		className: "pgn__form-autosuggest__wrapper",
 		ref: x,
-		onFocus: de
+		onFocus: le
 	}, /* @__PURE__ */ S.createElement("div", {
 		"aria-live": "assertive",
 		className: "sr-only",
 		"data-testid": "autosuggest-screen-reader-options-count"
-	}, `${P.length} options found`), /* @__PURE__ */ S.createElement(St, {
-		controlId: ye.id,
+	}, `${N.length} options found`), /* @__PURE__ */ S.createElement(St, {
+		controlId: _e.id,
 		isInvalid: !F
 	}, /* @__PURE__ */ S.createElement(jt, {
 		ref: b,
-		"aria-expanded": (P.length > 0).toString(),
+		"aria-expanded": (N.length > 0).toString(),
 		"aria-owns": "pgn__form-autosuggest__dropdown-box",
 		role: "combobox",
 		"aria-autocomplete": "list",
 		autoComplete: "off",
-		value: M,
-		"aria-invalid": ae,
-		"aria-activedescendant": ne,
-		onChange: _e,
-		onClick: ge,
-		trailingElement: R,
+		value: j,
+		"aria-invalid": ne,
+		"aria-activedescendant": ee,
+		onChange: he,
+		onClick: me,
+		trailingElement: ce,
 		"data-testid": "autosuggest-textbox-input",
-		...ye
-	}), m && F && /* @__PURE__ */ S.createElement(X, { type: "default" }, m), !F && /* @__PURE__ */ S.createElement(X, {
+		..._e
+	}), h && F && /* @__PURE__ */ S.createElement(X, { type: "default" }, h), !F && /* @__PURE__ */ S.createElement(X, {
 		type: "invalid",
-		"feedback-for": ye.name
-	}, ae)), /* @__PURE__ */ S.createElement("ul", {
+		"feedback-for": _e.name
+	}, ne)), /* @__PURE__ */ S.createElement("ul", {
 		id: "pgn__form-autosuggest__dropdown-box",
 		className: "pgn__form-autosuggest__dropdown",
 		role: "listbox"
-	}, o ? /* @__PURE__ */ S.createElement("div", { className: "pgn__form-autosuggest__dropdown-loading" }, /* @__PURE__ */ S.createElement(Xt, {
+	}, s ? /* @__PURE__ */ S.createElement("div", { className: "pgn__form-autosuggest__dropdown-loading" }, /* @__PURE__ */ S.createElement(Xt, {
 		animation: "border",
 		variant: "dark",
 		screenReaderText: r,
 		"data-testid": "autosuggest-loading-spinner"
-	})) : P.length > 0 && P));
+	})) : N.length > 0 && N));
 });
 nn.defaultProps = {
 	arrowKeyNavigationSelector: "a:not(:disabled),li:not(:disabled, .btn-icon),input:not(:disabled)",
@@ -3324,41 +3327,41 @@ nn.defaultProps = {
 	name: "form-autosuggest",
 	screenReaderText: "loading"
 }, nn.propTypes = {
-	arrowKeyNavigationSelector: F.default.string,
-	ignoredArrowKeysNames: F.default.arrayOf(F.default.string),
-	isLoading: F.default.bool,
-	className: F.default.string,
-	floatingLabel: F.default.string,
-	onChange: F.default.func,
-	helpMessage: F.default.string,
-	placeholder: F.default.string,
-	value: F.default.shape({
-		userProvidedText: F.default.string,
-		selectionValue: F.default.string,
-		selectionId: F.default.string
+	arrowKeyNavigationSelector: N.default.string,
+	ignoredArrowKeysNames: N.default.arrayOf(N.default.string),
+	isLoading: N.default.bool,
+	className: N.default.string,
+	floatingLabel: N.default.string,
+	onChange: N.default.func,
+	helpMessage: N.default.string,
+	placeholder: N.default.string,
+	value: N.default.shape({
+		userProvidedText: N.default.string,
+		selectionValue: N.default.string,
+		selectionId: N.default.string
 	}),
-	isValueRequired: F.default.bool,
-	valueRequiredErrorMessageText: Yt(F.default.string, "isValueRequired"),
-	isSelectionRequired: F.default.bool,
-	selectionRequiredErrorMessageText: Yt(F.default.string, "isSelectionRequired"),
-	hasCustomError: F.default.bool,
-	customErrorMessageText: Yt(F.default.string, "hasCustomError"),
-	name: F.default.string,
-	readOnly: F.default.bool,
-	children: F.default.node,
-	screenReaderText: F.default.string
+	isValueRequired: N.default.bool,
+	valueRequiredErrorMessageText: Yt(N.default.string, "isValueRequired"),
+	isSelectionRequired: N.default.bool,
+	selectionRequiredErrorMessageText: Yt(N.default.string, "isSelectionRequired"),
+	hasCustomError: N.default.bool,
+	customErrorMessageText: Yt(N.default.string, "hasCustomError"),
+	name: N.default.string,
+	readOnly: N.default.bool,
+	children: N.default.node,
+	screenReaderText: N.default.string
 };
 //#endregion
 //#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Menu/MenuItem.js
-function rn({ as: e = "button", children: t, defaultSelected: n = !1, iconAfter: r, iconBefore: i, ...a }) {
-	let o = (0, O.default)(a.className, "pgn__menu-item");
+function rn({ as: e = "button", children: t, defaultSelected: n = !1, iconAfter: r, iconBefore: a, ...o }) {
+	let s = (0, C.default)(o.className, "pgn__menu-item");
 	return /* @__PURE__ */ (0, S.createElement)(e, {
-		...a,
-		className: o
-	}, /* @__PURE__ */ S.createElement(S.Fragment, null, i && /* @__PURE__ */ S.createElement(g, {
+		...o,
+		className: s
+	}, /* @__PURE__ */ S.createElement(S.Fragment, null, a && /* @__PURE__ */ S.createElement(i, {
 		className: "btn-icon-before",
-		src: i
-	}), /* @__PURE__ */ S.createElement("span", { className: "pgn__menu-item-text" }, t), /* @__PURE__ */ S.createElement("span", { className: "pgn__menu-item-content-spacer" }), r && /* @__PURE__ */ S.createElement(g, {
+		src: a
+	}), /* @__PURE__ */ S.createElement("span", { className: "pgn__menu-item-text" }, t), /* @__PURE__ */ S.createElement("span", { className: "pgn__menu-item-content-spacer" }), r && /* @__PURE__ */ S.createElement(i, {
 		className: "btn-icon-after",
 		src: r
 	})));
@@ -3372,7 +3375,7 @@ function an({ children: e, className: t, onClick: n, ...r }) {
 		role: "option",
 		tabIndex: "-1",
 		onClick: n,
-		className: (0, O.default)(t, "dropdown-item"),
+		className: (0, C.default)(t, "dropdown-item"),
 		...r
 	}, e);
 }
@@ -3381,9 +3384,9 @@ an.defaultProps = {
 	children: null,
 	onClick: null
 }, an.propTypes = {
-	className: F.default.string,
-	children: F.default.string,
-	onClick: F.default.func
+	className: N.default.string,
+	children: N.default.string,
+	onClick: N.default.func
 };
 var on = /* @__PURE__ */ S.createContext({
 	getCheckboxControlProps: (e) => e,
@@ -3411,13 +3414,13 @@ function cn({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a
 	return /* @__PURE__ */ S.createElement(on.Provider, { value: c }, e);
 }
 cn.propTypes = {
-	children: F.default.node.isRequired,
-	name: F.default.string,
-	onBlur: F.default.func,
-	onFocus: F.default.func,
-	onChange: F.default.func,
-	value: F.default.arrayOf(F.default.string),
-	defaultValue: F.default.arrayOf(F.default.string)
+	children: N.default.node.isRequired,
+	name: N.default.string,
+	onBlur: N.default.func,
+	onFocus: N.default.func,
+	onChange: N.default.func,
+	value: N.default.arrayOf(N.default.string),
+	defaultValue: N.default.arrayOf(N.default.string)
 }, cn.defaultProps = {
 	onBlur: void 0,
 	name: void 0,
@@ -3431,7 +3434,7 @@ cn.propTypes = {
 var ln = /* @__PURE__ */ S.forwardRef(({ isIndeterminate: e, ...t }, n) => {
 	let { getCheckboxControlProps: r, hasCheckboxSetProvider: i } = sn(), a = S.useRef(), o = n || a, { getControlProps: s } = J(), c = s({
 		...t,
-		className: (0, O.default)("pgn__form-checkbox-input", t.className)
+		className: (0, C.default)("pgn__form-checkbox-input", t.className)
 	});
 	return i && (c = r(c)), S.useEffect(() => {
 		o.current && (o.current.indeterminate = e);
@@ -3442,8 +3445,8 @@ var ln = /* @__PURE__ */ S.forwardRef(({ isIndeterminate: e, ...t }, n) => {
 	});
 });
 ln.propTypes = {
-	isIndeterminate: F.default.bool,
-	className: F.default.string
+	isIndeterminate: N.default.bool,
+	className: N.default.string
 }, ln.defaultProps = {
 	isIndeterminate: !1,
 	className: void 0
@@ -3464,7 +3467,7 @@ var un = /* @__PURE__ */ S.forwardRef(({ children: e, className: t, controlClass
 		isInvalid: a,
 		isValid: o
 	}, /* @__PURE__ */ S.createElement("div", {
-		className: (0, O.default)("pgn__form-checkbox", t, {
+		className: (0, C.default)("pgn__form-checkbox", t, {
 			"pgn__form-control-valid": o,
 			"pgn__form-control-invalid": a,
 			"pgn__form-control-disabled": l.disabled,
@@ -3474,17 +3477,17 @@ var un = /* @__PURE__ */ S.forwardRef(({ children: e, className: t, controlClass
 	}, g, /* @__PURE__ */ S.createElement("div", null, /* @__PURE__ */ S.createElement(Mt, { className: r }, e), i && /* @__PURE__ */ S.createElement(X, { hasIcon: !1 }, i))));
 });
 un.propTypes = {
-	id: F.default.string,
-	children: F.default.node.isRequired,
-	className: F.default.string,
-	controlClassName: F.default.string,
-	labelClassName: F.default.string,
-	description: F.default.node,
-	isInvalid: F.default.bool,
-	isValid: F.default.bool,
-	controlAs: F.default.elementType,
-	floatLabelLeft: F.default.bool,
-	disabled: F.default.bool
+	id: N.default.string,
+	children: N.default.node.isRequired,
+	className: N.default.string,
+	controlClassName: N.default.string,
+	labelClassName: N.default.string,
+	description: N.default.node,
+	isInvalid: N.default.bool,
+	isValid: N.default.bool,
+	controlAs: N.default.elementType,
+	floatLabelLeft: N.default.bool,
+	disabled: N.default.bool
 }, un.defaultProps = {
 	id: void 0,
 	className: void 0,
@@ -3502,7 +3505,7 @@ un.propTypes = {
 var dn = /* @__PURE__ */ S.forwardRef(({ isIndeterminate: e, ...t }, n) => {
 	let r = S.useRef(), i = n || r, { getControlProps: a } = J(), o = a({
 		...t,
-		className: (0, O.default)("pgn__form-switch-input", t.className)
+		className: (0, C.default)("pgn__form-switch-input", t.className)
 	});
 	return S.useEffect(() => {
 		i.current && (i.current.indeterminate = e);
@@ -3513,14 +3516,14 @@ var dn = /* @__PURE__ */ S.forwardRef(({ isIndeterminate: e, ...t }, n) => {
 	});
 });
 dn.propTypes = {
-	isIndeterminate: F.default.bool,
-	className: F.default.string
+	isIndeterminate: N.default.bool,
+	className: N.default.string
 }, dn.defaultProps = {
 	isIndeterminate: !1,
 	className: void 0
 };
 var fn = /* @__PURE__ */ S.forwardRef(({ children: e, className: t, helperText: n, ...r }, i) => /* @__PURE__ */ S.createElement("div", { className: "d-inline-flex flex-column" }, /* @__PURE__ */ S.createElement(un, {
-	className: (0, O.default)("pgn__form-switch", t),
+	className: (0, C.default)("pgn__form-switch", t),
 	...r,
 	role: "switch",
 	ref: i,
@@ -3530,11 +3533,11 @@ var fn = /* @__PURE__ */ S.forwardRef(({ children: e, className: t, helperText: 
 	description: null
 }, e), n && /* @__PURE__ */ S.createElement("div", { className: "pgn__form-switch-helper-text" }, n)));
 fn.propTypes = {
-	children: F.default.node.isRequired,
-	className: F.default.string,
-	labelClassName: F.default.string,
-	helperText: F.default.node,
-	floatLabelLeft: F.default.bool
+	children: N.default.node.isRequired,
+	className: N.default.string,
+	labelClassName: N.default.string,
+	helperText: N.default.node,
+	floatLabelLeft: N.default.bool
 }, fn.defaultProps = {
 	className: void 0,
 	labelClassName: void 0,
@@ -3561,15 +3564,15 @@ function pn({ children: e, name: t, value: n, defaultValue: r, isInline: i, onCh
 	}, e));
 }
 pn.propTypes = {
-	children: F.default.node.isRequired,
-	className: F.default.string,
-	name: F.default.string.isRequired,
-	value: F.default.arrayOf(F.default.string),
-	defaultValue: F.default.arrayOf(F.default.string),
-	isInline: F.default.bool,
-	onChange: F.default.func,
-	onFocus: F.default.func,
-	onBlur: F.default.func
+	children: N.default.node.isRequired,
+	className: N.default.string,
+	name: N.default.string.isRequired,
+	value: N.default.arrayOf(N.default.string),
+	defaultValue: N.default.arrayOf(N.default.string),
+	isInline: N.default.bool,
+	onChange: N.default.func,
+	onFocus: N.default.func,
+	onBlur: N.default.func
 }, pn.defaultProps = {
 	className: void 0,
 	value: void 0,
@@ -3598,16 +3601,16 @@ var hn = ["top", "bottom"], gn = /* @__PURE__ */ S.forwardRef(({ position: e, ch
 			};
 		}
 	}, [e, l]), /* @__PURE__ */ S.createElement("div", {
-		className: (0, O.default)("pgn__sticky", `pgn__sticky-${e || "top"}`, n ? `pgn__sticky-offset--${n}` : "", { "pgn__sticky-shadow": o }, r),
+		className: (0, C.default)("pgn__sticky", `pgn__sticky-${e || "top"}`, n ? `pgn__sticky-offset--${n}` : "", { "pgn__sticky-shadow": o }, r),
 		ref: l,
 		...i
 	}, t);
 });
 gn.propTypes = {
-	children: F.default.node.isRequired,
-	position: F.default.oneOf(hn),
-	offset: F.default.oneOfType([F.default.number, F.default.string]),
-	className: F.default.string
+	children: N.default.node.isRequired,
+	position: N.default.oneOf(hn),
+	offset: N.default.oneOfType([N.default.number, N.default.string]),
+	className: N.default.string
 }, gn.defaultProps = {
 	position: "top",
 	offset: void 0,
@@ -3640,11 +3643,11 @@ var $ = b(), _n = ({ initialData: e, onSave: t, onCancel: n }) => {
 		}), /* @__PURE__ */ (0, $.jsx)(gn, {
 			position: "bottom",
 			className: "xblock-actions",
-			children: /* @__PURE__ */ (0, $.jsxs)(k, { children: [/* @__PURE__ */ (0, $.jsx)(p, {
+			children: /* @__PURE__ */ (0, $.jsxs)(w, { children: [/* @__PURE__ */ (0, $.jsx)(u, {
 				variant: "primary",
 				onClick: () => t(r),
 				children: "Save"
-			}), /* @__PURE__ */ (0, $.jsx)(p, {
+			}), /* @__PURE__ */ (0, $.jsx)(u, {
 				variant: "tertiary",
 				onClick: () => n(),
 				children: "Cancel"
@@ -3652,8 +3655,8 @@ var $ = b(), _n = ({ initialData: e, onSave: t, onCancel: n }) => {
 		})]
 	});
 }, vn = ".wrapper.xblock-iframe-content .xblock-v1-studio_view{display:flex}.xblock-root,.xblock-root .react-studio-block,.xblock-root .react-studio-block .container-fluid{height:100%}.react-studio-block{flex-grow:1}.react-studio-block *,.react-studio-block :before,.react-studio-block :after{box-sizing:border-box}.react-studio-block{margin-bottom:0!important}.xblock-actions{border-top:1px solid var(--pgn-color-gray-200);background:var(--pgn-color-white);z-index:1;justify-content:flex-end;gap:.5em;padding:.75em 1em;display:flex;position:sticky;bottom:0;box-shadow:0 -2px 6px #0000000d}.react-colorful{-webkit-user-select:none;user-select:none;cursor:default;flex-direction:column;width:200px;height:200px;display:flex;position:relative}.react-colorful__saturation{background-image:linear-gradient(#0000,#000),linear-gradient(90deg,#fff,#fff0);border-color:#0000 #0000 #000;border-bottom-style:solid;border-bottom-width:12px;border-radius:8px 8px 0 0;flex-grow:1;position:relative}.react-colorful__pointer-fill,.react-colorful__alpha-gradient{content:\"\";pointer-events:none;border-radius:inherit;position:absolute;inset:0}.react-colorful__alpha-gradient,.react-colorful__saturation{box-shadow:inset 0 0 0 1px #0000000d}.react-colorful__hue,.react-colorful__alpha{height:24px;position:relative}.react-colorful__hue{background:linear-gradient(90deg,red 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red 100%)}.react-colorful__last-control{border-radius:0 0 8px 8px}.react-colorful__interactive{border-radius:inherit;touch-action:none;outline:none;position:absolute;inset:0}.react-colorful__pointer{z-index:1;box-sizing:border-box;background-color:#fff;border:2px solid #fff;border-radius:50%;width:28px;height:28px;position:absolute;transform:translate(-50%,-50%);box-shadow:0 2px 4px #0003}.react-colorful__interactive:focus .react-colorful__pointer{transform:translate(-50%,-50%)scale(1.1)}.react-colorful__alpha,.react-colorful__alpha-pointer{background-color:#fff;background-image:url(\"data:image/svg+xml,<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill-opacity=\\\".05\\\"><rect x=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/><rect y=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/></svg>\")}.react-colorful__saturation-pointer{z-index:3}.react-colorful__hue-pointer{z-index:2}.edit-xblock-modal>.modal-actions{display:none!important}", yn = (0, S.createContext)(null), bn = (e, t, n) => {
-	let i = l(t), a = e.handlerUrl(i, "studio_save");
-	u({
+	let i = c(t), a = e.handlerUrl(i, "studio_save");
+	l({
 		runtime: e,
 		element: t,
 		config: n.config,
