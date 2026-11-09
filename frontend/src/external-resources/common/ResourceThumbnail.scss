@@ -11,10 +11,7 @@
   }
 
   .external-resource-icon {
-    background-color: var(
-      --pgn-wgu-color-lake-50,
-      var(--pgn-color-secondary-200)
-    );
+    background-color: var(--pgn-wgu-color-lake-50, var(--pgn-color-light-300));
     color: var(--pgn-wgu-color-blue-muted, var(--pgn-color-info-400));
   }
 

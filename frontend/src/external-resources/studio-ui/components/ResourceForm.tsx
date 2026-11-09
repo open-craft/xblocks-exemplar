@@ -112,7 +112,7 @@ export const ResourceForm = ({
       <Card.Body>
         <Card.Section>
           <div className="d-flex w-100 justify-content-between">
-            <span className="h5 text-primary-500">
+            <span className="h4 text-primary-500">
               {isNewResource ? 'Add resource' : 'Edit resource'}
             </span>
             {!isNewResource && (
