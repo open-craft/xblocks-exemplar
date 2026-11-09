@@ -18,6 +18,13 @@ export const renderBlock = (
 ) => {
   const container = getRoot(element);
 
+  const modalBody = container.parentElement?.parentElement;
+  if (modalBody) {
+    modalBody.style.minHeight = '635px';
+    modalBody.style.maxHeight = 'calc(100vh - 51px)';
+    modalBody.style.overflowY = 'scroll';
+  }
+
   const studioSaveUrl = runtime.handlerUrl(container, 'studio_save');
   const save = (data: Data) => {
     saveStudioBlock<Data>({
