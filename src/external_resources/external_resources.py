@@ -228,6 +228,9 @@ class ExternalResourcesXBlock(XBlock):
         xblock_body["content_type"] = "External Resources"
         return xblock_body
 
+    # Alias needed for client's "Data Bricks" indexer project.
+    student_view_data = index_dictionary
+
     @staticmethod
     def workbench_scenarios():
         """A set of workbench scenarios."""

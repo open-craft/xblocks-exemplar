@@ -238,6 +238,9 @@ class CoverBlock(XBlock):
         xblock_body["content_type"] = "Cover"
         return xblock_body
 
+    # Alias needed for client's "Data Bricks" indexer project.
+    student_view_data = index_dictionary
+
     @staticmethod
     def workbench_scenarios() -> list[WorkbenchScenario]:
         """A canned scenario for display in the workbench."""
