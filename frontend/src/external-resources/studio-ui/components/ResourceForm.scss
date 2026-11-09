@@ -1,0 +1,13 @@
+// Hours and minutes fields: fixed width, as in the design.
+// Form.Control puts className on its wrapper (.pgn__form-control-decorator-group), so the
+// width goes there. Paragon gives that wrapper `flex-grow: 1` and its CSS loads after ours,
+// so both classes are needed to win.
+.pgn__form-control-decorator-group.estimated-time-input {
+  flex: none;
+  width: 4.25rem;
+}
+
+// Less side padding, so two digits fit in the narrow field.
+.pgn__form-control-decorator-group.estimated-time-input .form-control {
+  padding-inline: var(--pgn-spacing-spacer-2);
+}

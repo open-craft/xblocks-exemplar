@@ -1,0 +1,63 @@
+.external-resource-card {
+  padding: var(--pgn-spacing-spacer-4);
+
+  &.is-clickable:hover {
+    cursor: pointer;
+    background-color: var(--pgn-color-light-300);
+  }
+
+  .card-type,
+  .card-publisher {
+    color: var(--pgn-color-gray-700);
+    font-family: var(--pgn-typography-headings-font-family, Sora, sans-serif);
+    font-size: var(--pgn-typography-font-size-xs);
+    font-weight: var(--pgn-typography-font-weight-bold);
+    line-height: 1.3333;
+  }
+
+  .card-type {
+    margin-bottom: var(--pgn-spacing-spacer-1);
+  }
+
+  // One line, then "…".
+  .card-publisher {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-title {
+    color: var(--pgn-wgu-color-lake-800, var(--pgn-color-info-700));
+    margin-bottom: var(--pgn-spacing-spacer-1);
+    font-size: var(--pgn-typography-font-size-lg);
+    font-weight: var(--pgn-typography-font-weight-bold);
+    line-height: 1.6;
+    // At most 2 lines, then "…".
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+  }
+
+  .card-thumbnail {
+    width: 102px;
+    height: 102px;
+  }
+
+  // Paragon gives the body and the footer `width: 100%`, so in a horizontal card they
+  // split the space in half. The footer (actions) takes only what it needs and the
+  // body takes the rest.
+  .pgn__card-body {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  // `&.pgn__card` is needed to beat Paragon's `.pgn__card .pgn__card-footer { width: 100% }`,
+  // which loads after our styles.
+  &.pgn__card .pgn__card-footer {
+    flex: none;
+    width: auto;
+  }
+}

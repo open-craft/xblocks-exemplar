@@ -1,0 +1,49 @@
+.thumbnail-select {
+  position: relative;
+  display: inline-block;
+
+  .thumbnail-select-popover {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    width: 18rem;
+    margin-top: var(--pgn-spacing-spacer-1);
+    background-color: var(--pgn-color-white);
+    border-radius: var(--pgn-size-border-radius-base);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    &:focus {
+      outline: none;
+    }
+
+    .icon-picker,
+    .thumbnail-select-image {
+      padding: var(--pgn-spacing-spacer-2);
+    }
+
+    .thumbnail-select-image {
+      margin-bottom: 0;
+    }
+
+    .icon-list {
+      max-height: 15rem;
+      overflow-y: auto;
+    }
+
+    .icon-symbol {
+      display: flex;
+      background: none;
+      border: 0;
+      border-radius: var(--pgn-size-border-radius-base);
+      color: var(--pgn-color-primary-500);
+      cursor: pointer;
+
+      &:hover,
+      &:focus,
+      &.active {
+        background-color: var(--pgn-color-light-300);
+      }
+    }
+  }
+}

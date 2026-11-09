@@ -1,5 +1,4 @@
-import { Dropdown, Sticky } from '@openedx/paragon';
-import Form from '@openedx/paragon/dist/Form';
+import { Dropdown } from '@openedx/paragon';
 import {
   useState,
   forwardRef,
@@ -8,8 +7,7 @@ import {
   useRef,
   useCallback,
 } from 'react';
-import { ICONS } from './icons';
-import Fuse from 'fuse.js';
+import IconPicker from '@/shared/components/IconPicker';
 
 interface IconSelectorProps {
   currentIcon: string;
@@ -73,74 +71,53 @@ const Menu = forwardRef<
 ));
 Menu.displayName = 'IconSelectorMenu';
 
+// These icons were manually chosen from the Google Fonts page listed as "most used" with a bit of
+// filtering for relevance in a eductional setup.
+const DEFAULT_ICONS = [
+  'search',
+  'home',
+  'info',
+  'check_circle',
+  'delete',
+  'visibility',
+  'book',
+  'favorite',
+  'description',
+  'lock',
+  'schedule',
+  'language',
+  'help_outline',
+  'verified',
+  'face',
+  'thumb_up',
+  'filter_alt',
+  'dashboard',
+  'event',
+  'fingerprint',
+  'list',
+  'help',
+  'paid',
+  'assignment',
+  'question_answer',
+  'article',
+  'lightbulb',
+  'credit_card',
+  'account_balance',
+  'trending_up',
+];
+
 export default function IconSelector({
   currentIcon,
   onIconSelected,
 }: IconSelectorProps) {
-  // These icons were manually chosen from the Google Fonts page listed as "most used" with a bit of
-  // filtering for relevance in a eductional setup.
-  const DEFAULT_ICONS = [
-    'search',
-    'home',
-    'info',
-    'check_circle',
-    'delete',
-    'visibility',
-    'book',
-    'favorite',
-    'description',
-    'lock',
-    'schedule',
-    'language',
-    'help_outline',
-    'verified',
-    'face',
-    'thumb_up',
-    'filter_alt',
-    'dashboard',
-    'event',
-    'fingerprint',
-    'list',
-    'help',
-    'paid',
-    'assignment',
-    'question_answer',
-    'article',
-    'lightbulb',
-    'credit_card',
-    'account_balance',
-    'trending_up',
-  ];
-
-  const [icons, setIcons] = useState<Array<string>>(DEFAULT_ICONS);
-  const [searchTerm, setSearchTerm] = useState('');
+  // Changes on every open, so the picker remounts with an empty search.
+  const [openCount, setOpenCount] = useState(0);
   const toggleId = useId();
-  const fuse = new Fuse(ICONS, { threshold: 0.3, minMatchCharLength: 2 });
-
-  function searchIcons(e: React.ChangeEvent<HTMLInputElement>) {
-    const term = e.currentTarget.value;
-    setSearchTerm(term);
-    if (term !== '') {
-      setIcons(fuse.search(term).map((s) => s.item.toString()));
-    } else {
-      setIcons(DEFAULT_ICONS);
-    }
-  }
-
-  function resetSearch() {
-    setSearchTerm('');
-    setIcons(DEFAULT_ICONS);
-  }
-
-  function selectIcon(eventKey: string | null) {
-    if (eventKey) onIconSelected(eventKey);
-  }
 
   return (
     <Dropdown
-      onSelect={selectIcon}
       onToggle={(isOpen: boolean) => {
-        if (isOpen) resetSearch();
+        if (isOpen) setOpenCount((count) => count + 1);
       }}
     >
       <Dropdown.Toggle
@@ -159,36 +136,14 @@ export default function IconSelector({
         popperConfig={{ strategy: 'fixed' }}
       >
         <div className="icon-list-popup border rounded-sm shadow">
-          <Sticky>
-            <Form.Group size="sm">
-              <Form.Control
-                autoFocus
-                type="text"
-                className="m-0"
-                placeholder="Search icons"
-                trailingElement={
-                  <span className="material-icons-outlined medium text-gray-500">
-                    search
-                  </span>
-                }
-                value={searchTerm}
-                onChange={searchIcons}
-              />
-            </Form.Group>
-          </Sticky>
-          <div className="icon-list d-flex flex-wrap justify-items-start">
-            {icons.map((icon) => (
-              <Dropdown.Item
-                as="button"
-                type="button"
-                key={icon}
-                eventKey={icon}
-                className="icon-symbol p-2"
-              >
-                <span className="material-icons-outlined">{icon}</span>
-              </Dropdown.Item>
-            ))}
-          </div>
+          <IconPicker
+            key={openCount}
+            autoFocus
+            defaultIcons={DEFAULT_ICONS}
+            selectedIcon={currentIcon}
+            onSelect={onIconSelected}
+            itemAs={Dropdown.Item}
+          />
         </div>
       </Dropdown.Menu>
     </Dropdown>

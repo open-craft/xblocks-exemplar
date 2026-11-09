@@ -118,6 +118,19 @@ export default defineConfig(({ mode }) => {
       },
       outDir: resolve(__dirname, '../src/unfolding_scenario/public'),
     },
+    external_resources: {
+      entry: {
+        externalResourcesStudent: resolve(
+          import.meta.dirname,
+          'src/external-resources/student-ui/main.tsx',
+        ),
+        externalResourcesStudio: resolve(
+          import.meta.dirname,
+          'src/external-resources/studio-ui/main.tsx',
+        ),
+      },
+      outDir: resolve(__dirname, '../src/external_resources/public'),
+    },
   };
 
   const xblock = process.env.XBLOCK;

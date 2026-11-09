@@ -1,0 +1,33 @@
+@import '../../studio';
+@import '../../shared/components/StudioHeader.css';
+@import '../common/materialIcons';
+@import '../common/ResourceCard';
+@import '../common/ResourceThumbnail';
+@import './components/ContentTypeSelect';
+@import './components/ResourceForm';
+@import './components/ThumbnailSelect';
+
+// Hide the "close" button at the bottom of the editor modal.
+// We want our own save and cancel buttons.
+.edit-xblock-modal > .modal-actions {
+  display: none !important;
+}
+
+// Fill the whole editor modal, so the actions bar stays at the bottom
+// and the background reaches it even when there are no resources.
+// The block element (the shadow host) is a flex column that fills the modal
+// (see static/css/studio.css); the root and the editor grow to fill it.
+.xblock-root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.external-resources-xblock-editor {
+  display: flex;
+  flex-direction: column;
+
+  .external-resources-editor-body {
+    flex-grow: 1;
+  }
+}

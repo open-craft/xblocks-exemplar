@@ -45,6 +45,15 @@ describe('StudioHeader', () => {
     });
   });
 
+  it('renders no tab list when there are no tabs', () => {
+    render(<Harness tabs={[]} />);
+
+    expect(
+      screen.getByRole('heading', { name: 'Editing: My Component' }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole('tablist')).not.toBeInTheDocument();
+  });
+
   it('marks only the active tab as selected', () => {
     render(<Harness activeTab="settings" />);
 

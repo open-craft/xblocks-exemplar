@@ -104,8 +104,12 @@ def test_author_view_is_used_in_studio():
 
     assert block.has_author_view is True
     assert author_frag.to_dict()["content"] == student_frag.to_dict()["content"]
-    assert any(r.mimetype == "text/css" for r in author_frag.resources)
-    assert not any(r.mimetype == "text/css" for r in student_frag.resources)
+    assert any(
+        r.kind == "text" and r.mimetype == "text/css" for r in author_frag.resources
+    )
+    assert not any(
+        r.kind == "text" and r.mimetype == "text/css" for r in student_frag.resources
+    )
 
 
 def test_views_send_read_resources_without_removed_ids():
