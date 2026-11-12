@@ -12690,8 +12690,66 @@ function Hy() {
 	});
 }
 //#endregion
+//#region src/shared/components/StudioHeader.tsx
+function Uy({ title: e, onTitleChange: t, activeTab: n, tabs: r, onClose: i, showEditingPrefix: a = !0 }) {
+	let [o, s] = (0, I.useState)(!1);
+	return /* @__PURE__ */ (0, F.jsx)(eu.Header, {
+		className: "shadow-sm studio-header",
+		children: /* @__PURE__ */ (0, F.jsxs)("div", {
+			className: "d-flex flex-row justify-content-between",
+			children: [
+				/* @__PURE__ */ (0, F.jsx)(ke, { children: o ? /* @__PURE__ */ (0, F.jsx)(H.Control, {
+					type: "text",
+					name: "studio-title",
+					"aria-label": "Display name",
+					value: e,
+					onChange: (e) => t(e.target.value),
+					onBlur: () => s(!1),
+					onKeyDown: (e) => {
+						(e.key === "Enter" || e.key === "Escape") && (s(!1), e.preventDefault());
+					}
+				}) : /* @__PURE__ */ (0, F.jsx)("h3", {
+					className: "h3 col pl-0",
+					children: /* @__PURE__ */ (0, F.jsxs)("div", {
+						className: "d-flex flex-row align-items-center mt-1",
+						children: [a ? `Editing: ${e}` : e, /* @__PURE__ */ (0, F.jsx)(le, {
+							alt: "Edit display name",
+							className: "studio-header-title-edit",
+							size: "sm",
+							src: Kr,
+							onClick: () => s(!0)
+						})]
+					})
+				}) }),
+				/* @__PURE__ */ (0, F.jsx)(ke.Spacer, {}),
+				r && r.length > 0 && n !== void 0 && /* @__PURE__ */ (0, F.jsx)(_u, {
+					role: "tablist",
+					variant: "button-group",
+					activeKey: n,
+					className: "studio-header-tabs-nav pgn__tabs",
+					"aria-label": "Editor Sections",
+					children: r.map(({ key: e, label: t }) => /* @__PURE__ */ (0, F.jsx)(_u.Link, {
+						as: "button",
+						type: "button",
+						eventKey: e,
+						tabIndex: n === e ? 0 : -1,
+						children: t
+					}, e))
+				}),
+				i && /* @__PURE__ */ (0, F.jsx)(le, {
+					alt: "Close editor",
+					className: "studio-header-close",
+					size: "sm",
+					src: Gr,
+					onClick: i
+				})
+			]
+		})
+	});
+}
+//#endregion
 //#region src/shared/components/constants.ts
-var Uy = [
+var Wy = [
 	{
 		key: "content",
 		label: "Content"
@@ -12705,61 +12763,6 @@ var Uy = [
 		label: "JSON"
 	}
 ];
-//#endregion
-//#region src/shared/components/StudioHeader.tsx
-function Wy({ title: e, onTitleChange: t, activeTab: n, tabs: r = Uy }) {
-	let [i, a] = (0, I.useState)(!1);
-	return /* @__PURE__ */ (0, F.jsx)(eu.Header, {
-		className: "shadow-sm studio-header",
-		children: /* @__PURE__ */ (0, F.jsxs)("div", {
-			className: "d-flex flex-row justify-content-between",
-			children: [
-				/* @__PURE__ */ (0, F.jsx)(ke, { children: i ? /* @__PURE__ */ (0, F.jsx)(H.Control, {
-					type: "text",
-					name: "studio-title",
-					"aria-label": "Display name",
-					value: e,
-					onChange: (e) => t(e.target.value),
-					onBlur: () => a(!1),
-					onKeyDown: (e) => {
-						(e.key === "Enter" || e.key === "Escape") && (a(!1), e.preventDefault());
-					}
-				}) : /* @__PURE__ */ (0, F.jsx)("h3", {
-					className: "h3 col pl-0",
-					children: /* @__PURE__ */ (0, F.jsxs)("div", {
-						className: "d-flex flex-row align-items-center mt-1",
-						children: [
-							"Editing: ",
-							e,
-							/* @__PURE__ */ (0, F.jsx)(le, {
-								alt: "Edit display name",
-								className: "studio-header-title-edit",
-								size: "sm",
-								src: Kr,
-								onClick: () => a(!0)
-							})
-						]
-					})
-				}) }),
-				/* @__PURE__ */ (0, F.jsx)(ke.Spacer, {}),
-				/* @__PURE__ */ (0, F.jsx)(_u, {
-					role: "tablist",
-					variant: "button-group",
-					activeKey: n,
-					className: "studio-header-tabs-nav pgn__tabs",
-					"aria-label": "Editor Sections",
-					children: r.map(({ key: e, label: t }) => /* @__PURE__ */ (0, F.jsx)(_u.Link, {
-						as: "button",
-						type: "button",
-						eventKey: e,
-						tabIndex: n === e ? 0 : -1,
-						children: t
-					}, e))
-				})
-			]
-		})
-	});
-}
 //#endregion
 //#region src/card/common/studio-ui/secondary-content/ListItemContainer.tsx
 function Gy({ heading: e, index: t, onRemoveItem: n, children: r }) {
@@ -18686,7 +18689,7 @@ function kN({ liveData: e }) {
 //#endregion
 //#region src/card/card-carousel/studio-ui/StudioUI.tsx
 function AN() {
-	let e = Uy[0].key, [t, n] = (0, I.useState)(e), { values: r, setFieldValue: i } = sy(), a = !!Tp()?.enable_json_editing, o = a ? Uy : Uy.filter((e) => e.key !== "json");
+	let e = Wy[0].key, [t, n] = (0, I.useState)(e), { values: r, setFieldValue: i } = sy(), a = !!Tp()?.enable_json_editing, o = a ? Wy : Wy.filter((e) => e.key !== "json");
 	return /* @__PURE__ */ (0, F.jsx)(jy, { children: /* @__PURE__ */ (0, F.jsx)(Yn, {
 		id: "card-carousel-studio-tabs",
 		activeKey: t,
@@ -18695,7 +18698,7 @@ function AN() {
 		children: /* @__PURE__ */ (0, F.jsxs)("div", {
 			className: "studio-ui card-carousel-studio",
 			children: [
-				/* @__PURE__ */ (0, F.jsx)(Wy, {
+				/* @__PURE__ */ (0, F.jsx)(Uy, {
 					activeTab: t,
 					title: r.displayName,
 					onTitleChange: (e) => i("displayName", e),
@@ -18746,7 +18749,7 @@ function jN({ initData: e }) {
 }
 //#endregion
 //#region src/card/card-carousel/studio-ui/StudioUI.css?inline
-var MN = ".icon-selector.dropdown-toggle:after{display:none}.icon-list-popup{background-color:var(--pgn-color-body-bg);width:292px;min-height:242px;max-height:300px;overflow:scroll}button:not(:disabled).icon-symbol{background-color:var(--pgn-color-body-bg);width:auto;color:var(--pgn-color-gray-600);border:0}button:not(:disabled).icon-symbol:hover{background-color:var(--pgn-color-light);color:var(--pgn-color-primary)}button:not(:disabled).icon-symbol:focus{background-color:var(--pgn-color-light);color:var(--pgn-color-primary);border:0}.card-carousel-editor-modal-footer{background-color:var(--pgn-color-card-bg-base)}.xblock-root .input-group .pgn__form-control-decorator-group{margin-right:0}.xblock-root .input-group .pgn__form-control-decorator-group .form-control{border-top-right-radius:0;border-bottom-right-radius:0}.pgn__modal-header.studio-header{padding:calc(var(--pgn-spacing-modal-inner-padding-base) / 2) var(--pgn-spacing-modal-header-padding-base-x);z-index:1}.studio-header-title{align-items:center;gap:var(--pgn-spacing-spacer-2,8px);display:flex}.studio-header-tabs-nav{flex-wrap:nowrap;padding-right:64px}.studio-header-tabs-nav .nav-link{appearance:none;font-family:inherit;font-size:inherit;line-height:inherit;cursor:pointer;background-color:#0000}.wrapper.xblock-iframe-content .xblock-v1-studio_view{display:flex}.xblock-root,.xblock-root .react-studio-block,.xblock-root .react-studio-block .container-fluid{height:100%}.react-studio-block{flex-grow:1}.react-studio-block *,.react-studio-block :before,.react-studio-block :after{box-sizing:border-box}.react-studio-block{margin-bottom:0!important}.xblock-actions{border-top:1px solid var(--pgn-color-gray-200);background:var(--pgn-color-white);z-index:1;justify-content:flex-end;gap:.5em;padding:.75em 1em;display:flex;position:sticky;bottom:0;box-shadow:0 -2px 6px #0000000d}.react-colorful{-webkit-user-select:none;user-select:none;cursor:default;flex-direction:column;width:200px;height:200px;display:flex;position:relative}.react-colorful__saturation{background-image:linear-gradient(#0000,#000),linear-gradient(90deg,#fff,#fff0);border-color:#0000 #0000 #000;border-bottom-style:solid;border-bottom-width:12px;border-radius:8px 8px 0 0;flex-grow:1;position:relative}.react-colorful__pointer-fill,.react-colorful__alpha-gradient{content:\"\";pointer-events:none;border-radius:inherit;position:absolute;inset:0}.react-colorful__alpha-gradient,.react-colorful__saturation{box-shadow:inset 0 0 0 1px #0000000d}.react-colorful__hue,.react-colorful__alpha{height:24px;position:relative}.react-colorful__hue{background:linear-gradient(90deg,red 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red 100%)}.react-colorful__last-control{border-radius:0 0 8px 8px}.react-colorful__interactive{border-radius:inherit;touch-action:none;outline:none;position:absolute;inset:0}.react-colorful__pointer{z-index:1;box-sizing:border-box;background-color:#fff;border:2px solid #fff;border-radius:50%;width:28px;height:28px;position:absolute;transform:translate(-50%,-50%);box-shadow:0 2px 4px #0003}.react-colorful__interactive:focus .react-colorful__pointer{transform:translate(-50%,-50%)scale(1.1)}.react-colorful__alpha,.react-colorful__alpha-pointer{background-color:#fff;background-image:url(\"data:image/svg+xml,<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill-opacity=\\\".05\\\"><rect x=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/><rect y=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/></svg>\")}.react-colorful__saturation-pointer{z-index:3}.react-colorful__hue-pointer{z-index:2}.card-carousel-studio{flex-direction:column;justify-content:space-between;min-height:635px;display:flex}.card-carousel-create-form{padding:var(--pgn-spacing-spacer-3,16px)}.card-carousel-studio-tab-content{flex:auto;min-height:0}.card-carousel-studio-field{margin-bottom:var(--pgn-spacing-spacer-4,24px)}.card-carousel-studio-field--last{margin-bottom:0}.card-carousel-studio-help-text{font-size:var(--pgn-typography-font-size-sm,.875rem)}.material-icons-outlined{text-transform:none;letter-spacing:normal;word-wrap:normal;white-space:nowrap;-webkit-font-smoothing:antialiased;text-rendering:optimizelegibility;-moz-osx-font-smoothing:grayscale;font-feature-settings:\"liga\";direction:ltr;font-family:Material Icons Outlined;font-size:24px;font-style:normal;font-weight:400;line-height:1;display:inline-block}", NN = (e, t, n) => {
+var MN = ".icon-selector.dropdown-toggle:after{display:none}.icon-list-popup{background-color:var(--pgn-color-body-bg);width:292px;min-height:242px;max-height:300px;overflow:scroll}button:not(:disabled).icon-symbol{background-color:var(--pgn-color-body-bg);width:auto;color:var(--pgn-color-gray-600);border:0}button:not(:disabled).icon-symbol:hover{background-color:var(--pgn-color-light);color:var(--pgn-color-primary)}button:not(:disabled).icon-symbol:focus{background-color:var(--pgn-color-light);color:var(--pgn-color-primary);border:0}.card-carousel-editor-modal-footer{background-color:var(--pgn-color-card-bg-base)}.xblock-root .input-group .pgn__form-control-decorator-group{margin-right:0}.xblock-root .input-group .pgn__form-control-decorator-group .form-control{border-top-right-radius:0;border-bottom-right-radius:0}.pgn__modal-header.studio-header{padding:calc(var(--pgn-spacing-modal-inner-padding-base) / 2) var(--pgn-spacing-modal-header-padding-base-x);z-index:1}.studio-header-title{align-items:center;gap:var(--pgn-spacing-spacer-2,8px);display:flex}.studio-header-tabs-nav{flex-wrap:nowrap;padding-right:64px}.studio-header-close{margin-right:64px}.studio-header-tabs-nav .nav-link{appearance:none;font-family:inherit;font-size:inherit;line-height:inherit;cursor:pointer;background-color:#0000}.wrapper.xblock-iframe-content .xblock-v1-studio_view{display:flex}.xblock-root,.xblock-root .react-studio-block,.xblock-root .react-studio-block .container-fluid{height:100%}.react-studio-block{flex-grow:1}.react-studio-block *,.react-studio-block :before,.react-studio-block :after{box-sizing:border-box}.react-studio-block{margin-bottom:0!important}.xblock-actions{border-top:1px solid var(--pgn-color-gray-200);background:var(--pgn-color-white);z-index:1;justify-content:flex-end;gap:.5em;padding:.75em 1em;display:flex;position:sticky;bottom:0;box-shadow:0 -2px 6px #0000000d}.react-colorful{-webkit-user-select:none;user-select:none;cursor:default;flex-direction:column;width:200px;height:200px;display:flex;position:relative}.react-colorful__saturation{background-image:linear-gradient(#0000,#000),linear-gradient(90deg,#fff,#fff0);border-color:#0000 #0000 #000;border-bottom-style:solid;border-bottom-width:12px;border-radius:8px 8px 0 0;flex-grow:1;position:relative}.react-colorful__pointer-fill,.react-colorful__alpha-gradient{content:\"\";pointer-events:none;border-radius:inherit;position:absolute;inset:0}.react-colorful__alpha-gradient,.react-colorful__saturation{box-shadow:inset 0 0 0 1px #0000000d}.react-colorful__hue,.react-colorful__alpha{height:24px;position:relative}.react-colorful__hue{background:linear-gradient(90deg,red 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red 100%)}.react-colorful__last-control{border-radius:0 0 8px 8px}.react-colorful__interactive{border-radius:inherit;touch-action:none;outline:none;position:absolute;inset:0}.react-colorful__pointer{z-index:1;box-sizing:border-box;background-color:#fff;border:2px solid #fff;border-radius:50%;width:28px;height:28px;position:absolute;transform:translate(-50%,-50%);box-shadow:0 2px 4px #0003}.react-colorful__interactive:focus .react-colorful__pointer{transform:translate(-50%,-50%)scale(1.1)}.react-colorful__alpha,.react-colorful__alpha-pointer{background-color:#fff;background-image:url(\"data:image/svg+xml,<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill-opacity=\\\".05\\\"><rect x=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/><rect y=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/></svg>\")}.react-colorful__saturation-pointer{z-index:3}.react-colorful__hue-pointer{z-index:2}.card-carousel-studio{flex-direction:column;justify-content:space-between;min-height:635px;display:flex}.card-carousel-create-form{padding:var(--pgn-spacing-spacer-3,16px)}.card-carousel-studio-tab-content{flex:auto;min-height:0}.card-carousel-studio-field{margin-bottom:var(--pgn-spacing-spacer-4,24px)}.card-carousel-studio-field--last{margin-bottom:0}.card-carousel-studio-help-text{font-size:var(--pgn-typography-font-size-sm,.875rem)}.material-icons-outlined{text-transform:none;letter-spacing:normal;word-wrap:normal;white-space:nowrap;-webkit-font-smoothing:antialiased;text-rendering:optimizelegibility;-moz-osx-font-smoothing:grayscale;font-feature-settings:\"liga\";direction:ltr;font-family:Material Icons Outlined;font-size:24px;font-style:normal;font-weight:400;line-height:1;display:inline-block}", NN = (e, t, n) => {
 	let r = d(e).parentElement?.parentElement;
 	r && (r.style.minHeight = "635px", r.style.maxHeight = "calc(100vh - 51px)", r.style.overflowY = "scroll"), s({
 		runtime: t,

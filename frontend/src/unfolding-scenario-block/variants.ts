@@ -30,11 +30,6 @@ export interface ColourVariant {
    * (`--color-*` local vars shared by the student and studio UI).
    */
   tokens: Record<string, string>;
-  /** Background + foreground samples rendered in the studio swatch. */
-  swatch: {
-    background: string;
-    foregrounds: [string, string];
-  };
 }
 
 export const COLOUR_VARIANTS: ColourVariant[] = [
@@ -47,13 +42,6 @@ export const COLOUR_VARIANTS: ColourVariant[] = [
       '--color-bg-emphasis': 'var(--pgn-wgu-color-navy-900, #001124)',
       '--color-txt-content': 'var(--pgn-wgu-color-text-pure-white, #ffffff)',
     },
-    swatch: {
-      background: 'var(--pgn-wgu-color-background-main-navy, #002855)',
-      foregrounds: [
-        'var(--pgn-wgu-color-text-pure-white, #ffffff)',
-        'var(--pgn-wgu-color-navy-200, #8a9cb1)',
-      ],
-    },
   },
   {
     id: 'primary-blue',
@@ -63,13 +51,6 @@ export const COLOUR_VARIANTS: ColourVariant[] = [
       '--color-bg-main': 'var(--pgn-wgu-color-background-main-blue, #0070f0)',
       '--color-bg-emphasis': 'var(--pgn-wgu-color-blue-800, #003e84)',
       '--color-txt-content': 'var(--pgn-wgu-color-text-pure-white, #ffffff)',
-    },
-    swatch: {
-      background: 'var(--pgn-wgu-color-background-main-blue, #0070f0)',
-      foregrounds: [
-        'var(--pgn-wgu-color-text-pure-white, #ffffff)',
-        'var(--pgn-wgu-color-navy-200, #8a9cb1)',
-      ],
     },
   },
   {
@@ -81,13 +62,6 @@ export const COLOUR_VARIANTS: ColourVariant[] = [
       '--color-bg-emphasis': 'var(--pgn-wgu-color-lake-900, #1d4a64)',
       '--color-txt-content': 'var(--pgn-wgu-color-text-main-navy, #002855)',
     },
-    swatch: {
-      background: 'var(--pgn-wgu-color-background-main-lake, #46b1ef)',
-      foregrounds: [
-        'var(--pgn-wgu-color-text-main-navy, #002855)',
-        'var(--pgn-wgu-color-text-pure-white, #ffffff)',
-      ],
-    },
   },
 ];
 
@@ -97,6 +71,21 @@ export const COLOUR_CATEGORY_LABELS: Record<ColourCategory, string> = {
   interactives: 'Interactives',
   feedback: 'Feedback',
 };
+
+/**
+ * The two tiles shown in a studio swatch: the activity background and its
+ * emphasis tone, both with the variant's text colour (as in the design).
+ */
+export const swatchTiles = (variant: ColourVariant) => [
+  {
+    background: variant.tokens['--color-bg-main'],
+    color: variant.tokens['--color-txt-content'],
+  },
+  {
+    background: variant.tokens['--color-bg-emphasis'],
+    color: variant.tokens['--color-txt-content'],
+  },
+];
 
 export const findColourVariant = (id: string | null | undefined) =>
   COLOUR_VARIANTS.find((variant) => variant.id === id);

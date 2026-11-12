@@ -43,8 +43,8 @@ describe('SetupSection', () => {
     const selectOne = within(group).getByRole('radio', {
       name: /Select an Answer/,
     });
-    expect(explore).toHaveAttribute('aria-checked', 'true');
-    expect(selectOne).toHaveAttribute('aria-checked', 'false');
+    expect(explore).toBeChecked();
+    expect(selectOne).not.toBeChecked();
   });
 
   it('selects the other interaction type on click', async () => {
@@ -54,24 +54,25 @@ describe('SetupSection', () => {
     const selectOne = screen.getByRole('radio', { name: /Select an Answer/ });
     await user.click(selectOne);
 
-    expect(selectOne).toHaveAttribute('aria-checked', 'true');
-    expect(screen.getByRole('radio', { name: /Explore/ })).toHaveAttribute(
-      'aria-checked',
-      'false',
-    );
+    expect(selectOne).toBeChecked();
+    expect(screen.getByRole('radio', { name: /Explore/ })).not.toBeChecked();
   });
 
-  it('moves selection with arrow keys within the interaction group', async () => {
-    const user = userEvent.setup();
+  it('exposes real radio inputs that are all keyboard reachable', () => {
     const screen = renderSection();
+    const group = screen.getByRole('radiogroup', {
+      name: 'How learners interact',
+    });
 
-    const explore = screen.getByRole('radio', { name: /Explore/ });
-    explore.focus();
-    await user.keyboard('{ArrowRight}');
-
-    const selectOne = screen.getByRole('radio', { name: /Select an Answer/ });
-    expect(selectOne).toHaveAttribute('aria-checked', 'true');
-    expect(selectOne).toHaveFocus();
+    const radios = within(group).getAllByRole('radio');
+    expect(radios).toHaveLength(2);
+    for (const radio of radios) {
+      // Native radios are focusable without roving tabindex bookkeeping, and
+      // the browser handles arrow-key selection.
+      expect(radio).toBeEnabled();
+      expect(radio.tagName).toBe('INPUT');
+      expect(radio).not.toHaveAttribute('tabindex', '-1');
+    }
   });
 
   it('renders the three Primary colour swatches, none selected by default', () => {
@@ -81,7 +82,9 @@ describe('SetupSection', () => {
     const swatches = within(group).getAllByRole('radio');
     expect(swatches).toHaveLength(3);
     for (const swatch of swatches) {
-      expect(swatch).toHaveAttribute('aria-checked', 'false');
+      expect(swatch).not.toBeChecked();
+      // Nothing selected yet: every swatch must still be tabbable.
+      expect(swatch).not.toHaveAttribute('tabindex', '-1');
     }
     expect(
       within(group).getByRole('radio', { name: /Navy/ }),
@@ -94,24 +97,33 @@ describe('SetupSection', () => {
     ).toBeInTheDocument();
   });
 
-  it('previews the selected variant with the learner colour tokens', async () => {
+  it('renders each variant as two background/text tiles, as in the design', async () => {
     const user = userEvent.setup();
     const screen = renderSection();
+    const navy = screen.getByRole('radio', { name: /Navy/ });
+    // The card wrapper owns the input and the label content.
+    const card = navy.closest('.us-swatch') as HTMLElement;
 
-    const preview = () =>
-      document.querySelector<HTMLDivElement>('.us-variant-preview');
-    // Unset: the preview keeps the block's default appearance.
-    expect(preview()?.style.getPropertyValue('--color-bg-main')).toBe('');
-
-    await user.click(screen.getByRole('radio', { name: /Navy/ }));
-    expect(preview()?.style.getPropertyValue('--color-bg-main')).toBe(
+    const tiles = () => [
+      ...card.querySelectorAll<HTMLElement>('.us-swatch-tile'),
+    ];
+    expect(tiles()).toHaveLength(2);
+    expect(tiles()[0].style.background).toBe(
       'var(--pgn-wgu-color-background-main-navy, #002855)',
     );
-
-    await user.click(screen.getByRole('radio', { name: /Lake/ }));
-    expect(preview()?.style.getPropertyValue('--color-bg-main')).toBe(
-      'var(--pgn-wgu-color-background-main-lake, #46b1ef)',
+    expect(tiles()[1].style.background).toBe(
+      'var(--pgn-wgu-color-navy-900, #001124)',
     );
+    for (const tile of tiles()) {
+      expect(tile.style.color).toBe(
+        'var(--pgn-wgu-color-text-pure-white, #ffffff)',
+      );
+    }
+
+    // Selecting shows the check badge on that card only.
+    expect(card.querySelector('.us-swatch-check')).toBeNull();
+    await user.click(navy);
+    expect(card.querySelector('.us-swatch-check')).not.toBeNull();
   });
 
   it('explains an unavailable saved variant without discarding it', () => {
@@ -129,7 +141,7 @@ describe('SetupSection', () => {
     for (const swatch of within(
       screen.getByRole('radiogroup', { name: 'Color variant' }),
     ).getAllByRole('radio')) {
-      expect(swatch).toHaveAttribute('aria-checked', 'false');
+      expect(swatch).not.toBeChecked();
     }
   });
 
@@ -139,11 +151,11 @@ describe('SetupSection', () => {
 
     const lake = screen.getByRole('radio', { name: /Lake/ });
     await user.click(lake);
-    expect(lake).toHaveAttribute('aria-checked', 'true');
+    expect(lake).toBeChecked();
 
     const navy = screen.getByRole('radio', { name: /Navy/ });
     await user.click(navy);
-    expect(navy).toHaveAttribute('aria-checked', 'true');
-    expect(lake).toHaveAttribute('aria-checked', 'false');
+    expect(navy).toBeChecked();
+    expect(lake).not.toBeChecked();
   });
 });
