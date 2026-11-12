@@ -3,7 +3,7 @@
 from enum import Enum
 from typing import Annotated
 
-from pydantic import AfterValidator, BaseModel, ConfigDict
+from pydantic import AfterValidator, BaseModel, ConfigDict, StringConstraints
 
 
 from .utils import sanitise_simple_html_body
@@ -33,8 +33,12 @@ class Outcome(BaseModel):
 
     model_config = ConfigDict(use_enum_values=True, extra="forbid")
 
-    heading: str
-    description: Annotated[str, AfterValidator(sanitise_simple_html_body)]
+    heading: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]
+    description: Annotated[
+        str,
+        StringConstraints(strip_whitespace=True, min_length=1),
+        AfterValidator(sanitise_simple_html_body),
+    ]
     displaySelectedOptions: bool
 
     def searchable_text(self) -> str:
@@ -49,7 +53,7 @@ class Option(BaseModel):
 
     model_config = ConfigDict(use_enum_values=True, extra="forbid")
 
-    value: str
+    value: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]
     feedback: str
     type: FeedbackType
 
@@ -65,11 +69,21 @@ class Scenario(BaseModel):
 
     model_config = ConfigDict(use_enum_values=True, extra="forbid")
 
-    heading: str
-    description: Annotated[str, AfterValidator(sanitise_simple_html_body)]
-    instructionTitle: str
-    instructionDescription: Annotated[str, AfterValidator(sanitise_simple_html_body)]
-    prompt: str
+    heading: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]
+    description: Annotated[
+        str,
+        StringConstraints(strip_whitespace=True, min_length=1),
+        AfterValidator(sanitise_simple_html_body),
+    ]
+    instructionTitle: Annotated[
+        str, StringConstraints(strip_whitespace=True, min_length=1)
+    ]
+    instructionDescription: Annotated[
+        str,
+        StringConstraints(strip_whitespace=True, min_length=1),
+        AfterValidator(sanitise_simple_html_body),
+    ]
+    prompt: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]
     options: list[Option]
 
     def searchable_text(self) -> str:
@@ -93,8 +107,12 @@ class Introduction(BaseModel):
 
     model_config = ConfigDict(use_enum_values=True, extra="forbid")
 
-    heading: str
-    description: Annotated[str, AfterValidator(sanitise_simple_html_body)]
+    heading: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]
+    description: Annotated[
+        str,
+        StringConstraints(strip_whitespace=True, min_length=1),
+        AfterValidator(sanitise_simple_html_body),
+    ]
     imageURL: str
 
     def searchable_text(self) -> str:
@@ -114,6 +132,7 @@ class ScenarioData(BaseModel):
     scenarios: list[Scenario]
     outcome: Outcome
     interactionType: InteractionType
+    colorVariant: str | None = None
 
     def searchable_text(self) -> str:
         """

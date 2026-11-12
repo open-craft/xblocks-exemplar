@@ -10,6 +10,8 @@ interface HarnessProps {
   activeTab?: string;
   tabs?: StudioTab[];
   onTitleChange?: (title: string) => void;
+  onClose?: () => void;
+  showEditingPrefix?: boolean;
 }
 
 function Harness({
@@ -17,6 +19,8 @@ function Harness({
   activeTab = 'content',
   tabs = EDITOR_TABS,
   onTitleChange,
+  onClose,
+  showEditingPrefix,
 }: HarnessProps) {
   const [title, setTitle] = useState(initialTitle);
 
@@ -25,6 +29,8 @@ function Harness({
       activeTab={activeTab}
       tabs={tabs}
       title={title}
+      showEditingPrefix={showEditingPrefix}
+      onClose={onClose}
       onTitleChange={(nextTitle) => {
         onTitleChange?.(nextTitle);
         setTitle(nextTitle);
@@ -134,5 +140,31 @@ describe('StudioHeader', () => {
     expect(
       screen.getByRole('heading', { name: 'Editing: My Component' }),
     ).toBeInTheDocument();
+  });
+
+  it('renders no tabs when tabs are empty', () => {
+    render(<Harness tabs={[]} />);
+
+    expect(screen.queryByRole('tablist')).not.toBeInTheDocument();
+  });
+
+  it('hides the Editing: prefix when showEditingPrefix is false', () => {
+    render(<Harness showEditingPrefix={false} />);
+
+    expect(
+      screen.getByRole('heading', { name: 'My Component' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('heading', { name: 'Editing: My Component' }),
+    ).not.toBeInTheDocument();
+  });
+
+  it('shows a close button when onClose is provided and reports clicks', async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    render(<Harness onClose={onClose} />);
+
+    await user.click(screen.getByRole('button', { name: 'Close editor' }));
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 });

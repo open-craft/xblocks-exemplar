@@ -1,10 +1,16 @@
 import { createPortal } from 'react-dom';
-import { useEffect, useState, type ReactElement } from 'react';
+import {
+  useEffect,
+  useState,
+  type CSSProperties,
+  type ReactElement,
+} from 'react';
 
 interface RenderInWindowProps {
   children: ReactElement;
   cssContent: string; // css content specific to this xblock, in addition to the theming css
   className: string;
+  style?: CSSProperties; // inline custom properties (colour variant) for the popup root
   themeUrls: string[];
   title: string;
   onClose: () => void; // called when the window itself is closed by the user
@@ -15,6 +21,7 @@ export const RenderInWindow = ({
   children,
   className,
   cssContent,
+  style,
   themeUrls,
   title,
   onClose,
@@ -25,6 +32,13 @@ export const RenderInWindow = ({
     // Create container element on client-side
     const div = document.createElement('div');
     div.className = className;
+    // Custom properties are only settable via setProperty, and the container
+    // is created imperatively, so React cannot apply the style prop for us.
+    Object.entries(style ?? {}).forEach(([name, value]) => {
+      if (value !== null && value !== undefined) {
+        div.style.setProperty(name, String(value));
+      }
+    });
     setContainer(div);
   }
 

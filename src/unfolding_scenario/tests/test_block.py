@@ -195,3 +195,55 @@ def test_index_dictionary_malformed_content():
     result = block.index_dictionary()
 
     assert result["content"]["unfolding_scenario_content"] == ""
+
+
+def test_block_update_data_with_color_variant():
+    """Saving a color variant persists it in the scenario data."""
+    block = make_block()
+
+    response = block.handle(
+        "studio_save",
+        make_request(
+            "POST",
+            {
+                "displayName": "test",
+                "scenarioData": {**VALID_DATA, "colorVariant": "primary-navy"},
+            },
+        ),
+    )
+
+    assert response.status == "200 OK"
+    assert block.scenario_data["colorVariant"] == "primary-navy"
+
+
+def test_block_update_data_reject_missing_required_field():
+    """Missing required fields produce grouped errors with field locations."""
+    block = make_block()
+
+    response = block.handle(
+        "studio_save",
+        make_request(
+            "POST",
+            {
+                "displayName": "test",
+                "scenarioData": {
+                    **VALID_DATA,
+                    "introduction": {
+                        **VALID_DATA["introduction"],
+                        "heading": "",
+                    },
+                },
+            },
+        ),
+    )
+
+    assert response.status == "400 Bad Request"
+    error = response.json_body["error"]
+    assert "String should have at least 1 character" in error
+    assert (
+        "scenarioData.introduction.heading"
+        in error["String should have at least 1 character"]
+    )
+
+    # the changes haven't been persisted
+    assert block.scenario_data["introduction"]["heading"] == "An example scenario"

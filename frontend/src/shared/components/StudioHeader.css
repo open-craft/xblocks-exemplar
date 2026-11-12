@@ -17,6 +17,11 @@
   padding-right: 64px;
 }
 
+.studio-header-close {
+  /* Avoid the full screen button sitting on top of the close button. */
+  margin-right: 64px;
+}
+
 /*
  * The tabs are rendered as <button> elements for correct semantics. Reset the
  * browser's default button styling so Paragon's nav-link styles apply cleanly.
