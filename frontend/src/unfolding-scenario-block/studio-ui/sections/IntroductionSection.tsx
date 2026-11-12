@@ -1,26 +1,39 @@
+import { useId } from 'react';
 import Form from '@openedx/paragon/dist/Form';
 import { useFormikContext } from 'formik';
 import { SimpleRichTextEditor } from '@/shared/components/TinyMCE';
 import { URLFilePickerWrapper } from '@/shared/components/URLFilePickerWrapper';
 import type { Data } from '../../apiTypes';
+import { useFieldError } from '../ValidationContext';
 
 export default function IntroductionSection() {
   const { values, setFieldValue } = useFormikContext<Data>();
   const introduction = values.scenarioData.introduction;
+  const id = useId();
+  const headingError = useFieldError('scenarioData.introduction.heading');
+  const descriptionError = useFieldError(
+    'scenarioData.introduction.description',
+  );
 
   return (
-    <div className="us-panel">
-      <h4>Introduction</h4>
+    <section className="us-panel" aria-labelledby={`${id}-title`}>
+      <h4 id={`${id}-title`}>Introduction</h4>
       <Form.Group className="us-field">
         <Form.Label>Heading</Form.Label>
         <Form.Control
           type="text"
           name="scenarioData.introduction.heading"
           value={introduction.heading}
+          isInvalid={Boolean(headingError)}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setFieldValue('scenarioData.introduction.heading', e.target.value)
           }
         />
+        {headingError && (
+          <Form.Control.Feedback type="invalid">
+            {headingError}
+          </Form.Control.Feedback>
+        )}
       </Form.Group>
       <Form.Group className="us-field">
         <Form.Label>Paragraph</Form.Label>
@@ -36,6 +49,11 @@ export default function IntroductionSection() {
           ariaLabel="Introduction paragraph"
           preset="body"
         />
+        {descriptionError && (
+          <Form.Control.Feedback type="invalid" className="d-block">
+            {descriptionError}
+          </Form.Control.Feedback>
+        )}
       </Form.Group>
       <Form.Group className="us-field">
         <Form.Label>Featured image</Form.Label>
@@ -73,6 +91,6 @@ export default function IntroductionSection() {
           </div>
         )}
       </Form.Group>
-    </div>
+    </section>
   );
 }
