@@ -113,6 +113,18 @@
   gap: var(--pgn-spacing-spacer-2, 8px);
 }
 
+.us-option-input {
+  min-width: 0;
+}
+
+.us-editor-alert {
+  margin-bottom: var(--pgn-spacing-spacer-4, 24px);
+
+  ul {
+    padding-left: var(--pgn-spacing-spacer-4, 24px);
+  }
+}
+
 .us-option-feedback {
   margin-top: var(--pgn-spacing-spacer-2, 8px);
   padding: var(--pgn-spacing-spacer-4, 24px);

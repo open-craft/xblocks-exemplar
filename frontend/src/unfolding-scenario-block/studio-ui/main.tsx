@@ -3,13 +3,18 @@ import { App } from './App.tsx';
 import {
   createXBlockRoot,
   getRoot,
-  saveStudioBlock,
   type XBlockRuntime,
 } from '@opencraft/xblock-react-utils';
 
 import type { Data } from '../apiTypes.ts';
 import styles from './main.scss?inline';
 import { XBlockConfigContext } from '../../lib/context.ts';
+import { StudioSaveError, parseServerErrors } from './validation.ts';
+
+interface ServerErrorResponse {
+  responseJSON?: { error?: unknown };
+  statusText?: string;
+}
 
 export const renderBlock = (
   runtime: XBlockRuntime,
@@ -19,16 +24,37 @@ export const renderBlock = (
   const container = getRoot(element);
 
   const studioSaveUrl = runtime.handlerUrl(container, 'studio_save');
-  const save = (data: Data) => {
-    saveStudioBlock<Data>({
-      saveUrl: studioSaveUrl,
-      data,
-      runtime,
-      errorMessage: (response) =>
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        `Failed to save unfolding scenario block: ${(response as any).responseJSON.error}`,
+
+  // Unlike the shared `saveStudioBlock` helper this keeps the rejected payload,
+  // so `studio_save` field errors can be shown inline like client errors.
+  const save = (data: Data) =>
+    new Promise<void>((resolve, reject) => {
+      runtime.notify('save', { state: 'start' });
+      $.post(studioSaveUrl, JSON.stringify(data))
+        .done(() => {
+          runtime.notify('save', { state: 'end' });
+          resolve();
+        })
+        .fail((response: ServerErrorResponse) => {
+          const result = parseServerErrors(response.responseJSON?.error);
+          if (Object.keys(result.errors).length > 0) {
+            reject(new StudioSaveError(result));
+            return;
+          }
+          // Nothing maps to a field (network fault, unexpected payload): report
+          // it through the standard Studio notification instead.
+          runtime.notify('error', {
+            title: 'Save Error',
+            message: `Failed to save unfolding scenario block: ${
+              result.unmapped.join(' ') ||
+              response.responseJSON?.error ||
+              response.statusText ||
+              'unknown error'
+            }`,
+          });
+          resolve();
+        });
     });
-  };
 
   const cancel = () => runtime.notify('cancel', {});
 

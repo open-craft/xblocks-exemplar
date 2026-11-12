@@ -3,8 +3,20 @@ import { render } from '@opencraft/xblock-react-utils/testing';
 import { within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { App } from './App.tsx';
-import type { Data } from '../apiTypes.ts';
+import type { Data, Scenario } from '../apiTypes.ts';
 import { newScenario } from './utils';
+import { StudioSaveError, parseServerErrors } from './validation.ts';
+
+const completeScenario = (overrides: Partial<Scenario> = {}): Scenario => ({
+  ...newScenario(),
+  heading: 'Scenario heading',
+  description: '<p>Scenario context</p>',
+  instructionTitle: 'What you need to do',
+  instructionDescription: '<p>Choose one option</p>',
+  prompt: 'Which option?',
+  options: [{ value: 'An answer', feedback: 'Some feedback', type: 'Correct' }],
+  ...overrides,
+});
 
 const defaultData: Data = {
   displayName: 'Unfolding Scenario',
@@ -25,8 +37,20 @@ const defaultData: Data = {
   },
 };
 
-const specRender = (initialData: Data = defaultData) => {
-  const mockOnSave = vi.fn();
+const validData = (overrides: Partial<Data['scenarioData']> = {}): Data => ({
+  ...defaultData,
+  scenarioData: {
+    ...defaultData.scenarioData,
+    scenarios: [completeScenario()],
+    ...overrides,
+  },
+});
+
+const specRender = (
+  initialData: Data = defaultData,
+  onSaveImpl?: (data: Data) => void | Promise<void>,
+) => {
+  const mockOnSave = vi.fn(onSaveImpl);
   const mockOnCancel = vi.fn();
 
   return {
@@ -43,6 +67,12 @@ const specRender = (initialData: Data = defaultData) => {
     ),
   };
 };
+
+const sidebarButton = (screen: ReturnType<typeof render>, name: string) =>
+  within(screen.getByRole('navigation', { name: 'Editor sections' })).getByRole(
+    'button',
+    { name },
+  );
 
 describe('Studio editor shell', () => {
   it('renders the header, sidebar, Setup panel and footer actions', () => {
@@ -84,19 +114,20 @@ describe('Studio editor shell', () => {
   it('switches the panel from the sidebar', async () => {
     const { screen: rendered, user } = specRender();
 
-    await user.click(rendered.getByRole('button', { name: 'Introduction' }));
+    await user.click(sidebarButton(rendered, 'Introduction'));
     expect(
       rendered.getByRole('heading', { name: 'Introduction' }),
     ).toBeInTheDocument();
-    expect(
-      rendered.getByRole('button', { name: 'Introduction' }),
-    ).toHaveAttribute('aria-current', 'true');
-    expect(rendered.getByRole('button', { name: 'Setup' })).toHaveAttribute(
+    expect(sidebarButton(rendered, 'Introduction')).toHaveAttribute(
+      'aria-current',
+      'true',
+    );
+    expect(sidebarButton(rendered, 'Setup')).toHaveAttribute(
       'aria-current',
       'false',
     );
 
-    await user.click(rendered.getByRole('button', { name: 'Outcome' }));
+    await user.click(sidebarButton(rendered, 'Outcome'));
     expect(
       rendered.getByRole('heading', { name: 'Outcome' }),
     ).toBeInTheDocument();
@@ -167,37 +198,37 @@ describe('Studio editor shell', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('keeps scenario edits separate across sidebar navigation and saves the edited options', async () => {
-    const { screen: rendered, user, mockOnSave } = specRender();
+  it('keeps scenario edits separate across sidebar navigation', async () => {
+    const {
+      screen: rendered,
+      user,
+      mockOnSave,
+    } = specRender(
+      validData({
+        scenarios: [
+          completeScenario({
+            options: [
+              { value: 'First answer', feedback: '', type: 'Incorrect' },
+            ],
+          }),
+          completeScenario({
+            options: [
+              { value: 'Second answer', feedback: '', type: 'Incorrect' },
+            ],
+          }),
+        ],
+      }),
+    );
     const sidebar = rendered.getByRole('navigation', {
       name: 'Editor sections',
     });
-    const add = within(sidebar).getByRole('button', {
-      name: 'Add scenario (max 5)',
-    });
-    await user.click(add);
-    await user.click(add);
-    await user.click(
-      within(sidebar).getByRole('button', { name: 'Scenario 1' }),
-    );
-    await user.type(
-      rendered.getByLabelText('Option A'),
-      'First scenario answer',
-    );
-    await user.click(
-      within(sidebar).getByRole('button', { name: 'Scenario 2' }),
-    );
-    expect(rendered.getByLabelText('Option A')).toHaveValue('');
-    await user.type(
-      rendered.getByLabelText('Option A'),
-      'Second scenario answer',
-    );
-    await user.click(
-      within(sidebar).getByRole('button', { name: 'Scenario 1' }),
-    );
-    expect(rendered.getByLabelText('Option A')).toHaveValue(
-      'First scenario answer',
-    );
+
+    await user.click(sidebarButton(rendered, 'Scenario 1'));
+    expect(rendered.getByLabelText('Option A')).toHaveValue('First answer');
+    await user.click(sidebarButton(rendered, 'Scenario 2'));
+    expect(rendered.getByLabelText('Option A')).toHaveValue('Second answer');
+    await user.click(sidebarButton(rendered, 'Scenario 1'));
+    expect(rendered.getByLabelText('Option A')).toHaveValue('First answer');
 
     // The content must remain outside the navigation, in Paragon's sibling panel.
     const panel = rendered
@@ -209,26 +240,24 @@ describe('Studio editor shell', () => {
 
     await user.click(rendered.getByRole('button', { name: 'Save' }));
     const scenarios = mockOnSave.mock.calls[0][0].scenarioData.scenarios;
-    expect(scenarios[0].options[0].value).toBe('First scenario answer');
-    expect(scenarios[1].options[0].value).toBe('Second scenario answer');
+    expect(scenarios[0].options[0].value).toBe('First answer');
+    expect(scenarios[1].options[0].value).toBe('Second answer');
   });
 
   it('does not reseed existing options or clear feedback when changing interaction mode', async () => {
-    const scenario = newScenario();
-    scenario.options = [
-      { value: 'Saved answer', feedback: 'Saved feedback', type: 'Warning' },
-    ];
+    const scenario = completeScenario({
+      options: [
+        { value: 'Saved answer', feedback: 'Saved feedback', type: 'Warning' },
+      ],
+    });
     const {
       screen: rendered,
       user,
       mockOnSave,
-    } = specRender({
-      ...defaultData,
-      scenarioData: { ...defaultData.scenarioData, scenarios: [scenario] },
-    });
+    } = specRender(validData({ scenarios: [scenario] }));
     for (const interaction of [/Select an Answer/, /Explore/]) {
       await user.click(rendered.getByRole('radio', { name: interaction }));
-      await user.click(rendered.getByRole('button', { name: 'Scenario 1' }));
+      await user.click(sidebarButton(rendered, 'Scenario 1'));
       expect(
         rendered.getAllByRole('textbox', { name: /^Option / }),
       ).toHaveLength(1);
@@ -238,7 +267,7 @@ describe('Studio editor shell', () => {
       expect(
         rendered.getByRole('combobox', { name: 'Select an icon' }),
       ).toHaveValue('Warning');
-      await user.click(rendered.getByRole('button', { name: 'Setup' }));
+      await user.click(sidebarButton(rendered, 'Setup'));
     }
     await user.click(rendered.getByRole('button', { name: 'Save' }));
     expect(mockOnSave.mock.calls[0][0].scenarioData.scenarios).toEqual([
@@ -257,7 +286,7 @@ describe('Studio editor shell', () => {
   });
 
   it('saves the edited title', async () => {
-    const { screen: rendered, user, mockOnSave } = specRender();
+    const { screen: rendered, user, mockOnSave } = specRender(validData());
 
     await user.click(
       rendered.getByRole('button', { name: 'Edit display name' }),
@@ -272,7 +301,232 @@ describe('Studio editor shell', () => {
     await user.click(rendered.getByRole('button', { name: 'Save' }));
     expect(mockOnSave).toHaveBeenCalledWith(
       expect.objectContaining({ displayName: 'Renamed Scenario' }),
-      expect.anything(), // Formik passes formik helpers as the second argument.
     );
+  });
+});
+
+describe('Studio editor validation', () => {
+  it('blocks saving with an alert, sidebar badges and an inline error', async () => {
+    const {
+      screen: rendered,
+      user,
+      mockOnSave,
+    } = specRender(
+      validData({
+        introduction: { heading: '', description: '', imageURL: '' },
+      }),
+    );
+
+    await user.click(rendered.getByRole('button', { name: 'Save' }));
+
+    expect(mockOnSave).not.toHaveBeenCalled();
+    const message = 'Add a heading for the introduction';
+    expect(
+      rendered.getByText("We couldn't save your exercise"),
+    ).toBeInTheDocument();
+    const panel = rendered.getByRole('heading', {
+      name: 'Introduction',
+    }).parentElement as HTMLElement;
+    expect(within(panel).getAllByText(message).length).toBeGreaterThan(0);
+    expect(
+      sidebarButton(rendered, 'Introduction')
+        .closest('.us-editor-nav-item')
+        ?.querySelector('.us-editor-error-badge'),
+    ).not.toBeNull();
+    // The editor switches to the first invalid section.
+    expect(sidebarButton(rendered, 'Introduction')).toHaveAttribute(
+      'aria-current',
+      'true',
+    );
+  });
+
+  it('clears the alert and inline error once the field is fixed', async () => {
+    const { screen: rendered, user } = specRender(
+      validData({
+        introduction: { heading: '', description: '<p>Text</p>', imageURL: '' },
+      }),
+    );
+
+    await user.click(rendered.getByRole('button', { name: 'Save' }));
+    expect(
+      rendered.getByText("We couldn't save your exercise"),
+    ).toBeInTheDocument();
+
+    await user.type(rendered.getByLabelText('Heading'), 'A new heading');
+
+    expect(
+      rendered.queryByText("We couldn't save your exercise"),
+    ).not.toBeInTheDocument();
+    expect(
+      sidebarButton(rendered, 'Introduction')
+        .closest('.us-editor-nav-item')
+        ?.querySelector('.us-editor-error-badge'),
+    ).toBeNull();
+  });
+
+  it('reports the client-only scenario count rule', async () => {
+    const { screen: rendered, user, mockOnSave } = specRender();
+
+    await user.click(rendered.getByRole('button', { name: 'Save' }));
+
+    expect(mockOnSave).not.toHaveBeenCalled();
+    expect(rendered.getByText('Add at least one scenario')).toBeInTheDocument();
+  });
+
+  it('treats whitespace-only rich text as empty', async () => {
+    const {
+      screen: rendered,
+      user,
+      mockOnSave,
+    } = specRender(
+      validData({
+        outcome: {
+          heading: 'Outcome',
+          description: '<p>&nbsp;</p>',
+          displaySelectedOptions: false,
+        },
+      }),
+    );
+
+    await user.click(rendered.getByRole('button', { name: 'Save' }));
+
+    expect(mockOnSave).not.toHaveBeenCalled();
+    expect(
+      rendered.getAllByText('Add some text for the outcome').length,
+    ).toBeGreaterThan(0);
+    expect(sidebarButton(rendered, 'Outcome')).toHaveAttribute(
+      'aria-current',
+      'true',
+    );
+  });
+
+  it('shows server field errors like client errors', async () => {
+    const serverRejection = new StudioSaveError(
+      parseServerErrors({
+        'String should have at least 1 character': [
+          'scenarioData.outcome.heading',
+        ],
+      }),
+    );
+    const {
+      screen: rendered,
+      user,
+      mockOnSave,
+    } = specRender(validData(), () => Promise.reject(serverRejection));
+
+    await user.click(rendered.getByRole('button', { name: 'Save' }));
+
+    expect(mockOnSave).toHaveBeenCalledTimes(1);
+    expect(
+      rendered.getAllByText('String should have at least 1 character').length,
+    ).toBeGreaterThan(0);
+    expect(sidebarButton(rendered, 'Outcome')).toHaveAttribute(
+      'aria-current',
+      'true',
+    );
+    expect(
+      sidebarButton(rendered, 'Outcome')
+        .closest('.us-editor-nav-item')
+        ?.querySelector('.us-editor-error-badge'),
+    ).not.toBeNull();
+  });
+
+  it('drops stale server errors once the author edits the value', async () => {
+    const { screen: rendered, user } = specRender(validData(), () =>
+      Promise.reject(
+        new StudioSaveError(
+          parseServerErrors({
+            'String should have at least 1 character': [
+              'scenarioData.outcome.heading',
+            ],
+          }),
+        ),
+      ),
+    );
+
+    await user.click(rendered.getByRole('button', { name: 'Save' }));
+    expect(
+      rendered.getAllByText('String should have at least 1 character').length,
+    ).toBeGreaterThan(0);
+
+    await user.type(rendered.getByLabelText('Heading'), '!');
+
+    expect(
+      rendered.queryByText('String should have at least 1 character'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('shows unattributable server messages without a section badge', async () => {
+    const {
+      screen: rendered,
+      user,
+      mockOnSave,
+    } = specRender(validData(), () =>
+      Promise.reject(
+        new StudioSaveError(parseServerErrors('Something went wrong')),
+      ),
+    );
+
+    await user.click(rendered.getByRole('button', { name: 'Save' }));
+
+    expect(mockOnSave).toHaveBeenCalledTimes(1);
+    expect(rendered.getByText('Something went wrong')).toBeInTheDocument();
+    expect(
+      rendered
+        .queryAllByRole('navigation', { name: 'Editor sections' })[0]
+        .querySelectorAll('.us-editor-error-badge').length,
+    ).toBe(0);
+    // A failed save must leave the editor usable again.
+    expect(rendered.getByRole('button', { name: 'Save' })).toBeEnabled();
+  });
+
+  it("preserves the author's edits when validation blocks the save", async () => {
+    const {
+      screen: rendered,
+      user,
+      mockOnSave,
+    } = specRender(
+      validData({
+        introduction: { heading: '', description: '', imageURL: '' },
+        outcome: {
+          heading: '',
+          description: '<p>Summary</p>',
+          displaySelectedOptions: false,
+        },
+      }),
+    );
+
+    await user.click(rendered.getByRole('button', { name: 'Save' }));
+    const heading = rendered.getByLabelText('Heading');
+    await user.type(heading, 'Kept value');
+
+    expect(mockOnSave).not.toHaveBeenCalled();
+    expect(heading).toHaveValue('Kept value');
+    // Other sections keep their errors until they are fixed too.
+    expect(
+      rendered.getByText('Add a heading for the outcome'),
+    ).toBeInTheDocument();
+    expect(sidebarButton(rendered, 'Introduction')).toHaveAttribute(
+      'aria-current',
+      'true',
+    );
+  });
+
+  it('disables Save while the request is in flight', async () => {
+    let resolveSave: () => void = () => {};
+    const { screen: rendered, user } = specRender(
+      validData(),
+      () =>
+        new Promise<void>((resolve) => {
+          resolveSave = resolve;
+        }),
+    );
+
+    await user.click(rendered.getByRole('button', { name: 'Save' }));
+    const saving = rendered.getByRole('button', { name: 'Saving…' });
+    expect(saving).toBeDisabled();
+
+    resolveSave();
+    expect(await rendered.findByRole('button', { name: 'Save' })).toBeEnabled();
   });
 });

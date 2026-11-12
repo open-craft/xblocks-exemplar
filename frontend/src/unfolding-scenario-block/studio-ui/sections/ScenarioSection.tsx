@@ -13,6 +13,7 @@ import {
 import { SimpleRichTextEditor } from '@/shared/components/TinyMCE';
 import type { Data, FeedbackType } from '../../apiTypes';
 import { emptyOption } from '../utils';
+import { useFieldError, useFieldErrors } from '../ValidationContext';
 
 const FEEDBACK_ICONS = {
   Correct: CheckCircleOutline,
@@ -43,12 +44,23 @@ export default function ScenarioSection({ index }: { index: number }) {
   const [expanded, setExpanded] = useState<number[]>([0]);
   const focusNewOption = useRef<number | null>(null);
   const addButton = useRef<HTMLButtonElement>(null);
+  const headingError = useFieldError(`${path}.heading`);
+  const descriptionError = useFieldError(`${path}.description`);
+  const instructionTitleError = useFieldError(`${path}.instructionTitle`);
+  const instructionDescriptionError = useFieldError(
+    `${path}.instructionDescription`,
+  );
+  const promptError = useFieldError(`${path}.prompt`);
+  const fieldErrors = useFieldErrors();
 
   if (!scenario) return null;
 
   return (
-    <div className="us-panel us-scenario-panel">
-      <h4>Scenario {index + 1}</h4>
+    <section
+      className="us-panel us-scenario-panel"
+      aria-labelledby={`${id}-title`}
+    >
+      <h4 id={`${id}-title`}>Scenario {index + 1}</h4>
       <p className="us-section-help us-section">
         Scenarios describe the situation or context in which a question takes
         place. Each scenario includes an introduction, instructions, and a
@@ -61,9 +73,15 @@ export default function ScenarioSection({ index }: { index: number }) {
           <Form.Control
             name={`${path}.heading`}
             value={scenario.heading}
+            isInvalid={Boolean(headingError)}
             onChange={handleChange}
             onBlur={handleBlur}
           />
+          {headingError && (
+            <Form.Control.Feedback type="invalid">
+              {headingError}
+            </Form.Control.Feedback>
+          )}
         </Form.Group>
         <div className="us-field">
           <p className="us-rich-text-label">Paragraph</p>
@@ -77,6 +95,11 @@ export default function ScenarioSection({ index }: { index: number }) {
             height="240px"
             placeholder="Describe the scenario or context for the question"
           />
+          {descriptionError && (
+            <Form.Control.Feedback type="invalid" className="d-block">
+              {descriptionError}
+            </Form.Control.Feedback>
+          )}
         </div>
       </section>
       <section className="us-section" aria-labelledby={`${id}-instructions`}>
@@ -86,9 +109,15 @@ export default function ScenarioSection({ index }: { index: number }) {
           <Form.Control
             name={`${path}.instructionTitle`}
             value={scenario.instructionTitle}
+            isInvalid={Boolean(instructionTitleError)}
             onChange={handleChange}
             onBlur={handleBlur}
           />
+          {instructionTitleError && (
+            <Form.Control.Feedback type="invalid">
+              {instructionTitleError}
+            </Form.Control.Feedback>
+          )}
         </Form.Group>
         <div className="us-field">
           <p className="us-rich-text-label">Paragraph</p>
@@ -104,6 +133,11 @@ export default function ScenarioSection({ index }: { index: number }) {
               'Describe to the learner what they need to do e.g. “Choose the explanation that best matches your first reaction”'
             }
           />
+          {instructionDescriptionError && (
+            <Form.Control.Feedback type="invalid" className="d-block">
+              {instructionDescriptionError}
+            </Form.Control.Feedback>
+          )}
         </div>
       </section>
       <section className="us-section" aria-labelledby={`${id}-prompt`}>
@@ -113,9 +147,15 @@ export default function ScenarioSection({ index }: { index: number }) {
           <Form.Control
             name={`${path}.prompt`}
             value={scenario.prompt}
+            isInvalid={Boolean(promptError)}
             onChange={handleChange}
             onBlur={handleBlur}
           />
+          {promptError && (
+            <Form.Control.Feedback type="invalid">
+              {promptError}
+            </Form.Control.Feedback>
+          )}
         </Form.Group>
       </section>
       <section className="us-section" aria-labelledby={`${id}-options`}>
@@ -132,23 +172,35 @@ export default function ScenarioSection({ index }: { index: number }) {
                 const optionPath = `${path}.options[${optionIndex}]`;
                 const isExpanded = expanded.includes(optionIndex);
                 const feedbackId = `${id}-feedback-${optionIndex}`;
+                const valueError = fieldErrors[`${optionPath}.value`];
                 return (
                   <div className="us-option" key={optionIndex}>
                     <div className="us-option-row">
-                      <Form.Control
-                        ref={(node: HTMLInputElement | null) => {
-                          if (node && focusNewOption.current === optionIndex) {
-                            node.focus();
-                            focusNewOption.current = null;
-                          }
-                        }}
-                        aria-label={`Option ${label}`}
-                        name={`${optionPath}.value`}
-                        placeholder="Enter an option"
-                        value={option.value}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
+                      <div className="us-option-input">
+                        <Form.Control
+                          ref={(node: HTMLInputElement | null) => {
+                            if (
+                              node &&
+                              focusNewOption.current === optionIndex
+                            ) {
+                              node.focus();
+                              focusNewOption.current = null;
+                            }
+                          }}
+                          aria-label={`Option ${label}`}
+                          name={`${optionPath}.value`}
+                          placeholder="Enter an option"
+                          value={option.value}
+                          isInvalid={Boolean(valueError)}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {valueError && (
+                          <Form.Control.Feedback type="invalid">
+                            {valueError}
+                          </Form.Control.Feedback>
+                        )}
+                      </div>
                       <IconButton
                         type="button"
                         src={ChatBubbleOutline}
@@ -245,6 +297,6 @@ export default function ScenarioSection({ index }: { index: number }) {
           )}
         </FieldArray>
       </section>
-    </div>
+    </section>
   );
 }

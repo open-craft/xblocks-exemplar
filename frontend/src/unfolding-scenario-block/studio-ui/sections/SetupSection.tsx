@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { CheckCircle, HelpOutline, Visibility } from '@openedx/paragon/icons';
 import { Icon } from '@openedx/paragon';
 import { useFormikContext } from 'formik';
@@ -85,11 +86,12 @@ function ColourSwatch({ variant, selected, onSelect }: ColourSwatchProps) {
 export default function SetupSection() {
   const { values, setFieldValue } = useFormikContext<Data>();
   const { interactionType, colorVariant } = values.scenarioData;
+  const id = useId();
   const selectedVariant = findColourVariant(colorVariant);
 
   return (
-    <div className="us-panel">
-      <h4>Setup</h4>
+    <section className="us-panel" aria-labelledby={`${id}-title`}>
+      <h4 id={`${id}-title`}>Setup</h4>
       <section className="us-section">
         <h5>How Learners Interact</h5>
         <p className="us-section-help">
@@ -160,6 +162,6 @@ export default function SetupSection() {
           <span className="us-variant-preview-action">Continue</span>
         </div>
       </section>
-    </div>
+    </section>
   );
 }
