@@ -64,6 +64,7 @@ export default function OutcomeSection() {
               setFieldValue('scenarioData.outcome.description', content)
             }
             ariaLabel="Outcome paragraph"
+            preset="body"
           />
         </Form.Group>
       </section>

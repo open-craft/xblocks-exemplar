@@ -34,6 +34,7 @@ export default function IntroductionSection() {
             setFieldValue('scenarioData.introduction.description', content)
           }
           ariaLabel="Introduction paragraph"
+          preset="body"
         />
       </Form.Group>
       <Form.Group className="us-field">

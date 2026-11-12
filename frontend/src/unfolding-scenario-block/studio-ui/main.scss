@@ -85,8 +85,45 @@
 }
 
 .us-editor-panel {
+  min-width: 0;
   padding: var(--us-panel-padding);
   overflow-y: auto;
+}
+
+/* ---------- Scenario fields and feedback ---------- */
+
+.us-rich-text-label {
+  margin-bottom: var(--pgn-spacing-spacer-2, 8px);
+}
+
+.us-options-editor {
+  padding: var(--pgn-spacing-spacer-3, 16px);
+  border: 1px solid var(--pgn-color-light-300, #dee2e6);
+  border-radius: 4px;
+}
+
+.us-option {
+  margin-bottom: var(--pgn-spacing-spacer-3, 16px);
+}
+
+.us-option-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+}
+
+.us-option-feedback {
+  margin-top: var(--pgn-spacing-spacer-2, 8px);
+  padding: var(--pgn-spacing-spacer-4, 24px);
+  border-radius: 4px;
+  background: var(--pgn-color-light-300, #eeeeee);
+}
+
+.us-feedback-icon-picker {
+  display: flex;
+  align-items: center;
+  gap: var(--pgn-spacing-spacer-2, 8px);
 }
 
 /* ---------- Section panels ---------- */
@@ -201,6 +238,35 @@
 }
 
 .us-swatch-label {
+  font-weight: 600;
+}
+
+// Mirrors the learner surface: the same --color-* custom properties, so the
+// preview responds to the selection exactly as the activity will.
+.us-variant-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+  margin-top: var(--pgn-spacing-spacer-4, 24px);
+  padding: var(--pgn-spacing-spacer-4, 24px);
+  border-radius: 16px;
+  background: var(--color-bg-main, #1b324a);
+  color: var(--color-txt-content, #ffffff);
+}
+
+.us-variant-preview-heading {
+  font-weight: 700;
+}
+
+.us-variant-preview-action {
+  display: inline-flex;
+  min-width: 120px;
+  justify-content: center;
+  padding: var(--pgn-spacing-spacer-2, 8px) var(--pgn-spacing-spacer-4, 24px);
+  border-radius: 9999px;
+  background: var(--color-bg-emphasis, #223e5d);
+  color: var(--color-txt-content, #ffffff);
   font-weight: 600;
 }
 

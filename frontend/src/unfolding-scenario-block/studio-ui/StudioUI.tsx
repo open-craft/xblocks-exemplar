@@ -8,6 +8,7 @@ import StudioFooter from './components/StudioFooter';
 import SetupSection from './sections/SetupSection';
 import IntroductionSection from './sections/IntroductionSection';
 import OutcomeSection from './sections/OutcomeSection';
+import ScenarioSection from './sections/ScenarioSection';
 import type { Data } from '../apiTypes';
 
 interface StudioUIProps {
@@ -32,11 +33,6 @@ function EditorForm({ onCancel }: { onCancel: () => void }) {
         : 'introduction'
       : activeSection;
 
-  let scenarioPanelHeading = '';
-  if (displayedSection.startsWith('scenario:')) {
-    scenarioPanelHeading = `Scenario ${Number(displayedSection.slice('scenario:'.length)) + 1}`;
-  }
-
   return (
     <Form>
       <div className="us-editor">
@@ -56,10 +52,10 @@ function EditorForm({ onCancel }: { onCancel: () => void }) {
             {displayedSection === 'introduction' && <IntroductionSection />}
             {displayedSection === 'outcome' && <OutcomeSection />}
             {displayedSection.startsWith('scenario:') && (
-              /* Scenario panel placeholder; implemented in phase 4. */
-              <div className="us-panel">
-                <h4>{scenarioPanelHeading}</h4>
-              </div>
+              <ScenarioSection
+                key={displayedSection}
+                index={Number(displayedSection.slice('scenario:'.length))}
+              />
             )}
           </div>
         </ModalDialog.Body>

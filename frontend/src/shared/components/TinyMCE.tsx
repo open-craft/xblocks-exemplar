@@ -31,7 +31,7 @@ import 'tinymce/plugins/help/js/i18n/keynav/en';
 // import 'tinymce/plugins/image';
 // import 'tinymce/plugins/importcss';
 // import 'tinymce/plugins/link';
-// import 'tinymce/plugins/lists';
+import 'tinymce/plugins/lists';
 // import 'tinymce/plugins/media';
 // import 'tinymce/plugins/nonbreaking';
 // import 'tinymce/plugins/quickbars';
@@ -52,6 +52,9 @@ interface TinyMceEditorProps {
   onEditorChange: (content: string) => void;
   ariaLabel: string;
   height?: string;
+  /** Body formatting supported by the unfolding-scenario HTML sanitiser. */
+  preset?: 'simple' | 'body';
+  placeholder?: string;
 }
 
 // A simple editor with restricted styling,
@@ -64,6 +67,8 @@ export const SimpleRichTextEditor = ({
   onEditorChange,
   ariaLabel,
   height,
+  preset = 'simple',
+  placeholder,
 }: TinyMceEditorProps) => {
   return (
     <>
@@ -75,9 +80,13 @@ export const SimpleRichTextEditor = ({
           iframe_aria_text: ariaLabel,
           promotion: false,
           menubar: false,
-          plugins: ['help'],
-          toolbar: 'undo redo | blocks | bold italic forecolor',
+          plugins: preset === 'body' ? ['help', 'lists'] : ['help'],
+          toolbar:
+            preset === 'body'
+              ? 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent'
+              : 'undo redo | blocks | bold italic forecolor',
           height,
+          placeholder,
         }}
       />
     </>

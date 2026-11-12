@@ -94,6 +94,45 @@ describe('SetupSection', () => {
     ).toBeInTheDocument();
   });
 
+  it('previews the selected variant with the learner colour tokens', async () => {
+    const user = userEvent.setup();
+    const screen = renderSection();
+
+    const preview = () =>
+      document.querySelector<HTMLDivElement>('.us-variant-preview');
+    // Unset: the preview keeps the block's default appearance.
+    expect(preview()?.style.getPropertyValue('--color-bg-main')).toBe('');
+
+    await user.click(screen.getByRole('radio', { name: /Navy/ }));
+    expect(preview()?.style.getPropertyValue('--color-bg-main')).toBe(
+      'var(--pgn-wgu-color-background-main-navy, #002855)',
+    );
+
+    await user.click(screen.getByRole('radio', { name: /Lake/ }));
+    expect(preview()?.style.getPropertyValue('--color-bg-main')).toBe(
+      'var(--pgn-wgu-color-background-main-lake, #46b1ef)',
+    );
+  });
+
+  it('explains an unavailable saved variant without discarding it', () => {
+    const screen = renderSection({
+      ...defaultData,
+      scenarioData: {
+        ...defaultData.scenarioData,
+        colorVariant: 'primary-retired',
+      },
+    });
+
+    expect(screen.getByRole('status')).toHaveTextContent(
+      /“primary-retired” isn't available in this theme/,
+    );
+    for (const swatch of within(
+      screen.getByRole('radiogroup', { name: 'Color variant' }),
+    ).getAllByRole('radio')) {
+      expect(swatch).toHaveAttribute('aria-checked', 'false');
+    }
+  });
+
   it('selects a colour variant and shows the existing selection', async () => {
     const user = userEvent.setup();
     const screen = renderSection();
