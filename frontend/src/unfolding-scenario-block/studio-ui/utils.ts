@@ -1,12 +1,13 @@
 import type { Option, Scenario } from '../apiTypes';
+import { arrayMove } from '@dnd-kit/helpers';
 
 export const MAX_SCENARIOS = 5;
 
 /** Minimum number of options every new scenario is seeded with (design p44). */
 export const DEFAULT_OPTION_COUNT = 3;
 
-/** Event shape (subset) consumed by scenario reordering, matching @dnd-kit's DragOverEvent. */
-interface ReorderEvent {
+/** Subset of @dnd-kit's drag-end event that reordering needs. */
+export interface DragEndLike {
   operation: {
     source?: unknown;
     target?: unknown;
@@ -15,30 +16,69 @@ interface ReorderEvent {
 }
 
 /**
- * Reorder scenarios by drag position. Scenarios carry no ids in the data model
- * (`extra="forbid"` on the backend), so the sortable uses index-based ids and
- * the reorder reads the source's initial/current index — the same fallback
- * @dnd-kit/helpers applies when items don't match by id.
+ * Scenarios carry no ids in the data model (`extra="forbid"` on the backend),
+ * so the sortable uses index ids and the position comes from the dragged
+ * sortable itself. `initialIndex`/`index` are the fields @dnd-kit's own
+ * `move()` helper falls back to when items cannot be matched by id; the type
+ * is not exported by the library, hence the local narrowing.
+ */
+export const draggedIndices = (
+  event: DragEndLike,
+): { from: number; to: number } | null => {
+  const { source, target, canceled } = event.operation;
+  if (!source || !target || canceled) {
+    return null;
+  }
+  const { initialIndex, index } = source as {
+    initialIndex?: unknown;
+    index?: unknown;
+  };
+  if (typeof initialIndex !== 'number' || typeof index !== 'number') {
+    return null;
+  }
+  return { from: initialIndex, to: index };
+};
+
+/**
+ * Where an item index ends up after `arrayMove(from, to)` — used to keep the
+ * edited scenario selected when rows are reordered.
+ */
+export const mapMovedIndex = (index: number, from: number, to: number) => {
+  if (index === from) {
+    return to;
+  }
+  if (from < to && index > from && index <= to) {
+    return index - 1;
+  }
+  if (from > to && index >= to && index < from) {
+    return index + 1;
+  }
+  return index;
+};
+
+/**
+ * New scenario order for a finished drag, or the original array when the drag
+ * was cancelled, dropped in place, or cannot be resolved to indices.
  */
 export function reorderScenarios(
   scenarios: Scenario[],
-  event: ReorderEvent,
+  event: DragEndLike,
 ): Scenario[] {
-  const { source, target, canceled } = event.operation;
-  if (!source || !target || canceled) {
+  const indices = draggedIndices(event);
+  if (!indices) {
     return scenarios;
   }
-  const { initialIndex: from, index: to } = source as {
-    initialIndex: number;
-    index: number;
-  };
-  if (from === to || from < 0 || from >= scenarios.length) {
+  const { from, to } = indices;
+  if (
+    from === to ||
+    from < 0 ||
+    from >= scenarios.length ||
+    to < 0 ||
+    to >= scenarios.length
+  ) {
     return scenarios;
   }
-  const next = [...scenarios];
-  const [moved] = next.splice(from, 1);
-  next.splice(to, 0, moved);
-  return next;
+  return arrayMove(scenarios, from, to);
 }
 
 export const emptyOption = (): Option => ({

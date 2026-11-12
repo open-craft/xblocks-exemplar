@@ -9,7 +9,26 @@ import { DragDropProvider } from '@dnd-kit/react';
 import { useSortable } from '@dnd-kit/react/sortable';
 import { FieldArray, useFormikContext } from 'formik';
 import type { Data } from '../../apiTypes';
-import { MAX_SCENARIOS, newScenario, reorderScenarios } from '../utils';
+import {
+  MAX_SCENARIOS,
+  draggedIndices,
+  mapMovedIndex,
+  newScenario,
+  reorderScenarios,
+} from '../utils';
+
+/** Keep the edited scenario selected when rows move around it. */
+const remapSection = (
+  section: SectionKey,
+  from: number,
+  to: number,
+): SectionKey => {
+  if (!section.startsWith('scenario:')) {
+    return section;
+  }
+  const index = Number(section.slice('scenario:'.length));
+  return `scenario:${mapMovedIndex(index, from, to)}`;
+};
 
 /** Section keys used across the editor for nav + validation error mapping. */
 export type SectionKey =
@@ -74,23 +93,27 @@ function ScenarioItem({
   onSelect,
   onDelete,
 }: ScenarioItemProps) {
-  // The drag handle carries the sortable ref: it is the focusable,
-  // draggable affordance, and keeping it off the row wrapper avoids a
-  // role="button" container whose contents compete with the nav link's name.
-  const { ref } = useSortable({ id: index, index });
+  // The row is the draggable element (so the whole row moves and is the drop
+  // target), while the handle is the only activation surface. That keeps
+  // pointer dragging off the nav/delete buttons and gives the keyboard sensor
+  // a focusable handle. `ref` must stay off the handle: dnd-kit transforms
+  // whichever element carries it.
+  const { ref, handleRef, isDragging } = useSortable({ id: index, index });
   const section: SectionKey = `scenario:${index}`;
 
   return (
     <div
-      className={`us-editor-nav-item${active ? ' us-editor-nav-item--active' : ''}`}
+      ref={ref}
+      className={`us-editor-nav-item${active ? ' us-editor-nav-item--active' : ''}${isDragging ? ' us-editor-nav-item--dragging' : ''}`}
     >
-      <IconButton
-        ref={ref}
-        alt={`Reorder scenario ${index + 1}`}
+      <button
+        type="button"
+        ref={handleRef}
         className="us-editor-drag-handle"
-        size="sm"
-        src={DragIndicator}
-      />
+        aria-label={`Reorder scenario ${index + 1}`}
+      >
+        <Icon src={DragIndicator} aria-hidden="true" />
+      </button>
       <button
         type="button"
         className="us-editor-nav-link"
@@ -143,13 +166,24 @@ export default function EditorSidebar({
         hasError={Boolean(errorSections.introduction)}
         onSelect={onSelect}
       />
+      {/* Reorder on drag end rather than on drag over: rows are keyed by
+          index (the data model has no ids), so reordering mid-drag would
+          remount the dragged row and cancel the interaction. */}
       <DragDropProvider
-        onDragOver={(event) =>
-          setFieldValue(
-            'scenarioData.scenarios',
-            reorderScenarios(values.scenarioData.scenarios, event),
-          )
-        }
+        onDragEnd={(event) => {
+          const scenarios = reorderScenarios(
+            values.scenarioData.scenarios,
+            event,
+          );
+          if (scenarios === values.scenarioData.scenarios) {
+            return;
+          }
+          setFieldValue('scenarioData.scenarios', scenarios);
+          const indices = draggedIndices(event);
+          if (indices) {
+            onSelect(remapSection(activeSection, indices.from, indices.to));
+          }
+        }}
       >
         <FieldArray name="scenarioData.scenarios">
           {({ push, remove }) => (

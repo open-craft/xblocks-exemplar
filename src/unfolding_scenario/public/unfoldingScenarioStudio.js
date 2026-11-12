@@ -10709,29 +10709,41 @@ function AC(e) {
 function jC(e, t, n) {
 	return !!(e === "isDragSource" && !n && t);
 }
-function MC(e, t) {
-	let { source: n, target: r, canceled: i } = t.operation;
-	if (!n || !r || i) return e;
-	let { initialIndex: a, index: o } = n;
-	if (a === o || a < 0 || a >= e.length) return e;
-	let s = [...e], [c] = s.splice(a, 1);
-	return s.splice(o, 0, c), s;
+//#endregion
+//#region node_modules/.pnpm/@dnd-kit+helpers@0.3.2/node_modules/@dnd-kit/helpers/dist/index.js
+function MC(e, t, n) {
+	if (t === n) return e;
+	let r = e.slice();
+	return r.splice(n, 0, r.splice(t, 1)[0]), r;
 }
-var NC = () => ({
+var NC = (e) => {
+	let { source: t, target: n, canceled: r } = e.operation;
+	if (!t || !n || r) return null;
+	let { initialIndex: i, index: a } = t;
+	return typeof i != "number" || typeof a != "number" ? null : {
+		from: i,
+		to: a
+	};
+}, PC = (e, t, n) => e === t ? n : t < n && e > t && e <= n ? e - 1 : t > n && e >= n && e < t ? e + 1 : e;
+function FC(e, t) {
+	let n = NC(t);
+	if (!n) return e;
+	let { from: r, to: i } = n;
+	return r === i || r < 0 || r >= e.length || i < 0 || i >= e.length ? e : MC(e, r, i);
+}
+var IC = () => ({
 	value: "",
 	feedback: "",
 	type: "Incorrect"
-}), PC = () => ({
+}), LC = () => ({
 	heading: "",
 	description: "",
 	instructionTitle: "What you need to do",
 	instructionDescription: "",
 	prompt: "",
-	options: Array.from({ length: 3 }, NC)
-});
-//#endregion
-//#region src/unfolding-scenario-block/studio-ui/components/EditorSidebar.tsx
-function FC({ section: e, label: t, active: n, hasError: r, onSelect: i }) {
+	options: Array.from({ length: 3 }, IC)
+}), RC = (e, t, n) => e.startsWith("scenario:") ? `scenario:${PC(Number(e.slice(9)), t, n)}` : e;
+function zC({ section: e, label: t, active: n, hasError: r, onSelect: i }) {
 	return /* @__PURE__ */ (0, K.jsxs)("div", {
 		className: `us-editor-nav-item${n ? " us-editor-nav-item--active" : ""}`,
 		children: [/* @__PURE__ */ (0, K.jsx)("button", {
@@ -10747,26 +10759,30 @@ function FC({ section: e, label: t, active: n, hasError: r, onSelect: i }) {
 		})]
 	});
 }
-function IC({ index: e, active: t, hasError: n, canDelete: r, onSelect: i, onDelete: a }) {
-	let { ref: o } = AC({
+function BC({ index: e, active: t, hasError: n, canDelete: r, onSelect: i, onDelete: a }) {
+	let { ref: o, handleRef: s, isDragging: c } = AC({
 		id: e,
 		index: e
-	}), s = `scenario:${e}`;
+	}), l = `scenario:${e}`;
 	return /* @__PURE__ */ (0, K.jsxs)("div", {
-		className: `us-editor-nav-item${t ? " us-editor-nav-item--active" : ""}`,
+		ref: o,
+		className: `us-editor-nav-item${t ? " us-editor-nav-item--active" : ""}${c ? " us-editor-nav-item--dragging" : ""}`,
 		children: [
-			/* @__PURE__ */ (0, K.jsx)(re, {
-				ref: o,
-				alt: `Reorder scenario ${e + 1}`,
+			/* @__PURE__ */ (0, K.jsx)("button", {
+				type: "button",
+				ref: s,
 				className: "us-editor-drag-handle",
-				size: "sm",
-				src: or
+				"aria-label": `Reorder scenario ${e + 1}`,
+				children: /* @__PURE__ */ (0, K.jsx)(O, {
+					src: or,
+					"aria-hidden": "true"
+				})
 			}),
 			/* @__PURE__ */ (0, K.jsxs)("button", {
 				type: "button",
 				className: "us-editor-nav-link",
 				"aria-current": t ? "true" : "false",
-				onClick: () => i(s),
+				onClick: () => i(l),
 				children: ["Scenario ", e + 1]
 			}),
 			r && /* @__PURE__ */ (0, K.jsx)(re, {
@@ -10784,20 +10800,20 @@ function IC({ index: e, active: t, hasError: n, canDelete: r, onSelect: i, onDel
 		]
 	});
 }
-function LC({ activeSection: e, onSelect: t, errorSections: n = {} }) {
+function VC({ activeSection: e, onSelect: t, errorSections: n = {} }) {
 	let { values: r, setFieldValue: i } = od(), a = r.scenarioData.scenarios;
 	return /* @__PURE__ */ (0, K.jsxs)("nav", {
 		className: "us-editor-sidebar",
 		"aria-label": "Editor sections",
 		children: [
-			/* @__PURE__ */ (0, K.jsx)(FC, {
+			/* @__PURE__ */ (0, K.jsx)(zC, {
 				section: "setup",
 				label: "Setup",
 				active: e === "setup",
 				hasError: !!n.setup,
 				onSelect: t
 			}),
-			/* @__PURE__ */ (0, K.jsx)(FC, {
+			/* @__PURE__ */ (0, K.jsx)(zC, {
 				section: "introduction",
 				label: "Introduction",
 				active: e === "introduction",
@@ -10805,10 +10821,16 @@ function LC({ activeSection: e, onSelect: t, errorSections: n = {} }) {
 				onSelect: t
 			}),
 			/* @__PURE__ */ (0, K.jsx)(zx, {
-				onDragOver: (e) => i("scenarioData.scenarios", MC(r.scenarioData.scenarios, e)),
+				onDragEnd: (n) => {
+					let a = FC(r.scenarioData.scenarios, n);
+					if (a === r.scenarioData.scenarios) return;
+					i("scenarioData.scenarios", a);
+					let o = NC(n);
+					o && t(RC(e, o.from, o.to));
+				},
 				children: /* @__PURE__ */ (0, K.jsx)(zd, {
 					name: "scenarioData.scenarios",
-					children: ({ push: r, remove: i }) => /* @__PURE__ */ (0, K.jsxs)(K.Fragment, { children: [a.map((r, o) => /* @__PURE__ */ (0, K.jsx)(IC, {
+					children: ({ push: r, remove: i }) => /* @__PURE__ */ (0, K.jsxs)(K.Fragment, { children: [a.map((r, o) => /* @__PURE__ */ (0, K.jsx)(BC, {
 						index: o,
 						active: e === `scenario:${o}`,
 						hasError: !!n[`scenario:${o}`],
@@ -10818,7 +10840,7 @@ function LC({ activeSection: e, onSelect: t, errorSections: n = {} }) {
 					}, o)), a.length < 5 && /* @__PURE__ */ (0, K.jsxs)("button", {
 						type: "button",
 						className: "us-editor-add-scenario",
-						onClick: () => r(PC()),
+						onClick: () => r(LC()),
 						children: [
 							/* @__PURE__ */ (0, K.jsx)(O, {
 								src: tr,
@@ -10831,7 +10853,7 @@ function LC({ activeSection: e, onSelect: t, errorSections: n = {} }) {
 					})] })
 				})
 			}),
-			/* @__PURE__ */ (0, K.jsx)(FC, {
+			/* @__PURE__ */ (0, K.jsx)(zC, {
 				section: "outcome",
 				label: "Outcome",
 				active: e === "outcome",
@@ -10843,7 +10865,7 @@ function LC({ activeSection: e, onSelect: t, errorSections: n = {} }) {
 }
 //#endregion
 //#region src/unfolding-scenario-block/studio-ui/components/StudioFooter.tsx
-function RC({ onCancel: e, saving: t = !1 }) {
+function HC({ onCancel: e, saving: t = !1 }) {
 	return /* @__PURE__ */ (0, K.jsx)(_a.Footer, {
 		className: "us-editor-footer",
 		children: /* @__PURE__ */ (0, K.jsxs)(pe, { children: [
@@ -10865,7 +10887,7 @@ function RC({ onCancel: e, saving: t = !1 }) {
 }
 //#endregion
 //#region src/unfolding-scenario-block/studio-ui/sections/radioGroup.ts
-function zC(e) {
+function UC(e) {
 	let t = e.currentTarget.parentElement;
 	if (!t) return;
 	let n = Array.from(t.querySelectorAll("[role=\"radio\"]")), r = n.indexOf(e.currentTarget), i = -1;
@@ -10884,7 +10906,7 @@ function zC(e) {
 }
 //#endregion
 //#region src/unfolding-scenario-block/studio-ui/sections/SetupSection.tsx
-function BC({ label: e, description: t, icon: n, selected: r, onSelect: i }) {
+function WC({ label: e, description: t, icon: n, selected: r, onSelect: i }) {
 	return /* @__PURE__ */ (0, K.jsxs)("button", {
 		type: "button",
 		role: "radio",
@@ -10892,7 +10914,7 @@ function BC({ label: e, description: t, icon: n, selected: r, onSelect: i }) {
 		tabIndex: r ? 0 : -1,
 		className: `us-interaction-card${r ? " us-interaction-card--selected" : ""}`,
 		onClick: i,
-		onKeyDown: zC,
+		onKeyDown: UC,
 		children: [
 			/* @__PURE__ */ (0, K.jsx)(O, {
 				src: n,
@@ -10909,7 +10931,7 @@ function BC({ label: e, description: t, icon: n, selected: r, onSelect: i }) {
 		]
 	});
 }
-function VC({ variant: e, selected: t, onSelect: n }) {
+function GC({ variant: e, selected: t, onSelect: n }) {
 	return /* @__PURE__ */ (0, K.jsxs)("button", {
 		type: "button",
 		role: "radio",
@@ -10917,7 +10939,7 @@ function VC({ variant: e, selected: t, onSelect: n }) {
 		tabIndex: t ? 0 : -1,
 		className: `us-swatch${t ? " us-swatch--selected" : ""}`,
 		onClick: n,
-		onKeyDown: zC,
+		onKeyDown: UC,
 		children: [
 			/* @__PURE__ */ (0, K.jsxs)("span", {
 				className: "us-swatch-preview",
@@ -10943,7 +10965,7 @@ function VC({ variant: e, selected: t, onSelect: n }) {
 		]
 	});
 }
-function HC() {
+function KC() {
 	let { values: e, setFieldValue: t } = od(), { interactionType: n, colorVariant: r } = e.scenarioData, i = (0, F.useId)(), a = se(r);
 	return /* @__PURE__ */ (0, K.jsxs)("section", {
 		className: "us-panel",
@@ -10965,13 +10987,13 @@ function HC() {
 						className: "us-interaction-grid",
 						role: "radiogroup",
 						"aria-label": "How learners interact",
-						children: [/* @__PURE__ */ (0, K.jsx)(BC, {
+						children: [/* @__PURE__ */ (0, K.jsx)(WC, {
 							label: "Explore",
 							icon: dr,
 							description: "Learners can explore every option and read the outcome before continuing. They don't need to select an answer.",
 							selected: n === "Explore",
 							onSelect: () => t("scenarioData.interactionType", "Explore")
-						}), /* @__PURE__ */ (0, K.jsx)(BC, {
+						}), /* @__PURE__ */ (0, K.jsx)(WC, {
 							label: "Select an Answer",
 							icon: cr,
 							description: "Learners select one option for each scenario and see the outcome immediately.",
@@ -10993,7 +11015,7 @@ function HC() {
 						className: "us-swatch-grid",
 						role: "radiogroup",
 						"aria-label": "Color variant",
-						children: ce.map((e) => /* @__PURE__ */ (0, K.jsx)(VC, {
+						children: ce.map((e) => /* @__PURE__ */ (0, K.jsx)(GC, {
 							variant: e,
 							selected: r === e.id,
 							onSelect: () => t("scenarioData.colorVariant", e.id)
@@ -11034,12 +11056,12 @@ function HC() {
 }
 //#endregion
 //#region node_modules/.pnpm/@tinymce+tinymce-react@6.3.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_tinymce@8.4.0/node_modules/@tinymce/tinymce-react/lib/es2015/main/ts/components/EditorPropTypes.js
-var UC = function() {
-	return UC = Object.assign || function(e) {
+var qC = function() {
+	return qC = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, UC.apply(this, arguments);
-}, WC = {
+	}, qC.apply(this, arguments);
+}, JC = {
 	onActivate: R.func,
 	onAddUndo: R.func,
 	onBeforeAddUndo: R.func,
@@ -11115,7 +11137,7 @@ var UC = function() {
 	onLanguageLoadError: R.func,
 	onScriptsLoad: R.func,
 	onScriptsLoadError: R.func
-}, GC = UC({
+}, YC = qC({
 	apiKey: R.string,
 	licenseKey: R.string,
 	id: R.string,
@@ -11147,65 +11169,65 @@ var UC = function() {
 		defer: R.bool,
 		delay: R.number
 	})
-}, WC), KC = function(e) {
+}, JC), XC = function(e) {
 	var t = e;
 	return t && t.tinymce ? t.tinymce : null;
-}, qC = function(e) {
+}, ZC = function(e) {
 	return typeof e == "function";
-}, JC = function(e) {
-	return e in WC;
-}, YC = function(e) {
+}, QC = function(e) {
+	return e in JC;
+}, $C = function(e) {
 	return e.substr(2);
-}, XC = function(e, t, n, r, i, a, o) {
-	var s = Object.keys(i).filter(JC), c = Object.keys(a).filter(JC), l = s.filter(function(e) {
+}, ew = function(e, t, n, r, i, a, o) {
+	var s = Object.keys(i).filter(QC), c = Object.keys(a).filter(QC), l = s.filter(function(e) {
 		return a[e] === void 0;
 	}), u = c.filter(function(e) {
 		return i[e] === void 0;
 	});
 	l.forEach(function(e) {
-		var t = YC(e), r = o[t];
+		var t = $C(e), r = o[t];
 		n(t, r), delete o[t];
 	}), u.forEach(function(n) {
-		var i = r(e, n), a = YC(n);
+		var i = r(e, n), a = $C(n);
 		o[a] = i, t(a, i);
 	});
-}, ZC = function(e, t, n, r, i) {
-	return XC(i, e.on.bind(e), e.off.bind(e), function(t, n) {
+}, tw = function(e, t, n, r, i) {
+	return ew(i, e.on.bind(e), e.off.bind(e), function(t, n) {
 		return function(r) {
 			return t(n)?.(r, e);
 		};
 	}, t, n, r);
-}, QC = 0, $C = function(e) {
+}, nw = 0, rw = function(e) {
 	var t = Date.now(), n = Math.floor(Math.random() * 1e9);
-	return QC++, e + "_" + n + QC + String(t);
-}, ew = function(e) {
-	return e !== null && (e.tagName.toLowerCase() === "textarea" || e.tagName.toLowerCase() === "input");
-}, tw = function(e) {
-	return e === void 0 || e === "" ? [] : Array.isArray(e) ? e : e.split(" ");
-}, nw = function(e, t) {
-	return tw(e).concat(tw(t));
-}, rw = function() {
-	return window.InputEvent && typeof InputEvent.prototype.getTargetRanges == "function";
+	return nw++, e + "_" + n + nw + String(t);
 }, iw = function(e) {
+	return e !== null && (e.tagName.toLowerCase() === "textarea" || e.tagName.toLowerCase() === "input");
+}, aw = function(e) {
+	return e === void 0 || e === "" ? [] : Array.isArray(e) ? e : e.split(" ");
+}, ow = function(e, t) {
+	return aw(e).concat(aw(t));
+}, sw = function() {
+	return window.InputEvent && typeof InputEvent.prototype.getTargetRanges == "function";
+}, cw = function(e) {
 	if (!("isConnected" in Node.prototype)) {
 		for (var t = e, n = e.parentNode; n != null;) t = n, n = t.parentNode;
 		return t === e.ownerDocument;
 	}
 	return e.isConnected;
-}, aw = function(e, t) {
+}, lw = function(e, t) {
 	e !== void 0 && (e.mode != null && typeof e.mode == "object" && typeof e.mode.set == "function" ? e.mode.set(t) : e.setMode(t));
-}, ow = function(e) {
-	var t = KC(e);
+}, uw = function(e) {
+	var t = XC(e);
 	if (!t) throw Error("tinymce should have been loaded into global scope");
 	return t;
-}, sw = function(e) {
+}, dw = function(e) {
 	return e.options && e.options.isRegistered("disabled");
-}, cw = function() {
-	return cw = Object.assign || function(e) {
+}, fw = function() {
+	return fw = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, cw.apply(this, arguments);
-}, lw = function(e, t, n) {
+	}, fw.apply(this, arguments);
+}, pw = function(e, t, n) {
 	var r = e.createElement("script");
 	r.referrerPolicy = "origin", r.type = "application/javascript", r.id = t.id, r.src = t.src, r.async = t.async ?? !1, r.defer = t.defer ?? !1;
 	var i = function() {
@@ -11214,7 +11236,7 @@ var UC = function() {
 		r.removeEventListener("load", i), r.removeEventListener("error", a), n(t.src, e);
 	};
 	r.addEventListener("load", i), r.addEventListener("error", a), e.head && e.head.appendChild(r);
-}, uw = function(e) {
+}, mw = function(e) {
 	var t = {}, n = function(e, n) {
 		var r = t[e];
 		r.done = !0, r.error = n;
@@ -11239,14 +11261,14 @@ var UC = function() {
 				var f = d[u], p = t[f.src];
 				if (p) p.done ? l(f.src, p.error) : p.handlers.push(l);
 				else {
-					var m = $C("tiny-");
+					var m = rw("tiny-");
 					t[f.src] = {
 						id: m,
 						src: f.src,
 						done: !1,
 						error: null,
 						handlers: [l]
-					}, lw(e, cw({ id: m }, f), n);
+					}, pw(e, fw({ id: m }, f), n);
 				}
 			}
 		},
@@ -11261,12 +11283,12 @@ var UC = function() {
 			return e;
 		}
 	};
-}, dw = function() {
+}, hw = function() {
 	var e = [], t = function(t) {
 		var n = e.find(function(e) {
 			return e.getDocument() === t;
 		});
-		return n === void 0 && (n = uw(t), e.push(n)), n;
+		return n === void 0 && (n = mw(t), e.push(n)), n;
 	};
 	return {
 		loadList: function(e, n, r, i, a) {
@@ -11279,7 +11301,7 @@ var UC = function() {
 			for (var t = e.pop(); t != null; t = e.pop()) t.deleteScripts();
 		}
 	};
-}(), fw = (function() {
+}(), gw = (function() {
 	var e = function(t, n) {
 		return e = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(e, t) {
 			e.__proto__ = t;
@@ -11295,13 +11317,13 @@ var UC = function() {
 		}
 		t.prototype = n === null ? Object.create(n) : (r.prototype = n.prototype, new r());
 	};
-})(), pw = function() {
-	return pw = Object.assign || function(e) {
+})(), _w = function() {
+	return _w = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, pw.apply(this, arguments);
-}, mw = "change keyup compositionend setcontent CommentChange", hw = function(e) {
-	fw(t, e);
+	}, _w.apply(this, arguments);
+}, vw = "change keyup compositionend setcontent CommentChange", yw = function(e) {
+	gw(t, e);
 	function t(t) {
 		var n = e.call(this, t) || this;
 		return n.rollbackTimer = void 0, n.valueCursor = void 0, n.rollbackChange = function() {
@@ -11321,7 +11343,7 @@ var UC = function() {
 			var t = n.editor;
 			if (t && t.initialized) {
 				var r = t.getContent();
-				n.props.value !== void 0 && n.props.value !== r && n.props.rollback !== !1 && (n.rollbackTimer ||= window.setTimeout(n.rollbackChange, typeof n.props.rollback == "number" ? n.props.rollback : 200)), r !== n.currentContent && (n.currentContent = r, qC(n.props.onEditorChange) && n.props.onEditorChange(r, t));
+				n.props.value !== void 0 && n.props.value !== r && n.props.rollback !== !1 && (n.rollbackTimer ||= window.setTimeout(n.rollbackChange, typeof n.props.rollback == "number" ? n.props.rollback : 200)), r !== n.currentContent && (n.currentContent = r, ZC(n.props.onEditorChange) && n.props.onEditorChange(r, t));
 			}
 		}, n.handleEditorChangeSpecial = function(e) {
 			(e.key === "Backspace" || e.key === "Delete") && n.handleEditorChange(e);
@@ -11329,7 +11351,7 @@ var UC = function() {
 			e === void 0 && (e = 0);
 			var t = n.elementRef.current;
 			if (t) {
-				if (!iw(t)) {
+				if (!cw(t)) {
 					if (e === 0) setTimeout(function() {
 						return n.initialise(1);
 					}, 1);
@@ -11339,28 +11361,28 @@ var UC = function() {
 					else throw Error("tinymce can only be initialised when in a document");
 					return;
 				}
-				var r = ow(n.view), i = pw(pw(pw(pw({}, n.props.init), {
+				var r = uw(n.view), i = _w(_w(_w(_w({}, n.props.init), {
 					selector: void 0,
 					target: t,
 					disabled: n.props.disabled,
 					readonly: n.props.readonly,
 					inline: n.inline,
-					plugins: nw(n.props.init?.plugins, n.props.plugins),
+					plugins: ow(n.props.init?.plugins, n.props.plugins),
 					toolbar: n.props.toolbar ?? n.props.init?.toolbar
 				}), n.props.licenseKey ? { license_key: n.props.licenseKey } : {}), {
 					setup: function(e) {
-						n.editor = e, n.bindHandlers({}), n.inline && !ew(t) && e.once("PostRender", function(t) {
+						n.editor = e, n.bindHandlers({}), n.inline && !iw(t) && e.once("PostRender", function(t) {
 							e.setContent(n.getInitialValue(), { no_events: !0 });
-						}), n.props.init && qC(n.props.init.setup) && n.props.init.setup(e), n.props.disabled && (sw(n.editor) ? n.editor.options.set("disabled", n.props.disabled) : n.editor.mode.set("readonly"));
+						}), n.props.init && ZC(n.props.init.setup) && n.props.init.setup(e), n.props.disabled && (dw(n.editor) ? n.editor.options.set("disabled", n.props.disabled) : n.editor.mode.set("readonly"));
 					},
 					init_instance_callback: function(e) {
 						var t = n.getInitialValue();
-						n.currentContent = n.currentContent ?? e.getContent(), n.currentContent !== t && (n.currentContent = t, e.setContent(t), e.undoManager.clear(), e.undoManager.add(), e.setDirty(!1)), n.props.init && qC(n.props.init.init_instance_callback) && n.props.init.init_instance_callback(e);
+						n.currentContent = n.currentContent ?? e.getContent(), n.currentContent !== t && (n.currentContent = t, e.setContent(t), e.undoManager.clear(), e.undoManager.add(), e.setDirty(!1)), n.props.init && ZC(n.props.init.init_instance_callback) && n.props.init.init_instance_callback(e);
 					}
 				});
-				n.inline || (t.style.visibility = ""), ew(t) && (t.value = n.getInitialValue()), r.init(i);
+				n.inline || (t.style.visibility = ""), iw(t) && (t.value = n.getInitialValue()), r.init(i);
 			}
-		}, n.id = n.props.id || $C("tiny-react"), n.elementRef = F.createRef(), n.inline = n.props.inline ?? n.props.init?.inline ?? !1, n.boundHandlers = {}, n;
+		}, n.id = n.props.id || rw("tiny-react"), n.elementRef = F.createRef(), n.inline = n.props.inline ?? n.props.init?.inline ?? !1, n.boundHandlers = {}, n;
 	}
 	return Object.defineProperty(t.prototype, "view", {
 		get: function() {
@@ -11391,13 +11413,13 @@ var UC = function() {
 			}
 			if (this.props.readonly !== e.readonly) {
 				var r = this.props.readonly ?? !1;
-				aw(this.editor, r ? "readonly" : "design");
+				lw(this.editor, r ? "readonly" : "design");
 			}
-			this.props.disabled !== e.disabled && (sw(this.editor) ? this.editor.options.set("disabled", this.props.disabled) : aw(this.editor, this.props.disabled ? "readonly" : "design"));
+			this.props.disabled !== e.disabled && (dw(this.editor) ? this.editor.options.set("disabled", this.props.disabled) : lw(this.editor, this.props.disabled ? "readonly" : "design"));
 		}
 	}, t.prototype.componentDidMount = function() {
 		var e = this, t, n;
-		KC(this.view) === null ? Array.isArray(this.props.tinymceScriptSrc) && this.props.tinymceScriptSrc.length === 0 ? (n = (t = this.props).onScriptsLoadError) == null || n.call(t, /* @__PURE__ */ Error("No `tinymce` global is present but the `tinymceScriptSrc` prop was an empty array.")) : this.elementRef.current?.ownerDocument && dw.loadList(this.elementRef.current.ownerDocument, this.getScriptSources(), this.props.scriptLoading?.delay ?? 0, function() {
+		XC(this.view) === null ? Array.isArray(this.props.tinymceScriptSrc) && this.props.tinymceScriptSrc.length === 0 ? (n = (t = this.props).onScriptsLoadError) == null || n.call(t, /* @__PURE__ */ Error("No `tinymce` global is present but the `tinymceScriptSrc` prop was an empty array.")) : this.elementRef.current?.ownerDocument && hw.loadList(this.elementRef.current.ownerDocument, this.getScriptSources(), this.props.scriptLoading?.delay ?? 0, function() {
 			var t, n;
 			(n = (t = e.props).onScriptsLoad) == null || n.call(t), e.initialise();
 		}, function(t) {
@@ -11406,13 +11428,13 @@ var UC = function() {
 		}) : this.initialise();
 	}, t.prototype.componentWillUnmount = function() {
 		var e = this, t = this.editor;
-		t && (t.off(mw, this.handleEditorChange), t.off(this.beforeInputEvent(), this.handleBeforeInput), t.off("keypress", this.handleEditorChangeSpecial), t.off("keydown", this.handleBeforeInputSpecial), t.off("NewBlock", this.handleEditorChange), Object.keys(this.boundHandlers).forEach(function(n) {
+		t && (t.off(vw, this.handleEditorChange), t.off(this.beforeInputEvent(), this.handleBeforeInput), t.off("keypress", this.handleEditorChangeSpecial), t.off("keydown", this.handleBeforeInputSpecial), t.off("NewBlock", this.handleEditorChange), Object.keys(this.boundHandlers).forEach(function(n) {
 			t.off(n, e.boundHandlers[n]);
 		}), this.boundHandlers = {}, t.remove(), this.editor = void 0);
 	}, t.prototype.render = function() {
 		return this.inline ? this.renderInline() : this.renderIframe();
 	}, t.prototype.beforeInputEvent = function() {
-		return rw() ? "beforeinput SelectionChange" : "SelectionChange";
+		return sw() ? "beforeinput SelectionChange" : "SelectionChange";
 	}, t.prototype.renderInline = function() {
 		var e = this.props.tagName, t = e === void 0 ? "div" : e;
 		return F.createElement(t, {
@@ -11452,15 +11474,15 @@ var UC = function() {
 	}, t.prototype.bindHandlers = function(e) {
 		var t = this;
 		if (this.editor !== void 0) {
-			ZC(this.editor, e, this.props, this.boundHandlers, function(e) {
+			tw(this.editor, e, this.props, this.boundHandlers, function(e) {
 				return t.props[e];
 			});
 			var n = function(e) {
 				return e.onEditorChange !== void 0 || e.value !== void 0;
 			}, r = n(e), i = n(this.props);
-			!r && i ? (this.editor.on(mw, this.handleEditorChange), this.editor.on(this.beforeInputEvent(), this.handleBeforeInput), this.editor.on("keydown", this.handleBeforeInputSpecial), this.editor.on("keyup", this.handleEditorChangeSpecial), this.editor.on("NewBlock", this.handleEditorChange)) : r && !i && (this.editor.off(mw, this.handleEditorChange), this.editor.off(this.beforeInputEvent(), this.handleBeforeInput), this.editor.off("keydown", this.handleBeforeInputSpecial), this.editor.off("keyup", this.handleEditorChangeSpecial), this.editor.off("NewBlock", this.handleEditorChange));
+			!r && i ? (this.editor.on(vw, this.handleEditorChange), this.editor.on(this.beforeInputEvent(), this.handleBeforeInput), this.editor.on("keydown", this.handleBeforeInputSpecial), this.editor.on("keyup", this.handleEditorChangeSpecial), this.editor.on("NewBlock", this.handleEditorChange)) : r && !i && (this.editor.off(vw, this.handleEditorChange), this.editor.off(this.beforeInputEvent(), this.handleBeforeInput), this.editor.off("keydown", this.handleBeforeInputSpecial), this.editor.off("keyup", this.handleEditorChangeSpecial), this.editor.off("NewBlock", this.handleEditorChange));
 		}
-	}, t.propTypes = GC, t.defaultProps = { cloudChannel: "8" }, t;
+	}, t.propTypes = YC, t.defaultProps = { cloudChannel: "8" }, t;
 }(F.Component);
 //#endregion
 //#region node_modules/.pnpm/tinymce@8.4.0/node_modules/tinymce/skins/ui/oxide/content.js
@@ -51969,7 +51991,7 @@ var UC = function() {
 })))(), tinymce.Resource.add("content/default/content.css", "body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;line-height:1.4;margin:1rem}table{border-collapse:collapse}table:not([cellpadding]) td,table:not([cellpadding]) th{padding:.4rem}table[border]:not([border=\"0\"]):not([style*=border-width]) td,table[border]:not([border=\"0\"]):not([style*=border-width]) th{border-width:1px}table[border]:not([border=\"0\"]):not([style*=border-style]) td,table[border]:not([border=\"0\"]):not([style*=border-style]) th{border-style:solid}table[border]:not([border=\"0\"]):not([style*=border-color]) td,table[border]:not([border=\"0\"]):not([style*=border-color]) th{border-color:#ccc}figure{display:table;margin:1rem auto}figure figcaption{color:#999;display:block;margin-top:.25rem;text-align:center}hr{border-color:#ccc;border-style:solid;border-width:1px 0 0 0}code{background-color:#e8e8e8;border-radius:3px;padding:.1rem .2rem}.mce-content-body:not([dir=rtl]) blockquote{border-left:2px solid #ccc;margin-left:1.5rem;padding-left:1rem}.mce-content-body[dir=rtl] blockquote{border-right:2px solid #ccc;margin-right:1.5rem;padding-right:1rem}"), tinymce.Resource.add("ui/oxide/content.css", "@keyframes tox-rotation{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes tox-bouncing-dots{0%,100%,80%{transform:scale(0)}40%{transform:scale(1)}}.tox-tinymceai__annotation--added,.tox-tinymceai__annotation--modified,.tox-tinymceai__annotation--removed{-webkit-text-decoration:none;text-decoration:none}.tox-tinymceai__annotation--added__highlight{background-color:rgba(120,171,70,.2);box-shadow:0 -2px 0 0 #78ab46 inset}.tox-tinymceai__annotation--added__selected{background-color:rgba(120,171,70,.2);box-shadow:0 -2px 0 0 #006ce7 inset,0 -2px 0 0 #006ce7;-webkit-text-decoration:none;text-decoration:none}.tox-tinymceai__annotation--modified__highlight{background-color:rgba(0,108,231,.2);-webkit-text-decoration:underline;text-decoration:underline}.tox-tinymceai__annotation--modified__selected{background-color:rgba(0,108,231,.2);box-shadow:0 -2px 0 0 #006ce7 inset,0 -2px 0 0 #006ce7;-webkit-text-decoration:none;text-decoration:none}.tox-tinymceai__annotation--removed__highlight{background-color:rgba(204,0,0,.2);-webkit-text-decoration:line-through;text-decoration:line-through;box-shadow:0 -2px 0 0 #c00 inset}.tox-tinymceai__annotation--removed__selected{background-color:rgba(204,0,0,.2);box-shadow:0 -2px 0 0 #006ce7 inset,0 -2px 0 0 #006ce7;-webkit-text-decoration:line-through;text-decoration:line-through}.tox-tinymceai__annotation--added.tox-tinymceai__annotation--added__hidden,.tox-tinymceai__annotation--modified.tox-tinymceai__annotation--modified__hidden,.tox-tinymceai__annotation--removed.tox-tinymceai__annotation--removed__hidden{display:none;-webkit-text-decoration:none;text-decoration:none}:has(> div > iframe).tox-tinymceai__annotation--added,:has(> div > iframe).tox-tinymceai__annotation--modified,:has(> div > iframe).tox-tinymceai__annotation--removed{padding:7px;margin:5px}iframe.tox-tinymceai__annotation--added__highlight,img.tox-tinymceai__annotation--added__highlight,video.tox-tinymceai__annotation--added__highlight{outline:.25em solid rgba(120,171,70,.2);padding:.25em}iframe.tox-tinymceai__annotation--added__selected,img.tox-tinymceai__annotation--added__selected,video.tox-tinymceai__annotation--added__selected{border:.25em solid rgba(120,171,70,.2);outline:.125em solid #006ce7;padding:0}iframe.tox-tinymceai__annotation--modified__highlight,img.tox-tinymceai__annotation--modified__highlight,video.tox-tinymceai__annotation--modified__highlight{outline:.25em solid rgba(0,108,231,.2);padding:.25em}iframe.tox-tinymceai__annotation--modified__selected,img.tox-tinymceai__annotation--modified__selected,video.tox-tinymceai__annotation--modified__selected{border:.25em solid rgba(0,108,231,.2);outline:.125em solid #006ce7;padding:0}iframe.tox-tinymceai__annotation--removed__highlight,img.tox-tinymceai__annotation--removed__highlight,video.tox-tinymceai__annotation--removed__highlight{outline:.25em solid rgba(204,0,0,.2);padding:.25em}iframe.tox-tinymceai__annotation--removed__selected,img.tox-tinymceai__annotation--removed__selected,video.tox-tinymceai__annotation--removed__selected{border:.25em solid rgba(204,0,0,.2);outline:.125em solid #006ce7;padding:0}div.tox-tinymceai__annotation:has(> hr){padding:.25em}div.tox-tinymceai__annotation--removed__highlight>hr{border-color:rgba(0,0,0,.2)}div.tox-tinymceai__annotation--added__highlight>hr{border-color:rgba(0,0,0,.2)}.mce-pagebreak.tox-tinymceai__annotation--added__selected,.mce-pagebreak.tox-tinymceai__annotation--modified__selected,.mce-pagebreak.tox-tinymceai__annotation--removed__selected{border:1px dashed #aaa;box-shadow:none}.mce-pagebreak.tox-tinymceai__annotation--added__highlight,.mce-pagebreak.tox-tinymceai__annotation--modified__highlight,.mce-pagebreak.tox-tinymceai__annotation--removed__highlight{padding:0}.tox-tinymceai{display:contents}.tox-tinymceai__annotation{display:revert}.tox-tinymceai__annotation--added__highlight,.tox-tinymceai__annotation--modified__highlight,.tox-tinymceai__annotation--removed__highlight{cursor:pointer}div[tinymceai-data-pending-diff=true],span[tinymceai-data-pending-diff=true]{position:relative;z-index:1;background:#fff}.tox-tinymceai__preview-body{position:relative;min-height:100%}.tox-tinymceai__preview-body--show-preview .tox-tinymceai__annotation--added.tox-tinymceai__annotation--preview-highlight,.tox-tinymceai__preview-body--show-preview .tox-tinymceai__annotation--modified.tox-tinymceai__annotation--preview-highlight{border-bottom:3px solid #006ce7;cursor:pointer}.tox-tinymceai__preview-body--show-preview .tox-tinymceai__annotation--added__selected,.tox-tinymceai__preview-body--show-preview .tox-tinymceai__annotation--modified__selected{background-color:rgba(0,108,231,.2);border-top:3px solid #006ce7;border-bottom:3px solid #006ce7;box-shadow:none;-webkit-text-decoration:none;text-decoration:none}.tox-tinymceai__preview-body--show-preview .tox-tinymceai__annotation--removed.tox-tinymceai__annotation--removed__selected{display:inline;background-color:rgba(204,0,0,.2);border-top:3px solid #c00;border-bottom:3px solid #c00;box-shadow:none;-webkit-text-decoration:line-through;text-decoration:line-through}.tox-tinymceai__preview-body--show-preview iframe.tox-tinymceai__annotation--added.tox-tinymceai__annotation--preview-highlight,.tox-tinymceai__preview-body--show-preview iframe.tox-tinymceai__annotation--modified.tox-tinymceai__annotation--preview-highlight,.tox-tinymceai__preview-body--show-preview img.tox-tinymceai__annotation--added.tox-tinymceai__annotation--preview-highlight,.tox-tinymceai__preview-body--show-preview img.tox-tinymceai__annotation--modified.tox-tinymceai__annotation--preview-highlight,.tox-tinymceai__preview-body--show-preview video.tox-tinymceai__annotation--added.tox-tinymceai__annotation--preview-highlight,.tox-tinymceai__preview-body--show-preview video.tox-tinymceai__annotation--modified.tox-tinymceai__annotation--preview-highlight{outline:.25em solid rgba(0,108,231,.2);padding:.25em}.tox-tinymceai__preview-body--show-preview iframe.tox-tinymceai__annotation--added__selected,.tox-tinymceai__preview-body--show-preview iframe.tox-tinymceai__annotation--modified__selected,.tox-tinymceai__preview-body--show-preview img.tox-tinymceai__annotation--added__selected,.tox-tinymceai__preview-body--show-preview img.tox-tinymceai__annotation--modified__selected,.tox-tinymceai__preview-body--show-preview video.tox-tinymceai__annotation--added__selected,.tox-tinymceai__preview-body--show-preview video.tox-tinymceai__annotation--modified__selected{border:.25em solid rgba(0,108,231,.2);outline:.125em solid #006ce7;padding:0}.tox-tinymceai__preview-body--show-preview iframe.tox-tinymceai__annotation--removed.tox-tinymceai__annotation--removed__selected,.tox-tinymceai__preview-body--show-preview img.tox-tinymceai__annotation--removed.tox-tinymceai__annotation--removed__selected,.tox-tinymceai__preview-body--show-preview video.tox-tinymceai__annotation--removed.tox-tinymceai__annotation--removed__selected{display:inline;border:.25em solid rgba(204,0,0,.2);outline:.125em solid #c00;padding:0}.tox-tinymceai__diff-focus-overlay{position:absolute;left:0;top:0;right:0;overflow:hidden;pointer-events:none}.tox-tinymceai__diff-focus-overlay-dim{fill:rgba(34,47,62,0.2)}.mce-content-body .mce-item-anchor{background:transparent url(\"data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D'8'%20height%3D'12'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'M0%200L8%200%208%2012%204.09117821%209%200%2012z'%2F%3E%3C%2Fsvg%3E%0A\") no-repeat center}.mce-content-body .mce-item-anchor:empty{cursor:default;display:inline-block;height:12px!important;padding:0 2px;-webkit-user-modify:read-only;-moz-user-modify:read-only;-webkit-user-select:all;user-select:all;width:8px!important}.mce-content-body .mce-item-anchor:not(:empty){background-position-x:2px;display:inline-block;padding-left:12px}.mce-content-body .mce-item-anchor[data-mce-selected]{outline-offset:1px}.tox-comments-visible .tox-comment[contenteditable=false]:not([data-mce-selected]),.tox-comments-visible span.tox-comment img:not([data-mce-selected]),.tox-comments-visible span.tox-comment span.mce-preview-object:not([data-mce-selected]),.tox-comments-visible span.tox-comment>audio:not([data-mce-selected]),.tox-comments-visible span.tox-comment>video:not([data-mce-selected]){outline:3px solid #ffe796}.tox-comments-visible .tox-comment[contenteditable=false][data-mce-annotation-active=true]:not([data-mce-selected]){outline:3px solid #ffcf30}.tox-comments-visible span.tox-comment:not([data-mce-selected]){background-color:#ffe796;outline:0}.tox-comments-visible span.tox-comment[data-mce-annotation-active=true]:not([data-mce-selected=inline-boundary]){background-color:#ffcf30}.tox-comments-visible span.tox-comment[data-mce-selected]{background-color:#ffcf30;border-radius:3px;box-shadow:0 0 0 2px #006ce7}.tox-comments-visible span.tox-comment[data-mce-selected]:has(img[data-mce-selected],> audio[data-mce-selected],> video[data-mce-selected],span.mce-preview-object[data-mce-selected]){box-shadow:none}.tox-comments-visible span.tox-comment[data-mce-selected] img:not([data-mce-selected]),.tox-comments-visible span.tox-comment[data-mce-selected] span.mce-preview-object:not([data-mce-selected]),.tox-comments-visible span.tox-comment[data-mce-selected]>audio:not([data-mce-selected]),.tox-comments-visible span.tox-comment[data-mce-selected]>video:not([data-mce-selected]){box-shadow:0 0 0 5px #006ce7}.tox-comments-visible span.tox-comment[data-mce-annotation-active=true] img:not([data-mce-selected]),.tox-comments-visible span.tox-comment[data-mce-annotation-active=true] span.mce-preview-object:not([data-mce-selected]),.tox-comments-visible span.tox-comment[data-mce-annotation-active=true]>audio:not([data-mce-selected]),.tox-comments-visible span.tox-comment[data-mce-annotation-active=true]>video:not([data-mce-selected]){outline:3px solid #ffcf30}.tox-checklist>li:not(.tox-checklist--hidden){list-style:none;margin:.25em 0}.tox-checklist>li:not(.tox-checklist--hidden)::before{content:url(\"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cg%20id%3D%22checklist-unchecked%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Crect%20id%3D%22Rectangle%22%20width%3D%2215%22%20height%3D%2215%22%20x%3D%22.5%22%20y%3D%22.5%22%20fill-rule%3D%22nonzero%22%20stroke%3D%22%234C4C4C%22%20rx%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A\");cursor:pointer;height:1em;margin-left:-1.5em;margin-top:.125em;position:absolute;width:1em}.tox-checklist li:not(.tox-checklist--hidden).tox-checklist--checked::before{content:url(\"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cg%20id%3D%22checklist-checked%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Crect%20id%3D%22Rectangle%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%234099FF%22%20fill-rule%3D%22nonzero%22%20rx%3D%222%22%2F%3E%3Cpath%20id%3D%22Path%22%20fill%3D%22%23FFF%22%20fill-rule%3D%22nonzero%22%20d%3D%22M11.5703186%2C3.14417309%20C11.8516238%2C2.73724603%2012.4164781%2C2.62829933%2012.83558%2C2.89774797%20C13.260121%2C3.17069355%2013.3759736%2C3.72932262%2013.0909105%2C4.14168582%20L7.7580587%2C11.8560195%20C7.43776896%2C12.3193404%206.76483983%2C12.3852142%206.35607322%2C11.9948725%20L3.02491697%2C8.8138662%20C2.66090143%2C8.46625845%202.65798871%2C7.89594698%203.01850234%2C7.54483354%20C3.373942%2C7.19866177%203.94940006%2C7.19592841%204.30829608%2C7.5386474%20L6.85276923%2C9.9684299%20L11.5703186%2C3.14417309%20Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A\")}[dir=rtl] .tox-checklist>li:not(.tox-checklist--hidden)::before{margin-left:0;margin-right:-1.5em}code[class*=language-],pre[class*=language-]{color:#000;background:0 0;text-shadow:0 1px #fff;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;tab-size:4;hyphens:none}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.mce-content-body{overflow-wrap:break-word;word-wrap:break-word}.mce-content-body .mce-visual-caret{background-color:#000;background-color:currentColor;position:absolute}.mce-content-body .mce-visual-caret-hidden{display:none}.mce-content-body [data-mce-caret]{left:-1000px;margin:0;padding:0;position:absolute;right:auto;top:0}.mce-content-body .mce-offscreen-selection{left:-2000000px;max-width:1000000px;position:absolute}.mce-content-body [contentEditable=false]{cursor:default}.mce-content-body [contentEditable=true]{cursor:text}.tox-cursor-format-painter{cursor:url(\"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%0A%20%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%3Cpath%20fill%3D%22%23000%22%20fill-rule%3D%22nonzero%22%20d%3D%22M15%2C6%20C15%2C5.45%2014.55%2C5%2014%2C5%20L6%2C5%20C5.45%2C5%205%2C5.45%205%2C6%20L5%2C10%20C5%2C10.55%205.45%2C11%206%2C11%20L14%2C11%20C14.55%2C11%2015%2C10.55%2015%2C10%20L15%2C9%20L16%2C9%20L16%2C12%20L9%2C12%20L9%2C19%20C9%2C19.55%209.45%2C20%2010%2C20%20L11%2C20%20C11.55%2C20%2012%2C19.55%2012%2C19%20L12%2C14%20L18%2C14%20L18%2C7%20L15%2C7%20L15%2C6%20Z%22%2F%3E%0A%20%20%20%20%3Cpath%20fill%3D%22%23000%22%20fill-rule%3D%22nonzero%22%20d%3D%22M1%2C1%20L8.25%2C1%20C8.66421356%2C1%209%2C1.33578644%209%2C1.75%20L9%2C1.75%20C9%2C2.16421356%208.66421356%2C2.5%208.25%2C2.5%20L2.5%2C2.5%20L2.5%2C8.25%20C2.5%2C8.66421356%202.16421356%2C9%201.75%2C9%20L1.75%2C9%20C1.33578644%2C9%201%2C8.66421356%201%2C8.25%20L1%2C1%20Z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A\"),default}div.mce-footnotes hr{margin-inline:0 auto;width:25%}div.mce-footnotes li>a.mce-footnotes-backlink{-webkit-text-decoration:none;text-decoration:none}@media print{sup.mce-footnote a{color:#000;-webkit-text-decoration:none;text-decoration:none}div.mce-footnotes{page-break-inside:avoid;break-inside:avoid;width:100%}div.mce-footnotes li>a.mce-footnotes-backlink{display:none}}tiny-math-block{display:flex;justify-content:center;margin:16px 0 16px 0}tiny-math-inline{display:inline-block}.mce-content-body figure.align-left{float:left}.mce-content-body figure.align-right{float:right}.mce-content-body figure.image.align-center{display:table;margin-left:auto;margin-right:auto}.mce-preview-object{border:1px solid gray;display:inline-block;line-height:0;margin:0 2px;position:relative}.mce-preview-object .mce-shim{background:url(\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\");height:100%;left:0;position:absolute;top:0;width:100%}.mce-preview-object[data-mce-selected=\"2\"] .mce-shim{display:none}.mce-content-body .mce-mergetag{cursor:default!important;-webkit-user-select:none;user-select:none}.mce-content-body .mce-mergetag:hover{background-color:rgba(0,108,231,.1)}.mce-content-body .mce-mergetag-affix{background-color:rgba(0,108,231,.1);color:#006ce7}.mce-object{background:transparent url(\"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22M4%203h16a1%201%200%200%201%201%201v16a1%201%200%200%201-1%201H4a1%201%200%200%201-1-1V4a1%201%200%200%201%201-1zm1%202v14h14V5H5zm4.79%202.565l5.64%204.028a.5.5%200%200%201%200%20.814l-5.64%204.028a.5.5%200%200%201-.79-.407V7.972a.5.5%200%200%201%20.79-.407z%22%2F%3E%3C%2Fsvg%3E%0A\") no-repeat center;border:1px dashed #aaa}.mce-pagebreak{border:1px dashed #aaa;cursor:default;display:block;height:5px;margin-top:15px;page-break-before:always;width:100%}@media print{.mce-pagebreak{border:0}}.tiny-pageembed .mce-shim{background:url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);height:100%;left:0;position:absolute;top:0;width:100%}.tiny-pageembed[data-mce-selected=\"2\"] .mce-shim{display:none}.tiny-pageembed{display:inline-block;position:relative}.tiny-pageembed--16by9,.tiny-pageembed--1by1,.tiny-pageembed--21by9,.tiny-pageembed--4by3{display:block;overflow:hidden;padding:0;position:relative;width:100%}.tiny-pageembed--21by9{padding-top:42.857143%}.tiny-pageembed--16by9{padding-top:56.25%}.tiny-pageembed--4by3{padding-top:75%}.tiny-pageembed--1by1{padding-top:100%}.tiny-pageembed--16by9 iframe,.tiny-pageembed--1by1 iframe,.tiny-pageembed--21by9 iframe,.tiny-pageembed--4by3 iframe{border:0;height:100%;left:0;position:absolute;top:0;width:100%}.mce-content-body[data-mce-placeholder]{position:relative}.mce-content-body[data-mce-placeholder]:not(.mce-visualblocks)::before{color:rgba(34,47,62,.7);content:attr(data-mce-placeholder);position:absolute}@media (forced-colors:active){.mce-content-body[data-mce-placeholder]:not(.mce-visualblocks)::before{color:highlight;filter:brightness(30%);z-index:-1}}.mce-content-body:not([dir=rtl])[data-mce-placeholder]:not(.mce-visualblocks)::before{left:1px}.mce-content-body[dir=rtl][data-mce-placeholder]:not(.mce-visualblocks)::before{right:1px}@media print{.mce-content-body .mce-placeholder,.mce-content-body [data-mce-bogus=all],.mce-content-body [data-mce-bogus]{display:none!important}.mce-content-body .mce-visual-caret{display:none!important}.mce-content-body .mce-edit-focus,.mce-content-body :focus,.mce-content-body [data-mce-selected]{outline:0!important}}.mce-content-body div.mce-resizehandle{background-color:#4099ff;border-color:#4099ff;border-style:solid;border-width:1px;box-sizing:border-box;height:10px;position:absolute;width:10px;z-index:1298}.mce-content-body div.mce-resizehandle:hover{background-color:#4099ff}.mce-content-body div.mce-resizehandle:first-of-type{cursor:nwse-resize}.mce-content-body div.mce-resizehandle:nth-of-type(2){cursor:nesw-resize}.mce-content-body div.mce-resizehandle:nth-of-type(3){cursor:nwse-resize}.mce-content-body div.mce-resizehandle:nth-of-type(4){cursor:nesw-resize}.mce-content-body .mce-resize-backdrop{z-index:10000}.mce-content-body .mce-clonedresizable{cursor:default;opacity:.5;outline:1px dashed black;position:absolute;z-index:10001}.mce-content-body .mce-clonedresizable.mce-resizetable-columns td,.mce-content-body .mce-clonedresizable.mce-resizetable-columns th{border:0}.mce-content-body .mce-resize-helper{background:#555;background:rgba(0 0 0%);border:1px;border-radius:3px;color:#fff;display:none;font-family:sans-serif;font-size:12px;line-height:14px;margin:5px 10px;padding:5px;position:absolute;white-space:nowrap;z-index:10002}.tox-rtc-user-selection{position:relative}.tox-rtc-user-cursor{bottom:0;cursor:default;position:absolute;top:0;width:2px}.tox-rtc-user-cursor::before{background-color:inherit;border-radius:50%;content:'';display:block;height:8px;position:absolute;right:-3px;top:-3px;width:8px}.tox-rtc-user-cursor:hover::after{background-color:inherit;border-radius:100px;box-sizing:border-box;color:#fff;content:attr(data-user);display:block;font-size:12px;font-weight:700;left:-5px;min-height:8px;min-width:8px;padding:0 12px;position:absolute;top:-11px;white-space:nowrap;z-index:1000}.tox-rtc-user-selection--1 .tox-rtc-user-cursor{background-color:#2dc26b}.tox-rtc-user-selection--2 .tox-rtc-user-cursor{background-color:#e03e2d}.tox-rtc-user-selection--3 .tox-rtc-user-cursor{background-color:#f1c40f}.tox-rtc-user-selection--4 .tox-rtc-user-cursor{background-color:#3598db}.tox-rtc-user-selection--5 .tox-rtc-user-cursor{background-color:#b96ad9}.tox-rtc-user-selection--6 .tox-rtc-user-cursor{background-color:#e67e23}.tox-rtc-user-selection--7 .tox-rtc-user-cursor{background-color:#aaa69d}.tox-rtc-user-selection--8 .tox-rtc-user-cursor{background-color:#f368e0}.tox-rtc-remote-image{background:#eaeaea url(\"data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2236%22%20height%3D%2212%22%20viewBox%3D%220%200%2036%2012%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Ccircle%20cx%3D%226%22%20cy%3D%226%22%20r%3D%223%22%20fill%3D%22rgba(0%2C%200%2C%200%2C%20.2)%22%3E%0A%20%20%20%20%3Canimate%20attributeName%3D%22r%22%20values%3D%223%3B5%3B3%22%20calcMode%3D%22linear%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20%2F%3E%0A%20%20%3C%2Fcircle%3E%0A%20%20%3Ccircle%20cx%3D%2218%22%20cy%3D%226%22%20r%3D%223%22%20fill%3D%22rgba(0%2C%200%2C%200%2C%20.2)%22%3E%0A%20%20%20%20%3Canimate%20attributeName%3D%22r%22%20values%3D%223%3B5%3B3%22%20calcMode%3D%22linear%22%20begin%3D%22.33s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20%2F%3E%0A%20%20%3C%2Fcircle%3E%0A%20%20%3Ccircle%20cx%3D%2230%22%20cy%3D%226%22%20r%3D%223%22%20fill%3D%22rgba(0%2C%200%2C%200%2C%20.2)%22%3E%0A%20%20%20%20%3Canimate%20attributeName%3D%22r%22%20values%3D%223%3B5%3B3%22%20calcMode%3D%22linear%22%20begin%3D%22.66s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%20%2F%3E%0A%20%20%3C%2Fcircle%3E%0A%3C%2Fsvg%3E%0A\") no-repeat center center;border:1px solid #ccc;min-height:240px;min-width:320px}.mce-match-marker{background:#aaa;color:#fff}.mce-match-marker-selected{background:#39f;color:#fff}.mce-match-marker-selected::selection{background:#39f;color:#fff}.mce-content-body audio[data-mce-selected],.mce-content-body details[data-mce-selected],.mce-content-body embed[data-mce-selected],.mce-content-body img[data-mce-selected],.mce-content-body object[data-mce-selected],.mce-content-body table[data-mce-selected],.mce-content-body video[data-mce-selected]{outline:3px solid #b4d7ff}.mce-content-body hr[data-mce-selected]{outline:3px solid #b4d7ff;outline-offset:1px}.mce-content-body [contentEditable=false] [contentEditable=true]:focus{outline:3px solid #b4d7ff}.mce-content-body [contentEditable=false] [contentEditable=true]:hover{outline:3px solid #b4d7ff}.mce-content-body [contentEditable=false][data-mce-selected]{cursor:not-allowed;outline:3px solid #b4d7ff}.mce-content-body [data-mce-selected=inline-boundary]{background-color:#b4d7ff}.mce-content-body .mce-edit-focus{outline:3px solid #b4d7ff}.mce-content-body td[data-mce-selected],.mce-content-body th[data-mce-selected]{position:relative}.mce-content-body td[data-mce-selected]::selection,.mce-content-body th[data-mce-selected]::selection{background:0 0}.mce-content-body td[data-mce-selected] *,.mce-content-body th[data-mce-selected] *{outline:0;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}.mce-content-body td[data-mce-selected]::after,.mce-content-body th[data-mce-selected]::after{background-color:rgba(180,215,255,.7);border:1px solid rgba(180,215,255,.7);bottom:-1px;content:'';left:-1px;mix-blend-mode:multiply;position:absolute;right:-1px;top:-1px}.mce-content-body img[data-mce-selected]::selection{background:0 0}.ephox-snooker-resizer-bar{background-color:#b4d7ff;opacity:0;-webkit-user-select:none;user-select:none}.ephox-snooker-resizer-cols{cursor:col-resize}.ephox-snooker-resizer-rows{cursor:row-resize}.ephox-snooker-resizer-bar.ephox-snooker-resizer-bar-dragging{opacity:1}.mce-spellchecker-word{background-image:url(\"data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D'4'%20height%3D'4'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20stroke%3D'%23ff0000'%20fill%3D'none'%20stroke-linecap%3D'round'%20stroke-opacity%3D'.75'%20d%3D'M0%203L2%201%204%203'%2F%3E%3C%2Fsvg%3E%0A\");background-position:0 calc(100% + 1px);background-repeat:repeat-x;background-size:auto 6px;cursor:default;height:2rem}.mce-spellchecker-grammar{background-image:url(\"data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D'4'%20height%3D'4'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20stroke%3D'%2300A835'%20fill%3D'none'%20stroke-linecap%3D'round'%20d%3D'M0%203L2%201%204%203'%2F%3E%3C%2Fsvg%3E%0A\");background-position:0 calc(100% + 1px);background-repeat:repeat-x;background-size:auto 6px;cursor:default}.tox-suggestededits__annotation--added,.tox-suggestededits__annotation--modified,.tox-suggestededits__annotation--removed{-webkit-text-decoration:none;text-decoration:none}.tox-suggestededits__annotation--added__highlight{background-color:rgba(120,171,70,.2);box-shadow:0 -2px 0 0 #78ab46 inset}.tox-suggestededits__annotation--added__selected{background-color:rgba(120,171,70,.2);box-shadow:0 -2px 0 0 #006ce7 inset,0 -2px 0 0 #006ce7;-webkit-text-decoration:none;text-decoration:none}.tox-suggestededits__annotation--modified__highlight{background-color:rgba(0,108,231,.2);-webkit-text-decoration:underline;text-decoration:underline}.tox-suggestededits__annotation--modified__selected{background-color:rgba(0,108,231,.2);box-shadow:0 -2px 0 0 #006ce7 inset,0 -2px 0 0 #006ce7;-webkit-text-decoration:none;text-decoration:none}.tox-suggestededits__annotation--removed__highlight{background-color:rgba(204,0,0,.2);-webkit-text-decoration:line-through;text-decoration:line-through;box-shadow:0 -2px 0 0 #c00 inset}.tox-suggestededits__annotation--removed__selected{background-color:rgba(204,0,0,.2);box-shadow:0 -2px 0 0 #006ce7 inset,0 -2px 0 0 #006ce7;-webkit-text-decoration:line-through;text-decoration:line-through}.tox-suggestededits__annotation--added.tox-suggestededits__annotation--added__hidden,.tox-suggestededits__annotation--modified.tox-suggestededits__annotation--modified__hidden,.tox-suggestededits__annotation--removed.tox-suggestededits__annotation--removed__hidden{display:none;-webkit-text-decoration:none;text-decoration:none}:has(> div > iframe).tox-suggestededits__annotation--added,:has(> div > iframe).tox-suggestededits__annotation--modified,:has(> div > iframe).tox-suggestededits__annotation--removed{padding:7px;margin:5px}iframe.tox-suggestededits__annotation--added__highlight,img.tox-suggestededits__annotation--added__highlight,video.tox-suggestededits__annotation--added__highlight{outline:.25em solid rgba(120,171,70,.2);padding:.25em}iframe.tox-suggestededits__annotation--added__selected,img.tox-suggestededits__annotation--added__selected,video.tox-suggestededits__annotation--added__selected{border:.25em solid rgba(120,171,70,.2);outline:.125em solid #006ce7;padding:0}iframe.tox-suggestededits__annotation--modified__highlight,img.tox-suggestededits__annotation--modified__highlight,video.tox-suggestededits__annotation--modified__highlight{outline:.25em solid rgba(0,108,231,.2);padding:.25em}iframe.tox-suggestededits__annotation--modified__selected,img.tox-suggestededits__annotation--modified__selected,video.tox-suggestededits__annotation--modified__selected{border:.25em solid rgba(0,108,231,.2);outline:.125em solid #006ce7;padding:0}iframe.tox-suggestededits__annotation--removed__highlight,img.tox-suggestededits__annotation--removed__highlight,video.tox-suggestededits__annotation--removed__highlight{outline:.25em solid rgba(204,0,0,.2);padding:.25em}iframe.tox-suggestededits__annotation--removed__selected,img.tox-suggestededits__annotation--removed__selected,video.tox-suggestededits__annotation--removed__selected{border:.25em solid rgba(204,0,0,.2);outline:.125em solid #006ce7;padding:0}div.tox-suggestededits__annotation:has(> hr){padding:.25em}div.tox-suggestededits__annotation--removed__highlight>hr{border-color:rgba(0,0,0,.2)}div.tox-suggestededits__annotation--added__highlight>hr{border-color:rgba(0,0,0,.2)}.mce-pagebreak.tox-suggestededits__annotation--added__selected,.mce-pagebreak.tox-suggestededits__annotation--modified__selected,.mce-pagebreak.tox-suggestededits__annotation--removed__selected{border:1px dashed #aaa;box-shadow:none}.mce-pagebreak.tox-suggestededits__annotation--added__highlight,.mce-pagebreak.tox-suggestededits__annotation--modified__highlight,.mce-pagebreak.tox-suggestededits__annotation--removed__highlight{padding:0}.mce-toc{border:1px solid gray}.mce-toc h2{margin:4px}.mce-toc ul>li{list-style-type:none}[data-mce-block]{display:block}.mce-item-table:not([border]),.mce-item-table:not([border]) caption,.mce-item-table:not([border]) td,.mce-item-table:not([border]) th,.mce-item-table[border=\"0\"],.mce-item-table[border=\"0\"] caption,.mce-item-table[border=\"0\"] td,.mce-item-table[border=\"0\"] th,table[style*=\"border-width: 0px\"],table[style*=\"border-width: 0px\"] caption,table[style*=\"border-width: 0px\"] td,table[style*=\"border-width: 0px\"] th{border:1px dashed #bbb}.tox-uc-loading-background{width:100%;height:100%;background:rgba(255,255,255,.5)}.tox-uc-loading-spinner-wrapper{width:100%;height:100%;display:flex;justify-content:center;align-items:center}.tox-uc-loading-spinner{width:min(24px,30%);aspect-ratio:1;border-radius:50%;border:3px solid #006ce7;border-bottom-color:transparent;animation:tox-rotation 1s linear infinite}.tox-uc-video{display:block;position:relative;margin:16px 0 16px 0}.tox-uc-video:not([data-mce-selected]):after{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%}.tox-uploadcare-placeholder{all:initial;display:inline-block;position:relative;width:min(100%,600px);height:80px;--tox-uploadcare-placeholder--content-cursor:auto!important;--tox-uploadcare-placeholder--content-color:rgba(34, 47, 62, 0.7);--tox-uploadcare-placeholder--content-background-color:#fff;--tox-uploadcare-placeholder--content-border:2px solid #e3e3e3;--tox-uploadcare-placeholder--content-font-family:monospace,sans-serif;--tox-uploadcare-placeholder--content-height:100%;--tox-uploadcare-placeholder--content-width:100%;--tox-uploadcare-placeholder--content-display:inline-flex;--tox-uploadcare-placeholder--content-align-items:center;--tox-uploadcare-placeholder--content-justify-content:center;--tox-uploadcare-placeholder--content-gap:8px;--tox-uploadcare-placeholder--icon-fill:rgba(34, 47, 62, 0.7);--tox-uploadcare-placeholder--icon-min-width:24px;--tox-uc-loading-spinner-wrapper-display-none:none;--tox-uc-loading-spinner-wrapper-display:flex;--tox-uc-loading-spinner-wrapper-position:absolute;--tox-uc-loading-spinner-wrapper-top:0;--tox-uc-loading-spinner-wrapper-left:0;--tox-uc-loading-spinner-wrapper-width:100%;--tox-uc-loading-spinner-wrapper-height:100%;--tox-uc-loading-spinner-wrapper-justify-content:center;--tox-uc-loading-spinner-wrapper-align-items:center;--tox-uc-loading-spinner-aspect-ratio:1/1;--tox-uc-loading-spinner-width:min(24px, 30%);--tox-uc-loading-spinner-border-radius:50%;--tox-uc-loading-spinner-border:3px solid #006ce7;--tox-uc-loading-spinner-border-bottom-color:transparent;--tox-uc-loading-spinner-animation:tox-rotation 1s linear infinite}@media print{tiny-uploadcare-placeholder{display:none!important}}.mce-visualblocks address,.mce-visualblocks article,.mce-visualblocks aside,.mce-visualblocks blockquote,.mce-visualblocks div:not([data-mce-bogus]),.mce-visualblocks dl,.mce-visualblocks figcaption,.mce-visualblocks figure,.mce-visualblocks h1,.mce-visualblocks h2,.mce-visualblocks h3,.mce-visualblocks h4,.mce-visualblocks h5,.mce-visualblocks h6,.mce-visualblocks hgroup,.mce-visualblocks ol,.mce-visualblocks p,.mce-visualblocks pre,.mce-visualblocks section,.mce-visualblocks ul{background-repeat:no-repeat;border:1px dashed #bbb;margin-left:3px;padding-top:10px}.mce-visualblocks p{background-image:url(data:image/gif;base64,R0lGODlhCQAJAJEAAAAAAP///7u7u////yH5BAEAAAMALAAAAAAJAAkAAAIQnG+CqCN/mlyvsRUpThG6AgA7)}.mce-visualblocks h1{background-image:url(data:image/gif;base64,R0lGODlhDQAKAIABALu7u////yH5BAEAAAEALAAAAAANAAoAAAIXjI8GybGu1JuxHoAfRNRW3TWXyF2YiRUAOw==)}.mce-visualblocks h2{background-image:url(data:image/gif;base64,R0lGODlhDgAKAIABALu7u////yH5BAEAAAEALAAAAAAOAAoAAAIajI8Hybbx4oOuqgTynJd6bGlWg3DkJzoaUAAAOw==)}.mce-visualblocks h3{background-image:url(data:image/gif;base64,R0lGODlhDgAKAIABALu7u////yH5BAEAAAEALAAAAAAOAAoAAAIZjI8Hybbx4oOuqgTynJf2Ln2NOHpQpmhAAQA7)}.mce-visualblocks h4{background-image:url(data:image/gif;base64,R0lGODlhDgAKAIABALu7u////yH5BAEAAAEALAAAAAAOAAoAAAIajI8HybbxInR0zqeAdhtJlXwV1oCll2HaWgAAOw==)}.mce-visualblocks h5{background-image:url(data:image/gif;base64,R0lGODlhDgAKAIABALu7u////yH5BAEAAAEALAAAAAAOAAoAAAIajI8HybbxIoiuwjane4iq5GlW05GgIkIZUAAAOw==)}.mce-visualblocks h6{background-image:url(data:image/gif;base64,R0lGODlhDgAKAIABALu7u////yH5BAEAAAEALAAAAAAOAAoAAAIajI8HybbxIoiuwjan04jep1iZ1XRlAo5bVgAAOw==)}.mce-visualblocks div:not([data-mce-bogus]){background-image:url(data:image/gif;base64,R0lGODlhEgAKAIABALu7u////yH5BAEAAAEALAAAAAASAAoAAAIfjI9poI0cgDywrhuxfbrzDEbQM2Ei5aRjmoySW4pAAQA7)}.mce-visualblocks section{background-image:url(data:image/gif;base64,R0lGODlhKAAKAIABALu7u////yH5BAEAAAEALAAAAAAoAAoAAAI5jI+pywcNY3sBWHdNrplytD2ellDeSVbp+GmWqaDqDMepc8t17Y4vBsK5hDyJMcI6KkuYU+jpjLoKADs=)}.mce-visualblocks article{background-image:url(data:image/gif;base64,R0lGODlhKgAKAIABALu7u////yH5BAEAAAEALAAAAAAqAAoAAAI6jI+pywkNY3wG0GBvrsd2tXGYSGnfiF7ikpXemTpOiJScasYoDJJrjsG9gkCJ0ag6KhmaIe3pjDYBBQA7)}.mce-visualblocks blockquote{background-image:url(data:image/gif;base64,R0lGODlhPgAKAIABALu7u////yH5BAEAAAEALAAAAAA+AAoAAAJPjI+py+0Knpz0xQDyuUhvfoGgIX5iSKZYgq5uNL5q69asZ8s5rrf0yZmpNkJZzFesBTu8TOlDVAabUyatguVhWduud3EyiUk45xhTTgMBBQA7)}.mce-visualblocks address{background-image:url(data:image/gif;base64,R0lGODlhLQAKAIABALu7u////yH5BAEAAAEALAAAAAAtAAoAAAI/jI+pywwNozSP1gDyyZcjb3UaRpXkWaXmZW4OqKLhBmLs+K263DkJK7OJeifh7FicKD9A1/IpGdKkyFpNmCkAADs=)}.mce-visualblocks pre{background-image:url(data:image/gif;base64,R0lGODlhFQAKAIABALu7uwAAACH5BAEAAAEALAAAAAAVAAoAAAIjjI+ZoN0cgDwSmnpz1NCueYERhnibZVKLNnbOq8IvKpJtVQAAOw==)}.mce-visualblocks figure{background-image:url(data:image/gif;base64,R0lGODlhJAAKAIAAALu7u////yH5BAEAAAEALAAAAAAkAAoAAAI0jI+py+2fwAHUSFvD3RlvG4HIp4nX5JFSpnZUJ6LlrM52OE7uSWosBHScgkSZj7dDKnWAAgA7)}.mce-visualblocks figcaption{border:1px dashed #bbb}.mce-visualblocks hgroup{background-image:url(data:image/gif;base64,R0lGODlhJwAKAIABALu7uwAAACH5BAEAAAEALAAAAAAnAAoAAAI3jI+pywYNI3uB0gpsRtt5fFnfNZaVSYJil4Wo03Hv6Z62uOCgiXH1kZIIJ8NiIxRrAZNMZAtQAAA7)}.mce-visualblocks aside{background-image:url(data:image/gif;base64,R0lGODlhHgAKAIABAKqqqv///yH5BAEAAAEALAAAAAAeAAoAAAItjI+pG8APjZOTzgtqy7I3f1yehmQcFY4WKZbqByutmW4aHUd6vfcVbgudgpYCADs=)}.mce-visualblocks ul{background-image:url(data:image/gif;base64,R0lGODlhDQAKAIAAALu7u////yH5BAEAAAEALAAAAAANAAoAAAIXjI8GybGuYnqUVSjvw26DzzXiqIDlVwAAOw==)}.mce-visualblocks ol{background-image:url(data:image/gif;base64,R0lGODlhDQAKAIABALu7u////yH5BAEAAAEALAAAAAANAAoAAAIXjI8GybH6HHt0qourxC6CvzXieHyeWQAAOw==)}.mce-visualblocks dl{background-image:url(data:image/gif;base64,R0lGODlhDQAKAIABALu7u////yH5BAEAAAEALAAAAAANAAoAAAIXjI8GybEOnmOvUoWznTqeuEjNSCqeGRUAOw==)}.mce-visualblocks:not([dir=rtl]) address,.mce-visualblocks:not([dir=rtl]) article,.mce-visualblocks:not([dir=rtl]) aside,.mce-visualblocks:not([dir=rtl]) blockquote,.mce-visualblocks:not([dir=rtl]) div:not([data-mce-bogus]),.mce-visualblocks:not([dir=rtl]) dl,.mce-visualblocks:not([dir=rtl]) figcaption,.mce-visualblocks:not([dir=rtl]) figure,.mce-visualblocks:not([dir=rtl]) h1,.mce-visualblocks:not([dir=rtl]) h2,.mce-visualblocks:not([dir=rtl]) h3,.mce-visualblocks:not([dir=rtl]) h4,.mce-visualblocks:not([dir=rtl]) h5,.mce-visualblocks:not([dir=rtl]) h6,.mce-visualblocks:not([dir=rtl]) hgroup,.mce-visualblocks:not([dir=rtl]) ol,.mce-visualblocks:not([dir=rtl]) p,.mce-visualblocks:not([dir=rtl]) pre,.mce-visualblocks:not([dir=rtl]) section,.mce-visualblocks:not([dir=rtl]) ul{margin-left:3px}.mce-visualblocks[dir=rtl] address,.mce-visualblocks[dir=rtl] article,.mce-visualblocks[dir=rtl] aside,.mce-visualblocks[dir=rtl] blockquote,.mce-visualblocks[dir=rtl] div:not([data-mce-bogus]),.mce-visualblocks[dir=rtl] dl,.mce-visualblocks[dir=rtl] figcaption,.mce-visualblocks[dir=rtl] figure,.mce-visualblocks[dir=rtl] h1,.mce-visualblocks[dir=rtl] h2,.mce-visualblocks[dir=rtl] h3,.mce-visualblocks[dir=rtl] h4,.mce-visualblocks[dir=rtl] h5,.mce-visualblocks[dir=rtl] h6,.mce-visualblocks[dir=rtl] hgroup,.mce-visualblocks[dir=rtl] ol,.mce-visualblocks[dir=rtl] p,.mce-visualblocks[dir=rtl] pre,.mce-visualblocks[dir=rtl] section,.mce-visualblocks[dir=rtl] ul{background-position-x:right;margin-right:3px}.mce-nbsp,.mce-shy{background:#aaa}.mce-shy::after{content:'-'}[data-ephox-foam-a11y-violation]{outline:2px solid;position:relative}[data-ephox-foam-a11y-violation][data-ephox-foam-a11y-current-violation]{outline-width:4px;transition:outline-width .1s ease-in-out,background-color .1s ease-in-out;box-shadow:0 0 0 99999px #222f3e80;z-index:1}[data-ephox-foam-a11y-violation][data-ephox-foam-a11y-severity-info]{outline-color:#006ce7}[data-ephox-foam-a11y-violation][data-ephox-foam-a11y-severity-warn]{outline-color:#fc0}[data-ephox-foam-a11y-violation][data-ephox-foam-a11y-severity-error]{outline-color:#c00}[data-ephox-foam-a11y-violation][data-ephox-foam-a11y-current-violation=info]{outline-color:#006ce7;background-color:#e6f0fd}[data-ephox-foam-a11y-violation][data-ephox-foam-a11y-current-violation=warning]{outline-color:#fc0;background-color:#fffae6}[data-ephox-foam-a11y-violation][data-ephox-foam-a11y-current-violation=error]{outline-color:#c00;background-color:#fae6e6}[data-ephox-foam-a11y-violation][data-ephox-foam-a11y-current-violation]:is(td,th,tr){position:static}body{font-family:sans-serif}table{border-collapse:collapse}");
 //#endregion
 //#region src/shared/components/TinyMCE.tsx
-var gw = ({ value: e, onEditorChange: t, ariaLabel: n, height: r, preset: i = "simple", placeholder: a }) => /* @__PURE__ */ (0, K.jsx)(K.Fragment, { children: /* @__PURE__ */ (0, K.jsx)(hw, {
+var bw = ({ value: e, onEditorChange: t, ariaLabel: n, height: r, preset: i = "simple", placeholder: a }) => /* @__PURE__ */ (0, K.jsx)(K.Fragment, { children: /* @__PURE__ */ (0, K.jsx)(yw, {
 	licenseKey: "gpl",
 	value: e,
 	onEditorChange: t,
@@ -51982,8 +52004,8 @@ var gw = ({ value: e, onEditorChange: t, ariaLabel: n, height: r, preset: i = "s
 		height: r,
 		placeholder: a
 	}
-}) }), _w = (0, F.createContext)(null), vw = () => (0, F.useContext)(_w), yw = ({ fileTypes: e, onFileSelect: n, onError: r, onClose: i }) => {
-	let [a, o] = (0, F.useState)(null), { element: s } = (0, F.useContext)(t), c = vw(), l = (0, F.useRef)(null), u = s.getAttribute("data-usage-id");
+}) }), xw = (0, F.createContext)(null), Sw = () => (0, F.useContext)(xw), Cw = ({ fileTypes: e, onFileSelect: n, onError: r, onClose: i }) => {
+	let [a, o] = (0, F.useState)(null), { element: s } = (0, F.useContext)(t), c = Sw(), l = (0, F.useRef)(null), u = s.getAttribute("data-usage-id");
 	if ((0, F.useEffect)(() => {
 		let e = async ({ data: e, source: t }) => {
 			if (t === l.current?.contentWindow && e.type === "org.openedx.assets.selected.v1") try {
@@ -52025,8 +52047,8 @@ var gw = ({ value: e, onEditorChange: t, ariaLabel: n, height: r, preset: i = "s
 			src: d.toString()
 		})
 	});
-}, bw = ({ children: e, setValue: t, fileTypes: n = null }) => {
-	let [r, i] = (0, F.useState)(!1), [a, o] = (0, F.useState)(null), s = vw(), c = (0, F.useCallback)(async (e) => {
+}, ww = ({ children: e, setValue: t, fileTypes: n = null }) => {
+	let [r, i] = (0, F.useState)(!1), [a, o] = (0, F.useState)(null), s = Sw(), c = (0, F.useCallback)(async (e) => {
 		try {
 			await t(e), o(null);
 		} catch (e) {
@@ -52044,27 +52066,27 @@ var gw = ({ value: e, onEditorChange: t, ariaLabel: n, height: r, preset: i = "s
 			type: "default",
 			children: a
 		}),
-		r && /* @__PURE__ */ (0, K.jsx)(yw, {
+		r && /* @__PURE__ */ (0, K.jsx)(Cw, {
 			fileTypes: n,
 			onFileSelect: c,
 			onError: o,
 			onClose: () => i(!1)
 		})
 	] }) : e;
-}, xw = (0, F.createContext)({
+}, Tw = (0, F.createContext)({
 	errors: {},
 	showErrors: !1
-}), Sw = xw.Provider, Cw = {}, ww = () => {
-	let { errors: e, showErrors: t } = (0, F.useContext)(xw);
-	return t ? e : Cw;
-}, Tw = (e) => {
-	let { errors: t, showErrors: n } = (0, F.useContext)(xw);
+}), Ew = Tw.Provider, Dw = {}, Ow = () => {
+	let { errors: e, showErrors: t } = (0, F.useContext)(Tw);
+	return t ? e : Dw;
+}, kw = (e) => {
+	let { errors: t, showErrors: n } = (0, F.useContext)(Tw);
 	return n ? t[e] : void 0;
 };
 //#endregion
 //#region src/unfolding-scenario-block/studio-ui/sections/IntroductionSection.tsx
-function Ew() {
-	let { values: e, setFieldValue: t } = od(), n = e.scenarioData.introduction, r = (0, F.useId)(), i = Tw("scenarioData.introduction.heading"), a = Tw("scenarioData.introduction.description");
+function Aw() {
+	let { values: e, setFieldValue: t } = od(), n = e.scenarioData.introduction, r = (0, F.useId)(), i = kw("scenarioData.introduction.heading"), a = kw("scenarioData.introduction.description");
 	return /* @__PURE__ */ (0, K.jsxs)("section", {
 		className: "us-panel",
 		"aria-labelledby": `${r}-title`,
@@ -52098,7 +52120,7 @@ function Ew() {
 						muted: !0,
 						children: "Introduce the exercise and give learners some context about what they'll learn"
 					}),
-					/* @__PURE__ */ (0, K.jsx)(gw, {
+					/* @__PURE__ */ (0, K.jsx)(bw, {
 						value: n.description,
 						onEditorChange: (e) => t("scenarioData.introduction.description", e),
 						ariaLabel: "Introduction paragraph",
@@ -52119,7 +52141,7 @@ function Ew() {
 						muted: !0,
 						children: "Add image (recommended size: 1500 x 2200px)"
 					}),
-					/* @__PURE__ */ (0, K.jsx)(bw, {
+					/* @__PURE__ */ (0, K.jsx)(ww, {
 						setValue: async (e) => t("scenarioData.introduction.imageURL", e),
 						fileTypes: ["image"],
 						children: /* @__PURE__ */ (0, K.jsx)(oa.Control, {
@@ -52148,8 +52170,8 @@ function Ew() {
 }
 //#endregion
 //#region src/unfolding-scenario-block/studio-ui/sections/OutcomeSection.tsx
-function Dw() {
-	let { values: e, setFieldValue: t } = od(), n = e.scenarioData.outcome, r = n.displaySelectedOptions, i = (0, F.useId)(), a = Tw("scenarioData.outcome.heading"), o = Tw("scenarioData.outcome.description");
+function jw() {
+	let { values: e, setFieldValue: t } = od(), n = e.scenarioData.outcome, r = n.displaySelectedOptions, i = (0, F.useId)(), a = kw("scenarioData.outcome.heading"), o = kw("scenarioData.outcome.description");
 	return /* @__PURE__ */ (0, K.jsxs)("section", {
 		className: "us-panel",
 		"aria-labelledby": `${i}-title`,
@@ -52203,7 +52225,7 @@ function Dw() {
 						className: "us-field",
 						children: [
 							/* @__PURE__ */ (0, K.jsx)(oa.Label, { children: "Paragraph" }),
-							/* @__PURE__ */ (0, K.jsx)(gw, {
+							/* @__PURE__ */ (0, K.jsx)(bw, {
 								value: n.description,
 								onEditorChange: (e) => t("scenarioData.outcome.description", e),
 								ariaLabel: "Outcome paragraph",
@@ -52223,18 +52245,18 @@ function Dw() {
 }
 //#endregion
 //#region src/unfolding-scenario-block/studio-ui/sections/ScenarioSection.tsx
-var Ow = {
+var Mw = {
 	Correct: te,
 	Incorrect: ae,
 	Warning: N
 };
-function kw(e) {
+function Nw(e) {
 	let t = "";
 	for (let n = e + 1; n > 0; n = Math.floor((n - 1) / 26)) t = String.fromCharCode(65 + (n - 1) % 26) + t;
 	return t;
 }
-function Aw({ index: e }) {
-	let { values: t, handleChange: n, handleBlur: r, setFieldValue: i } = od(), a = t.scenarioData.scenarios[e], o = `scenarioData.scenarios[${e}]`, s = (0, F.useId)(), [c, l] = (0, F.useState)([0]), u = (0, F.useRef)(null), d = (0, F.useRef)(null), f = Tw(`${o}.heading`), p = Tw(`${o}.description`), m = Tw(`${o}.instructionTitle`), h = Tw(`${o}.instructionDescription`), g = Tw(`${o}.prompt`), _ = ww();
+function Pw({ index: e }) {
+	let { values: t, handleChange: n, handleBlur: r, setFieldValue: i } = od(), a = t.scenarioData.scenarios[e], o = `scenarioData.scenarios[${e}]`, s = (0, F.useId)(), [c, l] = (0, F.useState)([0]), u = (0, F.useRef)(null), d = (0, F.useRef)(null), f = kw(`${o}.heading`), p = kw(`${o}.description`), m = kw(`${o}.instructionTitle`), h = kw(`${o}.instructionDescription`), g = kw(`${o}.prompt`), _ = Ow();
 	return a ? /* @__PURE__ */ (0, K.jsxs)("section", {
 		className: "us-panel us-scenario-panel",
 		"aria-labelledby": `${s}-title`,
@@ -52280,7 +52302,7 @@ function Aw({ index: e }) {
 								className: "us-rich-text-label",
 								children: "Paragraph"
 							}),
-							/* @__PURE__ */ (0, K.jsx)(gw, {
+							/* @__PURE__ */ (0, K.jsx)(bw, {
 								value: a.description,
 								onEditorChange: (e) => i(`${o}.description`, e),
 								ariaLabel: "Scenario introduction paragraph",
@@ -52330,7 +52352,7 @@ function Aw({ index: e }) {
 								className: "us-rich-text-label",
 								children: "Paragraph"
 							}),
-							/* @__PURE__ */ (0, K.jsx)(gw, {
+							/* @__PURE__ */ (0, K.jsx)(bw, {
 								value: a.instructionDescription,
 								onEditorChange: (e) => i(`${o}.instructionDescription`, e),
 								ariaLabel: "Scenario instructions paragraph",
@@ -52388,7 +52410,7 @@ function Aw({ index: e }) {
 						children: ({ push: e, remove: t }) => /* @__PURE__ */ (0, K.jsxs)("div", {
 							className: "us-options-editor",
 							children: [a.options.map((e, i) => {
-								let f = kw(i), p = `${o}.options[${i}]`, m = c.includes(i), h = `${s}-feedback-${i}`, g = _[`${p}.value`];
+								let f = Nw(i), p = `${o}.options[${i}]`, m = c.includes(i), h = `${s}-feedback-${i}`, g = _[`${p}.value`];
 								return /* @__PURE__ */ (0, K.jsxs)("div", {
 									className: "us-option",
 									children: [/* @__PURE__ */ (0, K.jsxs)("div", {
@@ -52445,7 +52467,7 @@ function Aw({ index: e }) {
 												children: [/* @__PURE__ */ (0, K.jsx)(oa.Label, { children: "Select an icon" }), /* @__PURE__ */ (0, K.jsxs)("div", {
 													className: "us-feedback-icon-picker",
 													children: [/* @__PURE__ */ (0, K.jsx)(O, {
-														src: Ow[e.type],
+														src: Mw[e.type],
 														"aria-hidden": "true"
 													}), /* @__PURE__ */ (0, K.jsx)(oa.Control, {
 														as: "select",
@@ -52453,7 +52475,7 @@ function Aw({ index: e }) {
 														value: e.type,
 														onChange: n,
 														onBlur: r,
-														children: Object.keys(Ow).map((e) => /* @__PURE__ */ (0, K.jsx)("option", {
+														children: Object.keys(Mw).map((e) => /* @__PURE__ */ (0, K.jsx)("option", {
 															value: e,
 															children: e
 														}, e))
@@ -52480,7 +52502,7 @@ function Aw({ index: e }) {
 								ref: d,
 								iconBefore: tr,
 								onClick: () => {
-									u.current = a.options.length, l((e) => [...e, a.options.length]), e(NC());
+									u.current = a.options.length, l((e) => [...e, a.options.length]), e(IC());
 								},
 								children: "Add option"
 							})]
@@ -52493,32 +52515,32 @@ function Aw({ index: e }) {
 }
 //#endregion
 //#region src/unfolding-scenario-block/studio-ui/validation.ts
-var jw = [
+var Fw = [
 	"setup",
 	"introduction",
 	"outcome"
-], Mw = (e) => {
+], Iw = (e) => {
 	let t = "";
 	for (let n = e + 1; n > 0; n = Math.floor((n - 1) / 26)) t = String.fromCharCode(65 + (n - 1) % 26) + t;
 	return t;
-}, Nw = (e) => !e || e.replace(/<[^>]*>/g, " ").replace(/&nbsp;|&#160;/gi, " ").trim().length === 0, Pw = 5, Fw = (e) => e.startsWith("scenarioData.introduction") ? "introduction" : e.startsWith("scenarioData.outcome") ? "outcome" : e.startsWith("scenarioData.interactionType") || e.startsWith("scenarioData.colorVariant") ? "setup" : null, Iw = (e) => [...e].sort((e, t) => {
-	let n = (e) => e.startsWith("scenario:") ? 2 + Number(e.slice(9)) : e === "outcome" ? 2 ** 53 - 1 : jw.indexOf(e);
+}, Lw = (e) => !e || e.replace(/<[^>]*>/g, " ").replace(/&nbsp;|&#160;/gi, " ").trim().length === 0, Rw = 5, zw = (e) => e.startsWith("scenarioData.introduction") ? "introduction" : e.startsWith("scenarioData.outcome") ? "outcome" : e.startsWith("scenarioData.interactionType") || e.startsWith("scenarioData.colorVariant") ? "setup" : null, Bw = (e) => [...e].sort((e, t) => {
+	let n = (e) => e.startsWith("scenario:") ? 2 + Number(e.slice(9)) : e === "outcome" ? 2 ** 53 - 1 : Fw.indexOf(e);
 	return n(e) - n(t);
-}), Lw = (e) => {
+}), Vw = (e) => {
 	let t = {}, n = [], r = /* @__PURE__ */ new Set(), { scenarioData: i } = e, a = (e, n, i, a, { html: o = !1 } = {}) => {
-		(o ? Nw(n) : !(n ?? "").trim()) && (t[e] = i, r.add(a));
+		(o ? Lw(n) : !(n ?? "").trim()) && (t[e] = i, r.add(a));
 	};
-	return a("scenarioData.introduction.heading", i.introduction.heading, "Add a heading for the introduction", "introduction"), a("scenarioData.introduction.description", i.introduction.description, "Add some text for the introduction", "introduction", { html: !0 }), i.scenarios.length === 0 ? n.push("Add at least one scenario") : i.scenarios.length > Pw && n.push(`Remove scenarios until ${Pw} remain`), i.scenarios.forEach((e, t) => {
+	return a("scenarioData.introduction.heading", i.introduction.heading, "Add a heading for the introduction", "introduction"), a("scenarioData.introduction.description", i.introduction.description, "Add some text for the introduction", "introduction", { html: !0 }), i.scenarios.length === 0 ? n.push("Add at least one scenario") : i.scenarios.length > Rw && n.push(`Remove scenarios until ${Rw} remain`), i.scenarios.forEach((e, t) => {
 		let n = `scenario:${t}`, r = t + 1, i = `scenarioData.scenarios[${t}]`;
 		a(`${i}.heading`, e.heading, `Add a heading for scenario ${r}`, n), a(`${i}.description`, e.description, `Add some text to introduce scenario ${r}`, n, { html: !0 }), a(`${i}.instructionTitle`, e.instructionTitle, `Add a heading for the instructions in scenario ${r}`, n), a(`${i}.instructionDescription`, e.instructionDescription, `Add some text for the instructions in scenario ${r}`, n, { html: !0 }), a(`${i}.prompt`, e.prompt, `Add a prompt for scenario ${r}`, n), e.options.forEach((e, t) => {
-			a(`${i}.options[${t}].value`, e.value, `Add text for option ${Mw(t)} in scenario ${r}`, n);
+			a(`${i}.options[${t}].value`, e.value, `Add text for option ${Iw(t)} in scenario ${r}`, n);
 		});
 	}), a("scenarioData.outcome.heading", i.outcome.heading, "Add a heading for the outcome", "outcome"), a("scenarioData.outcome.description", i.outcome.description, "Add some text for the outcome", "outcome", { html: !0 }), {
 		errors: t,
 		unmapped: n,
-		sections: Iw(r)
+		sections: Bw(r)
 	};
-}, Rw = (e, t = "introduction") => e.sections[0] ?? t, zw = (e) => {
+}, Hw = (e, t = "introduction") => e.sections[0] ?? t, Uw = (e) => {
 	let t = {}, n = [], r = /* @__PURE__ */ new Set();
 	return typeof e == "string" ? (n.push(e), {
 		errors: t,
@@ -52540,7 +52562,7 @@ var jw = [
 				t[i] = e, r.add(n);
 				return;
 			}
-			let o = Fw(i);
+			let o = zw(i);
 			if (o) {
 				t[i] = e, r.add(o);
 				return;
@@ -52550,9 +52572,9 @@ var jw = [
 	}), {
 		errors: t,
 		unmapped: n,
-		sections: Iw(r)
+		sections: Bw(r)
 	});
-}, Bw = class extends Error {
+}, Ww = class extends Error {
 	fieldErrors;
 	unmapped;
 	sections;
@@ -52562,19 +52584,19 @@ var jw = [
 };
 //#endregion
 //#region src/unfolding-scenario-block/studio-ui/StudioUI.tsx
-function Vw({ activeSection: e, onSelectSection: t, attempted: n, serverErrors: r, saving: i, onCancel: a }) {
+function Gw({ activeSection: e, onSelectSection: t, attempted: n, serverErrors: r, saving: i, onCancel: a }) {
 	let { values: o, setFieldValue: s } = od(), c = o.scenarioData.scenarios, l = e.startsWith("scenario:") && Number(e.slice(9)) >= c.length ? c.length > 0 ? `scenario:${c.length - 1}` : "introduction" : e, u = (0, F.useMemo)(() => {
-		let e = Lw(o), t = r && r.valuesJson !== JSON.stringify(o) ? null : r;
+		let e = Vw(o), t = r && r.valuesJson !== JSON.stringify(o) ? null : r;
 		return {
 			errors: {
 				...e.errors,
 				...t?.errors ?? {}
 			},
 			unmapped: [...e.unmapped, ...t?.unmapped ?? []],
-			sections: Iw([...e.sections, ...t?.sections ?? []])
+			sections: Bw([...e.sections, ...t?.sections ?? []])
 		};
 	}, [o, r]), d = [...new Set([...Object.values(u.errors), ...u.unmapped])], f = n && d.length > 0;
-	return /* @__PURE__ */ (0, K.jsx)(Sw, {
+	return /* @__PURE__ */ (0, K.jsx)(Ew, {
 		value: {
 			errors: u.errors,
 			showErrors: f
@@ -52590,7 +52612,7 @@ function Vw({ activeSection: e, onSelectSection: t, attempted: n, serverErrors: 
 				}),
 				/* @__PURE__ */ (0, K.jsxs)(_a.Body, {
 					className: "us-editor-body",
-					children: [/* @__PURE__ */ (0, K.jsx)(LC, {
+					children: [/* @__PURE__ */ (0, K.jsx)(VC, {
 						activeSection: l,
 						onSelect: t,
 						errorSections: f ? Object.fromEntries(u.sections.map((e) => [e, !0])) : {}
@@ -52605,14 +52627,14 @@ function Vw({ activeSection: e, onSelectSection: t, attempted: n, serverErrors: 
 									children: d.map((e) => /* @__PURE__ */ (0, K.jsx)("li", { children: e }, e))
 								})]
 							}),
-							l === "setup" && /* @__PURE__ */ (0, K.jsx)(HC, {}),
-							l === "introduction" && /* @__PURE__ */ (0, K.jsx)(Ew, {}),
-							l === "outcome" && /* @__PURE__ */ (0, K.jsx)(Dw, {}),
-							l.startsWith("scenario:") && /* @__PURE__ */ (0, K.jsx)(Aw, { index: Number(l.slice(9)) }, l)
+							l === "setup" && /* @__PURE__ */ (0, K.jsx)(KC, {}),
+							l === "introduction" && /* @__PURE__ */ (0, K.jsx)(Aw, {}),
+							l === "outcome" && /* @__PURE__ */ (0, K.jsx)(jw, {}),
+							l.startsWith("scenario:") && /* @__PURE__ */ (0, K.jsx)(Pw, { index: Number(l.slice(9)) }, l)
 						]
 					})]
 				}),
-				/* @__PURE__ */ (0, K.jsx)(RC, {
+				/* @__PURE__ */ (0, K.jsx)(HC, {
 					onCancel: a,
 					saving: i
 				})
@@ -52620,14 +52642,14 @@ function Vw({ activeSection: e, onSelectSection: t, attempted: n, serverErrors: 
 		}) })
 	});
 }
-function Hw({ initialData: e, onSave: t, onCancel: n }) {
+function Kw({ initialData: e, onSave: t, onCancel: n }) {
 	let [r, i] = (0, F.useState)("setup"), [a, o] = (0, F.useState)(!1), [s, c] = (0, F.useState)(null), [l, u] = (0, F.useState)(!1), d = (e) => {
-		o(!0), i((t) => Rw(e, t.startsWith("scenario:") ? t : "introduction"));
+		o(!0), i((t) => Hw(e, t.startsWith("scenario:") ? t : "introduction"));
 	};
 	return /* @__PURE__ */ (0, K.jsx)(xd, {
 		initialValues: e,
 		onSubmit: async (e) => {
-			let n = Lw(e);
+			let n = Vw(e);
 			if (c(null), Object.keys(n.errors).length > 0 || n.unmapped.length > 0) {
 				d(n);
 				return;
@@ -52636,18 +52658,18 @@ function Hw({ initialData: e, onSave: t, onCancel: n }) {
 			try {
 				await t(e);
 			} catch (t) {
-				if (!(t instanceof Bw)) throw t;
+				if (!(t instanceof Ww)) throw t;
 				c({
 					errors: t.fieldErrors,
 					unmapped: t.unmapped,
 					sections: t.sections,
 					valuesJson: JSON.stringify(e)
-				}), o(!0), t.sections.length > 0 && i(Rw(t));
+				}), o(!0), t.sections.length > 0 && i(Hw(t));
 			} finally {
 				u(!1);
 			}
 		},
-		children: /* @__PURE__ */ (0, K.jsx)(Vw, {
+		children: /* @__PURE__ */ (0, K.jsx)(Gw, {
 			activeSection: r,
 			onSelectSection: i,
 			attempted: a,
@@ -52657,8 +52679,8 @@ function Hw({ initialData: e, onSave: t, onCancel: n }) {
 		})
 	});
 }
-function Uw({ initialData: e, onSave: t, onCancel: n }) {
-	return /* @__PURE__ */ (0, K.jsx)(Hw, {
+function qw({ initialData: e, onSave: t, onCancel: n }) {
+	return /* @__PURE__ */ (0, K.jsx)(Kw, {
 		initialData: e,
 		onSave: t,
 		onCancel: n
@@ -52666,24 +52688,24 @@ function Uw({ initialData: e, onSave: t, onCancel: n }) {
 }
 //#endregion
 //#region src/unfolding-scenario-block/studio-ui/main.scss?inline
-var Ww = ".pgn__modal-header.studio-header{padding:calc(var(--pgn-spacing-modal-inner-padding-base) / 2) var(--pgn-spacing-modal-header-padding-base-x);z-index:1}.studio-header-title{align-items:center;gap:var(--pgn-spacing-spacer-2,8px);display:flex}.studio-header-tabs-nav{flex-wrap:nowrap;padding-right:64px}.studio-header-close{margin-right:64px}.studio-header-tabs-nav .nav-link{appearance:none;font-family:inherit;font-size:inherit;line-height:inherit;cursor:pointer;background-color:#0000}.wrapper.xblock-iframe-content .xblock-v1-studio_view{display:flex}.xblock-root,.xblock-root .react-studio-block,.xblock-root .react-studio-block .container-fluid{height:100%}.react-studio-block{flex-grow:1}.react-studio-block *,.react-studio-block :before,.react-studio-block :after{box-sizing:border-box}.react-studio-block{margin-bottom:0!important}.xblock-actions{border-top:1px solid var(--pgn-color-gray-200);background:var(--pgn-color-white);z-index:1;justify-content:flex-end;gap:.5em;padding:.75em 1em;display:flex;position:sticky;bottom:0;box-shadow:0 -2px 6px #0000000d}.react-colorful{-webkit-user-select:none;user-select:none;cursor:default;flex-direction:column;width:200px;height:200px;display:flex;position:relative}.react-colorful__saturation{background-image:linear-gradient(#0000,#000),linear-gradient(90deg,#fff,#fff0);border-color:#0000 #0000 #000;border-bottom-style:solid;border-bottom-width:12px;border-radius:8px 8px 0 0;flex-grow:1;position:relative}.react-colorful__pointer-fill,.react-colorful__alpha-gradient{content:\"\";pointer-events:none;border-radius:inherit;position:absolute;inset:0}.react-colorful__alpha-gradient,.react-colorful__saturation{box-shadow:inset 0 0 0 1px #0000000d}.react-colorful__hue,.react-colorful__alpha{height:24px;position:relative}.react-colorful__hue{background:linear-gradient(90deg,red 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red 100%)}.react-colorful__last-control{border-radius:0 0 8px 8px}.react-colorful__interactive{border-radius:inherit;touch-action:none;outline:none;position:absolute;inset:0}.react-colorful__pointer{z-index:1;box-sizing:border-box;background-color:#fff;border:2px solid #fff;border-radius:50%;width:28px;height:28px;position:absolute;transform:translate(-50%,-50%);box-shadow:0 2px 4px #0003}.react-colorful__interactive:focus .react-colorful__pointer{transform:translate(-50%,-50%)scale(1.1)}.react-colorful__alpha,.react-colorful__alpha-pointer{background-color:#fff;background-image:url(\"data:image/svg+xml,<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill-opacity=\\\".05\\\"><rect x=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/><rect y=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/></svg>\")}.react-colorful__saturation-pointer{z-index:3}.react-colorful__hue-pointer{z-index:2}.edit-xblock-modal>.modal-actions{display:none!important}.us-editor{--us-editor-sidebar-width:240px;--us-panel-padding:var(--pgn-spacing-spacer-4-5,32px);flex-direction:column;min-height:600px;display:flex}.us-editor-body{flex:auto;padding:0;overflow:hidden}.us-editor-body>.pgn__modal-body-content{grid-template-columns:var(--us-editor-sidebar-width) minmax(0, 1fr);display:grid}.us-editor-sidebar{gap:var(--pgn-spacing-spacer-2,8px);padding:var(--pgn-spacing-spacer-3,16px);border-right:1px solid var(--pgn-color-light-300);background-color:var(--pgn-color-light-100);flex-direction:column;display:flex;overflow-y:auto}.us-editor-nav-item{align-items:center;gap:var(--pgn-spacing-spacer-2,8px);min-height:40px;padding:var(--pgn-spacing-spacer-2,8px);border-radius:var(--pgn-size-radius-xs,8px);display:flex}.us-editor-nav-item--active{background-color:var(--pgn-color-light-300)}.us-editor-nav-link{text-align:left;min-width:0;font:inherit;cursor:pointer;background:0 0;border:0;flex:auto;padding:0}.us-editor-drag-handle{color:var(--pgn-color-gray-500);flex:none}.us-editor-error-badge{flex:none}.us-editor-add-scenario{align-items:center;gap:var(--pgn-spacing-spacer-2,8px);min-height:40px;padding:var(--pgn-spacing-spacer-2,8px);font:inherit;cursor:pointer;background:0 0;border:0;display:flex}.us-editor-panel{min-width:0;padding:var(--us-panel-padding);overflow-y:auto}.us-rich-text-label{margin-bottom:var(--pgn-spacing-spacer-2,8px)}.us-options-editor{padding:var(--pgn-spacing-spacer-3,16px);border:1px solid var(--pgn-color-light-300,#dee2e6);border-radius:4px}.us-option{margin-bottom:var(--pgn-spacing-spacer-3,16px)}.us-option-row{align-items:center;gap:var(--pgn-spacing-spacer-2,8px);grid-template-columns:minmax(0,1fr) auto auto;display:grid}.us-option-input{min-width:0}.us-editor-alert{margin-bottom:var(--pgn-spacing-spacer-4,24px)}.us-editor-alert ul{padding-left:var(--pgn-spacing-spacer-4,24px)}.us-option-feedback{margin-top:var(--pgn-spacing-spacer-2,8px);padding:var(--pgn-spacing-spacer-4,24px);background:var(--pgn-color-light-300,#eee);border-radius:4px}.us-feedback-icon-picker{align-items:center;gap:var(--pgn-spacing-spacer-2,8px);display:flex}.us-panel h4{margin-bottom:var(--pgn-spacing-spacer-4,24px)}.us-section{margin-bottom:var(--pgn-spacing-spacer-4-5,32px)}.us-section-help{color:var(--pgn-color-gray-600,#475569)}.us-field{margin-bottom:var(--pgn-spacing-spacer-4,24px)}.us-interaction-grid{column-gap:var(--pgn-spacing-spacer-4-5,32px);grid-template-columns:repeat(2,minmax(0,1fr));display:grid}.us-interaction-card{align-items:flex-start;gap:var(--pgn-spacing-spacer-2,8px);padding:var(--pgn-spacing-spacer-4,24px);border:2px solid var(--pgn-color-light-300,#dee2e6);background:var(--pgn-color-white,#fff);text-align:left;cursor:pointer;border-radius:16px;flex-direction:column;display:flex}.us-interaction-card--selected{border-color:var(--pgn-color-brand-500,#0070f0);box-shadow:0 0 0 1px var(--pgn-color-brand-500,#0070f0)}.us-interaction-card:focus-visible{outline:2px solid var(--pgn-color-brand-500,#0070f0);outline-offset:2px}.us-interaction-card-icon{color:var(--pgn-color-brand-500,#0070f0)}.us-interaction-card-label{font-weight:700}.us-interaction-card-description{color:var(--pgn-color-gray-600,#475569)}.us-swatch-grid{gap:var(--pgn-spacing-spacer-3,16px);grid-template-columns:repeat(3,minmax(0,1fr));display:grid}.us-swatch{gap:var(--pgn-spacing-spacer-2,8px);padding:var(--pgn-spacing-spacer-2,8px);border:2px solid var(--pgn-color-light-300,#dee2e6);background:var(--pgn-color-white,#fff);cursor:pointer;border-radius:16px;flex-direction:column;display:flex;position:relative}.us-swatch--selected{border-color:var(--pgn-color-brand-500,#0070f0);box-shadow:0 0 0 1px var(--pgn-color-brand-500,#0070f0)}.us-swatch:focus-visible{outline:2px solid var(--pgn-color-brand-500,#0070f0);outline-offset:2px}.us-swatch-preview{min-height:96px;padding:var(--pgn-spacing-spacer-3,16px);border-radius:8px;flex-direction:column;align-items:flex-start;gap:4px;display:flex}.us-swatch-sample{font-weight:700;line-height:1.1}.us-swatch-check{color:var(--pgn-color-white,#fff);position:absolute;top:16px;right:16px}.us-swatch-label{font-weight:600}.us-variant-preview{align-items:flex-start;gap:var(--pgn-spacing-spacer-2,8px);margin-top:var(--pgn-spacing-spacer-4,24px);padding:var(--pgn-spacing-spacer-4,24px);background:var(--color-bg-main,#1b324a);color:var(--color-txt-content,#fff);border-radius:16px;flex-direction:column;display:flex}.us-variant-preview-heading{font-weight:700}.us-variant-preview-action{min-width:120px;padding:var(--pgn-spacing-spacer-2,8px) var(--pgn-spacing-spacer-4,24px);background:var(--color-bg-emphasis,#223e5d);color:var(--color-txt-content,#fff);border-radius:9999px;justify-content:center;font-weight:600;display:inline-flex}.us-image-preview{margin-top:var(--pgn-spacing-spacer-3,16px)}.us-image-preview img{border-radius:8px;max-width:150px}", Gw = (e, t, n) => {
+var Jw = ".pgn__modal-header.studio-header{padding:calc(var(--pgn-spacing-modal-inner-padding-base) / 2) var(--pgn-spacing-modal-header-padding-base-x);z-index:1}.studio-header-title{align-items:center;gap:var(--pgn-spacing-spacer-2,8px);display:flex}.studio-header-tabs-nav{flex-wrap:nowrap;padding-right:64px}.studio-header-close{margin-right:64px}.studio-header-tabs-nav .nav-link{appearance:none;font-family:inherit;font-size:inherit;line-height:inherit;cursor:pointer;background-color:#0000}.wrapper.xblock-iframe-content .xblock-v1-studio_view{display:flex}.xblock-root,.xblock-root .react-studio-block,.xblock-root .react-studio-block .container-fluid{height:100%}.react-studio-block{flex-grow:1}.react-studio-block *,.react-studio-block :before,.react-studio-block :after{box-sizing:border-box}.react-studio-block{margin-bottom:0!important}.xblock-actions{border-top:1px solid var(--pgn-color-gray-200);background:var(--pgn-color-white);z-index:1;justify-content:flex-end;gap:.5em;padding:.75em 1em;display:flex;position:sticky;bottom:0;box-shadow:0 -2px 6px #0000000d}.react-colorful{-webkit-user-select:none;user-select:none;cursor:default;flex-direction:column;width:200px;height:200px;display:flex;position:relative}.react-colorful__saturation{background-image:linear-gradient(#0000,#000),linear-gradient(90deg,#fff,#fff0);border-color:#0000 #0000 #000;border-bottom-style:solid;border-bottom-width:12px;border-radius:8px 8px 0 0;flex-grow:1;position:relative}.react-colorful__pointer-fill,.react-colorful__alpha-gradient{content:\"\";pointer-events:none;border-radius:inherit;position:absolute;inset:0}.react-colorful__alpha-gradient,.react-colorful__saturation{box-shadow:inset 0 0 0 1px #0000000d}.react-colorful__hue,.react-colorful__alpha{height:24px;position:relative}.react-colorful__hue{background:linear-gradient(90deg,red 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red 100%)}.react-colorful__last-control{border-radius:0 0 8px 8px}.react-colorful__interactive{border-radius:inherit;touch-action:none;outline:none;position:absolute;inset:0}.react-colorful__pointer{z-index:1;box-sizing:border-box;background-color:#fff;border:2px solid #fff;border-radius:50%;width:28px;height:28px;position:absolute;transform:translate(-50%,-50%);box-shadow:0 2px 4px #0003}.react-colorful__interactive:focus .react-colorful__pointer{transform:translate(-50%,-50%)scale(1.1)}.react-colorful__alpha,.react-colorful__alpha-pointer{background-color:#fff;background-image:url(\"data:image/svg+xml,<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill-opacity=\\\".05\\\"><rect x=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/><rect y=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/></svg>\")}.react-colorful__saturation-pointer{z-index:3}.react-colorful__hue-pointer{z-index:2}.edit-xblock-modal>.modal-actions{display:none!important}.us-editor{--us-editor-sidebar-width:240px;--us-panel-padding:var(--pgn-spacing-spacer-4-5,32px);flex-direction:column;min-height:600px;display:flex}.us-editor-body{flex:auto;padding:0;overflow:hidden}.us-editor-body>.pgn__modal-body-content{grid-template-columns:var(--us-editor-sidebar-width) minmax(0, 1fr);display:grid}.us-editor-sidebar{gap:var(--pgn-spacing-spacer-2,8px);padding:var(--pgn-spacing-spacer-3,16px);border-right:1px solid var(--pgn-color-light-300);background-color:var(--pgn-color-light-100);flex-direction:column;display:flex;overflow-y:auto}.us-editor-nav-item{align-items:center;gap:var(--pgn-spacing-spacer-2,8px);min-height:40px;padding:var(--pgn-spacing-spacer-2,8px);border-radius:var(--pgn-size-radius-xs,8px);display:flex}.us-editor-nav-item--active{background-color:var(--pgn-color-light-300)}.us-editor-nav-link{text-align:left;min-width:0;font:inherit;cursor:pointer;background:0 0;border:0;flex:auto;padding:0}.us-editor-drag-handle{width:24px;height:24px;color:var(--pgn-color-gray-500);cursor:grab;touch-action:none;background:0 0;border:0;flex:none;justify-content:center;align-items:center;padding:0;display:inline-flex}.us-editor-drag-handle:focus-visible{outline:2px solid var(--pgn-color-brand-500,#0070f0);outline-offset:2px}.us-editor-nav-item--dragging{opacity:.6;box-shadow:0 2px 8px #0003}.us-editor-error-badge{flex:none}.us-editor-add-scenario{align-items:center;gap:var(--pgn-spacing-spacer-2,8px);min-height:40px;padding:var(--pgn-spacing-spacer-2,8px);font:inherit;cursor:pointer;background:0 0;border:0;display:flex}.us-editor-panel{min-width:0;padding:var(--us-panel-padding);overflow-y:auto}.us-rich-text-label{margin-bottom:var(--pgn-spacing-spacer-2,8px)}.us-options-editor{padding:var(--pgn-spacing-spacer-3,16px);border:1px solid var(--pgn-color-light-300,#dee2e6);border-radius:4px}.us-option{margin-bottom:var(--pgn-spacing-spacer-3,16px)}.us-option-row{align-items:center;gap:var(--pgn-spacing-spacer-2,8px);grid-template-columns:minmax(0,1fr) auto auto;display:grid}.us-option-input{min-width:0}.us-editor-alert{margin-bottom:var(--pgn-spacing-spacer-4,24px)}.us-editor-alert ul{padding-left:var(--pgn-spacing-spacer-4,24px)}.us-option-feedback{margin-top:var(--pgn-spacing-spacer-2,8px);padding:var(--pgn-spacing-spacer-4,24px);background:var(--pgn-color-light-300,#eee);border-radius:4px}.us-feedback-icon-picker{align-items:center;gap:var(--pgn-spacing-spacer-2,8px);display:flex}.us-panel h4{margin-bottom:var(--pgn-spacing-spacer-4,24px)}.us-section{margin-bottom:var(--pgn-spacing-spacer-4-5,32px)}.us-section-help{color:var(--pgn-color-gray-600,#475569)}.us-field{margin-bottom:var(--pgn-spacing-spacer-4,24px)}.us-interaction-grid{column-gap:var(--pgn-spacing-spacer-4-5,32px);grid-template-columns:repeat(2,minmax(0,1fr));display:grid}.us-interaction-card{align-items:flex-start;gap:var(--pgn-spacing-spacer-2,8px);padding:var(--pgn-spacing-spacer-4,24px);border:2px solid var(--pgn-color-light-300,#dee2e6);background:var(--pgn-color-white,#fff);text-align:left;cursor:pointer;border-radius:16px;flex-direction:column;display:flex}.us-interaction-card--selected{border-color:var(--pgn-color-brand-500,#0070f0);box-shadow:0 0 0 1px var(--pgn-color-brand-500,#0070f0)}.us-interaction-card:focus-visible{outline:2px solid var(--pgn-color-brand-500,#0070f0);outline-offset:2px}.us-interaction-card-icon{color:var(--pgn-color-brand-500,#0070f0)}.us-interaction-card-label{font-weight:700}.us-interaction-card-description{color:var(--pgn-color-gray-600,#475569)}.us-swatch-grid{gap:var(--pgn-spacing-spacer-3,16px);grid-template-columns:repeat(3,minmax(0,1fr));display:grid}.us-swatch{gap:var(--pgn-spacing-spacer-2,8px);padding:var(--pgn-spacing-spacer-2,8px);border:2px solid var(--pgn-color-light-300,#dee2e6);background:var(--pgn-color-white,#fff);cursor:pointer;border-radius:16px;flex-direction:column;display:flex;position:relative}.us-swatch--selected{border-color:var(--pgn-color-brand-500,#0070f0);box-shadow:0 0 0 1px var(--pgn-color-brand-500,#0070f0)}.us-swatch:focus-visible{outline:2px solid var(--pgn-color-brand-500,#0070f0);outline-offset:2px}.us-swatch-preview{min-height:96px;padding:var(--pgn-spacing-spacer-3,16px);border-radius:8px;flex-direction:column;align-items:flex-start;gap:4px;display:flex}.us-swatch-sample{font-weight:700;line-height:1.1}.us-swatch-check{color:var(--pgn-color-white,#fff);position:absolute;top:16px;right:16px}.us-swatch-label{font-weight:600}.us-variant-preview{align-items:flex-start;gap:var(--pgn-spacing-spacer-2,8px);margin-top:var(--pgn-spacing-spacer-4,24px);padding:var(--pgn-spacing-spacer-4,24px);background:var(--color-bg-main,#1b324a);color:var(--color-txt-content,#fff);border-radius:16px;flex-direction:column;display:flex}.us-variant-preview-heading{font-weight:700}.us-variant-preview-action{min-width:120px;padding:var(--pgn-spacing-spacer-2,8px) var(--pgn-spacing-spacer-4,24px);background:var(--color-bg-emphasis,#223e5d);color:var(--color-txt-content,#fff);border-radius:9999px;justify-content:center;font-weight:600;display:inline-flex}.us-image-preview{margin-top:var(--pgn-spacing-spacer-3,16px)}.us-image-preview img{border-radius:8px;max-width:150px}", Yw = (e, t, n) => {
 	let r = s(t), i = e.handlerUrl(r, "studio_save");
 	b({
 		runtime: e,
 		element: t,
 		config: n.config,
-		styles: Ww
-	})(/* @__PURE__ */ (0, K.jsx)(_w.Provider, {
+		styles: Jw
+	})(/* @__PURE__ */ (0, K.jsx)(xw.Provider, {
 		value: n.config,
-		children: /* @__PURE__ */ (0, K.jsx)(Uw, {
+		children: /* @__PURE__ */ (0, K.jsx)(qw, {
 			initialData: n.data,
 			onSave: (t) => new Promise((n, r) => {
 				e.notify("save", { state: "start" }), $.post(i, JSON.stringify(t)).done(() => {
 					e.notify("save", { state: "end" }), n();
 				}).fail((t) => {
-					let i = zw(t.responseJSON?.error);
+					let i = Uw(t.responseJSON?.error);
 					if (Object.keys(i.errors).length > 0) {
-						r(new Bw(i));
+						r(new Ww(i));
 						return;
 					}
 					e.notify("error", {
@@ -52697,4 +52719,4 @@ var Ww = ".pgn__modal-header.studio-header{padding:calc(var(--pgn-spacing-modal-
 	}));
 };
 //#endregion
-export { Gw as renderBlock };
+export { Yw as renderBlock };
