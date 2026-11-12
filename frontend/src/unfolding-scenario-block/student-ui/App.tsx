@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Intro } from './components/Intro';
 import { Activity } from './components/Activity';
 import { RenderInWindow } from './components/RenderInWindow';
+import { colourVariantStyle } from '../variants';
 
 interface AppProps {
   data: Data;
@@ -14,13 +15,17 @@ export const App = ({ data, themeUrls, cssContent }: AppProps) => {
   const [activityOpen, setActivityOpen] = useState(false);
 
   const rootClass = 'xblock-unfolding-scenario-wrapper';
+  // Both mounts need the tokens: the inline wrapper and the popup container,
+  // which re-declares the same class in a separate document.
+  const variantStyle = colourVariantStyle(data.scenarioData.colorVariant);
 
   return (
-    <div className={rootClass}>
+    <div className={rootClass} style={variantStyle}>
       {activityOpen && (
         <RenderInWindow
           title={data.scenarioData.name}
           className={`${rootClass} min-vh-100`}
+          style={variantStyle}
           themeUrls={themeUrls}
           cssContent={cssContent}
           onClose={() => setActivityOpen(false)}

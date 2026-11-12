@@ -4,6 +4,7 @@ import { within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { App } from './App.tsx';
 import type { Data } from '../apiTypes.ts';
+import { newScenario } from './utils';
 
 const defaultData: Data = {
   displayName: 'Unfolding Scenario',
@@ -164,6 +165,85 @@ describe('Studio editor shell', () => {
     expect(
       rendered.queryByRole('button', { name: 'Delete scenario 1' }),
     ).not.toBeInTheDocument();
+  });
+
+  it('keeps scenario edits separate across sidebar navigation and saves the edited options', async () => {
+    const { screen: rendered, user, mockOnSave } = specRender();
+    const sidebar = rendered.getByRole('navigation', {
+      name: 'Editor sections',
+    });
+    const add = within(sidebar).getByRole('button', {
+      name: 'Add scenario (max 5)',
+    });
+    await user.click(add);
+    await user.click(add);
+    await user.click(
+      within(sidebar).getByRole('button', { name: 'Scenario 1' }),
+    );
+    await user.type(
+      rendered.getByLabelText('Option A'),
+      'First scenario answer',
+    );
+    await user.click(
+      within(sidebar).getByRole('button', { name: 'Scenario 2' }),
+    );
+    expect(rendered.getByLabelText('Option A')).toHaveValue('');
+    await user.type(
+      rendered.getByLabelText('Option A'),
+      'Second scenario answer',
+    );
+    await user.click(
+      within(sidebar).getByRole('button', { name: 'Scenario 1' }),
+    );
+    expect(rendered.getByLabelText('Option A')).toHaveValue(
+      'First scenario answer',
+    );
+
+    // The content must remain outside the navigation, in Paragon's sibling panel.
+    const panel = rendered
+      .getByRole('heading', { name: 'Scenario 1' })
+      .closest('.us-editor-panel');
+    expect(sidebar).not.toContainElement(panel as HTMLElement);
+    expect(panel?.parentElement).toBe(sidebar.parentElement);
+    expect(panel?.parentElement).toHaveClass('pgn__modal-body-content');
+
+    await user.click(rendered.getByRole('button', { name: 'Save' }));
+    const scenarios = mockOnSave.mock.calls[0][0].scenarioData.scenarios;
+    expect(scenarios[0].options[0].value).toBe('First scenario answer');
+    expect(scenarios[1].options[0].value).toBe('Second scenario answer');
+  });
+
+  it('does not reseed existing options or clear feedback when changing interaction mode', async () => {
+    const scenario = newScenario();
+    scenario.options = [
+      { value: 'Saved answer', feedback: 'Saved feedback', type: 'Warning' },
+    ];
+    const {
+      screen: rendered,
+      user,
+      mockOnSave,
+    } = specRender({
+      ...defaultData,
+      scenarioData: { ...defaultData.scenarioData, scenarios: [scenario] },
+    });
+    for (const interaction of [/Select an Answer/, /Explore/]) {
+      await user.click(rendered.getByRole('radio', { name: interaction }));
+      await user.click(rendered.getByRole('button', { name: 'Scenario 1' }));
+      expect(
+        rendered.getAllByRole('textbox', { name: /^Option / }),
+      ).toHaveLength(1);
+      expect(
+        rendered.getByRole('textbox', { name: 'Feedback message' }),
+      ).toHaveValue('Saved feedback');
+      expect(
+        rendered.getByRole('combobox', { name: 'Select an icon' }),
+      ).toHaveValue('Warning');
+      await user.click(rendered.getByRole('button', { name: 'Setup' }));
+    }
+    await user.click(rendered.getByRole('button', { name: 'Save' }));
+    expect(mockOnSave.mock.calls[0][0].scenarioData.scenarios).toEqual([
+      scenario,
+    ]);
   });
 
   it('calls onCancel from the footer and the header close button', async () => {

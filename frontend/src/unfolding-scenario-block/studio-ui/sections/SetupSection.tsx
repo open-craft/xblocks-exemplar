@@ -2,7 +2,12 @@ import { CheckCircle, HelpOutline, Visibility } from '@openedx/paragon/icons';
 import { Icon } from '@openedx/paragon';
 import { useFormikContext } from 'formik';
 import type { Data } from '../../apiTypes';
-import { COLOUR_VARIANTS, type ColourVariant } from '../../variants';
+import {
+  COLOUR_VARIANTS,
+  type ColourVariant,
+  colourVariantStyle,
+  findColourVariant,
+} from '../../variants';
 import { handleRadioKeyDown } from './radioGroup';
 
 interface InteractionCardProps {
@@ -80,6 +85,7 @@ function ColourSwatch({ variant, selected, onSelect }: ColourSwatchProps) {
 export default function SetupSection() {
   const { values, setFieldValue } = useFormikContext<Data>();
   const { interactionType, colorVariant } = values.scenarioData;
+  const selectedVariant = findColourVariant(colorVariant);
 
   return (
     <div className="us-panel">
@@ -135,6 +141,23 @@ export default function SetupSection() {
               }
             />
           ))}
+        </div>
+        {colorVariant && !selectedVariant && (
+          <p className="us-section-help" role="status">
+            The saved colour variant “{colorVariant}” isn't available in this
+            theme, so the default colours are shown. The saved value is kept.
+          </p>
+        )}
+        <div
+          className="us-variant-preview"
+          style={colourVariantStyle(colorVariant)}
+          aria-hidden="true"
+        >
+          <span className="us-variant-preview-heading">Scenario heading</span>
+          <span className="us-variant-preview-body">
+            This is how learner text looks on the selected background.
+          </span>
+          <span className="us-variant-preview-action">Continue</span>
         </div>
       </section>
     </div>

@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react';
+
 /**
  * Colour variants available to the unfolding scenario block.
  *
@@ -98,3 +100,17 @@ export const COLOUR_CATEGORY_LABELS: Record<ColourCategory, string> = {
 
 export const findColourVariant = (id: string | null | undefined) =>
   COLOUR_VARIANTS.find((variant) => variant.id === id);
+
+/**
+ * Inline custom properties for a stored variant id.
+ *
+ * Returns `undefined` when the id is unset or no longer shipped, which leaves
+ * the block's default appearance intact. Unavailable ids are never discarded;
+ * the stored value stays in the data so it recovers if the theme returns.
+ */
+export const colourVariantStyle = (
+  id: string | null | undefined,
+): CSSProperties | undefined => {
+  const variant = findColourVariant(id);
+  return variant ? (variant.tokens as CSSProperties) : undefined;
+};
