@@ -5,6 +5,9 @@ import StudioHeader from '@/shared/components/StudioHeader';
 import EditorSidebar from './components/EditorSidebar';
 import type { SectionKey } from './components/EditorSidebar';
 import StudioFooter from './components/StudioFooter';
+import SetupSection from './sections/SetupSection';
+import IntroductionSection from './sections/IntroductionSection';
+import OutcomeSection from './sections/OutcomeSection';
 import type { Data } from '../apiTypes';
 
 interface StudioUIProps {
@@ -29,15 +32,9 @@ function EditorForm({ onCancel }: { onCancel: () => void }) {
         : 'introduction'
       : activeSection;
 
-  let panelHeading = '';
-  if (displayedSection === 'setup') {
-    panelHeading = 'Setup';
-  } else if (displayedSection === 'introduction') {
-    panelHeading = 'Introduction';
-  } else if (displayedSection === 'outcome') {
-    panelHeading = 'Outcome';
-  } else if (displayedSection.startsWith('scenario:')) {
-    panelHeading = `Scenario ${Number(displayedSection.slice('scenario:'.length)) + 1}`;
+  let scenarioPanelHeading = '';
+  if (displayedSection.startsWith('scenario:')) {
+    scenarioPanelHeading = `Scenario ${Number(displayedSection.slice('scenario:'.length)) + 1}`;
   }
 
   return (
@@ -55,8 +52,15 @@ function EditorForm({ onCancel }: { onCancel: () => void }) {
             onSelect={setActiveSection}
           />
           <div className="us-editor-panel">
-            {/* Phase 1 placeholder panels; replaced by real sections in later phases. */}
-            <h4>{panelHeading}</h4>
+            {displayedSection === 'setup' && <SetupSection />}
+            {displayedSection === 'introduction' && <IntroductionSection />}
+            {displayedSection === 'outcome' && <OutcomeSection />}
+            {displayedSection.startsWith('scenario:') && (
+              /* Scenario panel placeholder; implemented in phase 4. */
+              <div className="us-panel">
+                <h4>{scenarioPanelHeading}</h4>
+              </div>
+            )}
           </div>
         </ModalDialog.Body>
         <StudioFooter onCancel={onCancel} />
