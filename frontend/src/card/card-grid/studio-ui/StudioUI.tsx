@@ -1,22 +1,23 @@
-import { useState } from 'react';
-import { Form, Formik } from 'formik';
+import { useContext } from 'react';
+import { Formik } from 'formik';
 import { type InitData } from '../types';
 import {
+  RuntimeContext,
   saveStudioBlock,
-  type XBlockRuntime,
+  useHandlerUrl,
 } from '@opencraft/xblock-react-utils';
-import CreateCardGridForm from './components/CreateCardGridForm';
-import CarouselEditor from '@/card/common/studio-ui/CardListEditor';
-import ModalFooter from '@/card/common/studio-ui/ModalFooter';
+import StudioForm from '@/card/common/studio-ui/StudioForm';
+
+import SettingsForm from './components/SettingsForm';
+import ContentForm from './components/ContentForm.tsx';
 
 interface StudioUIProps {
-  saveUrl: string;
-  runtime: XBlockRuntime;
   initData: InitData;
 }
 
-function StudioUI({ runtime, saveUrl, initData }: StudioUIProps) {
-  const [showCardEditor, setShowCardEditor] = useState(false);
+function StudioUI({ initData }: StudioUIProps) {
+  const { runtime } = useContext(RuntimeContext);
+  const saveUrl = useHandlerUrl('studio_save');
 
   return (
     <Formik
@@ -30,18 +31,11 @@ function StudioUI({ runtime, saveUrl, initData }: StudioUIProps) {
         });
       }}
     >
-      <Form>
-        <div className="studio-ui card-grid-studio">
-          {showCardEditor ? <CarouselEditor /> : <CreateCardGridForm />}
-          <ModalFooter
-            showingEditor={showCardEditor}
-            onContinue={(e: React.MouseEvent<HTMLButtonElement>) => {
-              e.preventDefault();
-              setShowCardEditor(true);
-            }}
-          />
-        </div>
-      </Form>
+      <StudioForm
+        id="card-grid-studio-tabs"
+        contentTab={<ContentForm />}
+        settingsTab={<SettingsForm />}
+      />
     </Formik>
   );
 }
