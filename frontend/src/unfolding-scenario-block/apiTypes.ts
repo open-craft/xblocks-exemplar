@@ -24,6 +24,7 @@ export interface ScenarioData {
   scenarios: Scenario[];
   outcome: Outcome;
   interactionType: InteractionType;
+  colorVariant?: string | null;
 }
 /**
  * Introduction content that's presented by default by the XBlock.

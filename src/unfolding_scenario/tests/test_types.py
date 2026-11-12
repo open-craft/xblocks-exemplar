@@ -35,6 +35,7 @@ VALID_DATA = {
         "displaySelectedOptions": False,
     },
     "interactionType": "Explore",
+    "colorVariant": "primary-navy",
 }
 
 
@@ -85,6 +86,22 @@ def test_unfolding_scenario_fields_validation():
 
     assert validated_data.displayName == "test"
     assert validated_data.scenarioData.model_dump() == VALID_DATA
+
+
+def test_data_validation_required_field():
+    """Required text fields must be non-empty (whitespace-only is rejected)."""
+    with pytest.raises(
+        ValidationError, match="String should have at least 1 character"
+    ):
+        ScenarioData(
+            **{
+                **VALID_DATA,
+                "introduction": {
+                    **VALID_DATA["introduction"],
+                    "heading": "   ",
+                },
+            }
+        )
 
 
 def test_searchable_text():

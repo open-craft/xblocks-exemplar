@@ -3,6 +3,7 @@ Unfolding Scenario XBlock's main module.
 """
 
 import logging
+from collections import defaultdict
 
 from pydantic import ValidationError
 from web_fragments.fragment import Fragment
@@ -12,7 +13,7 @@ from xblock.fields import Scope, String, Dict
 from xblock.utils.resources import ResourceLoader
 
 from unfolding_scenario.types import Data, ScenarioData, InteractionType
-from exemplar_common.utils import strip_html_for_search
+from exemplar_common.utils import loc_to_dot_sep, strip_html_for_search
 from exemplar_common.xblock_config import get_xblock_config, XBlockView
 
 logger = logging.getLogger(__name__)
@@ -176,10 +177,10 @@ class UnfoldingScenarioXBlock(XBlock):
             block_data = Data.model_validate(data)
         except ValidationError as e:
             logger.exception("Invalid data received from studio.")
-            message = "\n".join(
-                f"Field: {err['loc']}. Error: {err['msg']}" for err in e.errors()
-            )
-            raise JsonHandlerError(400, message)
+            issues = defaultdict(list)
+            for item in e.errors():
+                issues[item["msg"]].append(loc_to_dot_sep(item["loc"]))
+            raise JsonHandlerError(400, issues)
 
         self.display_name = block_data.displayName
         self.scenario_data = block_data.scenarioData.model_dump()
