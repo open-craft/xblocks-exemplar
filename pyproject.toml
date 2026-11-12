@@ -1,6 +1,6 @@
 [project]
 name = "exemplar-blocks"
-version = "0.14.0"
+version = "0.14.1"
 description = "A collection of XBlocks for managing and displaying aesthetically pleasing HTML content"
 readme = "README.md"
 license = "Apache-2.0"
