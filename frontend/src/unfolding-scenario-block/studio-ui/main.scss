@@ -1,7 +1,85 @@
 @import '../../studio';
+@import '../../shared/components/StudioHeader.css';
 
 // Hide the "close" button at the bottom of the editor modal.
 // We want our own save and cancel buttons.
 .edit-xblock-modal > .modal-actions {
   display: none !important;
+}
+
+.us-editor {
+  --us-editor-sidebar-width: 240px;
+  --us-panel-padding: var(--pgn-spacing-spacer-4-5, 32px);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+}
+
+.us-editor-body {
+  display: grid;
+  grid-template-columns: var(--us-editor-sidebar-width) minmax(0, 1fr);
+  flex: 1 1 auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+.us-editor-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+  padding: var(--pgn-spacing-spacer-3, 16px);
+  border-right: 1px solid var(--pgn-color-light-300);
+  background-color: var(--pgn-color-light-100);
+  overflow-y: auto;
+}
+
+.us-editor-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+  min-height: 40px;
+  padding: var(--pgn-spacing-spacer-2, 8px);
+  border-radius: var(--pgn-size-radius-xs, 8px);
+
+  &--active {
+    background-color: var(--pgn-color-light-300);
+  }
+}
+
+.us-editor-nav-link {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.us-editor-drag-handle {
+  flex: 0 0 auto;
+  color: var(--pgn-color-gray-500);
+}
+
+.us-editor-error-badge {
+  flex: 0 0 auto;
+}
+
+.us-editor-add-scenario {
+  display: flex;
+  align-items: center;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+  min-height: 40px;
+  padding: var(--pgn-spacing-spacer-2, 8px);
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.us-editor-panel {
+  padding: var(--us-panel-padding);
+  overflow-y: auto;
 }
