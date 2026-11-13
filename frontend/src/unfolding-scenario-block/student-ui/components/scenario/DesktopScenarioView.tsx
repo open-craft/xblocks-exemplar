@@ -23,7 +23,10 @@ export const DesktopScenarioView = ({
 }: DesktopScenarioViewProps) => {
   return (
     <div className="pt-3 mx-3 h-100">
-      <div className="position-relative w-100 h-100 overflow-hidden">
+      <div
+        className="position-relative w-100 h-100"
+        style={{ overflowX: 'hidden' }}
+      >
         <div
           className={`d-flex h-100 w-50 position-absolute align-items-center ${activeOptionIndex !== null ? 'active' : ''} options-pane options-pane-1`}
         >
