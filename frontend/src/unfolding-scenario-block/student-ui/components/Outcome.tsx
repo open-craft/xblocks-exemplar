@@ -32,14 +32,12 @@ export const OutcomeComponent = ({
   return (
     <div className="d-flex flex-grow-1 flex-wrap">
       <div
-        className="p-4-5 bg-interact-default"
+        className="p-3 m-3 bg-interact-default"
         style={{
           flex: `0 0 ${variant == 'desktop' ? '60%' : '100%'}`,
         }}
       >
-        <p className="font-size-lg font-weight-bold text-interact-accent">
-          {outcome.heading}
-        </p>
+        <h5 className="text-interact-accent">{outcome.heading}</h5>
         <div
           className="text-interact-content pb-3"
           dangerouslySetInnerHTML={{ __html: outcome.description }}
@@ -60,18 +58,18 @@ export const OutcomeComponent = ({
           minHeight: '10rem',
         }}
       >
-        <div className="fixed-bottom align-content-end text-right p-4-5">
+        <div className="fixed-bottom align-content-end text-right p-3 m-3">
           <Button
-            variant="outline-unfolding-scenario-action"
-            className={`rounded-pill ${variant == 'mobile' ? 'w-100 mb-3' : ''}`}
+            variant="outline-primary"
+            className={`${variant == 'mobile' ? 'w-100 mb-3' : ''}`}
             onClick={onRestart}
             block={variant == 'mobile'}
           >
             Restart <Icon src={Replay} />
           </Button>
           <Button
-            variant="unfolding-scenario-action"
-            className={`rounded-pill ${variant == 'mobile' ? 'w-100' : 'ml-3'}`}
+            variant="primary"
+            className={`${variant == 'mobile' ? 'w-100' : 'ml-3'}`}
             onClick={onExit}
             block={variant == 'mobile'}
           >
