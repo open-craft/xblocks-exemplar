@@ -5,19 +5,17 @@ interface ScenarioStepperProps {
   index: number;
   total: number;
   onReset: () => void;
-  className: string;
+  variant: 'desktop' | 'tablet';
 }
 
 export const ScenarioStepper = ({
   index,
   total,
   onReset,
-  className,
+  variant,
 }: ScenarioStepperProps) => {
   return (
-    <div
-      className={`align-items-center justify-content-center bg-main ${className}`}
-    >
+    <div className={`scenario-stepper scenario-stepper-${variant}`}>
       <IconButton
         className="text-icon-action-default bg-main mr-3"
         src={Replay}
@@ -27,18 +25,14 @@ export const ScenarioStepper = ({
       />
       {Array.from(Array(total)).map((_, i) => (
         <>
-          <div
-            className={`step-indicator d-flex justify-content-center align-items-center rounded-pill p-1 ${i <= index ? 'bg-icon-default text-interact-content' : 'bg-emphasis text-content'}`}
-          >
+          <div className={`step-indicator ${i <= index ? 'active' : ''}`}>
             {i + 1}
           </div>
           {i < total - 1 && <div className="step-indicator-separator" />}
         </>
       ))}
       {index >= total && (
-        <span className="ml-4 text-content font-size-md font-weight-bold">
-          Completed!
-        </span>
+        <div className="step-indicator-completed">Completed!</div>
       )}
     </div>
   );

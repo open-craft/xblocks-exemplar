@@ -63,15 +63,13 @@ const ScenarioDescription = ({
 }: ScenarioDescriptionProps) => (
   <div className="d-flex flex-column h-100 w-100">
     <div className="d-flex flex-column pt-4 px-4 flex-grow-1 w-100 bg-interact-default">
-      <p className="font-size-lg font-weight-bold text-interact-accent">
-        {scenario.heading}
-      </p>
+      <h5 className="text-interact-accent">{scenario.heading}</h5>
       <div
         className="text-interact-content pb-3"
         dangerouslySetInnerHTML={{ __html: scenario.description }}
       />
       <div className="d-flex align-items-center mt-3 mb-2">
-        <div className="arrow-bubble p-2 text-icon-interact-default">
+        <div className="arrow-bubble">
           <Icon src={ArrowOutward} />
         </div>
         <span className="text-interact-headings font-size-medium font-weight-bold pl-2">
@@ -85,11 +83,7 @@ const ScenarioDescription = ({
         }}
       />
       <div className="d-flex flex-column justify-content-end flex-grow-1 w-100 bg-interact-default">
-        <Button
-          variant="unfolding-scenario-action"
-          className="rounded-pill w-100 mb-4"
-          onClick={onNext}
-        >
+        <Button variant="primary" className="w-100 mb-4" onClick={onNext}>
           Continue
         </Button>
       </div>
@@ -125,9 +119,7 @@ const ScenarioOptions = ({
       alt="Return"
       onClick={onBack}
     />
-    <p className="text-interact-headings font-size-md font-weight-bold">
-      {scenario.prompt}
-    </p>
+    <h5 className="text-interact-headings">{scenario.prompt}</h5>
     <div className="d-flex flex-column flex-grow-1">
       {scenario.options.map((option, i) => (
         <OptionComponent
@@ -141,8 +133,8 @@ const ScenarioOptions = ({
     </div>
     {interactionType != 'SelectOne' && (
       <Button
-        variant="unfolding-scenario-action"
-        className="rounded-pill w-100"
+        variant="primary"
+        className="w-100"
         disabled={!isContinueEnabled}
         onClick={onContinue}
       >
