@@ -13,8 +13,8 @@ export const TabletActivityHeader = ({
   <div className="sticky-top d-flex w-100 pb-2 bg-interact-default">
     <Container className="mx-3" fluid>
       <Row>
-        <Col className="d-flex align-items-center small-heading text-interact-headings">
-          {title}
+        <Col className="d-flex align-items-center">
+          <h5 className="text-interact-headings">{title}</h5>
         </Col>
         <Col className="d-flex justify-content-end align-items-center">
           <ActivityCloseButton onClose={onClose} />

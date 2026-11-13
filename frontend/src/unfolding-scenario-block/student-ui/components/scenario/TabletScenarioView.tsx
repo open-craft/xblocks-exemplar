@@ -35,15 +35,13 @@ export const TabletScenarioView = ({
         className={`w-100 h-100 position-absolute p-4 d-flex flex-column ${activeOptionIndex !== null ? 'active' : ''} tablet-options-pane tablet-options-pane-1`}
       >
         <div>
-          <p className="font-size-lg font-weight-bold text-interact-accent">
-            {scenario.heading}
-          </p>
+          <h5 className="text-interact-accent">{scenario.heading}</h5>
           <div
             className="text-interact-content pb-3"
             dangerouslySetInnerHTML={{ __html: scenario.description }}
           />
           <div className="d-flex align-items-center mt-3 mb-2">
-            <div className="arrow-bubble p-2 text-icon-interact-default">
+            <div className="arrow-bubble">
               <Icon src={ArrowOutward} />
             </div>
             <span className="text-interact-headings font-size-medium font-weight-bold pl-2">
@@ -56,9 +54,7 @@ export const TabletScenarioView = ({
           dangerouslySetInnerHTML={{ __html: scenario.instructionDescription }}
         />
         <div className="flex-grow-1">
-          <p className="text-interact-headings font-size-md font-weight-bold">
-            {scenario.prompt}
-          </p>
+          <h5 className="text-interact-headings">{scenario.prompt}</h5>
           <div className="d-flex flex-column flex-grow-1">
             {scenario.options.map((option, i) => (
               <OptionComponent
@@ -74,8 +70,7 @@ export const TabletScenarioView = ({
         {interactionType != 'SelectOne' && (
           <div className="d-flex justify-content-end">
             <Button
-              variant="unfolding-scenario-action"
-              className="rounded-pill"
+              variant="primary"
               disabled={!isContinueEnabled}
               onClick={onContinue}
             >
@@ -85,7 +80,7 @@ export const TabletScenarioView = ({
         )}
       </div>
       <div
-        className={`w-100 h-100 position-absolute d-flex flex-column justify-content-center p-4-5 bg-interact-raised ${activeOptionIndex !== null ? 'active' : ''} tablet-options-pane tablet-options-pane-2`}
+        className={`w-100 h-100 position-absolute d-flex flex-column justify-content-center p-3 m-3 bg-interact-raised ${activeOptionIndex !== null ? 'active' : ''} tablet-options-pane tablet-options-pane-2`}
       >
         {activeOptionIndex !== null && (
           <>
@@ -99,8 +94,7 @@ export const TabletScenarioView = ({
             {interactionType == 'SelectOne' && (
               <div className="d-flex justify-content-end">
                 <Button
-                  variant="unfolding-scenario-action"
-                  className="rounded-pill"
+                  variant="primary"
                   disabled={!isContinueEnabled}
                   onClick={onContinue}
                 >
