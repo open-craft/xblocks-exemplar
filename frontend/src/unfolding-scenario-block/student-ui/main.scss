@@ -1,7 +1,12 @@
 .xblock-unfolding-scenario-wrapper {
-  --color-action-default: var(
-    --pgn-unfolding-scenario-color-action-default,
-    #3874bc
+  //////////// Declarations of all css variables (design tokens) referenced by the css for this block. /////
+  --button-border-radius: var(
+    --pgn-unfolding-scenario-button-radius,
+    var(--pgn-size-btn-border-radius-base, 0)
+  );
+  --text-interact-accent: var(
+    --pgn-unfolding-scenario-text-interact-accent,
+    #2a578d
   );
   --color-background-interactive: var(
     --pgn-unfolding-scenario-color-background-interactive,
@@ -44,10 +49,6 @@
   --color-interact-raised-emphasis: var(
     --pgn-unfolding-scenario-color-interact-raised-emphasis,
     #327d8a
-  );
-  --color-txt-interact-accent: var(
-    --pgn-unfolding-scenario-color-txt-interact-accent,
-    #2a578d
   );
   --color-txt-interact-content-inverse: var(
     --pgn-unfolding-scenario-color-txt-interact-content-inverse,
@@ -122,8 +123,232 @@
     #ffd900
   );
 
-  --btn-min-width: var(--pgn-unfolding-scenario-btn-min-width, 200px);
+  //////////// General styles for various components
 
+  .btn {
+    border-radius: var(--button-border-radius);
+  }
+
+  // The first intro screen
+  .scenario-intro {
+    // the bordered box with the outward arrow and scenario type name
+    .scenario-name {
+      color: var(--color-text-interactive);
+      background-color: var(--color-interact-emphasis);
+      border-color: var(--color-border-interact-default) !important;
+      border-radius: var(--pgn-spacing-spacer-base);
+      border-bottom-left-radius: 0;
+
+      h5 {
+        color: var(--color-text-interactive) !important;
+      }
+
+      .border-right {
+        border-color: var(--color-border-interact-default) !important;
+      }
+
+      .pgn__icon {
+        color: var(--color-interact-raised-emphasis);
+        zoom: 2;
+      }
+    }
+  }
+
+  // for OptionComponent
+  .scenario-option-btn {
+    height: calc(
+      var(--pgn-typography-line-height-base) *
+        var(--pgn-typography-font-size-base) * 3 +
+        var(--pgn-spacing-spacer-base) * 2
+    );
+    border-radius: var(--pgn-size-border-radius-sm);
+    border: 0;
+    padding: 0;
+    margin-bottom: var(--pgn-spacing-spacer-base);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &.pre-selected {
+      outline: 2px solid var(--color-border-interact-emphasis);
+    }
+
+    // the arrow that displays on hover over the large option choice buttons
+    .hover-arrow {
+      display: flex;
+      align-items: center;
+      min-width: 10px;
+      height: 100%;
+      background-color: var(--color-interact-raised-emphasis);
+
+      .pgn__icon {
+        display: none;
+        color: var(--color-icon-inverse);
+        margin: 0 var(--pgn-spacing-spacer-base);
+      }
+    }
+
+    &:hover,
+    &.active {
+      .hover-arrow {
+        .pgn__icon {
+          display: block;
+        }
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-option-focus-border);
+    }
+  }
+
+  // the indicator in the activity header that displays which step you are on
+  .step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    padding: calc(var(--pgn-spacing-spacer-base) * 0.25);
+    height: var(--pgn-spacing-spacer-4-5);
+    width: var(--pgn-spacing-spacer-4-5);
+    font-size: calc(
+      var(--pgn-typography-font-size-base) * 1.125
+    ); // 18px if base size is 16px
+
+    color: var(--color-txt-content);
+    background-color: var(--color-bg-emphasis);
+
+    &.active {
+      background-color: var(--color-icon-default);
+      color: var(--color-txt-interact-content);
+    }
+  }
+  // a small horizontal line linking the steps
+  .step-indicator-separator {
+    height: 1px;
+    width: 17px;
+    background-color: var(--color-border-default);
+  }
+  // "Completed!" text indicator
+  .step-indicator-completed {
+    color: var(--color-txt-content) !important;
+    font-size: calc(
+      var(--pgn-typography-font-size-base) * 1.125
+    ); // 18px if base size is 16px
+    font-weight: var(--pgn-typography-headings-font-weight);
+    margin-left: calc(var(--pgn-spacing-spacer-base) * 1.5);
+  }
+
+  // the styled icon of an outward arrow in a bubble
+  .arrow-bubble {
+    display: inline-block;
+    background-color: var(--color-interact-emphasis);
+    color: var(--color-icon-interact-default);
+    border: 1px solid var(--color-border-interact-default);
+    border-radius: var(--pgn-spacing-spacer-base);
+    border-bottom-left-radius: 0;
+    padding: calc(var(--pgn-spacing-spacer-base) * 0.5);
+  }
+
+  // Transitions for a scenario view, when the user clicks an option or clicks the return button.
+  .options-pane {
+    transition: left 0.5s;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .options-pane {
+      transition: unset;
+    }
+  }
+  .options-pane-1 {
+    left: 0%;
+  }
+  .options-pane-2 {
+    left: 50%;
+  }
+  .options-pane-3 {
+    left: 100%;
+  }
+  .active.options-pane-1 {
+    left: -50%;
+  }
+  .active.options-pane-2 {
+    left: 0%;
+  }
+  .active.options-pane-3 {
+    left: 50%;
+  }
+  // Transitions for a *tablet* scenario view, when the user clicks an option or clicks the return button.
+  .tablet-options-pane {
+    transition: left 0.5s;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tablet-options-pane {
+      transition: unset;
+    }
+  }
+  .tablet-options-pane-1 {
+    left: 0%;
+  }
+  .tablet-options-pane-2 {
+    left: 100%;
+    border-left: var(--pgn-spacing-spacer-3) solid var(--color-interact-default);
+  }
+  .active.tablet-options-pane-1 {
+    left: -100%;
+  }
+  .active.tablet-options-pane-2 {
+    left: 0%;
+  }
+
+  // full screen overlay wrapper for for the option feedback page on mobile and tablet
+  .option-feedback-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: var(--pgn-elevation-zindex-fixed);
+    height: 100%;
+    width: 100%;
+    border-left: var(--pgn-spacing-spacer-4) solid var(--color-interact-default);
+  }
+
+  // To add the horizontal line separator between options in the outcome page.
+  .outcome-option-row + .outcome-option-row {
+    margin-top: var(--pgn-spacing-spacer-4);
+    padding-top: var(--pgn-spacing-spacer-4);
+    border-top: 1px solid var(--color-border-interact-default);
+  }
+
+  //////////// Utility styles - these complement the existing bootstrap utilities
+
+  // counterpart to bootstrap's .rounded-lg
+  .rounded-lg-bottom {
+    border-bottom-right-radius: var(--pgn-size-border-radius-lg) !important;
+    border-bottom-left-radius: var(--pgn-size-border-radius-lg) !important;
+  }
+
+  // For the feedback icon/text in red (negative), green (positive), and yellow (warning).
+  // See OptionFeedback.tsx.
+  // NOTE: this isn't finalised yet.
+  .text-feedback-negative {
+    color: var(--color-txt-feedback-negative) !important;
+  }
+  .text-icon-interact-negative {
+    color: var(--color-icon-interact-negative) !important;
+  }
+  .text-feedback-positive {
+    color: var(--color-txt-feedback-positive) !important;
+  }
+  .text-icon-interact-positive {
+    color: var(--color-icon-interact-positive) !important;
+  }
+  .text-feedback-warning {
+    color: var(--color-txt-feedback-warning) !important;
+  }
+  .text-icon-interact-warning {
+    color: var(--color-icon-interact-warning) !important;
+  }
+
+  // other text/background utility classes, used by various elements
   .text-interact-headings {
     color: var(--color-txt-interact-headings) !important;
   }
@@ -148,44 +373,12 @@
     color: var(--color-txt-sec-content) !important;
   }
 
-  .text-icon-inverse {
-    color: var(--color-icon-inverse) !important;
-  }
-
   .text-icon-action-default {
     color: var(--color-icon-action-default) !important;
   }
 
-  .text-icon-action-sec-default {
-    color: var(--color-icon-action-sec-default) !important;
-  }
-
   .text-icon-action-sec-neutral {
     color: var(--color-icon-action-sec-neutral) !important;
-  }
-
-  .text-feedback-negative {
-    color: var(--color-txt-feedback-negative) !important;
-  }
-
-  .text-icon-interact-negative {
-    color: var(--color-icon-interact-negative) !important;
-  }
-
-  .text-feedback-positive {
-    color: var(--color-txt-feedback-positive) !important;
-  }
-
-  .text-icon-interact-positive {
-    color: var(--color-icon-interact-positive) !important;
-  }
-
-  .text-feedback-warning {
-    color: var(--color-txt-feedback-warning) !important;
-  }
-
-  .text-icon-interact-warning {
-    color: var(--color-icon-interact-warning) !important;
   }
 
   .bg-interact-raised-emphasis {
@@ -210,290 +403,5 @@
 
   .bg-main {
     background-color: var(--color-bg-main) !important;
-  }
-
-  // counterpart to bootstrap's .rounded-lg
-  .rounded-lg-bottom {
-    border-bottom-right-radius: var(--pgn-size-border-radius-lg) !important;
-    border-bottom-left-radius: var(--pgn-size-border-radius-lg) !important;
-  }
-
-  .scenario-intro {
-    // the bordered box with the outward arrow and scenario type name
-    .scenario-name {
-      color: var(--color-text-interactive);
-      background-color: var(--color-interact-emphasis);
-      border-color: var(--color-border-interact-default) !important;
-      border-radius: var(--pgn-spacing-spacer-base);
-      border-bottom-left-radius: 0;
-
-      .border-right {
-        border-color: var(--color-border-interact-default) !important;
-      }
-
-      .pgn__icon {
-        color: var(--color-interact-raised-emphasis);
-        zoom: 2;
-      }
-    }
-  }
-
-  .btn-unfolding-scenario-action {
-    --pgn-btn-bg: var(--color-action-default);
-    --pgn-btn-color: var(--color-txt-action-prim-default);
-
-    // TODO update these hover/focus/active styles once we get designs
-    --pgn-btn-hover-bg: var(--color-action-default);
-    --pgn-btn-hover-color: var(--color-txt-action-prim-default);
-
-    --pgn-btn-focus-bg: var(--color-action-default);
-    --pgn-btn-focus-color: var(--color-txt-action-prim-default);
-    --pgn-btn-focus-outline-color: var(--color-border-sec-action-focus);
-
-    --pgn-btn-active-bg: var(--color-action-default);
-    --pgn-btn-active-color: var(--color-txt-action-prim-default);
-  }
-
-  .btn-outline-unfolding-scenario-action {
-    --pgn-size-btn-border-width: 2px;
-
-    --pgn-btn-bg: var(--color-txt-action-prim-default);
-    --pgn-btn-color: var(--color-action-default);
-    --pgn-btn-border-color: var(--color-action-default);
-
-    // TODO update these hover/focus/active styles once we get designs
-    --pgn-btn-hover-bg: var(--color-txt-action-prim-default);
-    --pgn-btn-hover-color: var(--color-action-default);
-    --pgn-btn-hover-border-color: var(--color-action-default);
-
-    --pgn-btn-focus-bg: var(--color-txt-action-prim-default);
-    --pgn-btn-focus-color: var(--color-action-default);
-    --pgn-btn-focus-border-color: var(--color-action-default);
-    --pgn-btn-focus-outline-color: var(--color-action-default);
-
-    --pgn-btn-active-bg: var(--color-txt-action-prim-default);
-    --pgn-btn-active-color: var(--color-action-default);
-    --pgn-btn-active-border-color: var(--color-action-default);
-  }
-
-  .btn {
-    min-width: var(--btn-min-width);
-    padding: var(--pgn-spacing-spacer-2-5) var(--pgn-spacing-spacer-4-5);
-  }
-
-  .small-heading {
-    font-size: calc(
-      var(--pgn-typography-font-size-base) * 1.125
-    ); // 18px if base size is 16px
-    font-family: var(--pgn-typography-headings-font-family);
-    font-weight: var(--pgn-typography-font-weight-bold);
-  }
-
-  // between semi-bold and bold; only used occasionally
-  .font-weight-lessbold {
-    font-weight: calc(var(--pgn-typography-font-weight-bold) - 100);
-  }
-
-  // use the headings font family, without necessarily being a heading
-  .typography-headings {
-    font-family: var(--pgn-typography-headings-font-family);
-  }
-
-  .font-size-lg {
-    font-size: calc(
-      var(--pgn-typography-font-size-base) * 1.25
-    ); // 20px if base size is 16px
-  }
-
-  .font-size-md {
-    font-size: calc(
-      var(--pgn-typography-font-size-base) * 1.125
-    ); // 18px if base size is 16px
-  }
-
-  .font-size-sm-md {
-    font-size: calc(
-      var(--pgn-typography-font-size-base) * 0.875
-    ); // 14px if base size is 16px
-  }
-
-  .font-size-sm {
-    font-size: calc(
-      var(--pgn-typography-font-size-base) * 0.75
-    ); // 12px if base size is 16px
-  }
-
-  // TODO: do we want these in some shared base styles for reuse?
-  // utility margins/paddings to complement existing bootstrap utility margins/paddings
-  .m-4-5 {
-    margin: var(--pgn-spacing-spacer-4-5) !important;
-  }
-  .ml-4-5,
-  .mx-4-5 {
-    margin-left: var(--pgn-spacing-spacer-4-5) !important;
-  }
-  .mr-4-5,
-  .mx-4-5 {
-    margin-right: var(--pgn-spacing-spacer-4-5) !important;
-  }
-  .mt-4-5,
-  .my-4-5 {
-    margin-top: var(--pgn-spacing-spacer-4-5) !important;
-  }
-  .mb-4-5,
-  .my-4-5 {
-    margin-bottom: var(--pgn-spacing-spacer-4-5) !important;
-  }
-  .p-4-5 {
-    padding: var(--pgn-spacing-spacer-4-5) !important;
-  }
-  .pl-4-5,
-  .px-4-5 {
-    padding-left: var(--pgn-spacing-spacer-4-5) !important;
-  }
-  .pr-4-5,
-  .px-4-5 {
-    padding-right: var(--pgn-spacing-spacer-4-5) !important;
-  }
-  .pt-4-5,
-  .py-4-5 {
-    padding-top: var(--pgn-spacing-spacer-4-5) !important;
-  }
-  .pb-4-5,
-  .py-4-5 {
-    padding-bottom: var(--pgn-spacing-spacer-4-5) !important;
-  }
-
-  .unfolding-scenario-activity-wrapper {
-    height: 100%;
-  }
-
-  .step-indicator {
-    height: var(--pgn-spacing-spacer-4-5);
-    width: var(--pgn-spacing-spacer-4-5);
-    font-size: calc(
-      var(--pgn-typography-font-size-base) * 1.125
-    ); // 18px if base size is 16px
-  }
-  .step-indicator-separator {
-    height: 1px;
-    width: 17px;
-    background-color: var(--color-border-default);
-  }
-
-  .arrow-bubble {
-    display: inline-block;
-    background-color: var(--color-interact-emphasis);
-    color: var(--color-icon-interact-default);
-    border: 1px solid var(--color-border-interact-default);
-    border-radius: var(--pgn-spacing-spacer-base);
-    border-bottom-left-radius: 0;
-  }
-
-  .scenario-option-btn {
-    height: calc(
-      var(--pgn-typography-line-height-base) *
-        var(--pgn-typography-font-size-base) * 3 +
-        var(--pgn-spacing-spacer-base) * 2
-    );
-
-    &.pre-selected {
-      outline: 2px solid var(--color-border-interact-emphasis);
-    }
-
-    .hover-arrow {
-      min-width: 10px;
-
-      .pgn__icon {
-        display: none;
-      }
-    }
-
-    &:hover,
-    &.active {
-      .hover-arrow {
-        .pgn__icon {
-          display: block;
-        }
-      }
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-option-focus-border);
-    }
-  }
-
-  .outcome-option-row + .outcome-option-row {
-    margin-top: var(--pgn-spacing-spacer-4);
-    padding-top: var(--pgn-spacing-spacer-4);
-    border-top: 1px solid var(--color-border-interact-default);
-  }
-
-  // Transitions for a scenario view, when the user clicks an option or clicks the return button.
-  .options-pane {
-    transition: left 0.5s;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .options-pane {
-      transition: unset;
-    }
-  }
-
-  .options-pane-1 {
-    left: 0%;
-  }
-
-  .options-pane-2 {
-    left: 50%;
-  }
-
-  .options-pane-3 {
-    left: 100%;
-  }
-
-  .active.options-pane-1 {
-    left: -50%;
-  }
-
-  .active.options-pane-2 {
-    left: 0%;
-  }
-
-  .active.options-pane-3 {
-    left: 50%;
-  }
-
-  // Transitions for a *tablet* scenario view, when the user clicks an option or clicks the return button.
-  .tablet-options-pane {
-    transition: left 0.5s;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .tablet-options-pane {
-      transition: unset;
-    }
-  }
-
-  .tablet-options-pane-1 {
-    left: 0%;
-  }
-
-  .tablet-options-pane-2 {
-    left: 100%;
-
-    border-left: var(--pgn-spacing-spacer-3) solid var(--color-interact-default);
-  }
-
-  .active.tablet-options-pane-1 {
-    left: -100%;
-  }
-
-  .active.tablet-options-pane-2 {
-    left: 0%;
-  }
-
-  .option-feedback-wrapper {
-    border-left: var(--pgn-spacing-spacer-4) solid var(--color-interact-default);
   }
 }

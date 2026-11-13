@@ -1564,8 +1564,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 								src: M,
 								className: "mr-2"
 							})
-						}), /* @__PURE__ */ (0, Q.jsx)("span", {
-							className: "ml-3 small-heading",
+						}), /* @__PURE__ */ (0, Q.jsx)("h5", {
+							className: "m-0 ml-3",
 							children: e
 						})]
 					}),
@@ -1580,8 +1580,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 					/* @__PURE__ */ (0, Q.jsx)("div", {
 						className: "d-flex justify-content-end",
 						children: /* @__PURE__ */ (0, Q.jsx)(u, {
-							variant: "unfolding-scenario-action",
-							className: `rounded-pill mt-4 ${i ? "w-100" : ""}`,
+							variant: "primary",
+							className: `mt-4 ${i ? "w-100" : ""}`,
 							onClick: n,
 							disabled: r,
 							block: i,
@@ -1605,14 +1605,14 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 		})
 	});
 }, Jr = ({ option: e, interactionType: t, isContinueEnabled: n, onContinue: r, onReturn: i }) => {
-	let a = $().width || window.innerWidth;
+	let a = ($().width || window.innerWidth) < j.extraSmall.maxWidth;
 	return /* @__PURE__ */ (0, Q.jsx)("div", {
-		className: `option-feedback-wrapper position-fixed fixed-top fixed-bottom w-100 h-100 bg-interact-raised ${a < j.extraSmall.maxWidth ? "p-4" : "p-4-5"}`,
+		className: "option-feedback-wrapper bg-interact-raised p-4",
 		children: /* @__PURE__ */ (0, Q.jsxs)("div", {
 			className: "w-100 h-100 position-relative d-flex flex-column justify-content-center",
 			children: [
-				/* @__PURE__ */ (0, Q.jsx)("p", {
-					className: "text-interact-headings font-size-md font-weight-bold",
+				/* @__PURE__ */ (0, Q.jsx)("h5", {
+					className: "text-interact-headings",
 					children: e.value
 				}),
 				/* @__PURE__ */ (0, Q.jsx)(Yr, { option: e }),
@@ -1626,8 +1626,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 					className: "position-absolute w-100 text-right",
 					style: { bottom: 0 },
 					children: /* @__PURE__ */ (0, Q.jsx)(u, {
-						variant: "unfolding-scenario-action",
-						className: `rounded-pill ${a < j.extraSmall.maxWidth ? "w-100" : ""}`,
+						variant: "primary",
+						className: `${a ? "w-100" : ""}`,
 						disabled: !n,
 						onClick: r,
 						children: "Continue"
@@ -1690,11 +1690,11 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 	return s < j.extraSmall.maxWidth && (c = "mobile"), /* @__PURE__ */ (0, Q.jsxs)("div", {
 		className: "d-flex flex-grow-1 flex-wrap",
 		children: [/* @__PURE__ */ (0, Q.jsxs)("div", {
-			className: "p-4-5 bg-interact-default",
+			className: "p-3 m-3 bg-interact-default",
 			style: { flex: `0 0 ${c == "desktop" ? "60%" : "100%"}` },
 			children: [
-				/* @__PURE__ */ (0, Q.jsx)("p", {
-					className: "font-size-lg font-weight-bold text-interact-accent",
+				/* @__PURE__ */ (0, Q.jsx)("h5", {
+					className: "text-interact-accent",
 					children: e.heading
 				}),
 				/* @__PURE__ */ (0, Q.jsx)("div", {
@@ -1715,16 +1715,16 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 				minHeight: "10rem"
 			},
 			children: /* @__PURE__ */ (0, Q.jsxs)("div", {
-				className: "fixed-bottom align-content-end text-right p-4-5",
+				className: "fixed-bottom align-content-end text-right p-3 m-3",
 				children: [/* @__PURE__ */ (0, Q.jsxs)(u, {
-					variant: "outline-unfolding-scenario-action",
-					className: `rounded-pill ${c == "mobile" ? "w-100 mb-3" : ""}`,
+					variant: "outline-primary",
+					className: `${c == "mobile" ? "w-100 mb-3" : ""}`,
 					onClick: r,
 					block: c == "mobile",
 					children: ["Restart ", /* @__PURE__ */ (0, Q.jsx)(a, { src: de })]
 				}), /* @__PURE__ */ (0, Q.jsxs)(u, {
-					variant: "unfolding-scenario-action",
-					className: `rounded-pill ${c == "mobile" ? "w-100" : "ml-3"}`,
+					variant: "primary",
+					className: `${c == "mobile" ? "w-100" : "ml-3"}`,
 					onClick: i,
 					block: c == "mobile",
 					children: ["Exit ", /* @__PURE__ */ (0, Q.jsx)(a, { src: p })]
@@ -1743,11 +1743,11 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 			size: "inline"
 		}),
 		Array.from(Array(t)).map((n, r) => /* @__PURE__ */ (0, Q.jsxs)(Q.Fragment, { children: [/* @__PURE__ */ (0, Q.jsx)("div", {
-			className: `step-indicator d-flex justify-content-center align-items-center rounded-pill p-1 ${r <= e ? "bg-icon-default text-interact-content" : "bg-emphasis text-content"}`,
+			className: `step-indicator ${r <= e ? "active" : ""}`,
 			children: r + 1
 		}), r < t - 1 && /* @__PURE__ */ (0, Q.jsx)("div", { className: "step-indicator-separator" })] })),
-		e >= t && /* @__PURE__ */ (0, Q.jsx)("span", {
-			className: "ml-4 text-content font-size-md font-weight-bold",
+		e >= t && /* @__PURE__ */ (0, Q.jsx)("div", {
+			className: "step-indicator-completed",
 			children: "Completed!"
 		})
 	]
@@ -1764,8 +1764,11 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 			className: "px-3",
 			children: [
 				/* @__PURE__ */ (0, Q.jsx)(o, {
-					className: "d-flex align-items-center mx-3 small-heading text-interact-headings",
-					children: t
+					className: "d-flex align-items-center mx-3",
+					children: /* @__PURE__ */ (0, Q.jsx)("h5", {
+						className: "text-interact-headings",
+						children: t
+					})
 				}),
 				/* @__PURE__ */ (0, Q.jsx)(o, {
 					className: "d-flex justify-content-center",
@@ -1795,12 +1798,12 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 			}),
 			/* @__PURE__ */ (0, Q.jsxs)("div", {
 				className: "px-2 mx-1 flex-grow-1",
-				children: [/* @__PURE__ */ (0, Q.jsx)("div", {
-					className: "typography-headings font-weight-bold font-size-md text-interact-headings",
+				children: [/* @__PURE__ */ (0, Q.jsx)("h5", {
+					className: "text-interact-headings",
 					children: t
-				}), n >= r && /* @__PURE__ */ (0, Q.jsx)("div", {
-					className: "text-interact-accent font-size-sm-md font-weight-lessbold typography-headings mt-n1",
-					children: "Completed!"
+				}), n >= r && /* @__PURE__ */ (0, Q.jsx)("small", {
+					className: "text-interact-accent mt-n1",
+					children: /* @__PURE__ */ (0, Q.jsx)("strong", { children: "Completed!" })
 				})]
 			}),
 			/* @__PURE__ */ (0, Q.jsx)($r, { onClose: e })
@@ -1841,7 +1844,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 				width: 56,
 				height: 56,
 				children: /* @__PURE__ */ (0, Q.jsxs)("div", {
-					className: "h-100 d-flex justify-content-center align-items-center text-interact-content font-size-sm",
+					className: "h-100 d-flex justify-content-center align-items-center text-interact-content",
+					style: { fontSize: "12px" },
 					children: [
 						e,
 						" of ",
@@ -1857,8 +1861,11 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 		className: "mx-3",
 		fluid: !0,
 		children: [/* @__PURE__ */ (0, Q.jsxs)(O, { children: [/* @__PURE__ */ (0, Q.jsx)(o, {
-			className: "d-flex align-items-center small-heading text-interact-headings",
-			children: t
+			className: "d-flex align-items-center",
+			children: /* @__PURE__ */ (0, Q.jsx)("h5", {
+				className: "text-interact-headings",
+				children: t
+			})
 		}), /* @__PURE__ */ (0, Q.jsx)(o, {
 			className: "d-flex justify-content-end align-items-center",
 			children: /* @__PURE__ */ (0, Q.jsx)($r, { onClose: e })
@@ -1893,17 +1900,16 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 		totalScenarios: i
 	});
 }, ai = ({ onClick: e, children: t, active: n, preSelected: r }) => /* @__PURE__ */ (0, Q.jsxs)("button", {
-	className: `scenario-option-btn rounded-sm d-flex justify-content-start border-0 overflow-hidden align-items-center p-0 mb-3 ${n ? "text-interact-content-inverse bg-interact-raised-emphasis active" : "bg-interact-raised text-interact-content"} ${r ? "pre-selected" : ""}`,
+	className: `scenario-option-btn ${n ? "text-interact-content-inverse bg-interact-raised-emphasis active" : "bg-interact-raised text-interact-content"} ${r ? "pre-selected" : ""}`,
 	onClick: e,
 	children: [/* @__PURE__ */ (0, Q.jsx)("div", {
 		className: "flex-grow-1 text-left mx-3 px-3 my-3",
 		children: t
 	}), /* @__PURE__ */ (0, Q.jsx)("div", {
-		className: "h-100 bg-interact-raised-emphasis d-flex align-items-center hover-arrow",
+		className: "hover-arrow",
 		children: /* @__PURE__ */ (0, Q.jsx)(a, {
 			src: ce,
-			size: "lg",
-			className: "text-icon-inverse mx-3"
+			size: "lg"
 		})
 	})]
 }), oi = ({ scenario: e, activeOptionIndex: t, preSelectedOptions: n, isContinueEnabled: r, onContinue: i, onSelectOption: o }) => /* @__PURE__ */ (0, Q.jsx)("div", {
@@ -1915,8 +1921,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 			/* @__PURE__ */ (0, Q.jsx)("div", {
 				className: `d-flex h-100 w-50 position-absolute align-items-center ${t === null ? "" : "active"} options-pane options-pane-1`,
 				children: /* @__PURE__ */ (0, Q.jsxs)("div", { children: [
-					/* @__PURE__ */ (0, Q.jsx)("p", {
-						className: "font-size-lg font-weight-bold text-interact-accent",
+					/* @__PURE__ */ (0, Q.jsx)("h5", {
+						className: "text-interact-accent",
 						children: e.heading
 					}),
 					/* @__PURE__ */ (0, Q.jsx)("div", {
@@ -1926,7 +1932,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 					/* @__PURE__ */ (0, Q.jsxs)("div", {
 						className: "d-flex align-items-center mt-3 mb-2",
 						children: [/* @__PURE__ */ (0, Q.jsx)("div", {
-							className: "arrow-bubble p-2 text-icon-interact-default",
+							className: "arrow-bubble",
 							children: /* @__PURE__ */ (0, Q.jsx)(a, { src: M })
 						}), /* @__PURE__ */ (0, Q.jsx)("span", {
 							className: "text-interact-headings font-size-medium font-weight-bold pl-2",
@@ -1952,8 +1958,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 				}), /* @__PURE__ */ (0, Q.jsxs)("div", {
 					className: "flex-grow-1",
 					children: [
-						/* @__PURE__ */ (0, Q.jsx)("p", {
-							className: "text-interact-headings font-size-md font-weight-bold",
+						/* @__PURE__ */ (0, Q.jsx)("h5", {
+							className: "text-interact-headings",
 							children: e.prompt
 						}),
 						/* @__PURE__ */ (0, Q.jsx)("div", {
@@ -1968,8 +1974,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 						/* @__PURE__ */ (0, Q.jsx)("div", {
 							className: "d-flex justify-content-end",
 							children: /* @__PURE__ */ (0, Q.jsx)(u, {
-								variant: "unfolding-scenario-action",
-								className: "rounded-pill",
+								variant: "primary",
 								disabled: !r,
 								onClick: i,
 								children: "Continue"
@@ -1979,7 +1984,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 				})]
 			}),
 			/* @__PURE__ */ (0, Q.jsx)("div", {
-				className: `w-50 h-100 p-6 position-absolute d-flex align-items-center ${t === null ? "" : "active"} options-pane options-pane-3`,
+				className: `w-50 h-100 p-6 position-absolute d-flex flex-column align-items-start justify-content-center ${t === null ? "" : "active"} options-pane options-pane-3`,
 				children: t === null ? null : /* @__PURE__ */ (0, Q.jsx)(Yr, { option: e.options[t] })
 			})
 		]
@@ -1991,8 +1996,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 		className: `w-100 h-100 position-absolute p-4 d-flex flex-column ${n === null ? "" : "active"} tablet-options-pane tablet-options-pane-1`,
 		children: [
 			/* @__PURE__ */ (0, Q.jsxs)("div", { children: [
-				/* @__PURE__ */ (0, Q.jsx)("p", {
-					className: "font-size-lg font-weight-bold text-interact-accent",
+				/* @__PURE__ */ (0, Q.jsx)("h5", {
+					className: "text-interact-accent",
 					children: t.heading
 				}),
 				/* @__PURE__ */ (0, Q.jsx)("div", {
@@ -2002,7 +2007,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 				/* @__PURE__ */ (0, Q.jsxs)("div", {
 					className: "d-flex align-items-center mt-3 mb-2",
 					children: [/* @__PURE__ */ (0, Q.jsx)("div", {
-						className: "arrow-bubble p-2 text-icon-interact-default",
+						className: "arrow-bubble",
 						children: /* @__PURE__ */ (0, Q.jsx)(a, { src: M })
 					}), /* @__PURE__ */ (0, Q.jsx)("span", {
 						className: "text-interact-headings font-size-medium font-weight-bold pl-2",
@@ -2016,8 +2021,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 			}),
 			/* @__PURE__ */ (0, Q.jsxs)("div", {
 				className: "flex-grow-1",
-				children: [/* @__PURE__ */ (0, Q.jsx)("p", {
-					className: "text-interact-headings font-size-md font-weight-bold",
+				children: [/* @__PURE__ */ (0, Q.jsx)("h5", {
+					className: "text-interact-headings",
 					children: t.prompt
 				}), /* @__PURE__ */ (0, Q.jsx)("div", {
 					className: "d-flex flex-column flex-grow-1",
@@ -2032,8 +2037,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 			e != "SelectOne" && /* @__PURE__ */ (0, Q.jsx)("div", {
 				className: "d-flex justify-content-end",
 				children: /* @__PURE__ */ (0, Q.jsx)(u, {
-					variant: "unfolding-scenario-action",
-					className: "rounded-pill",
+					variant: "primary",
 					disabled: !i,
 					onClick: o,
 					children: "Continue"
@@ -2041,7 +2045,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 			})
 		]
 	}), /* @__PURE__ */ (0, Q.jsx)("div", {
-		className: `w-100 h-100 position-absolute d-flex flex-column justify-content-center p-4-5 bg-interact-raised ${n === null ? "" : "active"} tablet-options-pane tablet-options-pane-2`,
+		className: `w-100 h-100 position-absolute d-flex flex-column justify-content-center p-3 m-3 bg-interact-raised ${n === null ? "" : "active"} tablet-options-pane tablet-options-pane-2`,
 		children: n !== null && /* @__PURE__ */ (0, Q.jsxs)(Q.Fragment, { children: [/* @__PURE__ */ (0, Q.jsx)(Jr, {
 			option: t.options[n],
 			interactionType: e,
@@ -2051,8 +2055,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 		}), e == "SelectOne" && /* @__PURE__ */ (0, Q.jsx)("div", {
 			className: "d-flex justify-content-end",
 			children: /* @__PURE__ */ (0, Q.jsx)(u, {
-				variant: "unfolding-scenario-action",
-				className: "rounded-pill",
+				variant: "primary",
 				disabled: !i,
 				onClick: o,
 				children: "Continue"
@@ -2079,8 +2082,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 	children: /* @__PURE__ */ (0, Q.jsxs)("div", {
 		className: "d-flex flex-column pt-4 px-4 flex-grow-1 w-100 bg-interact-default",
 		children: [
-			/* @__PURE__ */ (0, Q.jsx)("p", {
-				className: "font-size-lg font-weight-bold text-interact-accent",
+			/* @__PURE__ */ (0, Q.jsx)("h5", {
+				className: "text-interact-accent",
 				children: e.heading
 			}),
 			/* @__PURE__ */ (0, Q.jsx)("div", {
@@ -2090,7 +2093,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 			/* @__PURE__ */ (0, Q.jsxs)("div", {
 				className: "d-flex align-items-center mt-3 mb-2",
 				children: [/* @__PURE__ */ (0, Q.jsx)("div", {
-					className: "arrow-bubble p-2 text-icon-interact-default",
+					className: "arrow-bubble",
 					children: /* @__PURE__ */ (0, Q.jsx)(a, { src: M })
 				}), /* @__PURE__ */ (0, Q.jsx)("span", {
 					className: "text-interact-headings font-size-medium font-weight-bold pl-2",
@@ -2104,8 +2107,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 			/* @__PURE__ */ (0, Q.jsx)("div", {
 				className: "d-flex flex-column justify-content-end flex-grow-1 w-100 bg-interact-default",
 				children: /* @__PURE__ */ (0, Q.jsx)(u, {
-					variant: "unfolding-scenario-action",
-					className: "rounded-pill w-100 mb-4",
+					variant: "primary",
+					className: "w-100 mb-4",
 					onClick: t,
 					children: "Continue"
 				})
@@ -2121,8 +2124,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 			alt: "Return",
 			onClick: s
 		}),
-		/* @__PURE__ */ (0, Q.jsx)("p", {
-			className: "text-interact-headings font-size-md font-weight-bold",
+		/* @__PURE__ */ (0, Q.jsx)("h5", {
+			className: "text-interact-headings",
 			children: t.prompt
 		}),
 		/* @__PURE__ */ (0, Q.jsx)("div", {
@@ -2135,8 +2138,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 			}))
 		}),
 		e != "SelectOne" && /* @__PURE__ */ (0, Q.jsx)(u, {
-			variant: "unfolding-scenario-action",
-			className: "rounded-pill w-100",
+			variant: "primary",
+			className: "w-100",
 			disabled: !i,
 			onClick: a,
 			children: "Continue"
@@ -2202,8 +2205,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 		children: /* @__PURE__ */ (0, Q.jsxs)("div", {
 			className: "m-3",
 			children: [
-				/* @__PURE__ */ (0, Q.jsx)("p", {
-					className: "font-size-md text-interact-headings font-weight-bold",
+				/* @__PURE__ */ (0, Q.jsx)("h5", {
+					className: "text-interact-headings",
 					children: "Leave interactive?"
 				}),
 				/* @__PURE__ */ (0, Q.jsx)("p", {
@@ -2213,14 +2216,14 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 				/* @__PURE__ */ (0, Q.jsxs)("div", {
 					className: "text-center",
 					children: [/* @__PURE__ */ (0, Q.jsx)(u, {
-						variant: "outline-unfolding-scenario-action",
-						className: `rounded-pill ${n ? "w-100 mb-3" : ""}`,
+						variant: "outline-primary",
+						className: `${n ? "w-100 mb-3" : ""}`,
 						onClick: t,
 						block: n,
 						children: "Leave"
 					}), /* @__PURE__ */ (0, Q.jsx)(u, {
-						variant: "unfolding-scenario-action",
-						className: `rounded-pill ${n ? "w-100" : "ml-3"}`,
+						variant: "primary",
+						className: `${n ? "w-100" : "ml-3"}`,
 						onClick: e,
 						block: n,
 						children: "Stay"
@@ -2237,8 +2240,8 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 		children: /* @__PURE__ */ (0, Q.jsxs)("div", {
 			className: "m-3",
 			children: [
-				/* @__PURE__ */ (0, Q.jsx)("p", {
-					className: "font-size-md text-interact-headings font-weight-bold",
+				/* @__PURE__ */ (0, Q.jsx)("h5", {
+					className: "text-interact-headings",
 					children: "Restart interactive?"
 				}),
 				/* @__PURE__ */ (0, Q.jsx)("p", {
@@ -2248,14 +2251,14 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 				/* @__PURE__ */ (0, Q.jsxs)("div", {
 					className: "text-center",
 					children: [/* @__PURE__ */ (0, Q.jsx)(u, {
-						variant: "outline-unfolding-scenario-action",
-						className: `rounded-pill ${n ? "w-100 mb-3" : ""}`,
+						variant: "outline-primary",
+						className: `${n ? "w-100 mb-3" : ""}`,
 						onClick: t,
 						block: n,
 						children: "Restart"
 					}), /* @__PURE__ */ (0, Q.jsx)(u, {
-						variant: "unfolding-scenario-action",
-						className: `rounded-pill ${n ? "w-100" : "ml-3"}`,
+						variant: "primary",
+						className: `${n ? "w-100" : "ml-3"}`,
 						onClick: e,
 						block: n,
 						children: "Stay"
@@ -2267,7 +2270,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 }, hi = ({ data: e, onExit: t }) => {
 	let [n, r] = (0, S.useState)(0), [i, a] = (0, S.useState)(null), [o, s] = (0, S.useState)(/* @__PURE__ */ new Map());
 	return /* @__PURE__ */ (0, Q.jsxs)("div", {
-		className: "unfolding-scenario-activity-wrapper min-vh-100 bg-interact-default d-flex flex-column",
+		className: "h-100 min-vh-100 bg-interact-default d-flex flex-column",
 		children: [
 			/* @__PURE__ */ (0, Q.jsx)(ii, {
 				onClose: () => a("leave"),
@@ -2353,7 +2356,7 @@ var qr = ({ name: e, introduction: t, onLaunch: n, activityOpen: r }) => {
 			activityOpen: r
 		})]
 	});
-}, yi = ".xblock-unfolding-scenario-wrapper{--color-action-default:var(--pgn-unfolding-scenario-color-action-default,#3874bc);--color-background-interactive:var(--pgn-unfolding-scenario-color-background-interactive,#8cc9d1);--color-text-interactive:var(--pgn-unfolding-scenario-color-text-interactive,#2f808e);--color-bg-emphasis:var(--pgn-unfolding-scenario-color-bg-emphasis,#223e5d);--color-bg-main:var(--pgn-unfolding-scenario-color-bg-main,#1b324a);--color-border-interact-default:var(--pgn-unfolding-scenario-color-border-interact-default,#b2d8de);--color-border-interact-emphasis:var(--pgn-unfolding-scenario-color-border-interact-emphasis,#327d8a);--color-border-sec-action-focus:var(--pgn-unfolding-scenario-color-border-sec-action-focus,#0e1d2f);--color-icon-action-sec-default:var(--pgn-unfolding-scenario-color-icon-action-sec-default,#3874bc);--color-icon-interact-default:var(--pgn-unfolding-scenario-color-icon-interact-default,#327d8a);--color-interact-default:var(--pgn-unfolding-scenario-color-interact-default,#ecf5f7);--color-interact-emphasis:var(--pgn-unfolding-scenario-color-interact-emphasis,#d9ebef);--color-interact-raised-emphasis:var(--pgn-unfolding-scenario-color-interact-raised-emphasis,#327d8a);--color-txt-interact-accent:var(--pgn-unfolding-scenario-color-txt-interact-accent,#2a578d);--color-txt-interact-content-inverse:var(--pgn-unfolding-scenario-color-txt-interact-content-inverse,#fff);--color-txt-interact-content:var(--pgn-unfolding-scenario-color-txt-interact-content,#223e5d);--color-txt-interact-headings:var(--pgn-unfolding-scenario-color-txt-interact-headings,#327d8a);--color-txt-action-prim-default:var(--pgn-unfolding-scenario-color-txt-action-prim-default,#fff);--color-txt-content:var(--pgn-unfolding-scenario-color-txt-content,#fff);--color-txt-sec-content:var(--pgn-unfolding-scenario-color-txt-sec-content,#223e5d);--color-icon-action-default:var(--pgn-unfolding-scenario-color-icon-action-default,#fff);--color-border-default:var(--pgn-unfolding-scenario-color-border-default,#4e657d);--color-interact-raised:var(--pgn-unfolding-scenario-color-interact-raised,#fff);--color-icon-inverse:var(--pgn-unfolding-scenario-color-icon-inverse,#fff);--color-icon-default:var(--pgn-unfolding-scenario-color-icon-default,#8cc4ce);--color-icon-action-sec-neutral:var(--pgn-unfolding-scenario-color-icon-action-sec-neutral,#1c3a5e);--color-txt-feedback-negative:var(--pgn-unfolding-scenario-color-txt-feedback-negative,#db493d);--color-icon-interact-negative:var(--pgn-unfolding-scenario-color-icon-interact-negative,#db493d);--color-txt-feedback-positive:var(--pgn-unfolding-scenario-color-txt-feedback-positive,#149418);--color-icon-interact-positive:var(--pgn-unfolding-scenario-color-icon-interact-positive,#149418);--color-txt-feedback-warning:var(--pgn-unfolding-scenario-color-txt-feedback-warning,#ffd900);--color-icon-interact-warning:var(--pgn-unfolding-scenario-color-icon-interact-warning,#ffd900);--btn-min-width:var(--pgn-unfolding-scenario-btn-min-width,200px)}.xblock-unfolding-scenario-wrapper .text-interact-headings{color:var(--color-txt-interact-headings)!important}.xblock-unfolding-scenario-wrapper .text-interact-accent{color:var(--color-txt-interact-accent)!important}.xblock-unfolding-scenario-wrapper .text-interact-content{color:var(--color-txt-interact-content)!important}.xblock-unfolding-scenario-wrapper .text-interact-content-inverse{color:var(--color-txt-interact-content-inverse)!important}.xblock-unfolding-scenario-wrapper .text-content{color:var(--color-txt-content)!important}.xblock-unfolding-scenario-wrapper .text-sec-content{color:var(--color-txt-sec-content)!important}.xblock-unfolding-scenario-wrapper .text-icon-inverse{color:var(--color-icon-inverse)!important}.xblock-unfolding-scenario-wrapper .text-icon-action-default{color:var(--color-icon-action-default)!important}.xblock-unfolding-scenario-wrapper .text-icon-action-sec-default{color:var(--color-icon-action-sec-default)!important}.xblock-unfolding-scenario-wrapper .text-icon-action-sec-neutral{color:var(--color-icon-action-sec-neutral)!important}.xblock-unfolding-scenario-wrapper .text-feedback-negative{color:var(--color-txt-feedback-negative)!important}.xblock-unfolding-scenario-wrapper .text-icon-interact-negative{color:var(--color-icon-interact-negative)!important}.xblock-unfolding-scenario-wrapper .text-feedback-positive{color:var(--color-txt-feedback-positive)!important}.xblock-unfolding-scenario-wrapper .text-icon-interact-positive{color:var(--color-icon-interact-positive)!important}.xblock-unfolding-scenario-wrapper .text-feedback-warning{color:var(--color-txt-feedback-warning)!important}.xblock-unfolding-scenario-wrapper .text-icon-interact-warning{color:var(--color-icon-interact-warning)!important}.xblock-unfolding-scenario-wrapper .bg-interact-raised-emphasis{background-color:var(--color-interact-raised-emphasis)!important}.xblock-unfolding-scenario-wrapper .bg-interact-raised{background-color:var(--color-interact-raised)!important}.xblock-unfolding-scenario-wrapper .bg-emphasis{background-color:var(--color-bg-emphasis)!important}.xblock-unfolding-scenario-wrapper .bg-icon-default{background-color:var(--color-icon-default)!important}.xblock-unfolding-scenario-wrapper .bg-interact-default{background-color:var(--color-interact-default)!important}.xblock-unfolding-scenario-wrapper .bg-main{background-color:var(--color-bg-main)!important}.xblock-unfolding-scenario-wrapper .rounded-lg-bottom{border-bottom-right-radius:var(--pgn-size-border-radius-lg)!important;border-bottom-left-radius:var(--pgn-size-border-radius-lg)!important}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name{color:var(--color-text-interactive);background-color:var(--color-interact-emphasis);border-radius:var(--pgn-spacing-spacer-base);border-bottom-left-radius:0;border-color:var(--color-border-interact-default)!important}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name .border-right{border-color:var(--color-border-interact-default)!important}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name .pgn__icon{color:var(--color-interact-raised-emphasis);zoom:2}.xblock-unfolding-scenario-wrapper .btn-unfolding-scenario-action{--pgn-btn-bg:var(--color-action-default);--pgn-btn-color:var(--color-txt-action-prim-default);--pgn-btn-hover-bg:var(--color-action-default);--pgn-btn-hover-color:var(--color-txt-action-prim-default);--pgn-btn-focus-bg:var(--color-action-default);--pgn-btn-focus-color:var(--color-txt-action-prim-default);--pgn-btn-focus-outline-color:var(--color-border-sec-action-focus);--pgn-btn-active-bg:var(--color-action-default);--pgn-btn-active-color:var(--color-txt-action-prim-default)}.xblock-unfolding-scenario-wrapper .btn-outline-unfolding-scenario-action{--pgn-size-btn-border-width:2px;--pgn-btn-bg:var(--color-txt-action-prim-default);--pgn-btn-color:var(--color-action-default);--pgn-btn-border-color:var(--color-action-default);--pgn-btn-hover-bg:var(--color-txt-action-prim-default);--pgn-btn-hover-color:var(--color-action-default);--pgn-btn-hover-border-color:var(--color-action-default);--pgn-btn-focus-bg:var(--color-txt-action-prim-default);--pgn-btn-focus-color:var(--color-action-default);--pgn-btn-focus-border-color:var(--color-action-default);--pgn-btn-focus-outline-color:var(--color-action-default);--pgn-btn-active-bg:var(--color-txt-action-prim-default);--pgn-btn-active-color:var(--color-action-default);--pgn-btn-active-border-color:var(--color-action-default)}.xblock-unfolding-scenario-wrapper .btn{min-width:var(--btn-min-width);padding:var(--pgn-spacing-spacer-2-5) var(--pgn-spacing-spacer-4-5)}.xblock-unfolding-scenario-wrapper .small-heading{font-size:calc(var(--pgn-typography-font-size-base) * 1.125);font-family:var(--pgn-typography-headings-font-family);font-weight:var(--pgn-typography-font-weight-bold)}.xblock-unfolding-scenario-wrapper .font-weight-lessbold{font-weight:calc(var(--pgn-typography-font-weight-bold) - 100)}.xblock-unfolding-scenario-wrapper .typography-headings{font-family:var(--pgn-typography-headings-font-family)}.xblock-unfolding-scenario-wrapper .font-size-lg{font-size:calc(var(--pgn-typography-font-size-base) * 1.25)}.xblock-unfolding-scenario-wrapper .font-size-md{font-size:calc(var(--pgn-typography-font-size-base) * 1.125)}.xblock-unfolding-scenario-wrapper .font-size-sm-md{font-size:calc(var(--pgn-typography-font-size-base) * .875)}.xblock-unfolding-scenario-wrapper .font-size-sm{font-size:calc(var(--pgn-typography-font-size-base) * .75)}.xblock-unfolding-scenario-wrapper .m-4-5{margin:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .ml-4-5,.xblock-unfolding-scenario-wrapper .mx-4-5{margin-left:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .mr-4-5,.xblock-unfolding-scenario-wrapper .mx-4-5{margin-right:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .mt-4-5,.xblock-unfolding-scenario-wrapper .my-4-5{margin-top:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .mb-4-5,.xblock-unfolding-scenario-wrapper .my-4-5{margin-bottom:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .p-4-5{padding:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .pl-4-5,.xblock-unfolding-scenario-wrapper .px-4-5{padding-left:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .pr-4-5,.xblock-unfolding-scenario-wrapper .px-4-5{padding-right:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .pt-4-5,.xblock-unfolding-scenario-wrapper .py-4-5{padding-top:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .pb-4-5,.xblock-unfolding-scenario-wrapper .py-4-5{padding-bottom:var(--pgn-spacing-spacer-4-5)!important}.xblock-unfolding-scenario-wrapper .unfolding-scenario-activity-wrapper{height:100%}.xblock-unfolding-scenario-wrapper .step-indicator{height:var(--pgn-spacing-spacer-4-5);width:var(--pgn-spacing-spacer-4-5);font-size:calc(var(--pgn-typography-font-size-base) * 1.125)}.xblock-unfolding-scenario-wrapper .step-indicator-separator{background-color:var(--color-border-default);width:17px;height:1px}.xblock-unfolding-scenario-wrapper .arrow-bubble{background-color:var(--color-interact-emphasis);color:var(--color-icon-interact-default);border:1px solid var(--color-border-interact-default);border-radius:var(--pgn-spacing-spacer-base);border-bottom-left-radius:0;display:inline-block}.xblock-unfolding-scenario-wrapper .scenario-option-btn{height:calc(var(--pgn-typography-line-height-base) * var(--pgn-typography-font-size-base) * 3 + var(--pgn-spacing-spacer-base) * 2)}.xblock-unfolding-scenario-wrapper .scenario-option-btn.pre-selected{outline:2px solid var(--color-border-interact-emphasis)}.xblock-unfolding-scenario-wrapper .scenario-option-btn .hover-arrow{min-width:10px}.xblock-unfolding-scenario-wrapper .scenario-option-btn .hover-arrow .pgn__icon{display:none}.xblock-unfolding-scenario-wrapper .scenario-option-btn:hover .hover-arrow .pgn__icon,.xblock-unfolding-scenario-wrapper .scenario-option-btn.active .hover-arrow .pgn__icon{display:block}.xblock-unfolding-scenario-wrapper .scenario-option-btn:focus-visible{outline:2px solid var(--color-option-focus-border)}.xblock-unfolding-scenario-wrapper .outcome-option-row+.outcome-option-row{margin-top:var(--pgn-spacing-spacer-4);padding-top:var(--pgn-spacing-spacer-4);border-top:1px solid var(--color-border-interact-default)}.xblock-unfolding-scenario-wrapper .options-pane{transition:left .5s}@media (prefers-reduced-motion:reduce){.xblock-unfolding-scenario-wrapper .options-pane{transition:unset}}.xblock-unfolding-scenario-wrapper .options-pane-1{left:0%}.xblock-unfolding-scenario-wrapper .options-pane-2{left:50%}.xblock-unfolding-scenario-wrapper .options-pane-3{left:100%}.xblock-unfolding-scenario-wrapper .active.options-pane-1{left:-50%}.xblock-unfolding-scenario-wrapper .active.options-pane-2{left:0%}.xblock-unfolding-scenario-wrapper .active.options-pane-3{left:50%}.xblock-unfolding-scenario-wrapper .tablet-options-pane{transition:left .5s}@media (prefers-reduced-motion:reduce){.xblock-unfolding-scenario-wrapper .tablet-options-pane{transition:unset}}.xblock-unfolding-scenario-wrapper .tablet-options-pane-1{left:0%}.xblock-unfolding-scenario-wrapper .tablet-options-pane-2{border-left:var(--pgn-spacing-spacer-3) solid var(--color-interact-default);left:100%}.xblock-unfolding-scenario-wrapper .active.tablet-options-pane-1{left:-100%}.xblock-unfolding-scenario-wrapper .active.tablet-options-pane-2{left:0%}.xblock-unfolding-scenario-wrapper .option-feedback-wrapper{border-left:var(--pgn-spacing-spacer-4) solid var(--color-interact-default)}", bi = async (e, t, n) => {
+}, yi = ".xblock-unfolding-scenario-wrapper{--button-border-radius:var(--pgn-unfolding-scenario-button-radius,var(--pgn-size-btn-border-radius-base,0));--text-interact-accent:var(--pgn-unfolding-scenario-text-interact-accent,#2a578d);--color-background-interactive:var(--pgn-unfolding-scenario-color-background-interactive,#8cc9d1);--color-text-interactive:var(--pgn-unfolding-scenario-color-text-interactive,#2f808e);--color-bg-emphasis:var(--pgn-unfolding-scenario-color-bg-emphasis,#223e5d);--color-bg-main:var(--pgn-unfolding-scenario-color-bg-main,#1b324a);--color-border-interact-default:var(--pgn-unfolding-scenario-color-border-interact-default,#b2d8de);--color-border-interact-emphasis:var(--pgn-unfolding-scenario-color-border-interact-emphasis,#327d8a);--color-border-sec-action-focus:var(--pgn-unfolding-scenario-color-border-sec-action-focus,#0e1d2f);--color-icon-action-sec-default:var(--pgn-unfolding-scenario-color-icon-action-sec-default,#3874bc);--color-icon-interact-default:var(--pgn-unfolding-scenario-color-icon-interact-default,#327d8a);--color-interact-default:var(--pgn-unfolding-scenario-color-interact-default,#ecf5f7);--color-interact-emphasis:var(--pgn-unfolding-scenario-color-interact-emphasis,#d9ebef);--color-interact-raised-emphasis:var(--pgn-unfolding-scenario-color-interact-raised-emphasis,#327d8a);--color-txt-interact-content-inverse:var(--pgn-unfolding-scenario-color-txt-interact-content-inverse,#fff);--color-txt-interact-content:var(--pgn-unfolding-scenario-color-txt-interact-content,#223e5d);--color-txt-interact-headings:var(--pgn-unfolding-scenario-color-txt-interact-headings,#327d8a);--color-txt-action-prim-default:var(--pgn-unfolding-scenario-color-txt-action-prim-default,#fff);--color-txt-content:var(--pgn-unfolding-scenario-color-txt-content,#fff);--color-txt-sec-content:var(--pgn-unfolding-scenario-color-txt-sec-content,#223e5d);--color-icon-action-default:var(--pgn-unfolding-scenario-color-icon-action-default,#fff);--color-border-default:var(--pgn-unfolding-scenario-color-border-default,#4e657d);--color-interact-raised:var(--pgn-unfolding-scenario-color-interact-raised,#fff);--color-icon-inverse:var(--pgn-unfolding-scenario-color-icon-inverse,#fff);--color-icon-default:var(--pgn-unfolding-scenario-color-icon-default,#8cc4ce);--color-icon-action-sec-neutral:var(--pgn-unfolding-scenario-color-icon-action-sec-neutral,#1c3a5e);--color-txt-feedback-negative:var(--pgn-unfolding-scenario-color-txt-feedback-negative,#db493d);--color-icon-interact-negative:var(--pgn-unfolding-scenario-color-icon-interact-negative,#db493d);--color-txt-feedback-positive:var(--pgn-unfolding-scenario-color-txt-feedback-positive,#149418);--color-icon-interact-positive:var(--pgn-unfolding-scenario-color-icon-interact-positive,#149418);--color-txt-feedback-warning:var(--pgn-unfolding-scenario-color-txt-feedback-warning,#ffd900);--color-icon-interact-warning:var(--pgn-unfolding-scenario-color-icon-interact-warning,#ffd900)}.xblock-unfolding-scenario-wrapper .btn{border-radius:var(--button-border-radius)}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name{color:var(--color-text-interactive);background-color:var(--color-interact-emphasis);border-radius:var(--pgn-spacing-spacer-base);border-bottom-left-radius:0;border-color:var(--color-border-interact-default)!important}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name h5{color:var(--color-text-interactive)!important}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name .border-right{border-color:var(--color-border-interact-default)!important}.xblock-unfolding-scenario-wrapper .scenario-intro .scenario-name .pgn__icon{color:var(--color-interact-raised-emphasis);zoom:2}.xblock-unfolding-scenario-wrapper .scenario-option-btn{height:calc(var(--pgn-typography-line-height-base) * var(--pgn-typography-font-size-base) * 3 + var(--pgn-spacing-spacer-base) * 2);border-radius:var(--pgn-size-border-radius-sm);margin-bottom:var(--pgn-spacing-spacer-base);border:0;justify-content:flex-start;align-items:center;padding:0;display:flex;overflow:hidden}.xblock-unfolding-scenario-wrapper .scenario-option-btn.pre-selected{outline:2px solid var(--color-border-interact-emphasis)}.xblock-unfolding-scenario-wrapper .scenario-option-btn .hover-arrow{background-color:var(--color-interact-raised-emphasis);align-items:center;min-width:10px;height:100%;display:flex}.xblock-unfolding-scenario-wrapper .scenario-option-btn .hover-arrow .pgn__icon{color:var(--color-icon-inverse);margin:0 var(--pgn-spacing-spacer-base);display:none}.xblock-unfolding-scenario-wrapper .scenario-option-btn:hover .hover-arrow .pgn__icon,.xblock-unfolding-scenario-wrapper .scenario-option-btn.active .hover-arrow .pgn__icon{display:block}.xblock-unfolding-scenario-wrapper .scenario-option-btn:focus-visible{outline:2px solid var(--color-option-focus-border)}.xblock-unfolding-scenario-wrapper .step-indicator{padding:calc(var(--pgn-spacing-spacer-base) * .25);height:var(--pgn-spacing-spacer-4-5);width:var(--pgn-spacing-spacer-4-5);font-size:calc(var(--pgn-typography-font-size-base) * 1.125);color:var(--color-txt-content);background-color:var(--color-bg-emphasis);border-radius:100%;justify-content:center;align-items:center;display:flex}.xblock-unfolding-scenario-wrapper .step-indicator.active{background-color:var(--color-icon-default);color:var(--color-txt-interact-content)}.xblock-unfolding-scenario-wrapper .step-indicator-separator{background-color:var(--color-border-default);width:17px;height:1px}.xblock-unfolding-scenario-wrapper .step-indicator-completed{font-size:calc(var(--pgn-typography-font-size-base) * 1.125);font-weight:var(--pgn-typography-headings-font-weight);margin-left:calc(var(--pgn-spacing-spacer-base) * 1.5);color:var(--color-txt-content)!important}.xblock-unfolding-scenario-wrapper .arrow-bubble{background-color:var(--color-interact-emphasis);color:var(--color-icon-interact-default);border:1px solid var(--color-border-interact-default);border-radius:var(--pgn-spacing-spacer-base);padding:calc(var(--pgn-spacing-spacer-base) * .5);border-bottom-left-radius:0;display:inline-block}.xblock-unfolding-scenario-wrapper .options-pane{transition:left .5s}@media (prefers-reduced-motion:reduce){.xblock-unfolding-scenario-wrapper .options-pane{transition:unset}}.xblock-unfolding-scenario-wrapper .options-pane-1{left:0%}.xblock-unfolding-scenario-wrapper .options-pane-2{left:50%}.xblock-unfolding-scenario-wrapper .options-pane-3{left:100%}.xblock-unfolding-scenario-wrapper .active.options-pane-1{left:-50%}.xblock-unfolding-scenario-wrapper .active.options-pane-2{left:0%}.xblock-unfolding-scenario-wrapper .active.options-pane-3{left:50%}.xblock-unfolding-scenario-wrapper .tablet-options-pane{transition:left .5s}@media (prefers-reduced-motion:reduce){.xblock-unfolding-scenario-wrapper .tablet-options-pane{transition:unset}}.xblock-unfolding-scenario-wrapper .tablet-options-pane-1{left:0%}.xblock-unfolding-scenario-wrapper .tablet-options-pane-2{border-left:var(--pgn-spacing-spacer-3) solid var(--color-interact-default);left:100%}.xblock-unfolding-scenario-wrapper .active.tablet-options-pane-1{left:-100%}.xblock-unfolding-scenario-wrapper .active.tablet-options-pane-2{left:0%}.xblock-unfolding-scenario-wrapper .option-feedback-wrapper{z-index:var(--pgn-elevation-zindex-fixed);border-left:var(--pgn-spacing-spacer-4) solid var(--color-interact-default);width:100%;height:100%;position:fixed;inset:0}.xblock-unfolding-scenario-wrapper .outcome-option-row+.outcome-option-row{margin-top:var(--pgn-spacing-spacer-4);padding-top:var(--pgn-spacing-spacer-4);border-top:1px solid var(--color-border-interact-default)}.xblock-unfolding-scenario-wrapper .rounded-lg-bottom{border-bottom-right-radius:var(--pgn-size-border-radius-lg)!important;border-bottom-left-radius:var(--pgn-size-border-radius-lg)!important}.xblock-unfolding-scenario-wrapper .text-feedback-negative{color:var(--color-txt-feedback-negative)!important}.xblock-unfolding-scenario-wrapper .text-icon-interact-negative{color:var(--color-icon-interact-negative)!important}.xblock-unfolding-scenario-wrapper .text-feedback-positive{color:var(--color-txt-feedback-positive)!important}.xblock-unfolding-scenario-wrapper .text-icon-interact-positive{color:var(--color-icon-interact-positive)!important}.xblock-unfolding-scenario-wrapper .text-feedback-warning{color:var(--color-txt-feedback-warning)!important}.xblock-unfolding-scenario-wrapper .text-icon-interact-warning{color:var(--color-icon-interact-warning)!important}.xblock-unfolding-scenario-wrapper .text-interact-headings{color:var(--color-txt-interact-headings)!important}.xblock-unfolding-scenario-wrapper .text-interact-accent{color:var(--color-txt-interact-accent)!important}.xblock-unfolding-scenario-wrapper .text-interact-content{color:var(--color-txt-interact-content)!important}.xblock-unfolding-scenario-wrapper .text-interact-content-inverse{color:var(--color-txt-interact-content-inverse)!important}.xblock-unfolding-scenario-wrapper .text-content{color:var(--color-txt-content)!important}.xblock-unfolding-scenario-wrapper .text-sec-content{color:var(--color-txt-sec-content)!important}.xblock-unfolding-scenario-wrapper .text-icon-action-default{color:var(--color-icon-action-default)!important}.xblock-unfolding-scenario-wrapper .text-icon-action-sec-neutral{color:var(--color-icon-action-sec-neutral)!important}.xblock-unfolding-scenario-wrapper .bg-interact-raised-emphasis{background-color:var(--color-interact-raised-emphasis)!important}.xblock-unfolding-scenario-wrapper .bg-interact-raised{background-color:var(--color-interact-raised)!important}.xblock-unfolding-scenario-wrapper .bg-emphasis{background-color:var(--color-bg-emphasis)!important}.xblock-unfolding-scenario-wrapper .bg-icon-default{background-color:var(--color-icon-default)!important}.xblock-unfolding-scenario-wrapper .bg-interact-default{background-color:var(--color-interact-default)!important}.xblock-unfolding-scenario-wrapper .bg-main{background-color:var(--color-bg-main)!important}", bi = async (e, t, n) => {
 	let r = await xi(n.config.mfe_config_api);
 	l({
 		runtime: e,

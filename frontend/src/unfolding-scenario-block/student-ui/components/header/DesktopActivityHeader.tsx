@@ -13,8 +13,8 @@ export const DesktopActivityHeader = ({
   <div className="sticky-top d-flex w-100 bg-interact-default">
     <Container fluid>
       <Row className="px-3">
-        <Col className="d-flex align-items-center mx-3 small-heading text-interact-headings">
-          {title}
+        <Col className="d-flex align-items-center mx-3">
+          <h5 className="text-interact-headings">{title}</h5>
         </Col>
         <Col className="d-flex justify-content-center">
           <ScenarioStepper

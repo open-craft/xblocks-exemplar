@@ -27,7 +27,7 @@ export const Intro = ({
             <div className="border-right">
               <Icon src={ArrowOutward} className="mr-2" />
             </div>
-            <span className="ml-3 small-heading">{name}</span>
+            <h5 className="m-0 ml-3">{name}</h5>
           </div>
           <h4 className="text-interact-accent">{introduction.heading}</h4>
           <div
@@ -37,8 +37,8 @@ export const Intro = ({
 
           <div className="d-flex justify-content-end">
             <Button
-              variant="unfolding-scenario-action"
-              className={`rounded-pill mt-4 ${isMobile ? 'w-100' : ''}`}
+              variant="primary"
+              className={`mt-4 ${isMobile ? 'w-100' : ''}`}
               onClick={onLaunch}
               disabled={activityOpen}
               block={isMobile}
