@@ -1,3 +1,8 @@
+// The following CSS variables may be defined, in addition to the default paragon variables:
+//   --keypoint-studio-color-empty
+//   --keypoint-studio-color-entry-border
+//   --keypoint-studio-color-entry-background
+
 @import '../../base';
 @import '../../studio';
 @import '@/shared/components/StudioHeader.css';
@@ -31,15 +36,19 @@
 
   .keypoints-studio-empty {
     margin: 0;
-    color: var(--pgn-color-gray-500);
+    color: var(--keypoint-studio-color-empty, var(--pgn-color-gray-500));
   }
 
   .keypoint-entry {
-    border: 1px solid var(--pgn-color-gray-200);
+    border: 1px solid
+      var(--keypoint-studio-color-entry-border, var(--pgn-color-gray-200));
     border-radius: var(--pgn-exemplar-xblock-studio-entry-radius, 8px);
     padding: var(--pgn-exemplar-xblock-studio-entry-padding, 24px);
     margin-bottom: var(--pgn-exemplar-xblock-studio-field-gap, 16px);
-    background-color: var(--pgn-color-gray-100);
+    background-color: var(
+      --keypoint-studio-color-entry-background,
+      var(--pgn-color-gray-100)
+    );
   }
 
   .keypoint-entry:last-child {
