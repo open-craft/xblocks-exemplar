@@ -3943,7 +3943,7 @@ var bc = (0, D.createContext)(null), xc = () => (0, D.useContext)(bc), Sc = ({ f
 	] }) : e;
 }, wc = [
 	...Object.entries(ge).filter(([e]) => e !== w.CUSTOM).map(([, e]) => e),
-	"description",
+	"volume_up",
 	"link",
 	"school",
 	"slideshow",

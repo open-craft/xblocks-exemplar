@@ -28,7 +28,7 @@ const DEFAULT_ICONS = [
   ...Object.entries(FILE_TYPE_ICONS)
     .filter(([fileType]) => fileType !== FileType.CUSTOM)
     .map(([, icon]) => icon),
-  'description',
+  'volume_up',
   'link',
   'school',
   'slideshow',
