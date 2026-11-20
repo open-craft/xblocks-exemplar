@@ -51,7 +51,9 @@ describe('Student App', () => {
   it('renders the title and a card per resource, checked if already read', () => {
     renderApp();
 
-    expect(screen.getByText('Essential Reading')).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { level: 4, name: 'Essential Reading' }),
+    ).toBeInTheDocument();
     expect(getCheckbox('First article')).toBeChecked();
     expect(getCheckbox('Second article')).not.toBeChecked();
   });

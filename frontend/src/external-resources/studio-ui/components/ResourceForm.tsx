@@ -30,21 +30,29 @@ type ResourceErrors = Partial<
   Record<'url' | 'title' | 'publisher' | 'expectedMinutes', string>
 >;
 
+const VALIDATION_ERRORS = {
+  urlEmpty: 'Add the resource URL.',
+  urlInvalid: 'Enter a full URL starting with http:// or https://.',
+  titleEmpty: 'Add a title.',
+  publisherEmpty: 'Add a publisher.',
+  timeTooShort: 'The estimated time must be at least 1 minute.',
+} as const;
+
 const validateResource = (resource: Resource): ResourceErrors => {
   const errors: ResourceErrors = {};
   if (!resource.url.trim()) {
-    errors.url = 'Add the resource URL.';
+    errors.url = VALIDATION_ERRORS.urlEmpty;
   } else if (!isValidUrl(resource.url)) {
-    errors.url = 'Enter a full URL starting with http:// or https://.';
+    errors.url = VALIDATION_ERRORS.urlInvalid;
   }
   if (!resource.title.trim()) {
-    errors.title = 'Add a title.';
+    errors.title = VALIDATION_ERRORS.titleEmpty;
   }
   if (!resource.publisher.trim()) {
-    errors.publisher = 'Add a publisher.';
+    errors.publisher = VALIDATION_ERRORS.publisherEmpty;
   }
   if (resource.expectedMinutes < 1) {
-    errors.expectedMinutes = 'The estimated time must be at least 1 minute.';
+    errors.expectedMinutes = VALIDATION_ERRORS.timeTooShort;
   }
   return errors;
 };

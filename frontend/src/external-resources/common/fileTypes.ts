@@ -10,7 +10,7 @@ export const FILE_TYPE_LABELS: Record<
   [FileType.TEXTBOOK]: 'Textbook / Book',
   [FileType.VIRTUAL_MACHINE]: 'Virtual machines',
   [FileType.INTERACTIVE_ACTIVITY]: 'Interactive activities',
-  [FileType.WGU_LIBRARY]: 'WGU Library',
+  [FileType.LIBRARY]: 'Library',
 };
 
 export const FILE_TYPE_ICONS: Record<FileType, string> = {
@@ -20,6 +20,6 @@ export const FILE_TYPE_ICONS: Record<FileType, string> = {
   [FileType.TEXTBOOK]: 'menu_book',
   [FileType.VIRTUAL_MACHINE]: 'laptop',
   [FileType.INTERACTIVE_ACTIVITY]: 'touch_app',
-  [FileType.WGU_LIBRARY]: 'local_library',
+  [FileType.LIBRARY]: 'local_library',
   [FileType.CUSTOM]: 'description',
 };

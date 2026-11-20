@@ -15457,7 +15457,7 @@ mu.Status = du, mu.Header = tu, mu.Divider = nu, mu.Section = iu, mu.Footer = ou
 //#endregion
 //#region src/external-resources/apiTypes.ts
 var hu = /* @__PURE__ */ function(e) {
-	return e.ARTICLE = "ARTICLE", e.VIDEO = "VIDEO", e.PDF = "PDF", e.TEXTBOOK = "TEXTBOOK", e.VIRTUAL_MACHINE = "VIRTUAL_MACHINE", e.INTERACTIVE_ACTIVITY = "INTERACTIVE_ACTIVITY", e.WGU_LIBRARY = "WGU_LIBRARY", e.CUSTOM = "CUSTOM", e;
+	return e.ARTICLE = "ARTICLE", e.VIDEO = "VIDEO", e.PDF = "PDF", e.TEXTBOOK = "TEXTBOOK", e.VIRTUAL_MACHINE = "VIRTUAL_MACHINE", e.INTERACTIVE_ACTIVITY = "INTERACTIVE_ACTIVITY", e.LIBRARY = "LIBRARY", e.CUSTOM = "CUSTOM", e;
 }({}), gu = {
 	[hu.ARTICLE]: "Articles",
 	[hu.VIDEO]: "Video",
@@ -15465,7 +15465,7 @@ var hu = /* @__PURE__ */ function(e) {
 	[hu.TEXTBOOK]: "Textbook / Book",
 	[hu.VIRTUAL_MACHINE]: "Virtual machines",
 	[hu.INTERACTIVE_ACTIVITY]: "Interactive activities",
-	[hu.WGU_LIBRARY]: "WGU Library"
+	[hu.LIBRARY]: "Library"
 }, _u = {
 	[hu.ARTICLE]: "article",
 	[hu.VIDEO]: "smart_display",
@@ -15473,7 +15473,7 @@ var hu = /* @__PURE__ */ function(e) {
 	[hu.TEXTBOOK]: "menu_book",
 	[hu.VIRTUAL_MACHINE]: "laptop",
 	[hu.INTERACTIVE_ACTIVITY]: "touch_app",
-	[hu.WGU_LIBRARY]: "local_library",
+	[hu.LIBRARY]: "local_library",
 	[hu.CUSTOM]: "description"
 }, vu = ({ item: e, itemAlt: t, variant: n }) => /* @__PURE__ */ (0, Mn.jsx)("div", {
 	className: "external-resource-thumbnail",

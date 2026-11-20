@@ -16,15 +16,15 @@ export const App = ({ data }: AppProps) => {
   const setReadUrl = useHandlerUrl('set_read');
   const [readResources, setReadResources] = useState(data.readResources);
 
-  const setRead = (resourceId: string, read: boolean) => {
+  const setRead = (resourceId: string, isRead: boolean) => {
     const previous = readResources;
 
     setReadResources(
-      read
+      isRead
         ? [...previous, resourceId]
         : previous.filter((id) => id !== resourceId),
     );
-    $.post(setReadUrl, JSON.stringify({ resourceId, read }))
+    $.post(setReadUrl, JSON.stringify({ resourceId, read: isRead }))
       .done((response: { readResources: string[] }) => {
         setReadResources(response.readResources);
       })
@@ -35,22 +35,9 @@ export const App = ({ data }: AppProps) => {
 
   return (
     <div className="xblock-external-resources">
-      <div className="external-resources-title">
-        <span className="h4">{data.displayName}</span>
-      </div>
-      {data.resources.map((resource, index) => {
-        let className: string | undefined = undefined;
-        if (data.resources.length > 1) {
-          if (index == 0) {
-            className = 'first-card';
-          } else if (index == data.resources.length - 1) {
-            className = 'last-card';
-          } else {
-            className = 'middle-card';
-          }
-        }
-
-        return (
+      <h4 className="external-resources-title">{data.displayName}</h4>
+      <div className="external-resources-list">
+        {data.resources.map((resource) => (
           <ResourceCard
             key={resource.id}
             resource={resource}
@@ -70,11 +57,10 @@ export const App = ({ data }: AppProps) => {
                 </span>
               </div>
             }
-            className={className}
             isClickable
           />
-        );
-      })}
+        ))}
+      </div>
     </div>
   );
 };
