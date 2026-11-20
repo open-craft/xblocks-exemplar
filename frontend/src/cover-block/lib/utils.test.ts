@@ -8,8 +8,7 @@ import {
   vi,
   afterAll,
 } from 'vitest';
-import { deriveColor } from '@opencraft/xblock-react-utils';
-import { deriveStyles } from './utils.ts';
+import { deriveColor, deriveStyles } from './utils.ts';
 import { initDataFactory } from './specHelpers.tsx';
 
 describe('deriveColor', () => {

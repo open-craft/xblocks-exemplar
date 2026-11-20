@@ -12,7 +12,7 @@ const App = (data: CoverBlockFields) => {
   const { runtime } = useContext(RuntimeContext);
   const studioSaveUrl = useHandlerUrl('studio_save');
   const handleSave = (saveData: CoverBlockFields) => {
-    saveStudioBlock<CoverBlockFields>({
+    return saveStudioBlock<CoverBlockFields>({
       saveUrl: studioSaveUrl,
       data: saveData,
       runtime,
