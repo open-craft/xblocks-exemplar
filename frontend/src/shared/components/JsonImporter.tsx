@@ -71,9 +71,9 @@ export default function JsonImporter({ liveData }: JsonIOTabContentProps) {
   }
 
   /**
-   * A custom save function that's different from `savStudioBlock` that allows
-   * parsing the errors raised by Pydantic validation and present them in the
-   * modal instead of relying on the runtime's error presentation.
+   * A custom save function that handles errors raised by Pydantic
+   * validation and present them in the modal instead of relying on
+   * the runtime's error presentation.
    */
   const saveJson = ({ fileData, handleError }: ProcessUploadParam) => {
     const saveUrl = runtime.handlerUrl(element, 'studio_save');

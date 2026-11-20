@@ -1,49 +1,83 @@
-import { D as e, E as t, O as n, _ as r, a as i, b as a, c as o, f as s, g as c, h as l, i as u, l as d, m as f, n as p, o as m, p as h, r as g, s as _, t as v, u as y, v as b, y as x } from "./IconButton-D64hFEcm.js";
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/ActionRow/index.js
-var S = /* @__PURE__ */ n(t()), C = /* @__PURE__ */ n(f());
-function w({ as: e = "div", isStacked: t = !1, children: n, ...r }) {
-	return /* @__PURE__ */ S.createElement(e, {
+import { n as e, t } from "./rolldown-runtime-CYdcPHCu.js";
+import { E as n, S as r, _ as i, a, b as o, c as s, f as c, g as l, h as u, i as d, l as f, m as p, n as m, o as h, p as g, r as _, s as v, t as y, u as b, v as x, y as ee } from "./IconButton-BcHkVa3s.js";
+// node_modules/.pnpm/react-intl@6.8.9_react@18.3.1_typescript@5.9.3/node_modules/react-intl/lib/src/components/useIntl.js
+var S = /* @__PURE__ */ e(n());
+function C() {
+	var e = S.useContext(ee);
+	return o(e), e;
+}
+// node_modules/.pnpm/react-intl@6.8.9_react@18.3.1_typescript@5.9.3/node_modules/react-intl/lib/src/components/createFormattedComponent.js
+var w;
+(function(e) {
+	e.formatDate = "FormattedDate", e.formatTime = "FormattedTime", e.formatNumber = "FormattedNumber", e.formatList = "FormattedList", e.formatDisplayName = "FormattedDisplayName";
+})(w ||= {});
+var T;
+(function(e) {
+	e.formatDate = "FormattedDateParts", e.formatTime = "FormattedTimeParts", e.formatNumber = "FormattedNumberParts", e.formatList = "FormattedListParts";
+})(T ||= {});
+function E(e) {
+	var t = function(t) {
+		var n = C(), i = t.value, a = t.children, o = r(t, ["value", "children"]), s = typeof i == "string" ? new Date(i || 0) : i;
+		return a(e === "formatDate" ? n.formatDateToParts(s, o) : n.formatTimeToParts(s, o));
+	};
+	return t.displayName = T[e], t;
+}
+function D(e) {
+	var t = function(t) {
+		var n = C(), i = t.value, a = t.children, o = r(t, ["value", "children"]), s = n[e](i, o);
+		if (typeof a == "function") return a(s);
+		var c = n.textComponent || S.Fragment;
+		return S.createElement(c, null, s);
+	};
+	return t.displayName = w[e], t;
+}
+// node_modules/.pnpm/react-intl@6.8.9_react@18.3.1_typescript@5.9.3/node_modules/react-intl/lib/index.js
+function O(e) {
+	return e;
+}
+D("formatDate"), D("formatTime"), D("formatNumber"), D("formatList"), D("formatDisplayName"), E("formatDate"), E("formatTime");
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/ActionRow/index.js
+var k = /* @__PURE__ */ e(p());
+function A({ as: e = "div", isStacked: t = !1, children: n, ...r }) {
+	return /*#__PURE__*/ S.createElement(e, {
 		...r,
-		className: (0, C.default)(r.className, {
+		className: (0, k.default)(r.className, {
 			"pgn__action-row": !t,
 			"pgn__action-row-stacked": t
 		})
 	}, n);
 }
-function T() {
-	return /* @__PURE__ */ S.createElement("span", { className: "pgn__action-row-spacer" });
+function j() {
+	return /*#__PURE__*/ S.createElement("span", { className: "pgn__action-row-spacer" });
 }
-w.Spacer = T;
-//#endregion
-//#region node_modules/.pnpm/dom-helpers@5.2.1/node_modules/dom-helpers/esm/camelize.js
-var E = /-(.)/g;
-function D(e) {
-	return e.replace(E, function(e, t) {
+A.Spacer = j;
+// node_modules/.pnpm/dom-helpers@5.2.1/node_modules/dom-helpers/esm/camelize.js
+var M = /-(.)/g;
+function N(e) {
+	return e.replace(M, function(e, t) {
 		return t.toUpperCase();
 	});
 }
-//#endregion
-//#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/createWithBsPrefix.js
-var O = [
+// node_modules/.pnpm/react-bootstrap@1.6.8_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/createWithBsPrefix.js
+var te = [
 	"className",
 	"bsPrefix",
 	"as"
-], k = function(e) {
-	return e[0].toUpperCase() + D(e).slice(1);
+], ne = function(e) {
+	return e[0].toUpperCase() + N(e).slice(1);
 };
-function A(e, t) {
-	var n = t === void 0 ? {} : t, r = n.displayName, i = r === void 0 ? k(e) : r, a = n.Component, o = n.defaultProps, c = /* @__PURE__ */ S.forwardRef(function(t, n) {
-		var r = t.className, i = t.bsPrefix, o = t.as, c = o === void 0 ? a || "div" : o, l = s(t, O), u = y(i, e);
-		return /* @__PURE__ */ S.createElement(c, h({
+function P(e, t) {
+	var n = t === void 0 ? {} : t, r = n.displayName, i = r === void 0 ? ne(e) : r, a = n.Component, o = n.defaultProps, s = /*#__PURE__*/ S.forwardRef(function(t, n) {
+		var r = t.className, i = t.bsPrefix, o = t.as, s = o === void 0 ? a || "div" : o, l = c(t, te), u = b(i, e);
+		return /*#__PURE__*/ S.createElement(s, g({
 			ref: n,
-			className: (0, C.default)(r, u)
+			className: (0, k.default)(r, u)
 		}, l));
 	});
-	return c.defaultProps = o, c.displayName = i, c;
+	return s.defaultProps = o, s.displayName = i, s;
 }
-//#endregion
-//#region node_modules/.pnpm/prop-types-extra@1.1.1_react@18.3.1/node_modules/prop-types-extra/lib/utils/createChainableTypeChecker.js
-var j = /* @__PURE__ */ e(((e, t) => {
+// node_modules/.pnpm/prop-types-extra@1.1.1_react@18.3.1/node_modules/prop-types-extra/lib/utils/createChainableTypeChecker.js
+var F = /* @__PURE__ */ t(((e, t) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.default = n;
 	function n(e) {
 		function t(t, n, r, i, a, o) {
@@ -62,9 +96,9 @@ var j = /* @__PURE__ */ e(((e, t) => {
 		return n.isRequired = t.bind(null, !0), n;
 	}
 	t.exports = e.default;
-})), M = /* @__PURE__ */ e(((e, t) => {
+})), re = /* @__PURE__ */ t(((e, t) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.default = i;
-	var n = r(j());
+	var n = r(F());
 	function r(e) {
 		return e && e.__esModule ? e : { default: e };
 	}
@@ -82,26 +116,25 @@ var j = /* @__PURE__ */ e(((e, t) => {
 		return (0, n.default)(t);
 	}
 	t.exports = e.default;
-})), N = /* @__PURE__ */ n(d()), P = [
+})), I = /* @__PURE__ */ e(f()), ie = [
 	"as",
 	"className",
 	"type",
 	"tooltip"
-], ee = {
-	type: N.default.string,
-	tooltip: N.default.bool,
-	as: N.default.elementType
-}, te = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.as, r = n === void 0 ? "div" : n, i = e.className, a = e.type, o = a === void 0 ? "valid" : a, c = e.tooltip, l = c === void 0 ? !1 : c, u = s(e, P);
-	return /* @__PURE__ */ S.createElement(r, h({}, u, {
+], ae = {
+	type: I.default.string,
+	tooltip: I.default.bool,
+	as: I.default.elementType
+}, oe = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.as, r = n === void 0 ? "div" : n, i = e.className, a = e.type, o = a === void 0 ? "valid" : a, s = e.tooltip, l = s !== void 0 && s, u = c(e, ie);
+	return /*#__PURE__*/ S.createElement(r, g({}, u, {
 		ref: t,
-		className: (0, C.default)(i, o + "-" + (l ? "tooltip" : "feedback"))
+		className: (0, k.default)(i, o + "-" + (l ? "tooltip" : "feedback"))
 	}));
 });
-te.displayName = "Feedback", te.propTypes = ee;
-//#endregion
-//#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormContext.js
-var F = /* @__PURE__ */ S.createContext({ controlId: void 0 }), I = [
+oe.displayName = "Feedback", oe.propTypes = ae;
+// node_modules/.pnpm/react-bootstrap@1.6.8_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormContext.js
+var L = /*#__PURE__*/ S.createContext({ controlId: void 0 }), se = [
 	"id",
 	"bsPrefix",
 	"bsCustomPrefix",
@@ -111,33 +144,32 @@ var F = /* @__PURE__ */ S.createContext({ controlId: void 0 }), I = [
 	"isInvalid",
 	"isStatic",
 	"as"
-], ne = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.className, o = e.type, c = o === void 0 ? "checkbox" : o, l = e.isValid, u = l === void 0 ? !1 : l, d = e.isInvalid, f = d === void 0 ? !1 : d, p = e.isStatic, m = e.as, g = m === void 0 ? "input" : m, _ = s(e, I), v = (0, S.useContext)(F), b = v.controlId, x = v.custom ? [i, "custom-control-input"] : [r, "form-check-input"], w = x[0], T = x[1];
-	return r = y(w, T), /* @__PURE__ */ S.createElement(g, h({}, _, {
+], ce = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.className, o = e.type, s = o === void 0 ? "checkbox" : o, l = e.isValid, u = l !== void 0 && l, d = e.isInvalid, f = d !== void 0 && d, p = e.isStatic, m = e.as, h = m === void 0 ? "input" : m, _ = c(e, se), v = (0, S.useContext)(L), y = v.controlId, x = v.custom ? [i, "custom-control-input"] : [r, "form-check-input"], ee = x[0], C = x[1];
+	return r = b(ee, C), /*#__PURE__*/ S.createElement(h, g({}, _, {
 		ref: t,
-		type: c,
-		id: n || b,
-		className: (0, C.default)(a, r, u && "is-valid", f && "is-invalid", p && "position-static")
+		type: s,
+		id: n || y,
+		className: (0, k.default)(a, r, u && "is-valid", f && "is-invalid", p && "position-static")
 	}));
 });
-ne.displayName = "FormCheckInput";
-//#endregion
-//#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormCheckLabel.js
-var L = [
+ce.displayName = "FormCheckInput";
+// node_modules/.pnpm/react-bootstrap@1.6.8_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormCheckLabel.js
+var le = [
 	"bsPrefix",
 	"bsCustomPrefix",
 	"className",
 	"htmlFor"
-], re = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.className, a = e.htmlFor, o = s(e, L), c = (0, S.useContext)(F), l = c.controlId, u = c.custom ? [r, "custom-control-label"] : [n, "form-check-label"], d = u[0], f = u[1];
-	return n = y(d, f), /* @__PURE__ */ S.createElement("label", h({}, o, {
+], ue = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.className, a = e.htmlFor, o = c(e, le), s = (0, S.useContext)(L), l = s.controlId, u = s.custom ? [r, "custom-control-label"] : [n, "form-check-label"], d = u[0], f = u[1];
+	return n = b(d, f), /*#__PURE__*/ S.createElement("label", g({}, o, {
 		ref: t,
 		htmlFor: a || l,
-		className: (0, C.default)(i, n)
+		className: (0, k.default)(i, n)
 	}));
 });
-re.displayName = "FormCheckLabel", M();
-var ie = [
+ue.displayName = "FormCheckLabel", re();
+var de = [
 	"id",
 	"bsPrefix",
 	"bsCustomPrefix",
@@ -155,39 +187,38 @@ var ie = [
 	"children",
 	"custom",
 	"as"
-], R = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.inline, o = a === void 0 ? !1 : a, c = e.disabled, l = c === void 0 ? !1 : c, u = e.isValid, d = u === void 0 ? !1 : u, f = e.isInvalid, p = f === void 0 ? !1 : f, m = e.feedbackTooltip, g = m === void 0 ? !1 : m, _ = e.feedback, v = e.className, b = e.style, x = e.title, w = x === void 0 ? "" : x, T = e.type, E = T === void 0 ? "checkbox" : T, D = e.label, O = e.children, k = e.custom, A = e.as, j = A === void 0 ? "input" : A, M = s(e, ie), N = E === "switch" ? !0 : k, P = N ? [i, "custom-control"] : [r, "form-check"], ee = P[0], I = P[1];
-	r = y(ee, I);
-	var L = (0, S.useContext)(F).controlId, R = (0, S.useMemo)(function() {
+], R = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.inline, o = a !== void 0 && a, s = e.disabled, l = s !== void 0 && s, u = e.isValid, d = u !== void 0 && u, f = e.isInvalid, p = f !== void 0 && f, m = e.feedbackTooltip, h = m !== void 0 && m, _ = e.feedback, v = e.className, y = e.style, x = e.title, ee = x === void 0 ? "" : x, C = e.type, w = C === void 0 ? "checkbox" : C, T = e.label, E = e.children, D = e.custom, O = e.as, A = O === void 0 ? "input" : O, j = c(e, de), M = w === "switch" || D, N = M ? [i, "custom-control"] : [r, "form-check"], te = N[0], ne = N[1];
+	r = b(te, ne);
+	var P = (0, S.useContext)(L).controlId, F = (0, S.useMemo)(function() {
 		return {
-			controlId: n || L,
-			custom: N
+			controlId: n || P,
+			custom: M
 		};
 	}, [
-		L,
-		N,
+		P,
+		M,
 		n
-	]), ae = N || D != null && D !== !1 && !O, oe = /* @__PURE__ */ S.createElement(ne, h({}, M, {
-		type: E === "switch" ? "checkbox" : E,
+	]), re = M || T != null && T !== !1 && !E, I = /*#__PURE__*/ S.createElement(ce, g({}, j, {
+		type: w === "switch" ? "checkbox" : w,
 		ref: t,
 		isValid: d,
 		isInvalid: p,
-		isStatic: !ae,
+		isStatic: !re,
 		disabled: l,
-		as: j
+		as: A
 	}));
-	return /* @__PURE__ */ S.createElement(F.Provider, { value: R }, /* @__PURE__ */ S.createElement("div", {
-		style: b,
-		className: (0, C.default)(v, r, N && "custom-" + E, o && r + "-inline")
-	}, O || /* @__PURE__ */ S.createElement(S.Fragment, null, oe, ae && /* @__PURE__ */ S.createElement(re, { title: w }, D), (d || p) && /* @__PURE__ */ S.createElement(te, {
+	return /*#__PURE__*/ S.createElement(L.Provider, { value: F }, /*#__PURE__*/ S.createElement("div", {
+		style: y,
+		className: (0, k.default)(v, r, M && "custom-" + w, o && r + "-inline")
+	}, E || /*#__PURE__*/ S.createElement(S.Fragment, null, I, re && /*#__PURE__*/ S.createElement(ue, { title: ee }, T), (d || p) && /*#__PURE__*/ S.createElement(oe, {
 		type: d ? "valid" : "invalid",
-		tooltip: g
+		tooltip: h
 	}, _))));
 });
-R.displayName = "FormCheck", R.Input = ne, R.Label = re;
-//#endregion
-//#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormFileInput.js
-var ae = [
+R.displayName = "FormCheck", R.Input = ce, R.Label = ue;
+// node_modules/.pnpm/react-bootstrap@1.6.8_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormFileInput.js
+var fe = [
 	"id",
 	"bsPrefix",
 	"bsCustomPrefix",
@@ -196,37 +227,35 @@ var ae = [
 	"isInvalid",
 	"lang",
 	"as"
-], oe = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.className, o = e.isValid, c = e.isInvalid, l = e.lang, u = e.as, d = u === void 0 ? "input" : u, f = s(e, ae), p = (0, S.useContext)(F), m = p.controlId, g = p.custom, _ = "file", v = g ? [i, "custom-file-input"] : [r, "form-control-file"], b = v[0], x = v[1];
-	return r = y(b, x), /* @__PURE__ */ S.createElement(d, h({}, f, {
+], pe = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.className, o = e.isValid, s = e.isInvalid, l = e.lang, u = e.as, d = u === void 0 ? "input" : u, f = c(e, fe), p = (0, S.useContext)(L), m = p.controlId, h = p.custom, _ = "file", v = h ? [i, "custom-file-input"] : [r, "form-control-file"], y = v[0], x = v[1];
+	return r = b(y, x), /*#__PURE__*/ S.createElement(d, g({}, f, {
 		ref: t,
 		id: n || m,
 		type: _,
 		lang: l,
-		className: (0, C.default)(a, r, o && "is-valid", c && "is-invalid")
+		className: (0, k.default)(a, r, o && "is-valid", s && "is-invalid")
 	}));
 });
-oe.displayName = "FormFileInput";
-//#endregion
-//#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormFileLabel.js
-var se = [
+pe.displayName = "FormFileInput";
+// node_modules/.pnpm/react-bootstrap@1.6.8_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormFileLabel.js
+var me = [
 	"bsPrefix",
 	"bsCustomPrefix",
 	"className",
 	"htmlFor"
-], ce = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.className, a = e.htmlFor, o = s(e, se), c = (0, S.useContext)(F), l = c.controlId, u = c.custom ? [r, "custom-file-label"] : [n, "form-file-label"], d = u[0], f = u[1];
-	return n = y(d, f), /* @__PURE__ */ S.createElement("label", h({}, o, {
+], he = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.className, a = e.htmlFor, o = c(e, me), s = (0, S.useContext)(L), l = s.controlId, u = s.custom ? [r, "custom-file-label"] : [n, "form-file-label"], d = u[0], f = u[1];
+	return n = b(d, f), /*#__PURE__*/ S.createElement("label", g({}, o, {
 		ref: t,
 		htmlFor: a || l,
-		className: (0, C.default)(i, n),
+		className: (0, k.default)(i, n),
 		"data-browse": o["data-browse"]
 	}));
 });
-ce.displayName = "FormFileLabel";
-//#endregion
-//#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormFile.js
-var le = [
+he.displayName = "FormFileLabel";
+// node_modules/.pnpm/react-bootstrap@1.6.8_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormFile.js
+var ge = [
 	"id",
 	"bsPrefix",
 	"bsCustomPrefix",
@@ -244,36 +273,36 @@ var le = [
 	"data-browse",
 	"as",
 	"inputAs"
-], ue = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.disabled, o = a === void 0 ? !1 : a, c = e.isValid, l = c === void 0 ? !1 : c, u = e.isInvalid, d = u === void 0 ? !1 : u, f = e.feedbackTooltip, p = f === void 0 ? !1 : f, m = e.feedback, g = e.className, _ = e.style, v = e.label, b = e.children, x = e.custom, w = e.lang, T = e["data-browse"], E = e.as, D = E === void 0 ? "div" : E, O = e.inputAs, k = O === void 0 ? "input" : O, A = s(e, le), j = x ? [i, "custom"] : [r, "form-file"], M = j[0], N = j[1];
-	r = y(M, N);
-	var P = "file", ee = (0, S.useContext)(F).controlId, I = (0, S.useMemo)(function() {
+], _e = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.id, r = e.bsPrefix, i = e.bsCustomPrefix, a = e.disabled, o = a !== void 0 && a, s = e.isValid, l = s !== void 0 && s, u = e.isInvalid, d = u !== void 0 && u, f = e.feedbackTooltip, p = f !== void 0 && f, m = e.feedback, h = e.className, _ = e.style, v = e.label, y = e.children, x = e.custom, ee = e.lang, C = e["data-browse"], w = e.as, T = w === void 0 ? "div" : w, E = e.inputAs, D = E === void 0 ? "input" : E, O = c(e, ge), A = x ? [i, "custom"] : [r, "form-file"], j = A[0], M = A[1];
+	r = b(j, M);
+	var N = "file", te = (0, S.useContext)(L).controlId, ne = (0, S.useMemo)(function() {
 		return {
-			controlId: n || ee,
+			controlId: n || te,
 			custom: x
 		};
 	}, [
-		ee,
+		te,
 		x,
 		n
-	]), ne = v != null && v !== !1 && !b, L = /* @__PURE__ */ S.createElement(oe, h({}, A, {
+	]), P = v != null && v !== !1 && !y, F = /*#__PURE__*/ S.createElement(pe, g({}, O, {
 		ref: t,
 		isValid: l,
 		isInvalid: d,
 		disabled: o,
-		as: k,
-		lang: w
+		as: D,
+		lang: ee
 	}));
-	return /* @__PURE__ */ S.createElement(F.Provider, { value: I }, /* @__PURE__ */ S.createElement(D, {
+	return /*#__PURE__*/ S.createElement(L.Provider, { value: ne }, /*#__PURE__*/ S.createElement(T, {
 		style: _,
-		className: (0, C.default)(g, r, x && "custom-" + P)
-	}, b || /* @__PURE__ */ S.createElement(S.Fragment, null, x ? /* @__PURE__ */ S.createElement(S.Fragment, null, L, ne && /* @__PURE__ */ S.createElement(ce, { "data-browse": T }, v)) : /* @__PURE__ */ S.createElement(S.Fragment, null, ne && /* @__PURE__ */ S.createElement(ce, null, v), L), (l || d) && /* @__PURE__ */ S.createElement(te, {
+		className: (0, k.default)(h, r, x && "custom-" + N)
+	}, y || /*#__PURE__*/ S.createElement(S.Fragment, null, x ? /*#__PURE__*/ S.createElement(S.Fragment, null, F, P && /*#__PURE__*/ S.createElement(he, { "data-browse": C }, v)) : /*#__PURE__*/ S.createElement(S.Fragment, null, P && /*#__PURE__*/ S.createElement(he, null, v), F), (l || d) && /*#__PURE__*/ S.createElement(oe, {
 		type: l ? "valid" : "invalid",
 		tooltip: p
 	}, m))));
 });
-ue.displayName = "FormFile", ue.Input = oe, ue.Label = ce, _();
-var de = [
+_e.displayName = "FormFile", _e.Input = pe, _e.Label = he, v();
+var ve = [
 	"bsPrefix",
 	"bsCustomPrefix",
 	"type",
@@ -287,127 +316,122 @@ var de = [
 	"readOnly",
 	"custom",
 	"as"
-], fe = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.type, a = e.size, o = e.htmlSize, c = e.id, l = e.className, u = e.isValid, d = u === void 0 ? !1 : u, f = e.isInvalid, p = f === void 0 ? !1 : f, m = e.plaintext, g = e.readOnly, _ = e.custom, v = e.as, b = v === void 0 ? "input" : v, x = s(e, de), w = (0, S.useContext)(F).controlId, T = _ ? [r, "custom"] : [n, "form-control"], E = T[0], D = T[1];
-	n = y(E, D);
-	var O;
+], ye = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.bsCustomPrefix, i = e.type, a = e.size, o = e.htmlSize, s = e.id, l = e.className, u = e.isValid, d = u !== void 0 && u, f = e.isInvalid, p = f !== void 0 && f, m = e.plaintext, h = e.readOnly, _ = e.custom, v = e.as, y = v === void 0 ? "input" : v, x = c(e, ve), ee = (0, S.useContext)(L).controlId, C = _ ? [r, "custom"] : [n, "form-control"], w = C[0], T = C[1];
+	n = b(w, T);
+	var E;
 	if (m) {
-		var k;
-		O = (k = {}, k[n + "-plaintext"] = !0, k);
+		var D;
+		E = (D = {}, D[n + "-plaintext"] = !0, D);
 	} else if (i === "file") {
-		var A;
-		O = (A = {}, A[n + "-file"] = !0, A);
+		var O;
+		E = (O = {}, O[n + "-file"] = !0, O);
 	} else if (i === "range") {
+		var A;
+		E = (A = {}, A[n + "-range"] = !0, A);
+	} else if (y === "select" && _) {
 		var j;
-		O = (j = {}, j[n + "-range"] = !0, j);
-	} else if (b === "select" && _) {
-		var M;
-		O = (M = {}, M[n + "-select"] = !0, M[n + "-select-" + a] = a, M);
+		E = (j = {}, j[n + "-select"] = !0, j[n + "-select-" + a] = a, j);
 	} else {
-		var N;
-		O = (N = {}, N[n] = !0, N[n + "-" + a] = a, N);
+		var M;
+		E = (M = {}, M[n] = !0, M[n + "-" + a] = a, M);
 	}
-	return /* @__PURE__ */ S.createElement(b, h({}, x, {
+	return /*#__PURE__*/ S.createElement(y, g({}, x, {
 		type: i,
 		size: o,
 		ref: t,
-		readOnly: g,
-		id: c || w,
-		className: (0, C.default)(l, O, d && "is-valid", p && "is-invalid")
+		readOnly: h,
+		id: s || ee,
+		className: (0, k.default)(l, E, d && "is-valid", p && "is-invalid")
 	}));
 });
-fe.displayName = "FormControl";
-var pe = Object.assign(fe, { Feedback: te }), me = [
+ye.displayName = "FormControl";
+var be = Object.assign(ye, { Feedback: oe }), xe = [
 	"bsPrefix",
 	"className",
 	"children",
 	"controlId",
 	"as"
-], he = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.className, i = e.children, a = e.controlId, o = e.as, c = o === void 0 ? "div" : o, l = s(e, me);
-	n = y(n, "form-group");
+], Se = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.className, i = e.children, a = e.controlId, o = e.as, s = o === void 0 ? "div" : o, l = c(e, xe);
+	n = b(n, "form-group");
 	var u = (0, S.useMemo)(function() {
 		return { controlId: a };
 	}, [a]);
-	return /* @__PURE__ */ S.createElement(F.Provider, { value: u }, /* @__PURE__ */ S.createElement(c, h({}, l, {
+	return /*#__PURE__*/ S.createElement(L.Provider, { value: u }, /*#__PURE__*/ S.createElement(s, g({}, l, {
 		ref: t,
-		className: (0, C.default)(r, n)
+		className: (0, k.default)(r, n)
 	}), i));
 });
-he.displayName = "FormGroup";
-//#endregion
-//#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormLabel.js
-var ge = [
+Se.displayName = "FormGroup";
+// node_modules/.pnpm/react-bootstrap@1.6.8_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormLabel.js
+var Ce = [
 	"as",
 	"bsPrefix",
 	"column",
 	"srOnly",
 	"className",
 	"htmlFor"
-], _e = {
+], we = {
 	column: !1,
 	srOnly: !1
-}, ve = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.as, r = n === void 0 ? "label" : n, i = e.bsPrefix, a = e.column, c = e.srOnly, l = e.className, u = e.htmlFor, d = s(e, ge), f = (0, S.useContext)(F).controlId;
-	i = y(i, "form-label");
+}, Te = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.as, r = n === void 0 ? "label" : n, i = e.bsPrefix, a = e.column, o = e.srOnly, l = e.className, u = e.htmlFor, d = c(e, Ce), f = (0, S.useContext)(L).controlId;
+	i = b(i, "form-label");
 	var p = "col-form-label";
 	typeof a == "string" && (p = p + " " + p + "-" + a);
-	var m = (0, C.default)(l, i, c && "sr-only", a && p);
-	return u ||= f, a ? /* @__PURE__ */ S.createElement(o, h({
+	var m = (0, k.default)(l, i, o && "sr-only", a && p);
+	return u ||= f, a ? /*#__PURE__*/ S.createElement(s, g({
 		ref: t,
 		as: "label",
 		className: m,
 		htmlFor: u
-	}, d)) : /* @__PURE__ */ S.createElement(r, h({
+	}, d)) : /*#__PURE__*/ S.createElement(r, g({
 		ref: t,
 		className: m,
 		htmlFor: u
 	}, d));
 });
-ve.displayName = "FormLabel", ve.defaultProps = _e;
-//#endregion
-//#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormText.js
-var ye = [
+Te.displayName = "FormLabel", Te.defaultProps = we;
+// node_modules/.pnpm/react-bootstrap@1.6.8_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/FormText.js
+var Ee = [
 	"bsPrefix",
 	"className",
 	"as",
 	"muted"
-], be = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.className, i = e.as, a = i === void 0 ? "small" : i, o = e.muted, c = s(e, ye);
-	return n = y(n, "form-text"), /* @__PURE__ */ S.createElement(a, h({}, c, {
+], De = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.className, i = e.as, a = i === void 0 ? "small" : i, o = e.muted, s = c(e, Ee);
+	return n = b(n, "form-text"), /*#__PURE__*/ S.createElement(a, g({}, s, {
 		ref: t,
-		className: (0, C.default)(r, n, o && "text-muted")
+		className: (0, k.default)(r, n, o && "text-muted")
 	}));
 });
-be.displayName = "FormText";
-//#endregion
-//#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Switch.js
-var xe = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	return /* @__PURE__ */ S.createElement(R, h({}, e, {
+De.displayName = "FormText";
+// node_modules/.pnpm/react-bootstrap@1.6.8_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Switch.js
+var Oe = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	return /*#__PURE__*/ S.createElement(R, g({}, e, {
 		ref: t,
 		type: "switch"
 	}));
 });
-xe.displayName = "Switch", xe.Input = R.Input, xe.Label = R.Label;
-//#endregion
-//#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Form.js
-var Se = [
+Oe.displayName = "Switch", Oe.Input = R.Input, Oe.Label = R.Label;
+// node_modules/.pnpm/react-bootstrap@1.6.8_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Form.js
+var ke = [
 	"bsPrefix",
 	"inline",
 	"className",
 	"validated",
 	"as"
-], Ce = A("form-row"), we = { inline: !1 }, z = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.inline, i = e.className, a = e.validated, o = e.as, c = o === void 0 ? "form" : o, l = s(e, Se);
-	return n = y(n, "form"), /* @__PURE__ */ S.createElement(c, h({}, l, {
+], Ae = P("form-row"), je = { inline: !1 }, z = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.inline, i = e.className, a = e.validated, o = e.as, s = o === void 0 ? "form" : o, l = c(e, ke);
+	return n = b(n, "form"), /*#__PURE__*/ S.createElement(s, g({}, l, {
 		ref: t,
-		className: (0, C.default)(i, a && "was-validated", r && n + "-inline")
+		className: (0, k.default)(i, a && "was-validated", r && n + "-inline")
 	}));
 });
-z.displayName = "Form", z.defaultProps = we, z.Row = Ce, z.Group = he, z.Control = pe, z.Check = R, z.File = ue, z.Switch = xe, z.Label = ve, z.Text = be;
-//#endregion
-//#region node_modules/.pnpm/react-bootstrap@1.6.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Spinner.js
-var Te = [
+z.displayName = "Form", z.defaultProps = je, z.Row = Ae, z.Group = Se, z.Control = be, z.Check = R, z.File = _e, z.Switch = Oe, z.Label = Te, z.Text = De;
+// node_modules/.pnpm/react-bootstrap@1.6.8_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-bootstrap/esm/Spinner.js
+var Me = [
 	"bsPrefix",
 	"variant",
 	"animation",
@@ -415,88 +439,86 @@ var Te = [
 	"children",
 	"as",
 	"className"
-], Ee = /* @__PURE__ */ S.forwardRef(function(e, t) {
-	var n = e.bsPrefix, r = e.variant, i = e.animation, a = e.size, o = e.children, c = e.as, l = c === void 0 ? "div" : c, u = e.className, d = s(e, Te);
-	n = y(n, "spinner");
+], Ne = /*#__PURE__*/ S.forwardRef(function(e, t) {
+	var n = e.bsPrefix, r = e.variant, i = e.animation, a = e.size, o = e.children, s = e.as, l = s === void 0 ? "div" : s, u = e.className, d = c(e, Me);
+	n = b(n, "spinner");
 	var f = n + "-" + i;
-	return /* @__PURE__ */ S.createElement(l, h({ ref: t }, d, { className: (0, C.default)(u, f, a && f + "-" + a, r && "text-" + r) }), o);
+	return /*#__PURE__*/ S.createElement(l, g({ ref: t }, d, { className: (0, k.default)(u, f, a && f + "-" + a, r && "text-" + r) }), o);
 });
-Ee.displayName = "Spinner";
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/icons/es5/Check.js
-var De = (e) => /* @__PURE__ */ S.createElement("svg", {
+Ne.displayName = "Spinner";
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/icons/es5/Check.js
+var Pe = (e) => /*#__PURE__*/ S.createElement("svg", {
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
 	fill: "none",
 	xmlns: "http://www.w3.org/2000/svg",
 	...e
-}, /* @__PURE__ */ S.createElement("path", {
+}, /*#__PURE__*/ S.createElement("path", {
 	d: "M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2Z",
 	fill: "currentColor"
-})), Oe = (e) => /* @__PURE__ */ S.createElement("svg", {
+})), Fe = (e) => /*#__PURE__*/ S.createElement("svg", {
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
 	fill: "none",
 	xmlns: "http://www.w3.org/2000/svg",
 	...e
-}, /* @__PURE__ */ S.createElement("path", {
+}, /*#__PURE__*/ S.createElement("path", {
 	d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9Z",
 	fill: "currentColor"
-})), ke = (e) => /* @__PURE__ */ S.createElement("svg", {
+})), Ie = (e) => /*#__PURE__*/ S.createElement("svg", {
 	xmlns: "http://www.w3.org/2000/svg",
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
 	fill: "none",
 	...e
-}, /* @__PURE__ */ S.createElement("path", {
+}, /*#__PURE__*/ S.createElement("path", {
 	d: "M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z",
 	fill: "currentColor"
-})), Ae = (e) => /* @__PURE__ */ S.createElement("svg", {
+})), Le = (e) => /*#__PURE__*/ S.createElement("svg", {
 	xmlns: "http://www.w3.org/2000/svg",
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
 	fill: "none",
 	...e
-}, /* @__PURE__ */ S.createElement("path", {
+}, /*#__PURE__*/ S.createElement("path", {
 	d: "M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z",
 	fill: "currentColor"
-})), je = (e) => /* @__PURE__ */ S.createElement("svg", {
+})), Re = (e) => /*#__PURE__*/ S.createElement("svg", {
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
 	fill: "none",
 	xmlns: "http://www.w3.org/2000/svg",
 	...e
-}, /* @__PURE__ */ S.createElement("path", {
+}, /*#__PURE__*/ S.createElement("path", {
 	d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8Z",
 	fill: "currentColor"
-})), Me = (e) => /* @__PURE__ */ S.createElement("svg", {
+})), ze = (e) => /*#__PURE__*/ S.createElement("svg", {
 	width: 24,
 	height: 24,
 	viewBox: "0 0 24 24",
 	fill: "none",
 	xmlns: "http://www.w3.org/2000/svg",
 	...e
-}, /* @__PURE__ */ S.createElement("path", {
+}, /*#__PURE__*/ S.createElement("path", {
 	xmlns: "http://www.w3.org/2000/svg",
 	d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z",
 	fill: "currentColor"
 }));
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/core/utils.js
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/core/utils.js
 function B(e) {
 	return typeof e == "string" || e instanceof String;
 }
-function Ne(e) {
+function Be(e) {
 	var t;
 	return typeof e == "object" && !!e && (e == null || (t = e.constructor) == null ? void 0 : t.name) === "Object";
 }
-function Pe(e, t) {
-	return Array.isArray(t) ? Pe(e, (e, n) => t.includes(n)) : Object.entries(e).reduce((e, n) => {
+function Ve(e, t) {
+	return Array.isArray(t) ? Ve(e, (e, n) => t.includes(n)) : Object.entries(e).reduce((e, n) => {
 		let [r, i] = n;
 		return t(i, r) && (e[r] = i), e;
 	}, {});
@@ -508,22 +530,22 @@ var V = {
 	RIGHT: "RIGHT",
 	FORCE_RIGHT: "FORCE_RIGHT"
 };
-function Fe(e) {
+function He(e) {
 	switch (e) {
 		case V.LEFT: return V.FORCE_LEFT;
 		case V.RIGHT: return V.FORCE_RIGHT;
 		default: return e;
 	}
 }
-function Ie(e) {
+function Ue(e) {
 	return e.replace(/([.*+?^=!:${}()|[\]/\\])/g, "\\$1");
 }
-function Le(e, t) {
+function We(e, t) {
 	if (t === e) return !0;
 	let n = Array.isArray(t), r = Array.isArray(e), i;
 	if (n && r) {
 		if (t.length != e.length) return !1;
-		for (i = 0; i < t.length; i++) if (!Le(t[i], e[i])) return !1;
+		for (i = 0; i < t.length; i++) if (!We(t[i], e[i])) return !1;
 		return !0;
 	}
 	if (n != r) return !1;
@@ -536,14 +558,13 @@ function Le(e, t) {
 		if (a != o) return !1;
 		let s = Object.keys(t);
 		for (i = 0; i < s.length; i++) if (!Object.prototype.hasOwnProperty.call(e, s[i])) return !1;
-		for (i = 0; i < s.length; i++) if (!Le(e[s[i]], t[s[i]])) return !1;
+		for (i = 0; i < s.length; i++) if (!We(e[s[i]], t[s[i]])) return !1;
 		return !0;
-	} else if (t && e && typeof t == "function" && typeof e == "function") return t.toString() === e.toString();
-	return !1;
+	}
+	return t && e && typeof t == "function" && typeof e == "function" ? t.toString() === e.toString() : !1;
 }
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/core/action-details.js
-var Re = class {
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/core/action-details.js
+var Ge = class {
 	constructor(e) {
 		for (Object.assign(this, e); this.value.slice(0, this.startChangePos) !== this.oldValue.slice(0, this.startChangePos);) --this.oldSelection.start;
 		if (this.insertedCount) for (; this.value.slice(this.cursorPos) !== this.oldValue.slice(this.oldSelection.end);) this.value.length - this.cursorPos < this.oldValue.length - this.oldSelection.end ? ++this.oldSelection.end : ++this.cursorPos;
@@ -573,44 +594,41 @@ var Re = class {
 		return !this.removedCount || this.insertedCount ? V.NONE : (this.oldSelection.end === this.cursorPos || this.oldSelection.start === this.cursorPos) && this.oldSelection.end === this.oldSelection.start ? V.RIGHT : V.LEFT;
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/core/holder.js
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/core/holder.js
 function H(e, t) {
 	return new H.InputMask(e, t);
 }
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/factory.js
-function ze(e) {
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/factory.js
+function Ke(e) {
 	if (e == null) throw Error("mask property should be defined");
 	return e instanceof RegExp ? H.MaskedRegExp : B(e) ? H.MaskedPattern : e === Date ? H.MaskedDate : e === Number ? H.MaskedNumber : Array.isArray(e) || e === Array ? H.MaskedDynamic : H.Masked && e.prototype instanceof H.Masked ? e : H.Masked && e instanceof H.Masked ? e.constructor : e instanceof Function ? H.MaskedFunction : (console.warn("Mask not found for mask", e), H.Masked);
 }
-function Be(e) {
+function qe(e) {
 	if (!e) throw Error("Options in not defined");
 	if (H.Masked) {
 		if (e.prototype instanceof H.Masked) return { mask: e };
-		let { mask: t = void 0, ...n } = e instanceof H.Masked ? { mask: e } : Ne(e) && e.mask instanceof H.Masked ? e : {};
+		let { mask: t = void 0, ...n } = e instanceof H.Masked ? { mask: e } : Be(e) && e.mask instanceof H.Masked ? e : {};
 		if (t) {
 			let e = t.mask;
 			return {
-				...Pe(t, (e, t) => !t.startsWith("_")),
+				...Ve(t, (e, t) => !t.startsWith("_")),
 				mask: t.constructor,
 				_mask: e,
 				...n
 			};
 		}
 	}
-	return Ne(e) ? { ...e } : { mask: e };
+	return Be(e) ? { ...e } : { mask: e };
 }
 function U(e) {
 	if (H.Masked && e instanceof H.Masked) return e;
-	let t = Be(e), n = ze(t.mask);
+	let t = qe(e), n = Ke(t.mask);
 	if (!n) throw Error("Masked class is not found for provided mask " + t.mask + ", appropriate module needs to be imported manually before creating mask.");
 	return t.mask === n && delete t.mask, t._mask && (t.mask = t._mask, delete t._mask), new n(t);
 }
 H.createMask = U;
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/controls/mask-element.js
-var Ve = class {
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/controls/mask-element.js
+var Je = class {
 	get selectionStart() {
 		let e;
 		try {
@@ -634,10 +652,9 @@ var Ve = class {
 		return !1;
 	}
 };
-H.MaskElement = Ve;
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/controls/html-mask-element.js
-var He = 90, Ue = 89, We = class extends Ve {
+H.MaskElement = Je;
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/controls/html-mask-element.js
+var Ye = 90, Xe = 89, Ze = class extends Je {
 	constructor(e) {
 		super(), this.input = e, this._onKeydown = this._onKeydown.bind(this), this._onInput = this._onInput.bind(this), this._onBeforeinput = this._onBeforeinput.bind(this), this._onCompositionEnd = this._onCompositionEnd.bind(this);
 	}
@@ -652,8 +669,8 @@ var He = 90, Ue = 89, We = class extends Ve {
 		this.input.addEventListener("keydown", this._onKeydown), this.input.addEventListener("input", this._onInput), this.input.addEventListener("beforeinput", this._onBeforeinput), this.input.addEventListener("compositionend", this._onCompositionEnd), this.input.addEventListener("drop", e.drop), this.input.addEventListener("click", e.click), this.input.addEventListener("focus", e.focus), this.input.addEventListener("blur", e.commit), this._handlers = e;
 	}
 	_onKeydown(e) {
-		if (this._handlers.redo && (e.keyCode === He && e.shiftKey && (e.metaKey || e.ctrlKey) || e.keyCode === Ue && e.ctrlKey)) return e.preventDefault(), this._handlers.redo(e);
-		if (this._handlers.undo && e.keyCode === He && (e.metaKey || e.ctrlKey)) return e.preventDefault(), this._handlers.undo(e);
+		if (this._handlers.redo && (e.keyCode === Ye && e.shiftKey && (e.metaKey || e.ctrlKey) || e.keyCode === Xe && e.ctrlKey)) return e.preventDefault(), this._handlers.redo(e);
+		if (this._handlers.undo && e.keyCode === Ye && (e.metaKey || e.ctrlKey)) return e.preventDefault(), this._handlers.undo(e);
 		e.isComposing || this._handlers.selectionChange(e);
 	}
 	_onBeforeinput(e) {
@@ -670,10 +687,9 @@ var He = 90, Ue = 89, We = class extends Ve {
 		this.input.removeEventListener("keydown", this._onKeydown), this.input.removeEventListener("input", this._onInput), this.input.removeEventListener("beforeinput", this._onBeforeinput), this.input.removeEventListener("compositionend", this._onCompositionEnd), this.input.removeEventListener("drop", this._handlers.drop), this.input.removeEventListener("click", this._handlers.click), this.input.removeEventListener("focus", this._handlers.focus), this.input.removeEventListener("blur", this._handlers.commit), this._handlers = {};
 	}
 };
-H.HTMLMaskElement = We;
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/controls/html-input-mask-element.js
-var Ge = class extends We {
+H.HTMLMaskElement = Ze;
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/controls/html-input-mask-element.js
+var Qe = class extends Ze {
 	constructor(e) {
 		super(e), this.input = e;
 	}
@@ -693,10 +709,9 @@ var Ge = class extends We {
 		this.input.value = e;
 	}
 };
-H.HTMLMaskElement = We;
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/controls/html-contenteditable-mask-element.js
-var Ke = class extends We {
+H.HTMLMaskElement = Ze;
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/controls/html-contenteditable-mask-element.js
+var $e = class extends Ze {
 	get _unsafeSelectionStart() {
 		let e = this.rootElement, t = e.getSelection && e.getSelection(), n = t && t.anchorOffset, r = t && t.focusOffset;
 		return r == null || n == null || n < r ? n : r;
@@ -719,10 +734,9 @@ var Ke = class extends We {
 		this.input.textContent = e;
 	}
 };
-H.HTMLContenteditableMaskElement = Ke;
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/controls/input-history.js
-var qe = class e {
+H.HTMLContenteditableMaskElement = $e;
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/controls/input-history.js
+var et = class e {
 	constructor() {
 		this.states = [], this.currentIndex = 0;
 	}
@@ -748,9 +762,9 @@ var qe = class e {
 		this.states.length = 0, this.currentIndex = 0;
 	}
 };
-qe.MAX_LENGTH = 100, H.InputMask = class {
+et.MAX_LENGTH = 100, H.InputMask = class {
 	constructor(e, t) {
-		this.el = e instanceof Ve ? e : e.isContentEditable && e.tagName !== "INPUT" && e.tagName !== "TEXTAREA" ? new Ke(e) : new Ge(e), this.masked = U(t), this._listeners = {}, this._value = "", this._unmaskedValue = "", this._rawInputValue = "", this.history = new qe(), this._saveSelection = this._saveSelection.bind(this), this._onInput = this._onInput.bind(this), this._onChange = this._onChange.bind(this), this._onDrop = this._onDrop.bind(this), this._onFocus = this._onFocus.bind(this), this._onClick = this._onClick.bind(this), this._onUndo = this._onUndo.bind(this), this._onRedo = this._onRedo.bind(this), this.alignCursor = this.alignCursor.bind(this), this.alignCursorFriendly = this.alignCursorFriendly.bind(this), this._bindEvents(), this.updateValue(), this._onChange();
+		this.el = e instanceof Je ? e : e.isContentEditable && e.tagName !== "INPUT" && e.tagName !== "TEXTAREA" ? new $e(e) : new Qe(e), this.masked = U(t), this._listeners = {}, this._value = "", this._unmaskedValue = "", this._rawInputValue = "", this.history = new et(), this._saveSelection = this._saveSelection.bind(this), this._onInput = this._onInput.bind(this), this._onChange = this._onChange.bind(this), this._onDrop = this._onDrop.bind(this), this._onFocus = this._onFocus.bind(this), this._onClick = this._onClick.bind(this), this._onUndo = this._onUndo.bind(this), this._onRedo = this._onRedo.bind(this), this.alignCursor = this.alignCursor.bind(this), this.alignCursorFriendly = this.alignCursorFriendly.bind(this), this._bindEvents(), this.updateValue(), this._onChange();
 	}
 	maskEquals(e) {
 		return e == null || this.masked?.maskEquals(e);
@@ -760,7 +774,7 @@ qe.MAX_LENGTH = 100, H.InputMask = class {
 	}
 	set mask(e) {
 		if (this.maskEquals(e)) return;
-		if (!(e instanceof H.Masked) && this.masked.constructor === ze(e)) {
+		if (!(e instanceof H.Masked) && this.masked.constructor === Ke(e)) {
 			this.masked.updateOptions({ mask: e });
 			return;
 		}
@@ -820,7 +834,7 @@ qe.MAX_LENGTH = 100, H.InputMask = class {
 		return this._cursorChanging ? this._changingCursorPos : this.el.selectionEnd;
 	}
 	set cursorPos(e) {
-		!this.el || !this.el.isActive || (this.el.select(e, e), this._saveSelection());
+		this.el && this.el.isActive && (this.el.select(e, e), this._saveSelection());
 	}
 	_saveSelection() {
 		this.displayValue !== this.el.value && console.warn("Element value was changed outside of mask. Syncronize mask using `mask.updateValue()` to work properly."), this._selection = {
@@ -876,7 +890,7 @@ qe.MAX_LENGTH = 100, H.InputMask = class {
 	}
 	_onInput(e) {
 		this._inputEvent = e, this._abortUpdateCursor();
-		let t = new Re({
+		let t = new Ge({
 			value: this.el.value,
 			cursorPos: this.cursorPos,
 			oldValue: this.displayValue,
@@ -912,8 +926,7 @@ qe.MAX_LENGTH = 100, H.InputMask = class {
 		this._unbindEvents(), this._listeners.length = 0, delete this.el;
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/core/change-details.js
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/core/change-details.js
 var W = class e {
 	static normalize(t) {
 		return Array.isArray(t) ? t : [t, new e()];
@@ -940,8 +953,7 @@ var W = class e {
 	}
 };
 H.ChangeDetails = W;
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/core/continuous-tail-details.js
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/core/continuous-tail-details.js
 var G = class {
 	constructor(e, t, n) {
 		e === void 0 && (e = ""), t === void 0 && (t = 0), this.value = e, this.from = t, this.stop = n;
@@ -1138,19 +1150,21 @@ var G = class {
 	splice(e, t, n, r, i) {
 		n === void 0 && (n = ""), r === void 0 && (r = V.NONE), i === void 0 && (i = { input: !0 });
 		let a = e + t, o = this.extractTail(a), s = this.eager === !0 || this.eager === "remove", c;
-		s && (r = Fe(r), c = this.extractInput(0, a, { raw: !0 }));
+		s && (r = He(r), c = this.extractInput(0, a, { raw: !0 }));
 		let l = e, u = new W();
-		if (r !== V.NONE && (l = this.nearestInputPos(e, t > 1 && e !== 0 && !s ? V.NONE : r), u.tailShift = l - e), u.aggregate(this.remove(l)), s && r !== V.NONE && c === this.rawInputValue) if (r === V.FORCE_LEFT) {
-			let e;
-			for (; c === this.rawInputValue && (e = this.displayValue.length);) u.aggregate(new W({ tailShift: -1 })).aggregate(this.remove(e - 1));
-		} else r === V.FORCE_RIGHT && o.unshift();
+		if (r !== V.NONE && (l = this.nearestInputPos(e, t > 1 && e !== 0 && !s ? V.NONE : r), u.tailShift = l - e), u.aggregate(this.remove(l)), s && r !== V.NONE && c === this.rawInputValue) {
+			if (r === V.FORCE_LEFT) {
+				let e;
+				for (; c === this.rawInputValue && (e = this.displayValue.length);) u.aggregate(new W({ tailShift: -1 })).aggregate(this.remove(e - 1));
+			} else r === V.FORCE_RIGHT && o.unshift();
+		}
 		return u.aggregate(this.append(n, i, o));
 	}
 	maskEquals(e) {
 		return this.mask === e;
 	}
 	optionsIsChanged(e) {
-		return !Le(this, e);
+		return !We(this, e);
 	}
 	typedValueEquals(t) {
 		let n = this.typedValue;
@@ -1165,9 +1179,8 @@ K.DEFAULTS = { skipInvalid: !0 }, K.EMPTY_VALUES = [
 	null,
 	""
 ], H.Masked = K;
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/pattern/chunk-tail-details.js
-var Je = class e {
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/pattern/chunk-tail-details.js
+var tt = class e {
 	constructor(e, t) {
 		e === void 0 && (e = []), t === void 0 && (t = 0), this.chunks = e, this.from = t;
 	}
@@ -1242,7 +1255,7 @@ var Je = class e {
 		}
 		return "";
 	}
-}, Ye = class {
+}, nt = class {
 	constructor(e, t) {
 		this.masked = e, this._log = [];
 		let { offset: n, index: r } = e._mapPosToBlock(t) || (t < 0 ? {
@@ -1293,7 +1306,7 @@ var Je = class e {
 	}
 	pushLeftBeforeFilled() {
 		return this._pushLeft(() => {
-			if (!(this.block.isFixed || !this.block.value) && (this.offset = this.block.nearestInputPos(this.offset, V.FORCE_LEFT), this.offset !== 0)) return !0;
+			if (!this.block.isFixed && this.block.value && (this.offset = this.block.nearestInputPos(this.offset, V.FORCE_LEFT), this.offset !== 0)) return !0;
 		});
 	}
 	pushLeftBeforeInput() {
@@ -1308,7 +1321,7 @@ var Je = class e {
 	}
 	pushRightBeforeFilled() {
 		return this._pushRight(() => {
-			if (!(this.block.isFixed || !this.block.value) && (this.offset = this.block.nearestInputPos(this.offset, V.FORCE_RIGHT), this.offset !== this.block.value.length)) return !0;
+			if (!this.block.isFixed && this.block.value && (this.offset = this.block.nearestInputPos(this.offset, V.FORCE_RIGHT), this.offset !== this.block.value.length)) return !0;
 		});
 	}
 	pushRightBeforeInput() {
@@ -1321,7 +1334,7 @@ var Je = class e {
 			if (!(this.block.isFixed || this.block.isOptional && !this.block.value)) return this.offset = this.block.nearestInputPos(this.offset, V.NONE), !0;
 		});
 	}
-}, Xe = class {
+}, rt = class {
 	constructor(e) {
 		Object.assign(this, e), this._value = "", this.isFixed = !0;
 	}
@@ -1405,7 +1418,7 @@ var Je = class e {
 	pad(e) {
 		return this._appendPlaceholder();
 	}
-}, Ze = class {
+}, it = class {
 	constructor(e) {
 		let { parent: t, isOptional: n, placeholderChar: r, displayChar: i, lazy: a, eager: o, ...s } = e;
 		this.masked = U(s), Object.assign(this, {
@@ -1441,7 +1454,7 @@ var Je = class e {
 	_appendChar(e, t) {
 		if (t === void 0 && (t = {}), this.isFilled) return new W();
 		let n = this.masked.state, r = this.masked._appendChar(e, this.currentMaskFlags(t));
-		return r.inserted && this.doValidate(t) === !1 && (r = new W(), this.masked.state = n), !r.inserted && !this.isOptional && !this.lazy && !t.input && (r.inserted = this.placeholderChar), r.skip = !r.inserted && !this.isOptional, this.isFilled = !!r.inserted, r;
+		return r.inserted && this.doValidate(t) === !1 && (r = new W(), this.masked.state = n), r.inserted || this.isOptional || this.lazy || t.input || (r.inserted = this.placeholderChar), r.skip = !r.inserted && !this.isOptional, this.isFilled = !!r.inserted, r;
 	}
 	append(e, t, n) {
 		return this.masked.append(e, this.currentMaskFlags(t), n);
@@ -1504,7 +1517,7 @@ var Je = class e {
 		return new W();
 	}
 };
-Ze.DEFAULT_DEFINITIONS = {
+it.DEFAULT_DEFINITIONS = {
 	0: /\d/,
 	a: /[\u0041-\u005A\u0061-\u007A\u00AA\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u0527\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0\u08A2-\u08AC\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0977\u0979-\u097F\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C33\u0C35-\u0C39\u0C3D\u0C58\u0C59\u0C60\u0C61\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D60\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F4\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191C\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19C1-\u19C7\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FCC\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA697\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA78E\uA790-\uA793\uA7A0-\uA7AA\uA7F8-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA80-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uABC0-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]/,
 	"*": /./
@@ -1517,14 +1530,13 @@ Ze.DEFAULT_DEFINITIONS = {
 		t && (e.validate = (e) => e.search(t) >= 0), super._update(e);
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/pattern.js
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/pattern.js
 var q = class e extends K {
 	constructor(t) {
 		super({
 			...e.DEFAULTS,
 			...t,
-			definitions: Object.assign({}, Ze.DEFAULT_DEFINITIONS, t?.definitions)
+			definitions: Object.assign({}, it.DEFAULT_DEFINITIONS, t?.definitions)
 		});
 	}
 	updateOptions(e) {
@@ -1545,7 +1557,7 @@ var q = class e extends K {
 				t.sort((e, t) => t.length - e.length);
 				let r = t[0];
 				if (r) {
-					let { expose: e, repeat: t, ...n } = Be(this.blocks[r]), i = {
+					let { expose: e, repeat: t, ...n } = qe(this.blocks[r]), i = {
 						lazy: this.lazy,
 						eager: this.eager,
 						placeholderChar: this.placeholderChar,
@@ -1577,15 +1589,15 @@ var q = class e extends K {
 				if (++a, o = n[a], !o) break;
 				s = !1;
 			}
-			let c = s ? new Ze({
+			let c = s ? new it({
 				isOptional: i,
 				lazy: this.lazy,
 				eager: this.eager,
 				placeholderChar: this.placeholderChar,
 				displayChar: this.displayChar,
-				...Be(t[o]),
+				...qe(t[o]),
 				parent: this
-			}) : new Xe({
+			}) : new rt({
 				char: o,
 				eager: this.eager,
 				isUnmasking: r
@@ -1685,10 +1697,10 @@ var q = class e extends K {
 	}
 	extractTail(e, t) {
 		e === void 0 && (e = 0), t === void 0 && (t = this.displayValue.length);
-		let n = new Je();
+		let n = new tt();
 		return e === t || this._forEachBlocksInRange(e, t, (e, t, r, i) => {
 			let a = e.extractTail(r, i);
-			a.stop = this._findStopBefore(t), a.from = this._blockStartPos(t), a instanceof Je && (a.blockIndex = t), n.extend(a);
+			a.stop = this._findStopBefore(t), a.from = this._blockStartPos(t), a instanceof tt && (a.blockIndex = t), n.extend(a);
 		}), n;
 	}
 	extractInput(e, t, n) {
@@ -1714,7 +1726,7 @@ var q = class e extends K {
 		if (!n) return t;
 		let r = n.index, i = e ?? this._blocks.length;
 		return this._blocks.slice(r, i).forEach((n) => {
-			(!n.lazy || e != null) && t.aggregate(n._appendPlaceholder(n._blocks?.length));
+			n.lazy && e == null || t.aggregate(n._appendPlaceholder(n._blocks?.length));
 		}), t;
 	}
 	_mapPosToBlock(e) {
@@ -1750,7 +1762,7 @@ var q = class e extends K {
 	}
 	nearestInputPos(e, t) {
 		if (t === void 0 && (t = V.NONE), !this._blocks.length) return 0;
-		let n = new Ye(this, e);
+		let n = new nt(this, e);
 		if (t === V.NONE) return n.pushRightBeforeInput() || (n.popState(), n.pushLeftBeforeInput()) ? n.pos : this.displayValue.length;
 		if (t === V.LEFT || t === V.FORCE_LEFT) {
 			if (t === V.LEFT) {
@@ -1788,10 +1800,9 @@ q.DEFAULTS = {
 	...K.DEFAULTS,
 	lazy: !0,
 	placeholderChar: "_"
-}, q.STOP_CHAR = "`", q.ESCAPE_CHAR = "\\", q.InputDefinition = Ze, q.FixedDefinition = Xe, H.MaskedPattern = q;
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/range.js
-var Qe = class extends q {
+}, q.STOP_CHAR = "`", q.ESCAPE_CHAR = "\\", q.InputDefinition = it, q.FixedDefinition = rt, H.MaskedPattern = q;
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/range.js
+var at = class extends q {
 	get _matchFrom() {
 		return this.maxLength - String(this.from).length;
 	}
@@ -1843,10 +1854,9 @@ var Qe = class extends q {
 		return t;
 	}
 };
-H.MaskedRange = Qe;
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/date.js
-var $e = "d{.}`m{.}`Y", et = class e extends q {
+H.MaskedRange = at;
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/date.js
+var ot = "d{.}`m{.}`Y", st = class e extends q {
 	static extractPatternOptions(e) {
 		let { mask: t, pattern: n, ...r } = e;
 		return {
@@ -1900,28 +1910,28 @@ var $e = "d{.}`m{.}`Y", et = class e extends q {
 		return super.optionsIsChanged(e.extractPatternOptions(t));
 	}
 };
-et.GET_DEFAULT_BLOCKS = () => ({
+st.GET_DEFAULT_BLOCKS = () => ({
 	d: {
-		mask: Qe,
+		mask: at,
 		from: 1,
 		to: 31,
 		maxLength: 2
 	},
 	m: {
-		mask: Qe,
+		mask: at,
 		from: 1,
 		to: 12,
 		maxLength: 2
 	},
 	Y: {
-		mask: Qe,
+		mask: at,
 		from: 1900,
 		to: 9999
 	}
-}), et.DEFAULTS = {
+}), st.DEFAULTS = {
 	...q.DEFAULTS,
 	mask: Date,
-	pattern: $e,
+	pattern: ot,
 	format: (e, t) => e ? [
 		String(e.getDate()).padStart(2, "0"),
 		String(e.getMonth() + 1).padStart(2, "0"),
@@ -1931,10 +1941,9 @@ et.GET_DEFAULT_BLOCKS = () => ({
 		let [n, r, i] = e.split(".").map(Number);
 		return new Date(i, r - 1, n);
 	}
-}, H.MaskedDate = et;
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/dynamic.js
-var tt = class e extends K {
+}, H.MaskedDate = st;
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/dynamic.js
+var ct = class e extends K {
 	constructor(t) {
 		super({
 			...e.DEFAULTS,
@@ -1946,7 +1955,7 @@ var tt = class e extends K {
 	}
 	_update(e) {
 		super._update(e), "mask" in e && (this.exposeMask = void 0, this.compiledMasks = Array.isArray(e.mask) ? e.mask.map((e) => {
-			let { expose: t, ...n } = Be(e), r = U({
+			let { expose: t, ...n } = qe(e), r = U({
 				overwrite: this._overwrite,
 				eager: this._eager,
 				skipInvalid: this._skipInvalid,
@@ -2103,14 +2112,14 @@ var tt = class e extends K {
 		return Array.isArray(e) ? this.compiledMasks.every((t, n) => {
 			if (!e[n]) return;
 			let { mask: r, ...i } = e[n];
-			return Le(t, i) && t.maskEquals(r);
+			return We(t, i) && t.maskEquals(r);
 		}) : super.maskEquals(e);
 	}
 	typedValueEquals(e) {
 		return !!this.currentMask?.typedValueEquals(e);
 	}
 };
-tt.DEFAULTS = {
+ct.DEFAULTS = {
 	...K.DEFAULTS,
 	dispatch: (e, t, n, r) => {
 		if (!t.compiledMasks.length) return;
@@ -2124,10 +2133,9 @@ tt.DEFAULTS = {
 		});
 		return a.sort((e, t) => t.weight - e.weight || t.totalInputPositions - e.totalInputPositions), t.compiledMasks[a[0].index];
 	}
-}, H.MaskedDynamic = tt;
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/enum.js
-var nt = class e extends q {
+}, H.MaskedDynamic = ct;
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/enum.js
+var lt = class e extends q {
 	constructor(t) {
 		super({
 			...e.DEFAULTS,
@@ -2172,10 +2180,10 @@ var nt = class e extends q {
 		return this.enum.indexOf(this.value) >= 0;
 	}
 };
-nt.DEFAULTS = {
+lt.DEFAULTS = {
 	...q.DEFAULTS,
 	matchValue: (e, t, n) => e.indexOf(t, n) === n
-}, H.MaskedEnum = nt, H.MaskedFunction = class extends K {
+}, H.MaskedEnum = lt, H.MaskedFunction = class extends K {
 	updateOptions(e) {
 		super.updateOptions(e);
 	}
@@ -2186,9 +2194,8 @@ nt.DEFAULTS = {
 		});
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/number.js
-var rt, it = class e extends K {
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/number.js
+var ut, dt = class e extends K {
 	constructor(t) {
 		super({
 			...e.DEFAULTS,
@@ -2202,8 +2209,8 @@ var rt, it = class e extends K {
 		super._update(e), this._updateRegExps();
 	}
 	_updateRegExps() {
-		let e = "^" + (this.allowNegative ? "[+|\\-]?" : ""), t = (this.scale ? "(" + Ie(this.radix) + "\\d{0," + this.scale + "})?" : "") + "$";
-		this._numberRegExp = RegExp(e + "\\d*" + t), this._mapToRadixRegExp = RegExp("[" + this.mapToRadix.map(Ie).join("") + "]", "g"), this._thousandsSeparatorRegExp = new RegExp(Ie(this.thousandsSeparator), "g");
+		let e = "^" + (this.allowNegative ? "[+|\\-]?" : ""), t = (this.scale ? "(" + Ue(this.radix) + "\\d{0," + this.scale + "})?" : "") + "$";
+		this._numberRegExp = RegExp(e + "\\d*" + t), this._mapToRadixRegExp = RegExp("[" + this.mapToRadix.map(Ue).join("") + "]", "g"), this._thousandsSeparatorRegExp = new RegExp(Ue(this.thousandsSeparator), "g");
 	}
 	_removeThousandsSeparators(e) {
 		return e.replace(this._thousandsSeparatorRegExp, "");
@@ -2336,15 +2343,15 @@ var rt, it = class e extends K {
 		return this.min != null && this.min > 0 || this.max != null && this.max > 0;
 	}
 	typedValueEquals(t) {
-		return (super.typedValueEquals(t) || e.EMPTY_VALUES.includes(t) && e.EMPTY_VALUES.includes(this.typedValue)) && !(t === 0 && this.value === "");
+		return (super.typedValueEquals(t) || e.EMPTY_VALUES.includes(t) && e.EMPTY_VALUES.includes(this.typedValue)) && (t !== 0 || this.value !== "");
 	}
 };
-rt = it, it.UNMASKED_RADIX = ".", it.EMPTY_VALUES = [...K.EMPTY_VALUES, 0], it.DEFAULTS = {
+ut = dt, dt.UNMASKED_RADIX = ".", dt.EMPTY_VALUES = [...K.EMPTY_VALUES, 0], dt.DEFAULTS = {
 	...K.DEFAULTS,
 	mask: Number,
 	radix: ",",
 	thousandsSeparator: "",
-	mapToRadix: [rt.UNMASKED_RADIX],
+	mapToRadix: [ut.UNMASKED_RADIX],
 	min: -(2 ** 53 - 1),
 	max: 2 ** 53 - 1,
 	scale: 2,
@@ -2355,23 +2362,22 @@ rt = it, it.UNMASKED_RADIX = ".", it.EMPTY_VALUES = [...K.EMPTY_VALUES, 0], it.D
 		useGrouping: !1,
 		maximumFractionDigits: 20
 	})
-}, H.MaskedNumber = it;
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/pipe.js
-var at = {
+}, H.MaskedNumber = dt;
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/masked/pipe.js
+var ft = {
 	MASKED: "value",
 	UNMASKED: "unmaskedValue",
 	TYPED: "typedValue"
 };
-function ot(e, t, n) {
-	t === void 0 && (t = at.MASKED), n === void 0 && (n = at.MASKED);
+function pt(e, t, n) {
+	t === void 0 && (t = ft.MASKED), n === void 0 && (n = ft.MASKED);
 	let r = U(e);
 	return (e) => r.runIsolated((r) => (r[t] = e, r[n]));
 }
-function st(e, t, n, r) {
-	return ot(t, n, r)(e);
+function mt(e, t, n, r) {
+	return pt(t, n, r)(e);
 }
-H.PIPE_TYPE = at, H.createPipe = ot, H.pipe = st, H.RepeatBlock = class extends q {
+H.PIPE_TYPE = ft, H.createPipe = pt, H.pipe = mt, H.RepeatBlock = class extends q {
 	get repeatFrom() {
 		return (Array.isArray(this.repeat) ? this.repeat[0] : this.repeat === Infinity ? 0 : this.repeat) ?? 0;
 	}
@@ -2385,7 +2391,7 @@ H.PIPE_TYPE = at, H.createPipe = ot, H.pipe = st, H.RepeatBlock = class extends 
 		super.updateOptions(e);
 	}
 	_update(e) {
-		let { repeat: t, ...n } = Be(e);
+		let { repeat: t, ...n } = qe(e);
 		this._blockOpts = Object.assign({}, this._blockOpts, n);
 		let r = U(this._blockOpts);
 		this.repeat = t ?? r.repeat ?? this.repeat ?? Infinity, super._update({
@@ -2446,70 +2452,67 @@ H.PIPE_TYPE = at, H.createPipe = ot, H.pipe = st, H.RepeatBlock = class extends 
 		this._blocks.length = e._blocks.length, this.mask = this.mask.slice(0, this._blocks.length), super.state = e;
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/index.js
+// node_modules/.pnpm/imask@7.6.1/node_modules/imask/esm/index.js
 try {
 	globalThis.IMask = H;
 } catch {}
-//#endregion
-//#region node_modules/.pnpm/react-imask@7.6.1_react@18.3.1/node_modules/react-imask/esm/mixin.js
-var ct = {
-	mask: N.default.oneOfType([
-		N.default.array,
-		N.default.func,
-		N.default.string,
-		N.default.instanceOf(RegExp),
-		N.default.oneOf([
+// node_modules/.pnpm/react-imask@7.6.1_react@18.3.1/node_modules/react-imask/esm/mixin.js
+var ht = {
+	mask: I.default.oneOfType([
+		I.default.array,
+		I.default.func,
+		I.default.string,
+		I.default.instanceOf(RegExp),
+		I.default.oneOf([
 			Date,
 			Number,
 			H.Masked
 		]),
-		N.default.instanceOf(H.Masked)
+		I.default.instanceOf(H.Masked)
 	]),
-	value: N.default.any,
-	unmask: N.default.oneOfType([N.default.bool, N.default.oneOf(["typed"])]),
-	prepare: N.default.func,
-	prepareChar: N.default.func,
-	validate: N.default.func,
-	commit: N.default.func,
-	overwrite: N.default.oneOfType([N.default.bool, N.default.oneOf(["shift"])]),
-	eager: N.default.oneOfType([N.default.bool, N.default.oneOf(["append", "remove"])]),
-	skipInvalid: N.default.bool,
-	onAccept: N.default.func,
-	onComplete: N.default.func,
-	placeholderChar: N.default.string,
-	displayChar: N.default.string,
-	lazy: N.default.bool,
-	definitions: N.default.object,
-	blocks: N.default.object,
-	enum: N.default.arrayOf(N.default.string),
-	maxLength: N.default.number,
-	from: N.default.number,
-	to: N.default.number,
-	pattern: N.default.string,
-	format: N.default.func,
-	parse: N.default.func,
-	autofix: N.default.oneOfType([N.default.bool, N.default.oneOf(["pad"])]),
-	radix: N.default.string,
-	thousandsSeparator: N.default.string,
-	mapToRadix: N.default.arrayOf(N.default.string),
-	scale: N.default.number,
-	normalizeZeros: N.default.bool,
-	padFractionalZeros: N.default.bool,
-	min: N.default.oneOfType([N.default.number, N.default.instanceOf(Date)]),
-	max: N.default.oneOfType([N.default.number, N.default.instanceOf(Date)]),
-	dispatch: N.default.func,
-	inputRef: N.default.oneOfType([N.default.func, N.default.shape({ current: N.default.object })])
-}, lt = Object.keys(ct).filter((e) => e !== "value"), ut = [
+	value: I.default.any,
+	unmask: I.default.oneOfType([I.default.bool, I.default.oneOf(["typed"])]),
+	prepare: I.default.func,
+	prepareChar: I.default.func,
+	validate: I.default.func,
+	commit: I.default.func,
+	overwrite: I.default.oneOfType([I.default.bool, I.default.oneOf(["shift"])]),
+	eager: I.default.oneOfType([I.default.bool, I.default.oneOf(["append", "remove"])]),
+	skipInvalid: I.default.bool,
+	onAccept: I.default.func,
+	onComplete: I.default.func,
+	placeholderChar: I.default.string,
+	displayChar: I.default.string,
+	lazy: I.default.bool,
+	definitions: I.default.object,
+	blocks: I.default.object,
+	enum: I.default.arrayOf(I.default.string),
+	maxLength: I.default.number,
+	from: I.default.number,
+	to: I.default.number,
+	pattern: I.default.string,
+	format: I.default.func,
+	parse: I.default.func,
+	autofix: I.default.oneOfType([I.default.bool, I.default.oneOf(["pad"])]),
+	radix: I.default.string,
+	thousandsSeparator: I.default.string,
+	mapToRadix: I.default.arrayOf(I.default.string),
+	scale: I.default.number,
+	normalizeZeros: I.default.bool,
+	padFractionalZeros: I.default.bool,
+	min: I.default.oneOfType([I.default.number, I.default.instanceOf(Date)]),
+	max: I.default.oneOfType([I.default.number, I.default.instanceOf(Date)]),
+	dispatch: I.default.func,
+	inputRef: I.default.oneOfType([I.default.func, I.default.shape({ current: I.default.object })])
+}, gt = Object.keys(ht).filter((e) => e !== "value"), _t = [
 	"value",
 	"unmask",
 	"onAccept",
 	"onComplete",
 	"inputRef"
-], dt = lt.filter((e) => ut.indexOf(e) < 0);
-function ft(e) {
-	var t;
-	let n = (t = class extends S.Component {
+], vt = gt.filter((e) => _t.indexOf(e) < 0);
+function yt(e) {
+	var t = class extends S.Component {
 		constructor(e) {
 			super(e), this._inputRef = this._inputRef.bind(this);
 		}
@@ -2538,13 +2541,13 @@ function ft(e) {
 		}
 		_extractMaskOptionsFromProps(e) {
 			let { ...t } = e;
-			return Object.keys(t).filter((e) => dt.indexOf(e) < 0).forEach((e) => {
+			return Object.keys(t).filter((e) => vt.indexOf(e) < 0).forEach((e) => {
 				delete t[e];
 			}), t;
 		}
 		_extractNonMaskProps(e) {
 			let { ...t } = e;
-			return lt.forEach((e) => {
+			return gt.forEach((e) => {
 				e !== "maxLength" && delete t[e];
 			}), "defaultValue" in t || (t.defaultValue = e.mask ? "" : t.value), delete t.value, t;
 		}
@@ -2566,57 +2569,60 @@ function ft(e) {
 				inputRef: this._inputRef
 			});
 		}
-	}, t.displayName = void 0, t.propTypes = void 0, t);
-	return n.displayName = "IMask(" + (e.displayName || e.name || "Component") + ")", n.propTypes = ct, S.forwardRef((e, t) => S.createElement(n, {
+	};
+	let n = (t.displayName = void 0, t.propTypes = void 0, t);
+	return n.displayName = "IMask(" + (e.displayName || e.name || "Component") + ")", n.propTypes = ht, S.forwardRef((e, t) => S.createElement(n, {
 		...e,
 		ref: t
 	}));
 }
-//#endregion
-//#region node_modules/.pnpm/react-imask@7.6.1_react@18.3.1/node_modules/react-imask/esm/input.js
-var pt = ft((e) => {
+// node_modules/.pnpm/react-imask@7.6.1_react@18.3.1/node_modules/react-imask/esm/input.js
+var bt = yt((e) => {
 	let { inputRef: t, ...n } = e;
 	return S.createElement("input", {
 		...n,
 		ref: t
 	});
-}), mt = S.forwardRef((e, t) => S.createElement(pt, {
+}), xt = S.forwardRef((e, t) => S.createElement(bt, {
 	...e,
 	ref: t
-})), ht = (e = {}) => Object.entries(e).reduce((e, [t, n]) => (n !== void 0 && (e[t] = n), e), {}), gt = (...e) => (t) => {
+})), St = (e = {}) => Object.entries(e).reduce((e, [t, n]) => (n !== void 0 && (e[t] = n), e), {}), Ct = (...e) => (t) => {
 	e.filter((e) => typeof e == "function").forEach((e) => e(t));
-}, _t = ({ defaultValue: e, value: t }) => {
+}, wt = ({ defaultValue: e, value: t }) => {
 	let [n, r] = (0, S.useState)(!!e || e === 0);
 	return [!!t || t === 0 || n, (e) => r(!!e.target.value)];
-}, vt = (e, t) => {
-	let [n, r] = (0, S.useState)(t || []), i = (e) => (r((t) => [...t, e]), e), a = () => i(m(`${e}-`)), o = (e) => {
+}, Tt = (e, t) => {
+	let [n, r] = (0, S.useState)(t || []), i = (e) => (r((t) => [...t, e]), e), a = () => {
+		let t = h(`${e}-`);
+		return i(t);
+	}, o = (e) => {
 		r((t) => t.filter((t) => t !== e));
 	};
 	return [n, (e) => {
 		let [t, n] = (0, S.useState)(e);
 		return (0, S.useEffect)(() => (e ? i(e) : t || n(a()), () => o(t)), [t, e]), t;
 	}];
-}, yt = (e) => e, bt = /* @__PURE__ */ S.createContext({
-	getControlProps: yt,
+}, Et = (e) => e, Dt = /*#__PURE__*/ S.createContext({
+	getControlProps: Et,
 	useSetIsControlGroupEffect: () => {},
-	getLabelProps: yt,
-	getDescriptorProps: yt,
+	getLabelProps: Et,
+	getDescriptorProps: Et,
 	hasFormGroupProvider: !1
-}), J = () => S.useContext(bt);
-function xt(e) {
+}), J = () => S.useContext(Dt);
+function Ot(e) {
 	let [t, n] = (0, S.useState)(e);
 	return [t, (e) => {
 		(0, S.useEffect)(() => n(e), [e]);
 	}];
 }
-function St({ children: e, controlId: t, isInvalid: n, isValid: r, size: i }) {
-	let a = (0, S.useMemo)(() => t || m("form-field"), [t]), [o, s] = vt(a), [c, l] = vt(a), [u, d] = xt(!1), f = {
+function kt({ children: e, controlId: t, isInvalid: n, isValid: r, size: i }) {
+	let a = (0, S.useMemo)(() => t || h("form-field"), [t]), [o, s] = Tt(a), [c, l] = Tt(a), [u, d] = Ot(!1), f = {
 		getControlProps: (0, S.useCallback)((e) => {
 			let t = u ? c : void 0;
-			return ht({
+			return St({
 				...e,
-				"aria-describedby": (0, C.default)(e["aria-describedby"], o) || void 0,
-				"aria-labelledby": (0, C.default)(e["aria-labelledby"], t) || void 0,
+				"aria-describedby": (0, k.default)(e["aria-describedby"], o) || void 0,
+				"aria-labelledby": (0, k.default)(e["aria-labelledby"], t) || void 0,
 				id: a
 			});
 		}, [
@@ -2650,11 +2656,10 @@ function St({ children: e, controlId: t, isInvalid: n, isValid: r, size: i }) {
 		size: i,
 		hasFormGroupProvider: !0
 	};
-	return /* @__PURE__ */ S.createElement(bt.Provider, { value: f }, e);
+	return /*#__PURE__*/ S.createElement(Dt.Provider, { value: f }, e);
 }
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/constants.js
-var Ct = {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/constants.js
+var At = {
 	SMALL: "sm",
 	LARGE: "lg"
 }, Y = {
@@ -2665,42 +2670,42 @@ var Ct = {
 	CRITERIA_EMPTY: "criteria-empty",
 	CRITERIA_VALID: "criteria-valid",
 	CRITERIA_INVALID: "criteria-invalid"
-}, wt = {
+}, jt = {
 	[Y.DEFAULT]: null,
-	[Y.VALID]: De,
-	[Y.INVALID]: p,
-	[Y.WARNING]: Me,
-	[Y.CRITERIA_EMPTY]: je,
-	[Y.CRITERIA_VALID]: Oe,
-	[Y.CRITERIA_INVALID]: g
-}, Tt = ({ isInvalid: e, isValid: t }) => t ? Y.VALID : e ? Y.INVALID : Y.DEFAULT;
-function Et({ type: e, customIcon: t }) {
+	[Y.VALID]: Pe,
+	[Y.INVALID]: m,
+	[Y.WARNING]: ze,
+	[Y.CRITERIA_EMPTY]: Re,
+	[Y.CRITERIA_VALID]: Fe,
+	[Y.CRITERIA_INVALID]: _
+}, Mt = ({ isInvalid: e, isValid: t }) => t ? Y.VALID : e ? Y.INVALID : Y.DEFAULT;
+function Nt({ type: e, customIcon: t }) {
 	if (t) return t;
-	let n = wt[e];
-	return n ? /* @__PURE__ */ S.createElement(i, { src: n }) : null;
+	let n = jt[e];
+	return n ? /*#__PURE__*/ S.createElement(a, { src: n }) : null;
 }
-Et.propTypes = {
-	type: N.default.oneOf(Object.values(Y)),
-	customIcon: N.default.node
-}, Et.defaultProps = {
+Nt.propTypes = {
+	type: I.default.oneOf(Object.values(Y)),
+	customIcon: I.default.node
+}, Nt.defaultProps = {
 	type: void 0,
 	customIcon: void 0
 };
-function Dt({ children: e, type: t, icon: n, muted: r, hasIcon: i, ...a }) {
-	let o = (0, C.default)(a.className, "pgn__form-text", `pgn__form-text-${t}`, { "text-muted": r });
-	return /* @__PURE__ */ S.createElement("div", {
+function Pt({ children: e, type: t, icon: n, muted: r, hasIcon: i, ...a }) {
+	let o = (0, k.default)(a.className, "pgn__form-text", `pgn__form-text-${t}`, { "text-muted": r });
+	return /*#__PURE__*/ S.createElement("div", {
 		...a,
 		className: o
-	}, i && /* @__PURE__ */ S.createElement(Et, {
+	}, i && /*#__PURE__*/ S.createElement(Nt, {
 		customIcon: n,
 		type: t
-	}), /* @__PURE__ */ S.createElement("div", null, e));
+	}), /*#__PURE__*/ S.createElement("div", null, e));
 }
-Dt.propTypes = {
-	children: N.default.node.isRequired,
-	className: N.default.string,
-	hasIcon: N.default.bool,
-	type: N.default.oneOf([
+Pt.propTypes = {
+	children: I.default.node.isRequired,
+	className: I.default.string,
+	hasIcon: I.default.bool,
+	type: I.default.oneOf([
 		"default",
 		"valid",
 		"invalid",
@@ -2709,33 +2714,32 @@ Dt.propTypes = {
 		"criteria-valid",
 		"criteria-invalid"
 	]),
-	icon: N.default.node,
-	muted: N.default.bool
-}, Dt.defaultProps = {
+	icon: I.default.node,
+	muted: I.default.bool
+}, Pt.defaultProps = {
 	hasIcon: !0,
 	type: "default",
 	icon: void 0,
 	className: void 0,
 	muted: !1
 };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlFeedback.js
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormControlFeedback.js
 function X({ children: e, ...t }) {
-	let { getDescriptorProps: n, isInvalid: r, isValid: i } = J(), a = n(t), o = (0, C.default)("pgn__form-control-description", t.className), s = t.type || Tt({
+	let { getDescriptorProps: n, isInvalid: r, isValid: i } = J(), a = n(t), o = (0, k.default)("pgn__form-control-description", t.className), s = t.type || Mt({
 		isInvalid: r,
 		isValid: i
 	});
-	return /* @__PURE__ */ S.createElement(Dt, {
+	return /*#__PURE__*/ S.createElement(Pt, {
 		...a,
 		className: o,
 		type: s
 	}, e);
 }
 X.propTypes = {
-	children: N.default.node.isRequired,
-	className: N.default.string,
-	hasIcon: N.default.bool,
-	type: N.default.oneOf([
+	children: I.default.node.isRequired,
+	className: I.default.string,
+	hasIcon: I.default.bool,
+	type: I.default.oneOf([
 		"default",
 		"valid",
 		"invalid",
@@ -2744,8 +2748,8 @@ X.propTypes = {
 		"criteria-valid",
 		"criteria-invalid"
 	]),
-	icon: N.default.node,
-	muted: N.default.bool
+	icon: I.default.node,
+	muted: I.default.bool
 }, X.defaultProps = {
 	hasIcon: !0,
 	type: void 0,
@@ -2753,60 +2757,56 @@ X.propTypes = {
 	className: void 0,
 	muted: !1
 };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlFloatingLabel.js
-function Ot({ children: e }) {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormControlFloatingLabel.js
+function Ft({ children: e }) {
 	let { controlId: t } = J();
-	return /* @__PURE__ */ S.createElement("div", { className: "pgn__form-control-floating-label" }, /* @__PURE__ */ S.createElement("div", { className: "pgn__form-control-floating-label-content" }, /* @__PURE__ */ S.createElement("label", {
+	return /*#__PURE__*/ S.createElement("div", { className: "pgn__form-control-floating-label" }, /*#__PURE__*/ S.createElement("div", { className: "pgn__form-control-floating-label-content" }, /*#__PURE__*/ S.createElement("label", {
 		className: "pgn__form-control-floating-label-text",
 		htmlFor: t
 	}, e)));
 }
-Ot.propTypes = { children: N.default.node.isRequired };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlDecorator.js
-function kt({ children: e, location: t }) {
-	return /* @__PURE__ */ S.createElement("div", { className: `pgn__form-control-decorator pgn__form-control-decorator-${t}` }, e);
+Ft.propTypes = { children: I.default.node.isRequired };
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormControlDecorator.js
+function It({ children: e, location: t }) {
+	return /*#__PURE__*/ S.createElement("div", { className: `pgn__form-control-decorator pgn__form-control-decorator-${t}` }, e);
 }
-kt.propTypes = {
-	children: N.default.node.isRequired,
-	location: N.default.oneOf(["leading", "trailing"])
-}, kt.defaultProps = { location: "leading" };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlDecoratorGroup.js
-function At({ children: e, leadingElement: t, trailingElement: n, floatingLabel: r, className: i, ...a }) {
+It.propTypes = {
+	children: I.default.node.isRequired,
+	location: I.default.oneOf(["leading", "trailing"])
+}, It.defaultProps = { location: "leading" };
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormControlDecoratorGroup.js
+function Lt({ children: e, leadingElement: t, trailingElement: n, floatingLabel: r, className: i, ...a }) {
 	let o = J(a), s = a.size || o.size;
-	return /* @__PURE__ */ S.createElement("div", {
-		className: (0, C.default)("pgn__form-control-decorator-group", {
+	return /*#__PURE__*/ S.createElement("div", {
+		className: (0, k.default)("pgn__form-control-decorator-group", {
 			"has-prepended-node": !!t,
 			"has-appended-node": !!n,
 			"has-leading-element": !!t,
 			"has-trailing-element": !!n,
 			"has-floating-label": !!r,
-			"pgn__form-control-decorator-group-lg": s === Ct.LARGE,
-			"pgn__form-control-decorator-group-sm": s === Ct.SMALL
+			"pgn__form-control-decorator-group-lg": s === At.LARGE,
+			"pgn__form-control-decorator-group-sm": s === At.SMALL
 		}, i),
 		...a
-	}, e, t && /* @__PURE__ */ S.createElement(kt, { location: "leading" }, t), n && /* @__PURE__ */ S.createElement(kt, { location: "trailing" }, n), r && /* @__PURE__ */ S.createElement(Ot, null, r));
+	}, e, t && /*#__PURE__*/ S.createElement(It, { location: "leading" }, t), n && /*#__PURE__*/ S.createElement(It, { location: "trailing" }, n), r && /*#__PURE__*/ S.createElement(Ft, null, r));
 }
-At.propTypes = {
-	children: N.default.node.isRequired,
-	leadingElement: N.default.node,
-	trailingElement: N.default.node,
-	floatingLabel: N.default.node,
-	className: N.default.string,
-	size: N.default.oneOf([Ct.SMALL, Ct.LARGE])
-}, At.defaultProps = {
+Lt.propTypes = {
+	children: I.default.node.isRequired,
+	leadingElement: I.default.node,
+	trailingElement: I.default.node,
+	floatingLabel: I.default.node,
+	className: I.default.string,
+	size: I.default.oneOf([At.SMALL, At.LARGE])
+}, Lt.defaultProps = {
 	leadingElement: void 0,
 	trailingElement: void 0,
 	floatingLabel: void 0,
 	className: void 0,
 	size: void 0
 };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControl.js
-var jt = /* @__PURE__ */ S.forwardRef(({ as: e, className: t, controlClassName: n, leadingElement: r, trailingElement: i, floatingLabel: a, autoResize: o, onChange: s, inputMask: c, ...l }, u) => {
-	let { isInvalid: d, isValid: f, getControlProps: p, ...m } = J(), h = S.useRef(), g = u || h, _ = l.size || m.size, [v, y] = _t({
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormControl.js
+var Rt = /*#__PURE__*/ S.forwardRef(({ as: e, className: t, controlClassName: n, leadingElement: r, trailingElement: i, floatingLabel: a, autoResize: o, onChange: s, inputMask: c, ...l }, u) => {
+	let { isInvalid: d, isValid: f, getControlProps: p, ...m } = J(), h = S.useRef(), g = u || h, _ = l.size || m.size, [v, y] = wt({
 		defaultValue: l.defaultValue,
 		value: l.value
 	}), b = (0, S.useCallback)(() => {
@@ -2821,46 +2821,46 @@ var jt = /* @__PURE__ */ S.forwardRef(({ as: e, className: t, controlClassName: 
 	}, [b]);
 	let x = p({
 		...l,
-		onBlur: gt(y, l.onBlur)
-	}), w = (e) => {
-		b(), s && s(e);
-	};
-	return /* @__PURE__ */ S.createElement(At, {
+		onBlur: Ct(y, l.onBlur)
+	});
+	return /*#__PURE__*/ S.createElement(Lt, {
 		size: _,
 		leadingElement: r,
 		trailingElement: i,
 		floatingLabel: a,
 		className: t
-	}, /* @__PURE__ */ S.createElement(pe, {
-		as: c ? mt : e,
+	}, /*#__PURE__*/ S.createElement(be, {
+		as: c ? xt : e,
 		ref: g,
 		size: _,
 		isInvalid: d,
 		isValid: f,
-		className: (0, C.default)(n, { "has-value": v }),
-		onChange: w,
+		className: (0, k.default)(n, { "has-value": v }),
+		onChange: (e) => {
+			b(), s && s(e);
+		},
 		mask: c,
 		...x
 	}));
 });
-jt.Feedback = X, jt.Description = X, jt.propTypes = {
-	className: N.default.string,
-	as: N.default.elementType,
-	onChange: N.default.func,
-	defaultValue: N.default.oneOfType([N.default.string, N.default.number]),
-	value: N.default.oneOfType([N.default.string, N.default.number]),
-	id: N.default.string,
-	controlClassName: N.default.string,
-	size: N.default.oneOf(["sm", "lg"]),
-	leadingElement: N.default.node,
-	trailingElement: N.default.node,
-	floatingLabel: N.default.node,
-	plaintext: N.default.bool,
-	isValid: N.default.bool,
-	isInvalid: N.default.bool,
-	autoResize: N.default.bool,
-	inputMask: N.default.string
-}, jt.defaultProps = {
+Rt.Feedback = X, Rt.Description = X, Rt.propTypes = {
+	className: I.default.string,
+	as: I.default.elementType,
+	onChange: I.default.func,
+	defaultValue: I.default.oneOfType([I.default.string, I.default.number]),
+	value: I.default.oneOfType([I.default.string, I.default.number]),
+	id: I.default.string,
+	controlClassName: I.default.string,
+	size: I.default.oneOf(["sm", "lg"]),
+	leadingElement: I.default.node,
+	trailingElement: I.default.node,
+	floatingLabel: I.default.node,
+	plaintext: I.default.bool,
+	isValid: I.default.bool,
+	isInvalid: I.default.bool,
+	autoResize: I.default.bool,
+	inputMask: I.default.string
+}, Rt.defaultProps = {
 	as: "input",
 	className: void 0,
 	id: void 0,
@@ -2878,37 +2878,35 @@ jt.Feedback = X, jt.Description = X, jt.propTypes = {
 	autoResize: !1,
 	inputMask: void 0
 };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormLabel.js
-function Mt({ children: e, isInline: t = !1, ...n }) {
-	let { size: r, isControlGroup: i, getLabelProps: a } = J(), o = (0, C.default)("pgn__form-label", {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormLabel.js
+function zt({ children: e, isInline: t = !1, ...n }) {
+	let { size: r, isControlGroup: i, getLabelProps: a } = J(), o = (0, k.default)("pgn__form-label", {
 		"pgn__form-label-inline": t,
-		"pgn__form-label-lg": r === Ct.LARGE,
-		"pgn__form-label-sm": r === Ct.SMALL
+		"pgn__form-label-lg": r === At.LARGE,
+		"pgn__form-label-sm": r === At.SMALL
 	}, n.className), s = a({
 		...n,
 		className: o
 	}), c = i ? "p" : "label";
-	return /* @__PURE__ */ S.createElement(c, s, e);
+	return /*#__PURE__*/ S.createElement(c, s, e);
 }
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormGroup.js
-function Nt({ children: e, controlId: t, isInvalid: n = !1, isValid: r = !1, size: i, as: a, ...o }) {
-	return /* @__PURE__ */ S.createElement(a ?? "div", {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormGroup.js
+function Bt({ children: e, controlId: t, isInvalid: n = !1, isValid: r = !1, size: i, as: a, ...o }) {
+	return /*#__PURE__*/ S.createElement(a ?? "div", {
 		...o,
-		className: (0, C.default)("pgn__form-group", o.className)
-	}, /* @__PURE__ */ S.createElement(St, {
+		className: (0, k.default)("pgn__form-group", o.className)
+	}, /*#__PURE__*/ S.createElement(kt, {
 		controlId: t,
 		isInvalid: n,
 		isValid: r,
 		size: i
 	}, e));
 }
-var Pt = /* @__PURE__ */ S.createContext({
+var Vt = /*#__PURE__*/ S.createContext({
 	getRadioControlProps: (e) => e,
 	hasRadioSetProvider: !1
-}), Ft = () => (0, S.useContext)(Pt);
-function It({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a, defaultValue: o }) {
+}), Ht = () => (0, S.useContext)(Vt);
+function Ut({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a, defaultValue: o }) {
 	let s = !o && a !== void 0, c = {
 		name: t,
 		value: a,
@@ -2916,9 +2914,12 @@ function It({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a
 		getRadioControlProps: (e) => ({
 			...e,
 			name: t,
-			onBlur: e.onBlur ? gt(n, e.onBlur) : n,
-			onFocus: e.onFocus ? gt(r, e.onFocus) : r,
-			onChange: e.onChange ? gt(i, e.onChange) : i,
+			/* istanbul ignore next */
+			onBlur: e.onBlur ? Ct(n, e.onBlur) : n,
+			/* istanbul ignore next */
+			onFocus: e.onFocus ? Ct(r, e.onFocus) : r,
+			/* istanbul ignore next */
+			onChange: e.onChange ? Ct(i, e.onChange) : i,
 			checked: s ? a === e.value : void 0,
 			defaultChecked: s ? void 0 : o === e.value
 		}),
@@ -2927,61 +2928,60 @@ function It({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a
 		onChange: i,
 		hasRadioSetProvider: !0
 	};
-	return /* @__PURE__ */ S.createElement(Pt.Provider, { value: c }, e);
+	return /*#__PURE__*/ S.createElement(Vt.Provider, { value: c }, e);
 }
-It.propTypes = {
-	children: N.default.node.isRequired,
-	name: N.default.string.isRequired,
-	onBlur: N.default.func,
-	onFocus: N.default.func,
-	onChange: N.default.func,
-	value: N.default.string,
-	defaultValue: N.default.string
-}, It.defaultProps = {
+Ut.propTypes = {
+	children: I.default.node.isRequired,
+	name: I.default.string.isRequired,
+	onBlur: I.default.func,
+	onFocus: I.default.func,
+	onChange: I.default.func,
+	value: I.default.string,
+	defaultValue: I.default.string
+}, Ut.defaultProps = {
 	onBlur: void 0,
 	onFocus: void 0,
 	onChange: void 0,
 	value: void 0,
 	defaultValue: void 0
 };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormRadio.js
-var Lt = /* @__PURE__ */ S.forwardRef((e, t) => {
-	let { getControlProps: n } = J(), { getRadioControlProps: r, hasRadioSetProvider: i } = Ft(), a = n({
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormRadio.js
+var Wt = /*#__PURE__*/ S.forwardRef((e, t) => {
+	let { getControlProps: n } = J(), { getRadioControlProps: r, hasRadioSetProvider: i } = Ht(), a = n({
 		...e,
-		className: (0, C.default)("pgn__form-radio-input", e.className)
+		className: (0, k.default)("pgn__form-radio-input", e.className)
 	});
-	return i && (a = r(a)), /* @__PURE__ */ S.createElement("input", {
+	return i && (a = r(a)), /*#__PURE__*/ S.createElement("input", {
 		...a,
 		type: "radio",
 		ref: t
 	});
 });
-Lt.propTypes = { className: N.default.string }, Lt.defaultProps = { className: void 0 };
-var Rt = /* @__PURE__ */ S.forwardRef(({ children: e, className: t, controlClassName: n, labelClassName: r, description: i, isInvalid: a, isValid: o, ...s }, c) => /* @__PURE__ */ S.createElement(St, {
+Wt.propTypes = { className: I.default.string }, Wt.defaultProps = { className: void 0 };
+var Gt = /*#__PURE__*/ S.forwardRef(({ children: e, className: t, controlClassName: n, labelClassName: r, description: i, isInvalid: a, isValid: o, ...s }, c) => /*#__PURE__*/ S.createElement(kt, {
 	controlId: s.id,
 	isInvalid: a,
 	isValid: o
-}, /* @__PURE__ */ S.createElement("div", { className: (0, C.default)("pgn__form-radio", t, {
+}, /*#__PURE__*/ S.createElement("div", { className: (0, k.default)("pgn__form-radio", t, {
 	"pgn__form-control-valid": o,
 	"pgn__form-control-invalid": a,
 	"pgn__form-control-disabled": s.disabled
-}) }, /* @__PURE__ */ S.createElement(Lt, {
+}) }, /*#__PURE__*/ S.createElement(Wt, {
 	ref: c,
 	className: n,
 	...s
-}), /* @__PURE__ */ S.createElement("div", null, /* @__PURE__ */ S.createElement(Mt, { className: r }, e), i && /* @__PURE__ */ S.createElement(X, { hasIcon: !1 }, i)))));
-Rt.propTypes = {
-	id: N.default.string,
-	children: N.default.node.isRequired,
-	className: N.default.string,
-	controlClassName: N.default.string,
-	labelClassName: N.default.string,
-	description: N.default.node,
-	isInvalid: N.default.bool,
-	isValid: N.default.bool,
-	disabled: N.default.bool
-}, Rt.defaultProps = {
+}), /*#__PURE__*/ S.createElement("div", null, /*#__PURE__*/ S.createElement(zt, { className: r }, e), i && /*#__PURE__*/ S.createElement(X, { hasIcon: !1 }, i)))));
+Gt.propTypes = {
+	id: I.default.string,
+	children: I.default.node.isRequired,
+	className: I.default.string,
+	controlClassName: I.default.string,
+	labelClassName: I.default.string,
+	description: I.default.node,
+	isInvalid: I.default.bool,
+	isValid: I.default.bool,
+	disabled: I.default.bool
+}, Gt.defaultProps = {
 	id: void 0,
 	className: void 0,
 	controlClassName: void 0,
@@ -2991,58 +2991,56 @@ Rt.propTypes = {
 	isValid: !1,
 	disabled: !1
 };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormControlSet.js
-function zt({ as: e, className: t, isInline: n, children: r, ...i }) {
-	return /* @__PURE__ */ S.createElement(e, {
-		className: (0, C.default)(t, {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormControlSet.js
+function Kt({ as: e, className: t, isInline: n, children: r, ...i }) {
+	return /*#__PURE__*/ S.createElement(e, {
+		className: (0, k.default)(t, {
 			"pgn__form-control-set": !n,
 			"pgn__form-control-set-inline": n
 		}),
 		...i
 	}, r);
 }
-zt.propTypes = {
-	as: N.default.elementType,
-	className: N.default.string,
-	isInline: N.default.bool,
-	children: N.default.node
-}, zt.defaultProps = {
+Kt.propTypes = {
+	as: I.default.elementType,
+	className: I.default.string,
+	isInline: I.default.bool,
+	children: I.default.node
+}, Kt.defaultProps = {
 	as: "div",
 	className: void 0,
 	isInline: !1,
 	children: null
 };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormRadioSet.js
-function Bt({ children: e, name: t, value: n, defaultValue: r, isInline: i, onChange: a, onFocus: o, onBlur: s, ...c }) {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormRadioSet.js
+function qt({ children: e, name: t, value: n, defaultValue: r, isInline: i, onChange: a, onFocus: o, onBlur: s, ...c }) {
 	let { getControlProps: l, useSetIsControlGroupEffect: u } = J();
 	u(!0);
 	let d = l(c);
-	return /* @__PURE__ */ S.createElement(It, {
+	return /*#__PURE__*/ S.createElement(Ut, {
 		name: t,
 		value: n,
 		defaultValue: r,
 		onFocus: o,
 		onBlur: s,
 		onChange: a
-	}, /* @__PURE__ */ S.createElement(zt, {
+	}, /*#__PURE__*/ S.createElement(Kt, {
 		role: "radiogroup",
 		isInline: i,
 		...d
 	}, e));
 }
-Bt.propTypes = {
-	children: N.default.node.isRequired,
-	className: N.default.string,
-	name: N.default.string.isRequired,
-	value: N.default.string,
-	defaultValue: N.default.string,
-	isInline: N.default.bool,
-	onChange: N.default.func,
-	onFocus: N.default.func,
-	onBlur: N.default.func
-}, Bt.defaultProps = {
+qt.propTypes = {
+	children: I.default.node.isRequired,
+	className: I.default.string,
+	name: I.default.string.isRequired,
+	value: I.default.string,
+	defaultValue: I.default.string,
+	isInline: I.default.bool,
+	onChange: I.default.func,
+	onFocus: I.default.func,
+	onBlur: I.default.func
+}, qt.defaultProps = {
 	className: void 0,
 	value: void 0,
 	defaultValue: void 0,
@@ -3051,58 +3049,53 @@ Bt.propTypes = {
 	onFocus: void 0,
 	onBlur: void 0
 };
-//#endregion
-//#region node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/rng.js
-var Vt, Ht = new Uint8Array(16);
-function Ut() {
-	if (!Vt && (Vt = typeof crypto < "u" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto), !Vt)) throw Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
-	return Vt(Ht);
+// node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/rng.js
+var Jt, Yt = /* @__PURE__ */ new Uint8Array(16);
+function Xt() {
+	if (!Jt && (Jt = typeof crypto < "u" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto), !Jt)) throw Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
+	return Jt(Yt);
 }
-//#endregion
-//#region node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/stringify.js
+// node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/stringify.js
 var Z = [];
 for (let e = 0; e < 256; ++e) Z.push((e + 256).toString(16).slice(1));
-function Wt(e, t = 0) {
+function Zt(e, t = 0) {
 	return Z[e[t + 0]] + Z[e[t + 1]] + Z[e[t + 2]] + Z[e[t + 3]] + "-" + Z[e[t + 4]] + Z[e[t + 5]] + "-" + Z[e[t + 6]] + Z[e[t + 7]] + "-" + Z[e[t + 8]] + Z[e[t + 9]] + "-" + Z[e[t + 10]] + Z[e[t + 11]] + Z[e[t + 12]] + Z[e[t + 13]] + Z[e[t + 14]] + Z[e[t + 15]];
 }
-var Gt = { randomUUID: typeof crypto < "u" && crypto.randomUUID && crypto.randomUUID.bind(crypto) };
-//#endregion
-//#region node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/v4.js
-function Kt(e, t, n) {
-	if (Gt.randomUUID && !t && !e) return Gt.randomUUID();
+var Qt = { randomUUID: typeof crypto < "u" && crypto.randomUUID && crypto.randomUUID.bind(crypto) };
+// node_modules/.pnpm/uuid@9.0.1/node_modules/uuid/dist/esm-browser/v4.js
+function $t(e, t, n) {
+	if (Qt.randomUUID && !t && !e) return Qt.randomUUID();
 	e ||= {};
-	let r = e.random || (e.rng || Ut)();
+	let r = e.random || (e.rng || Xt)();
 	if (r[6] = r[6] & 15 | 64, r[8] = r[8] & 63 | 128, t) {
 		n ||= 0;
 		for (let e = 0; e < 16; ++e) t[n + e] = r[e];
 		return t;
 	}
-	return Wt(r);
+	return Zt(r);
 }
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/utils/propTypes/utils.js
-var qt = (e, t, n) => ((r, i, a, ...o) => t(r) && r[i] === void 0 ? /* @__PURE__ */ Error(`${a}: ${i} is required when ${n}`) : e(r, i, a, ...o)), Jt = (e, t) => t.every((t) => e[t] !== void 0), Yt = (e, t) => qt(e, (e) => Array.isArray(t) ? Jt(e, t) : e[t] === !0, `${t} ${Array.isArray(t) ? "are defined" : "is truthy"}`), Xt = /* @__PURE__ */ S.forwardRef(({ className: e, screenReaderText: t, ...n }, r) => {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/utils/propTypes/utils.js
+var en = (e, t, n) => ((r, i, a, ...o) => t(r) && r[i] === void 0 ? /* @__PURE__ */ Error(`${a}: ${i} is required when ${n}`) : e(r, i, a, ...o)), tn = (e, t) => t.every((t) => e[t] !== void 0), nn = (e, t) => en(e, (e) => Array.isArray(t) ? tn(e, t) : e[t] === !0, `${t} ${Array.isArray(t) ? "are defined" : "is truthy"}`), rn = /*#__PURE__*/ S.forwardRef(({ className: e, screenReaderText: t, ...n }, r) => {
 	let i = {
 		...n,
-		className: (0, C.default)("pgn__spinner", e),
+		className: (0, k.default)("pgn__spinner", e),
 		role: t ? "status" : void 0
 	};
-	return /* @__PURE__ */ S.createElement(Ee, {
+	return /*#__PURE__*/ S.createElement(Ne, {
 		...i,
 		ref: r
-	}, t && /* @__PURE__ */ S.createElement("span", { className: "sr-only" }, t));
+	}, t && /*#__PURE__*/ S.createElement("span", { className: "sr-only" }, t));
 });
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/hooks/useArrowKeyNavigationHook.js
-function Zt({ event: e, currentIndex: t, activeElement: n }) {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/hooks/useArrowKeyNavigationHook.js
+function an({ event: e, currentIndex: t, activeElement: n }) {
 	t !== -1 && (n.click(), e.preventDefault());
 }
-function Qt({ event: e, currentIndex: t, availableElements: n }) {
+function on({ event: e, currentIndex: t, availableElements: n }) {
 	t === -1 && n[0].focus();
 	let r;
 	(e.key === "ArrowDown" || e.key === "ArrowRight") && (r = n[(t + 1) % n.length]), (e.key === "ArrowUp" || e.key === "ArrowLeft") && (r = t - 1 < 0 ? n[t - 1 + n.length] : n[t - 1]), e.key === "End" && (r = n[n.length - 1]), e.key === "Home" && ([r] = n), r?.focus(), e.preventDefault();
 }
-function $t({ event: e, ignoredKeys: t = [], parentNode: n, selectors: r = "a,button,input" }) {
+function sn({ event: e, ignoredKeys: t = [], parentNode: n, selectors: r = "a,button,input" }) {
 	if (!n) return;
 	let { key: i } = e;
 	if (![
@@ -3119,21 +3112,21 @@ function $t({ event: e, ignoredKeys: t = [], parentNode: n, selectors: r = "a,bu
 	let o = n.querySelectorAll(r);
 	if (!o.length) return;
 	let s = Array.from(o).findIndex((e) => e === a);
-	i === "Enter" && a && Zt({
+	i === "Enter" && a && an({
 		event: e,
 		currentIndex: s,
 		activeElement: a
-	}), Qt({
+	}), on({
 		event: e,
 		currentIndex: s,
 		availableElements: o
 	});
 }
-function en(e = {}) {
+function cn(e = {}) {
 	let { selectors: t, ignoredKeys: n } = e, r = (0, S.useRef)();
 	return (0, S.useEffect)(() => {
 		let e = (e) => {
-			$t({
+			sn({
 				event: e,
 				ignoredKeys: n,
 				parentNode: r.current,
@@ -3143,9 +3136,8 @@ function en(e = {}) {
 		return document.addEventListener("keydown", e), () => document.removeEventListener("keydown", e);
 	}, [n, t]), r;
 }
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/messages.js
-var tn = x({
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/messages.js
+var ln = O({
 	iconButtonOpened: {
 		id: "pgn.FormAutosuggest.iconButtonOpened",
 		defaultMessage: "Open the options menu",
@@ -3156,157 +3148,135 @@ var tn = x({
 		defaultMessage: "Close the options menu",
 		description: "A message shown in case when the autosuggest menu is opened."
 	}
-}), nn = /* @__PURE__ */ (0, S.forwardRef)(({ children: e, arrowKeyNavigationSelector: t, ignoredArrowKeysNames: n, screenReaderText: r, value: o, isLoading: s, isValueRequired: c, valueRequiredErrorMessageText: l, isSelectionRequired: u, selectionRequiredErrorMessageText: d, hasCustomError: f, customErrorMessageText: p, onChange: m, helpMessage: h, ...g }, _) => {
-	let y = a(), b = (0, S.useRef)(), x = en({
+}), un = /*#__PURE__*/ (0, S.forwardRef)(({ children: e, arrowKeyNavigationSelector: t, ignoredArrowKeysNames: n, screenReaderText: r, value: i, isLoading: o, isValueRequired: s, valueRequiredErrorMessageText: c, isSelectionRequired: l, selectionRequiredErrorMessageText: u, hasCustomError: d, customErrorMessageText: f, onChange: p, helpMessage: m, ...h }, g) => {
+	let _ = C(), v = (0, S.useRef)(), b = cn({
 		selectors: t,
 		ignoredKeys: n
-	}), [C, w] = (0, S.useState)(!1), [T, E] = (0, S.useState)(!1), [D, O] = (0, S.useState)(!1), [k, A] = (0, S.useState)(!1), [j, M] = (0, S.useState)(o?.userProvidedText || ""), [N, P] = (0, S.useState)([]), [ee, te] = (0, S.useState)(null), [F, I] = (0, S.useState)(!0), [ne, L] = (0, S.useState)(""), re = (e) => {
-		te(e);
-	}, ie = () => {
-		P([]), w(!1), te(null);
-	}, R = (e, t) => {
+	}), [x, ee] = (0, S.useState)(!1), [w, T] = (0, S.useState)(!1), [E, D] = (0, S.useState)(!1), [O, k] = (0, S.useState)(!1), [A, j] = (0, S.useState)(i?.userProvidedText || ""), [M, N] = (0, S.useState)([]), [te, ne] = (0, S.useState)(null), [P, F] = (0, S.useState)(!0), [re, I] = (0, S.useState)(""), ie = (e) => {
+		ne(e);
+	}, ae = () => {
+		N([]), ee(!1), ne(null);
+	}, oe = (e, t) => {
 		let n = e.currentTarget.getAttribute("data-value"), r = e.currentTarget.id;
-		O(!0), A(!0), M(n), m && (!o || o && n !== o.selectionValue) && m({
+		D(!0), k(!0), j(n), p && (!i || i && n !== i.selectionValue) && p({
 			userProvidedText: n,
 			selectionValue: n,
 			selectionId: r
-		}), ie(), t && t(e);
+		}), ae(), t && t(e);
 	};
-	function ae(t = "") {
+	function L(t = "") {
 		let n = S.Children.map(e, (e) => {
-			let { children: t, onClick: n, ...r } = e.props, i = e.props.id ?? Kt();
-			return /* @__PURE__ */ S.cloneElement(e, {
+			let { children: t, onClick: n, ...r } = e.props, i = e.props.id ?? $t();
+			return /*#__PURE__*/ S.cloneElement(e, {
 				...r,
 				children: t,
 				"data-value": t,
-				onClick: (e) => R(e, n),
+				onClick: (e) => oe(e, n),
 				id: i,
-				onFocus: () => re(i)
+				onFocus: () => ie(i)
 			});
 		});
 		return t.length > 0 && (n = n.filter((e) => e.props.children.toLowerCase().includes(t.toLowerCase()))), n;
 	}
-	let oe = () => {
-		P(ae(j)), I(!0), L(""), w(!0);
-	}, se = () => {
-		C ? ie() : oe();
-	}, ce = /* @__PURE__ */ S.createElement(v, {
+	let se = () => {
+		N(L(A)), F(!0), I(""), ee(!0);
+	}, ce = /*#__PURE__*/ S.createElement(y, {
 		className: "pgn__form-autosuggest__icon-button",
 		"data-testid": "autosuggest-iconbutton",
 		tabIndex: "-1",
-		src: C ? Ae : ke,
-		iconAs: i,
+		src: x ? Le : Ie,
+		iconAs: a,
 		size: "sm",
 		variant: "secondary",
-		alt: C ? y.formatMessage(tn.iconButtonClosed) : y.formatMessage(tn.iconButtonOpened),
-		onClick: se
+		alt: x ? _.formatMessage(ln.iconButtonClosed) : _.formatMessage(ln.iconButtonOpened),
+		onClick: () => {
+			x ? ae() : se();
+		}
 	}), le = () => {
-		E(!0);
+		T(!0);
 	}, ue = () => {
-		if (f) {
-			I(!1), L(p);
-			return;
-		}
-		if (c && !D) {
-			I(!1), L(l);
-			return;
-		}
-		if (D && u && !k) {
-			I(!1), L(d);
-			return;
-		}
-		I(!0), L("");
+		d ? (F(!1), I(f)) : s && !E ? (F(!1), I(c)) : E && l && !O ? (F(!1), I(u)) : (F(!0), I(""));
 	};
-	(0, S.useImperativeHandle)(_, () => ({ updateErrorStateAndErrorMessage: ue }));
+	(0, S.useImperativeHandle)(g, () => ({ updateErrorStateAndErrorMessage: ue }));
 	let de = () => {
-		E(!1), ie(), ue();
+		T(!1), ae(), ue();
+	}, R = (e) => {
+		w && (e.key === "Escape" ? (e.preventDefault(), v && v.current.focus(), ae()) : e.key === "Tab" && de());
 	}, fe = (e) => {
-		if (T) {
-			if (e.key === "Escape") {
-				e.preventDefault(), b && b.current.focus(), ie();
-				return;
-			}
-			e.key === "Tab" && de();
-		}
-	}, pe = (e) => {
-		x.current && !x.current.contains(e.target) && T && de();
+		b.current && !b.current.contains(e.target) && w && de();
 	};
-	(0, S.useEffect)(() => (document.addEventListener("keydown", fe), document.addEventListener("click", pe, !0), () => {
-		document.removeEventListener("click", pe, !0), document.removeEventListener("keydown", fe);
+	(0, S.useEffect)(() => (document.addEventListener("keydown", R), document.addEventListener("click", fe, !0), () => {
+		document.removeEventListener("click", fe, !0), document.removeEventListener("keydown", R);
 	})), (0, S.useEffect)(() => {
-		M(o ? o.userProvidedText ?? "" : ""), O(!!o && !!o.userProvidedText), A(!!o && !!o.selectionValue);
-	}, [o]);
-	let me = () => {
-		oe();
-	}, he = (e) => {
+		j(i ? i.userProvidedText ?? "" : ""), D(!!i && !!i.userProvidedText), k(!!i && !!i.selectionValue);
+	}, [i]);
+	let pe = () => {
+		se();
+	}, me = (e) => {
 		let t = e.target.value;
 		if (!t.length) {
-			M(""), O(!1), A(!1), P([]), ie(), m && m({
+			j(""), D(!1), k(!1), N([]), ae(), p && p({
 				userProvidedText: "",
 				selectionValue: "",
 				selectionId: ""
 			});
 			return;
 		}
-		O(!0);
-		let n = ae(t);
-		P(n);
+		D(!0);
+		let n = L(t);
+		N(n);
 		let r = n.find((e) => e.props.children.toLowerCase() === t.toLowerCase());
-		if (!r) {
-			A(!1), M(t), m && m({
-				userProvidedText: t,
-				selectionValue: "",
-				selectionId: ""
-			});
-			return;
-		}
-		A(!0), M(r.props.children), m && m({
+		r ? (k(!0), j(r.props.children), p && p({
 			userProvidedText: r.props.children,
 			selectionValue: r.props.children,
 			selectionId: r.props.id
-		});
-	}, { getControlProps: ge } = J(), _e = ge(g);
-	return /* @__PURE__ */ S.createElement("div", {
+		})) : (k(!1), j(t), p && p({
+			userProvidedText: t,
+			selectionValue: "",
+			selectionId: ""
+		}));
+	}, { getControlProps: he } = J(), ge = he(h);
+	return /*#__PURE__*/ S.createElement("div", {
 		className: "pgn__form-autosuggest__wrapper",
-		ref: x,
+		ref: b,
 		onFocus: le
-	}, /* @__PURE__ */ S.createElement("div", {
+	}, /*#__PURE__*/ S.createElement("div", {
 		"aria-live": "assertive",
 		className: "sr-only",
 		"data-testid": "autosuggest-screen-reader-options-count"
-	}, `${N.length} options found`), /* @__PURE__ */ S.createElement(St, {
-		controlId: _e.id,
-		isInvalid: !F
-	}, /* @__PURE__ */ S.createElement(jt, {
-		ref: b,
-		"aria-expanded": (N.length > 0).toString(),
+	}, `${M.length} options found`), /*#__PURE__*/ S.createElement(kt, {
+		controlId: ge.id,
+		isInvalid: !P
+	}, /*#__PURE__*/ S.createElement(Rt, {
+		ref: v,
+		"aria-expanded": (M.length > 0).toString(),
 		"aria-owns": "pgn__form-autosuggest__dropdown-box",
 		role: "combobox",
 		"aria-autocomplete": "list",
 		autoComplete: "off",
-		value: j,
-		"aria-invalid": ne,
-		"aria-activedescendant": ee,
-		onChange: he,
-		onClick: me,
+		value: A,
+		"aria-invalid": re,
+		"aria-activedescendant": te,
+		onChange: me,
+		onClick: pe,
 		trailingElement: ce,
 		"data-testid": "autosuggest-textbox-input",
-		..._e
-	}), h && F && /* @__PURE__ */ S.createElement(X, { type: "default" }, h), !F && /* @__PURE__ */ S.createElement(X, {
+		...ge
+	}), m && P && /*#__PURE__*/ S.createElement(X, { type: "default" }, m), !P && /*#__PURE__*/ S.createElement(X, {
 		type: "invalid",
-		"feedback-for": _e.name
-	}, ne)), /* @__PURE__ */ S.createElement("ul", {
+		"feedback-for": ge.name
+	}, re)), /*#__PURE__*/ S.createElement("ul", {
 		id: "pgn__form-autosuggest__dropdown-box",
 		className: "pgn__form-autosuggest__dropdown",
 		role: "listbox"
-	}, s ? /* @__PURE__ */ S.createElement("div", { className: "pgn__form-autosuggest__dropdown-loading" }, /* @__PURE__ */ S.createElement(Xt, {
+	}, o ? /*#__PURE__*/ S.createElement("div", { className: "pgn__form-autosuggest__dropdown-loading" }, /*#__PURE__*/ S.createElement(rn, {
 		animation: "border",
 		variant: "dark",
 		screenReaderText: r,
 		"data-testid": "autosuggest-loading-spinner"
-	})) : N.length > 0 && N));
+	})) : M.length > 0 && M));
 });
-nn.defaultProps = {
+un.defaultProps = {
 	arrowKeyNavigationSelector: "a:not(:disabled),li:not(:disabled, .btn-icon),input:not(:disabled)",
 	ignoredArrowKeysNames: ["ArrowRight", "ArrowLeft"],
 	isLoading: !1,
@@ -3326,73 +3296,71 @@ nn.defaultProps = {
 	children: null,
 	name: "form-autosuggest",
 	screenReaderText: "loading"
-}, nn.propTypes = {
-	arrowKeyNavigationSelector: N.default.string,
-	ignoredArrowKeysNames: N.default.arrayOf(N.default.string),
-	isLoading: N.default.bool,
-	className: N.default.string,
-	floatingLabel: N.default.string,
-	onChange: N.default.func,
-	helpMessage: N.default.string,
-	placeholder: N.default.string,
-	value: N.default.shape({
-		userProvidedText: N.default.string,
-		selectionValue: N.default.string,
-		selectionId: N.default.string
+}, un.propTypes = {
+	arrowKeyNavigationSelector: I.default.string,
+	ignoredArrowKeysNames: I.default.arrayOf(I.default.string),
+	isLoading: I.default.bool,
+	className: I.default.string,
+	floatingLabel: I.default.string,
+	onChange: I.default.func,
+	helpMessage: I.default.string,
+	placeholder: I.default.string,
+	value: I.default.shape({
+		userProvidedText: I.default.string,
+		selectionValue: I.default.string,
+		selectionId: I.default.string
 	}),
-	isValueRequired: N.default.bool,
-	valueRequiredErrorMessageText: Yt(N.default.string, "isValueRequired"),
-	isSelectionRequired: N.default.bool,
-	selectionRequiredErrorMessageText: Yt(N.default.string, "isSelectionRequired"),
-	hasCustomError: N.default.bool,
-	customErrorMessageText: Yt(N.default.string, "hasCustomError"),
-	name: N.default.string,
-	readOnly: N.default.bool,
-	children: N.default.node,
-	screenReaderText: N.default.string
+	isValueRequired: I.default.bool,
+	valueRequiredErrorMessageText: nn(I.default.string, "isValueRequired"),
+	isSelectionRequired: I.default.bool,
+	selectionRequiredErrorMessageText: nn(I.default.string, "isSelectionRequired"),
+	hasCustomError: I.default.bool,
+	customErrorMessageText: nn(I.default.string, "hasCustomError"),
+	name: I.default.string,
+	readOnly: I.default.bool,
+	children: I.default.node,
+	screenReaderText: I.default.string
 };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Menu/MenuItem.js
-function rn({ as: e = "button", children: t, defaultSelected: n = !1, iconAfter: r, iconBefore: a, ...o }) {
-	let s = (0, C.default)(o.className, "pgn__menu-item");
-	return /* @__PURE__ */ (0, S.createElement)(e, {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Menu/MenuItem.js
+function dn({ as: e = "button", children: t, defaultSelected: n = !1, iconAfter: r, iconBefore: i, ...o }) {
+	let s = (0, k.default)(o.className, "pgn__menu-item");
+	return /*#__PURE__*/ (0, S.createElement)(e, {
 		...o,
 		className: s
-	}, /* @__PURE__ */ S.createElement(S.Fragment, null, a && /* @__PURE__ */ S.createElement(i, {
+	}, /*#__PURE__*/ S.createElement(S.Fragment, null, i && /*#__PURE__*/ S.createElement(a, {
 		className: "btn-icon-before",
-		src: a
-	}), /* @__PURE__ */ S.createElement("span", { className: "pgn__menu-item-text" }, t), /* @__PURE__ */ S.createElement("span", { className: "pgn__menu-item-content-spacer" }), r && /* @__PURE__ */ S.createElement(i, {
+		src: i
+	}), /*#__PURE__*/ S.createElement("span", { className: "pgn__menu-item-text" }, t), /*#__PURE__*/ S.createElement("span", { className: "pgn__menu-item-content-spacer" }), r && /*#__PURE__*/ S.createElement(a, {
 		className: "btn-icon-after",
 		src: r
 	})));
 }
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormAutosuggestOption.js
-function an({ children: e, className: t, onClick: n, ...r }) {
-	return /* @__PURE__ */ S.createElement(rn, {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormAutosuggestOption.js
+function fn({ children: e, className: t, onClick: n, ...r }) {
+	return /*#__PURE__*/ S.createElement(dn, {
 		as: "li",
 		"data-testid": "autosuggest-optionitem",
 		role: "option",
 		tabIndex: "-1",
 		onClick: n,
-		className: (0, C.default)(t, "dropdown-item"),
+		className: (0, k.default)(t, "dropdown-item"),
 		...r
 	}, e);
 }
-an.defaultProps = {
+fn.defaultProps = {
 	className: null,
 	children: null,
 	onClick: null
-}, an.propTypes = {
-	className: N.default.string,
-	children: N.default.string,
-	onClick: N.default.func
+}, fn.propTypes = {
+	className: I.default.string,
+	children: I.default.string,
+	onClick: I.default.func
 };
-var on = /* @__PURE__ */ S.createContext({
+var pn = /*#__PURE__*/ S.createContext({
 	getCheckboxControlProps: (e) => e,
 	hasCheckboxSetProvider: !1
-}), sn = () => (0, S.useContext)(on);
-function cn({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a, defaultValue: o }) {
+}), mn = () => (0, S.useContext)(pn);
+function hn({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a, defaultValue: o }) {
 	let s = !o && Array.isArray(a), c = {
 		name: t,
 		value: a,
@@ -3400,9 +3368,12 @@ function cn({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a
 		getCheckboxControlProps: (e) => ({
 			...e,
 			name: t,
-			onBlur: e.onBlur ? gt(n, e.onBlur) : n,
-			onFocus: e.onFocus ? gt(r, e.onFocus) : r,
-			onChange: e.onChange ? gt(i, e.onChange) : i,
+			/* istanbul ignore next */
+			onBlur: e.onBlur ? Ct(n, e.onBlur) : n,
+			/* istanbul ignore next */
+			onFocus: e.onFocus ? Ct(r, e.onFocus) : r,
+			/* istanbul ignore next */
+			onChange: e.onChange ? Ct(i, e.onChange) : i,
 			checked: s ? a.includes(e.value) : void 0,
 			defaultChecked: s ? void 0 : o && o.includes(e.value)
 		}),
@@ -3411,17 +3382,17 @@ function cn({ children: e, name: t, onBlur: n, onFocus: r, onChange: i, value: a
 		onChange: i,
 		hasCheckboxSetProvider: !0
 	};
-	return /* @__PURE__ */ S.createElement(on.Provider, { value: c }, e);
+	return /*#__PURE__*/ S.createElement(pn.Provider, { value: c }, e);
 }
-cn.propTypes = {
-	children: N.default.node.isRequired,
-	name: N.default.string,
-	onBlur: N.default.func,
-	onFocus: N.default.func,
-	onChange: N.default.func,
-	value: N.default.arrayOf(N.default.string),
-	defaultValue: N.default.arrayOf(N.default.string)
-}, cn.defaultProps = {
+hn.propTypes = {
+	children: I.default.node.isRequired,
+	name: I.default.string,
+	onBlur: I.default.func,
+	onFocus: I.default.func,
+	onChange: I.default.func,
+	value: I.default.arrayOf(I.default.string),
+	defaultValue: I.default.arrayOf(I.default.string)
+}, hn.defaultProps = {
 	onBlur: void 0,
 	name: void 0,
 	onFocus: void 0,
@@ -3429,66 +3400,65 @@ cn.propTypes = {
 	value: void 0,
 	defaultValue: void 0
 };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormCheckbox.js
-var ln = /* @__PURE__ */ S.forwardRef(({ isIndeterminate: e, ...t }, n) => {
-	let { getCheckboxControlProps: r, hasCheckboxSetProvider: i } = sn(), a = S.useRef(), o = n || a, { getControlProps: s } = J(), c = s({
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormCheckbox.js
+var gn = /*#__PURE__*/ S.forwardRef(({ isIndeterminate: e, ...t }, n) => {
+	let { getCheckboxControlProps: r, hasCheckboxSetProvider: i } = mn(), a = S.useRef(), o = n || a, { getControlProps: s } = J(), c = s({
 		...t,
-		className: (0, C.default)("pgn__form-checkbox-input", t.className)
+		className: (0, k.default)("pgn__form-checkbox-input", t.className)
 	});
 	return i && (c = r(c)), S.useEffect(() => {
 		o.current && (o.current.indeterminate = e);
-	}, [o, e]), /* @__PURE__ */ S.createElement("input", {
+	}, [o, e]), /*#__PURE__*/ S.createElement("input", {
 		type: "checkbox",
 		...c,
 		ref: o
 	});
 });
-ln.propTypes = {
-	isIndeterminate: N.default.bool,
-	className: N.default.string
-}, ln.defaultProps = {
+gn.propTypes = {
+	isIndeterminate: I.default.bool,
+	className: I.default.string
+}, gn.defaultProps = {
 	isIndeterminate: !1,
 	className: void 0
 };
-var un = /* @__PURE__ */ S.forwardRef(({ children: e, className: t, controlClassName: n, labelClassName: r, description: i, isInvalid: a, isValid: o, controlAs: s, floatLabelLeft: c, ...l }, u) => {
-	let { hasCheckboxSetProvider: d } = sn(), { hasFormGroupProvider: f, useSetIsControlGroupEffect: p, getControlProps: m } = J();
+var _n = /*#__PURE__*/ S.forwardRef(({ children: e, className: t, controlClassName: n, labelClassName: r, description: i, isInvalid: a, isValid: o, controlAs: s, floatLabelLeft: c, ...l }, u) => {
+	let { hasCheckboxSetProvider: d } = mn(), { hasFormGroupProvider: f, useSetIsControlGroupEffect: p, getControlProps: m } = J();
 	p(!0);
 	let h = f && !d ? {
 		...m({}),
 		role: "group"
-	} : {}, g = /* @__PURE__ */ S.createElement(s, {
+	} : {}, g = /*#__PURE__*/ S.createElement(s, {
 		...l,
 		className: n,
 		ref: u
 	});
-	return /* @__PURE__ */ S.createElement(St, {
+	return /*#__PURE__*/ S.createElement(kt, {
 		controlId: l.id,
 		isInvalid: a,
 		isValid: o
-	}, /* @__PURE__ */ S.createElement("div", {
-		className: (0, C.default)("pgn__form-checkbox", t, {
+	}, /*#__PURE__*/ S.createElement("div", {
+		className: (0, k.default)("pgn__form-checkbox", t, {
 			"pgn__form-control-valid": o,
 			"pgn__form-control-invalid": a,
 			"pgn__form-control-disabled": l.disabled,
 			"pgn__form-control-label-left": !!c
 		}),
 		...h
-	}, g, /* @__PURE__ */ S.createElement("div", null, /* @__PURE__ */ S.createElement(Mt, { className: r }, e), i && /* @__PURE__ */ S.createElement(X, { hasIcon: !1 }, i))));
+	}, g, /*#__PURE__*/ S.createElement("div", null, /*#__PURE__*/ S.createElement(zt, { className: r }, e), i && /*#__PURE__*/ S.createElement(X, { hasIcon: !1 }, i))));
 });
-un.propTypes = {
-	id: N.default.string,
-	children: N.default.node.isRequired,
-	className: N.default.string,
-	controlClassName: N.default.string,
-	labelClassName: N.default.string,
-	description: N.default.node,
-	isInvalid: N.default.bool,
-	isValid: N.default.bool,
-	controlAs: N.default.elementType,
-	floatLabelLeft: N.default.bool,
-	disabled: N.default.bool
-}, un.defaultProps = {
+_n.propTypes = {
+	id: I.default.string,
+	children: I.default.node.isRequired,
+	className: I.default.string,
+	controlClassName: I.default.string,
+	labelClassName: I.default.string,
+	description: I.default.node,
+	isInvalid: I.default.bool,
+	isValid: I.default.bool,
+	controlAs: I.default.elementType,
+	floatLabelLeft: I.default.bool,
+	disabled: I.default.bool
+}, _n.defaultProps = {
 	id: void 0,
 	className: void 0,
 	controlClassName: void 0,
@@ -3496,84 +3466,82 @@ un.propTypes = {
 	description: void 0,
 	isInvalid: !1,
 	isValid: !1,
-	controlAs: ln,
+	controlAs: gn,
 	floatLabelLeft: !1,
 	disabled: !1
 };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormSwitch.js
-var dn = /* @__PURE__ */ S.forwardRef(({ isIndeterminate: e, ...t }, n) => {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormSwitch.js
+var vn = /*#__PURE__*/ S.forwardRef(({ isIndeterminate: e, ...t }, n) => {
 	let r = S.useRef(), i = n || r, { getControlProps: a } = J(), o = a({
 		...t,
-		className: (0, C.default)("pgn__form-switch-input", t.className)
+		className: (0, k.default)("pgn__form-switch-input", t.className)
 	});
 	return S.useEffect(() => {
 		i.current && (i.current.indeterminate = e);
-	}, [i, e]), /* @__PURE__ */ S.createElement("input", {
+	}, [i, e]), /*#__PURE__*/ S.createElement("input", {
 		type: "checkbox",
 		...o,
 		ref: i
 	});
 });
-dn.propTypes = {
-	isIndeterminate: N.default.bool,
-	className: N.default.string
-}, dn.defaultProps = {
+vn.propTypes = {
+	isIndeterminate: I.default.bool,
+	className: I.default.string
+}, vn.defaultProps = {
 	isIndeterminate: !1,
 	className: void 0
 };
-var fn = /* @__PURE__ */ S.forwardRef(({ children: e, className: t, helperText: n, ...r }, i) => /* @__PURE__ */ S.createElement("div", { className: "d-inline-flex flex-column" }, /* @__PURE__ */ S.createElement(un, {
-	className: (0, C.default)("pgn__form-switch", t),
+var yn = /*#__PURE__*/ S.forwardRef(({ children: e, className: t, helperText: n, ...r }, i) => /*#__PURE__*/ S.createElement("div", { className: "d-inline-flex flex-column" }, /*#__PURE__*/ S.createElement(_n, {
+	className: (0, k.default)("pgn__form-switch", t),
 	...r,
 	role: "switch",
 	ref: i,
-	controlAs: dn,
+	controlAs: vn,
 	isValid: null,
 	isInvalid: null,
 	description: null
-}, e), n && /* @__PURE__ */ S.createElement("div", { className: "pgn__form-switch-helper-text" }, n)));
-fn.propTypes = {
-	children: N.default.node.isRequired,
-	className: N.default.string,
-	labelClassName: N.default.string,
-	helperText: N.default.node,
-	floatLabelLeft: N.default.bool
-}, fn.defaultProps = {
+}, e), n && /*#__PURE__*/ S.createElement("div", { className: "pgn__form-switch-helper-text" }, n)));
+yn.propTypes = {
+	children: I.default.node.isRequired,
+	className: I.default.string,
+	labelClassName: I.default.string,
+	helperText: I.default.node,
+	floatLabelLeft: I.default.bool
+}, yn.defaultProps = {
 	className: void 0,
 	labelClassName: void 0,
 	helperText: void 0,
 	floatLabelLeft: !1
 };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormCheckboxSet.js
-function pn({ children: e, name: t, value: n, defaultValue: r, isInline: i, onChange: a, onFocus: o, onBlur: s, ...c }) {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormCheckboxSet.js
+function bn({ children: e, name: t, value: n, defaultValue: r, isInline: i, onChange: a, onFocus: o, onBlur: s, ...c }) {
 	let { getControlProps: l, useSetIsControlGroupEffect: u } = J();
 	u(!0);
 	let d = l(c);
-	return /* @__PURE__ */ S.createElement(cn, {
+	return /*#__PURE__*/ S.createElement(hn, {
 		name: t,
 		value: n,
 		defaultValue: r,
 		onFocus: o,
 		onBlur: s,
 		onChange: a
-	}, /* @__PURE__ */ S.createElement(zt, {
+	}, /*#__PURE__*/ S.createElement(Kt, {
 		role: "group",
 		isInline: i,
 		...d
 	}, e));
 }
-pn.propTypes = {
-	children: N.default.node.isRequired,
-	className: N.default.string,
-	name: N.default.string.isRequired,
-	value: N.default.arrayOf(N.default.string),
-	defaultValue: N.default.arrayOf(N.default.string),
-	isInline: N.default.bool,
-	onChange: N.default.func,
-	onFocus: N.default.func,
-	onBlur: N.default.func
-}, pn.defaultProps = {
+bn.propTypes = {
+	children: I.default.node.isRequired,
+	className: I.default.string,
+	name: I.default.string.isRequired,
+	value: I.default.arrayOf(I.default.string),
+	defaultValue: I.default.arrayOf(I.default.string),
+	isInline: I.default.bool,
+	onChange: I.default.func,
+	onFocus: I.default.func,
+	onBlur: I.default.func
+}, bn.defaultProps = {
 	className: void 0,
 	value: void 0,
 	defaultValue: void 0,
@@ -3582,13 +3550,11 @@ pn.propTypes = {
 	onFocus: void 0,
 	onBlur: void 0
 };
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Form/FormSwitchSet.js
-var mn = pn, Q = z;
-Q.Control = jt, Q.Radio = Rt, Q.RadioSet = Bt, Q.Autosuggest = nn, Q.AutosuggestOption = an, Q.Checkbox = un, Q.CheckboxSet = pn, Q.Switch = fn, Q.SwitchSet = mn, Q.Label = Mt, Q.Group = Nt, Q.Text = Dt;
-//#endregion
-//#region node_modules/.pnpm/@openedx+paragon@23.19.1_@types+node@24.12.0_@types+react@18.3.28_jquery@3.7.1_popper.j_fc610710f75fd4edb6a9d3a95ceafa25/node_modules/@openedx/paragon/dist/Sticky/index.js
-var hn = ["top", "bottom"], gn = /* @__PURE__ */ S.forwardRef(({ position: e, children: t, offset: n, className: r, ...i }, a) => {
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Form/FormSwitchSet.js
+var xn = bn, Q = z;
+Q.Control = Rt, Q.Radio = Gt, Q.RadioSet = qt, Q.Autosuggest = un, Q.AutosuggestOption = fn, Q.Checkbox = _n, Q.CheckboxSet = bn, Q.Switch = yn, Q.SwitchSet = xn, Q.Label = zt, Q.Group = Bt, Q.Text = Pt;
+// node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/Sticky/index.js
+var Sn = ["top", "bottom"], Cn = /*#__PURE__*/ S.forwardRef(({ position: e, children: t, offset: n, className: r, ...i }, a) => {
 	let [o, s] = (0, S.useState)(!1), c = S.useRef(), l = a || c;
 	return (0, S.useLayoutEffect)(() => {
 		if (l.current) {
@@ -3600,25 +3566,24 @@ var hn = ["top", "bottom"], gn = /* @__PURE__ */ S.forwardRef(({ position: e, ch
 				i.unobserve(t);
 			};
 		}
-	}, [e, l]), /* @__PURE__ */ S.createElement("div", {
-		className: (0, C.default)("pgn__sticky", `pgn__sticky-${e || "top"}`, n ? `pgn__sticky-offset--${n}` : "", { "pgn__sticky-shadow": o }, r),
+	}, [e, l]), /*#__PURE__*/ S.createElement("div", {
+		className: (0, k.default)("pgn__sticky", `pgn__sticky-${e || "top"}`, n ? `pgn__sticky-offset--${n}` : "", { "pgn__sticky-shadow": o }, r),
 		ref: l,
 		...i
 	}, t);
 });
-gn.propTypes = {
-	children: N.default.node.isRequired,
-	position: N.default.oneOf(hn),
-	offset: N.default.oneOfType([N.default.number, N.default.string]),
-	className: N.default.string
-}, gn.defaultProps = {
+Cn.propTypes = {
+	children: I.default.node.isRequired,
+	position: I.default.oneOf(Sn),
+	offset: I.default.oneOfType([I.default.number, I.default.string]),
+	className: I.default.string
+}, Cn.defaultProps = {
 	position: "top",
 	offset: void 0,
 	className: void 0
 };
-//#endregion
-//#region src/unfolding-scenario-block/studio-ui/App.tsx
-var $ = b(), _n = ({ initialData: e, onSave: t, onCancel: n }) => {
+// src/unfolding-scenario-block/studio-ui/App.tsx
+var $ = x(), wn = ({ initialData: e, onSave: t, onCancel: n }) => {
 	let [r, i] = (0, S.useState)(e);
 	return /* @__PURE__ */ (0, $.jsxs)("div", {
 		className: "unfolding-scenario-block-editor editor-with-buttons",
@@ -3640,33 +3605,33 @@ var $ = b(), _n = ({ initialData: e, onSave: t, onCancel: n }) => {
 					scenarioData: JSON.parse(e.target.value)
 				})
 			})] })]
-		}), /* @__PURE__ */ (0, $.jsx)(gn, {
+		}), /* @__PURE__ */ (0, $.jsx)(Cn, {
 			position: "bottom",
 			className: "xblock-actions",
-			children: /* @__PURE__ */ (0, $.jsxs)(w, { children: [/* @__PURE__ */ (0, $.jsx)(u, {
+			children: /* @__PURE__ */ (0, $.jsxs)(A, { children: [/* @__PURE__ */ (0, $.jsx)(d, {
 				variant: "primary",
 				onClick: () => t(r),
 				children: "Save"
-			}), /* @__PURE__ */ (0, $.jsx)(u, {
+			}), /* @__PURE__ */ (0, $.jsx)(d, {
 				variant: "tertiary",
 				onClick: () => n(),
 				children: "Cancel"
 			})] })
 		})]
 	});
-}, vn = ".wrapper.xblock-iframe-content .xblock-v1-studio_view{display:flex}.xblock-root,.xblock-root .react-studio-block,.xblock-root .react-studio-block .container-fluid{height:100%}.react-studio-block{flex-grow:1}.react-studio-block *,.react-studio-block :before,.react-studio-block :after{box-sizing:border-box}.react-studio-block{margin-bottom:0!important}.xblock-actions{border-top:1px solid var(--pgn-color-gray-200);background:var(--pgn-color-white);z-index:1;justify-content:flex-end;gap:.5em;padding:.75em 1em;display:flex;position:sticky;bottom:0;box-shadow:0 -2px 6px #0000000d}.react-colorful{-webkit-user-select:none;user-select:none;cursor:default;flex-direction:column;width:200px;height:200px;display:flex;position:relative}.react-colorful__saturation{background-image:linear-gradient(#0000,#000),linear-gradient(90deg,#fff,#fff0);border-color:#0000 #0000 #000;border-bottom-style:solid;border-bottom-width:12px;border-radius:8px 8px 0 0;flex-grow:1;position:relative}.react-colorful__pointer-fill,.react-colorful__alpha-gradient{content:\"\";pointer-events:none;border-radius:inherit;position:absolute;inset:0}.react-colorful__alpha-gradient,.react-colorful__saturation{box-shadow:inset 0 0 0 1px #0000000d}.react-colorful__hue,.react-colorful__alpha{height:24px;position:relative}.react-colorful__hue{background:linear-gradient(90deg,red 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red 100%)}.react-colorful__last-control{border-radius:0 0 8px 8px}.react-colorful__interactive{border-radius:inherit;touch-action:none;outline:none;position:absolute;inset:0}.react-colorful__pointer{z-index:1;box-sizing:border-box;background-color:#fff;border:2px solid #fff;border-radius:50%;width:28px;height:28px;position:absolute;transform:translate(-50%,-50%);box-shadow:0 2px 4px #0003}.react-colorful__interactive:focus .react-colorful__pointer{transform:translate(-50%,-50%)scale(1.1)}.react-colorful__alpha,.react-colorful__alpha-pointer{background-color:#fff;background-image:url(\"data:image/svg+xml,<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill-opacity=\\\".05\\\"><rect x=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/><rect y=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/></svg>\")}.react-colorful__saturation-pointer{z-index:3}.react-colorful__hue-pointer{z-index:2}.edit-xblock-modal>.modal-actions{display:none!important}", yn = (0, S.createContext)(null), bn = (e, t, n) => {
-	let i = c(t), a = e.handlerUrl(i, "studio_save");
-	l({
+}, Tn = ".wrapper.xblock-iframe-content .xblock-v1-studio_view{display:flex}.xblock-root,.xblock-root .react-studio-block,.xblock-root .react-studio-block .container-fluid{height:100%}.react-studio-block{flex-grow:1}.react-studio-block *,.react-studio-block :before,.react-studio-block :after{box-sizing:border-box}.react-studio-block{margin-bottom:0!important}.xblock-actions{border-top:1px solid var(--pgn-color-gray-200);background:var(--pgn-color-white);z-index:1;justify-content:flex-end;gap:.5em;padding:.75em 1em;display:flex;position:sticky;bottom:0;box-shadow:0 -2px 6px #0000000d}.react-colorful{-webkit-user-select:none;user-select:none;cursor:default;flex-direction:column;width:200px;height:200px;display:flex;position:relative}.react-colorful__saturation{background-image:linear-gradient(#0000,#000),linear-gradient(90deg,#fff,#fff0);border-color:#0000 #0000 #000;border-bottom-style:solid;border-bottom-width:12px;border-radius:8px 8px 0 0;flex-grow:1;position:relative}.react-colorful__pointer-fill,.react-colorful__alpha-gradient{content:\"\";pointer-events:none;border-radius:inherit;position:absolute;inset:0}.react-colorful__alpha-gradient,.react-colorful__saturation{box-shadow:inset 0 0 0 1px #0000000d}.react-colorful__hue,.react-colorful__alpha{height:24px;position:relative}.react-colorful__hue{background:linear-gradient(90deg,red 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red 100%)}.react-colorful__last-control{border-radius:0 0 8px 8px}.react-colorful__interactive{border-radius:inherit;touch-action:none;outline:none;position:absolute;inset:0}.react-colorful__pointer{z-index:1;box-sizing:border-box;background-color:#fff;border:2px solid #fff;border-radius:50%;width:28px;height:28px;position:absolute;transform:translate(-50%,-50%);box-shadow:0 2px 4px #0003}.react-colorful__interactive:focus .react-colorful__pointer{transform:translate(-50%,-50%)scale(1.1)}.react-colorful__alpha,.react-colorful__alpha-pointer{background-color:#fff;background-image:url(\"data:image/svg+xml,<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill-opacity=\\\".05\\\"><rect x=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/><rect y=\\\"8\\\" width=\\\"8\\\" height=\\\"8\\\"/></svg>\")}.react-colorful__saturation-pointer{z-index:3}.react-colorful__hue-pointer{z-index:2}.edit-xblock-modal>.modal-actions{display:none!important}", En = (0, S.createContext)(null), Dn = (e, t, n) => {
+	let r = l(t), a = e.handlerUrl(r, "studio_save");
+	u({
 		runtime: e,
 		element: t,
 		config: n.config,
-		styles: vn
-	})(/* @__PURE__ */ (0, $.jsx)(yn.Provider, {
+		styles: Tn
+	})(/* @__PURE__ */ (0, $.jsx)(En.Provider, {
 		value: n.config,
-		children: /* @__PURE__ */ (0, $.jsx)(_n, {
+		children: /* @__PURE__ */ (0, $.jsx)(wn, {
 			initialData: n.data,
 			onSave: (t) => {
-				r({
+				i({
 					saveUrl: a,
 					data: t,
 					runtime: e,
@@ -3677,5 +3642,4 @@ var $ = b(), _n = ({ initialData: e, onSave: t, onCancel: n }) => {
 		})
 	}));
 };
-//#endregion
-export { bn as renderBlock };
+export { Dn as renderBlock };
