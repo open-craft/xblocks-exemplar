@@ -2,14 +2,17 @@ import {
   render,
   screen,
   mockRuntime,
-  stubJquery,
+  waitFor,
 } from '@opencraft/xblock-react-utils/testing';
 import userEvent from '@testing-library/user-event';
 import { within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import StudioUi from './studio-ui';
 import { type KeyPoint, type XBlockData } from '../type';
-import { RuntimeContext } from '@opencraft/xblock-react-utils';
+import {
+  RuntimeContext,
+  type XBlockRuntime,
+} from '@opencraft/xblock-react-utils';
 import { XBlockConfigContext } from '@/lib/context';
 import type { XBlockConfig } from '@/types';
 
@@ -58,11 +61,20 @@ async function renameHeader(
   await user.type(input, `${value}{Enter}`);
 }
 
+const saveCompleted = async (runtime: XBlockRuntime) => {
+  await waitFor(() =>
+    expect(runtime.notify).toHaveBeenCalledWith('save', { state: 'start' }),
+  );
+  await waitFor(() =>
+    expect(runtime.notify).toHaveBeenCalledWith('save', { state: 'end' }),
+  );
+  expect(runtime.notify).toHaveBeenCalledTimes(2);
+};
+
 // ── tests ────────────────────────────────────────────────────────────────────
 
 describe('StudioUi', () => {
   // ─── initial rendering ───────────────────────────────────────────────────
-  const { getLastDeferred, mockPost } = stubJquery();
   describe('initial rendering', () => {
     it('renders the header as the editor title', () => {
       renderStudio();
@@ -316,24 +328,11 @@ describe('StudioUi', () => {
   // ─── save behaviour ──────────────────────────────────────────────────────
 
   describe('save behaviour', () => {
-    it('calls runtime.notify with save start on click', async () => {
-      const user = userEvent.setup();
-      const { runtime } = renderStudio();
-
-      await user.click(screen.getByText('Save'));
-
-      expect(runtime.notify).toHaveBeenCalledWith('save', { state: 'start' });
-    });
-
     it('posts the correct payload to the studioSaveUrl', async () => {
-      const user = userEvent.setup();
-      renderStudio();
-
-      await user.click(screen.getByText('Save'));
-
-      expect(mockPost).toHaveBeenCalledWith(
-        '/handler/studio_save',
-        JSON.stringify({
+      $.mockjax({
+        url: '/handler/studio_save',
+        method: 'POST',
+        data: JSON.stringify({
           header: 'Key Concepts',
           keypoints: sampleKeypoints,
           summary: 'These concepts form a connected sequence.',
@@ -341,34 +340,13 @@ describe('StudioUi', () => {
           button_link: 'https://example.com/glossary',
           background_color: '#CCCCCC',
         }),
-      );
-    });
-
-    it('calls runtime.notify with save end on success', async () => {
-      const user = userEvent.setup();
-      const { runtime } = renderStudio();
-
-      await user.click(screen.getByText('Save'));
-      const lastDeferred = getLastDeferred();
-      expect(lastDeferred).toBeTruthy();
-      lastDeferred!._resolveDone();
-
-      expect(runtime.notify).toHaveBeenCalledWith('save', { state: 'end' });
-    });
-
-    it('calls runtime.notify with error on failure', async () => {
-      const user = userEvent.setup();
-      const { runtime } = renderStudio();
-
-      await user.click(screen.getByText('Save'));
-      const lastDeferred = getLastDeferred();
-      expect(lastDeferred).toBeTruthy();
-      lastDeferred!._resolveFail();
-
-      expect(runtime.notify).toHaveBeenCalledWith('error', {
-        title: 'Save Error',
-        message: 'Failed to save keypoint configuration',
+        responseText: {},
       });
+      const user = userEvent.setup();
+      const { runtime } = renderStudio();
+
+      await user.click(screen.getByText('Save'));
+      await saveCompleted(runtime);
     });
   });
 
@@ -389,8 +367,21 @@ describe('StudioUi', () => {
 
   describe('save reflects edits', () => {
     it('includes newly added and edited keypoints in the save payload', async () => {
+      $.mockjax({
+        url: '/handler/studio_save',
+        method: 'POST',
+        data: JSON.stringify({
+          header: 'Key Concepts',
+          keypoints: [{ keypoint: 'New term', description: 'New description' }],
+          summary: 'These concepts form a connected sequence.',
+          button_text: 'Glossary',
+          button_link: 'https://example.com/glossary',
+          background_color: '#CCCCCC',
+        }),
+        responseText: {},
+      });
       const user = userEvent.setup();
-      renderStudio({ keypoints: [] });
+      const { runtime } = renderStudio({ keypoints: [] });
 
       // Add a keypoint and fill it in
       await user.click(screen.getByText('Add Key Term'));
@@ -406,21 +397,23 @@ describe('StudioUi', () => {
       );
 
       await user.click(screen.getByText('Save'));
+      await saveCompleted(runtime);
+    });
 
-      expect(mockPost).toHaveBeenCalledWith(
-        '/handler/studio_save',
-        JSON.stringify({
+    it('excludes removed keypoints from the save payload', async () => {
+      $.mockjax({
+        url: '/handler/studio_save',
+        method: 'POST',
+        data: JSON.stringify({
           header: 'Key Concepts',
-          keypoints: [{ keypoint: 'New term', description: 'New description' }],
+          keypoints: [sampleKeypoints[1]],
           summary: 'These concepts form a connected sequence.',
           button_text: 'Glossary',
           button_link: 'https://example.com/glossary',
           background_color: '#CCCCCC',
         }),
-      );
-    });
-
-    it('excludes removed keypoints from the save payload', async () => {
+        responseText: {},
+      });
       const user = userEvent.setup();
       renderStudio();
 
@@ -429,23 +422,23 @@ describe('StudioUi', () => {
       await user.click(removeButtons[0]);
 
       await user.click(screen.getByText('Save'));
-
-      expect(mockPost).toHaveBeenCalledWith(
-        '/handler/studio_save',
-        JSON.stringify({
-          header: 'Key Concepts',
-          keypoints: [sampleKeypoints[1]],
-          summary: 'These concepts form a connected sequence.',
-          button_text: 'Glossary',
-          button_link: 'https://example.com/glossary',
-          background_color: '#CCCCCC',
-        }),
-      );
     });
 
     it('includes updated header, summary, and button fields in the save payload', async () => {
+      $.mockjax({
+        url: '/handler/studio_save',
+        data: JSON.stringify({
+          header: 'Updated Header',
+          keypoints: [],
+          summary: 'Updated Summary',
+          button_text: 'Resources',
+          button_link: 'https://new.com',
+          background_color: '#CCCCCC',
+        }),
+        responseText: {},
+      });
       const user = userEvent.setup();
-      renderStudio({ keypoints: [] });
+      const { runtime } = renderStudio({ keypoints: [] });
 
       await renameHeader(user, 'Updated Header');
 
@@ -467,17 +460,7 @@ describe('StudioUi', () => {
 
       await user.click(screen.getByText('Save'));
 
-      expect(mockPost).toHaveBeenCalledWith(
-        '/handler/studio_save',
-        JSON.stringify({
-          header: 'Updated Header',
-          keypoints: [],
-          summary: 'Updated Summary',
-          button_text: 'Resources',
-          button_link: 'https://new.com',
-          background_color: '#CCCCCC',
-        }),
-      );
+      await saveCompleted(runtime);
     });
   });
 

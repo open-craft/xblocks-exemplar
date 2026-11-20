@@ -3,7 +3,7 @@ import Dropzone from '@openedx/paragon/dist/Dropzone';
 import Button from '@openedx/paragon/dist/Button';
 import Form from '@openedx/paragon/dist/Form';
 import { Alert } from '@openedx/paragon';
-import { RuntimeContext } from '@opencraft/xblock-react-utils';
+import { RuntimeContext, saveStudioBlock } from '@opencraft/xblock-react-utils';
 
 interface JsonIOTabContentProps {
   liveData: unknown;
@@ -80,15 +80,19 @@ export default function JsonImporter({ liveData }: JsonIOTabContentProps) {
     runtime.notify('save', { state: 'start' });
     setUploadError(null);
     const blob = fileData.get('file');
-    blob.text().then((jsonData: string) => {
-      $.post(saveUrl, jsonData)
-        .done(() => {
-          runtime.notify('save', { state: 'end' });
-        })
-        .fail((e) => {
-          handleError(new Error('Upload rejected.'));
-          setUploadError(e.responseJSON?.error ?? e.responseText);
+    blob.text().then(async (jsonData: string) => {
+      try {
+        await saveStudioBlock({
+          saveUrl,
+          data: jsonData,
+          runtime,
+          errorMessage: 'Upload rejected.',
         });
+      } catch (err: unknown) {
+        handleError(new Error('Upload rejected.'));
+        const error = err as JQuery.jqXHR;
+        setUploadError(error.responseJSON?.error ?? error.responseText);
+      }
     });
   };
 
