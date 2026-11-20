@@ -15505,24 +15505,27 @@ var hu = /* @__PURE__ */ function(e) {
 				item: e.thumbnailUrl || a,
 				itemAlt: e.thumbnailAltText
 			}),
-			/* @__PURE__ */ (0, Mn.jsx)(mu.Body, { children: /* @__PURE__ */ (0, Mn.jsxs)(mu.Section, { children: [/* @__PURE__ */ (0, Mn.jsxs)(Hl, {
-				direction: "horizontal",
-				gap: 1,
-				className: "card-type text-uppercase",
-				children: [
-					/* @__PURE__ */ (0, Mn.jsx)("span", { children: i }),
-					/* @__PURE__ */ (0, Mn.jsx)("span", { children: "·" }),
-					/* @__PURE__ */ (0, Mn.jsxs)("span", { children: [e.expectedMinutes, " min"] })
-				]
-			}), /* @__PURE__ */ (0, Mn.jsxs)(Hl, { children: [/* @__PURE__ */ (0, Mn.jsx)("span", {
-				className: "card-title",
-				children: e.title
-			}), /* @__PURE__ */ (0, Mn.jsx)("span", {
-				className: "card-publisher",
-				children: e.publisher
-			})] })] }) }),
+			/* @__PURE__ */ (0, Mn.jsx)(mu.Body, {
+				className: "flex-grow-1 w-auto",
+				children: /* @__PURE__ */ (0, Mn.jsxs)(mu.Section, { children: [/* @__PURE__ */ (0, Mn.jsxs)(Hl, {
+					direction: "horizontal",
+					gap: 1,
+					className: "card-type text-uppercase",
+					children: [
+						/* @__PURE__ */ (0, Mn.jsx)("span", { children: i }),
+						/* @__PURE__ */ (0, Mn.jsx)("span", { children: "·" }),
+						/* @__PURE__ */ (0, Mn.jsxs)("span", { children: [e.expectedMinutes, " min"] })
+					]
+				}), /* @__PURE__ */ (0, Mn.jsxs)(Hl, { children: [/* @__PURE__ */ (0, Mn.jsx)("span", {
+					className: "card-title",
+					children: e.title
+				}), /* @__PURE__ */ (0, Mn.jsx)("span", {
+					className: "card-publisher",
+					children: e.publisher
+				})] })] })
+			}),
 			n && /* @__PURE__ */ (0, Mn.jsx)(mu.Footer, {
-				className: "d-flex align-items-start justify-content-end",
+				className: "flex-grow-0 flex-shrink-0 w-auto d-flex align-items-start justify-content-end",
 				children: /* @__PURE__ */ (0, Mn.jsx)("div", {
 					onClick: (e) => e.stopPropagation(),
 					children: n

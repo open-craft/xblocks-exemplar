@@ -39,7 +39,7 @@ export const ResourceCard = ({
         item={resource.thumbnailUrl || iconName}
         itemAlt={resource.thumbnailAltText}
       />
-      <Card.Body>
+      <Card.Body className="flex-grow-1 w-auto">
         <Card.Section>
           <Stack
             direction="horizontal"
@@ -57,7 +57,7 @@ export const ResourceCard = ({
         </Card.Section>
       </Card.Body>
       {actions && (
-        <Card.Footer className="d-flex align-items-start justify-content-end">
+        <Card.Footer className="flex-grow-0 flex-shrink-0 w-auto d-flex align-items-start justify-content-end">
           {/* Clicks on the actions must not reach the card, which opens the resource. */}
           <div onClick={(e) => e.stopPropagation()}>{actions}</div>
         </Card.Footer>

@@ -46,18 +46,10 @@
     height: 102px;
   }
 
-  // Paragon gives the body and the footer `width: 100%`, so in a horizontal card they
-  // split the space in half. The footer (actions) takes only what it needs and the
-  // body takes the rest.
+  // The body grows and the footer keeps its size through utility classes in ResourceCard.tsx.
+  // There is no utility for `min-width`: without it the body can't be narrower than its
+  // content, so the publisher would widen the card instead of being cut with "…".
   .pgn__card-body {
-    flex: 1 1 auto;
     min-width: 0;
-  }
-
-  // `&.pgn__card` is needed to beat Paragon's `.pgn__card .pgn__card-footer { width: 100% }`,
-  // which loads after our styles.
-  &.pgn__card .pgn__card-footer {
-    flex: none;
-    width: auto;
   }
 }
