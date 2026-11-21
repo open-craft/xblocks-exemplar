@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent } from 'react';
+import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { FileType, type Resource } from '@/external-resources/apiTypes';
 import {
   ActionRow,
@@ -25,7 +25,11 @@ const isValidUrl = (value: string): boolean => {
   }
 };
 
+// Only limits the arrow keys: more minutes can be typed, and they count as hours.
 const MAX_MINUTES_FIELD = 59;
+
+// The text of a time field: empty (counts as 0) or a whole number.
+const isWholeNumber = (value: string): boolean => /^\d*$/.test(value);
 
 type ResourceErrors = Partial<
   Record<'url' | 'title' | 'publisher' | 'expectedMinutes' | 'fileType', string>
@@ -37,10 +41,14 @@ const VALIDATION_ERRORS = {
   titleEmpty: 'Add a title.',
   publisherEmpty: 'Add a publisher.',
   timeTooShort: 'The estimated time must be at least 1 minute.',
+  timeNotWholeNumber: 'Enter the estimated time in whole hours and minutes.',
   typeEmpty: 'Choose a content type.',
 } as const;
 
-const validateResource = (resource: ResourceDraft): ResourceErrors => {
+const validateResource = (
+  resource: ResourceDraft,
+  isTimeValid: boolean,
+): ResourceErrors => {
   const errors: ResourceErrors = {};
   if (!resource.url.trim()) {
     errors.url = VALIDATION_ERRORS.urlEmpty;
@@ -53,7 +61,9 @@ const validateResource = (resource: ResourceDraft): ResourceErrors => {
   if (!resource.publisher.trim()) {
     errors.publisher = VALIDATION_ERRORS.publisherEmpty;
   }
-  if (resource.expectedMinutes < 1) {
+  if (!isTimeValid) {
+    errors.expectedMinutes = VALIDATION_ERRORS.timeNotWholeNumber;
+  } else if (resource.expectedMinutes < 1) {
     errors.expectedMinutes = VALIDATION_ERRORS.timeTooShort;
   }
   if (!resource.fileType) {
@@ -80,7 +90,6 @@ export const ResourceForm = ({
   const [resource, setResource] = useState<ResourceDraft>(initialResource);
   // Errors are shown after the first save attempt, and then update as the author types.
   const [showErrors, setShowErrors] = useState(false);
-  const errors = showErrors ? validateResource(resource) : {};
   // The time fields keep the text as typed, so they can be empty while editing.
   // Empty counts as 0.
   const [hours, setHours] = useState(() => {
@@ -91,6 +100,15 @@ export const ResourceForm = ({
     const m = initialResource.expectedMinutes % 60;
     return m ? String(m) : '';
   });
+  // A number field gives an empty value when its text isn't a number (eg. "1e" or "-"),
+  // so the browser's `badInput` flag is the only way to tell it apart from an empty field.
+  const [badInput, setBadInput] = useState({ hours: false, minutes: false });
+  const isTimeValid =
+    !badInput.hours &&
+    !badInput.minutes &&
+    isWholeNumber(hours) &&
+    isWholeNumber(minutes);
+  const errors = showErrors ? validateResource(resource, isTimeValid) : {};
   // Without a content type yet, the preview shows the generic icon.
   const iconName =
     resource.thumbnailIcon ||
@@ -105,19 +123,22 @@ export const ResourceForm = ({
     });
   };
 
-  // Keeps digits only, and at most `max`.
-  const toTimeValue = (value: string, max?: number): string => {
-    const digits = value.replace(/\D/g, '');
-    if (!digits) {
-      return '';
-    }
-    const n = Number(digits);
-    return String(max === undefined ? n : Math.min(n, max));
-  };
+  // `input` fires on every keystroke, even when the value stays empty (eg. typing "-"
+  // in an empty field), so the flag is always up to date. React's onChange doesn't.
+  const updateBadInput =
+    (field: 'hours' | 'minutes') => (e: FormEvent<HTMLInputElement>) => {
+      const isBad = e.currentTarget.validity.badInput;
+      setBadInput((current) =>
+        current[field] === isBad ? current : { ...current, [field]: isBad },
+      );
+    };
 
   const handleSave = () => {
     const { fileType } = resource;
-    if (Object.keys(validateResource(resource)).length > 0 || !fileType) {
+    if (
+      Object.keys(validateResource(resource, isTimeValid)).length > 0 ||
+      !fileType
+    ) {
       setShowErrors(true);
       return;
     }
@@ -200,26 +221,29 @@ export const ResourceForm = ({
             <Stack direction="horizontal" gap={2}>
               <Form.Control
                 className="estimated-time-input"
-                inputMode="numeric"
+                type="number"
+                min={0}
+                step={1}
                 placeholder="0"
                 value={hours}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  setTime(toTimeValue(e.target.value), minutes);
+                  setTime(e.target.value, minutes);
                 }}
+                onInput={updateBadInput('hours')}
               />
               <small>hr</small>
               <Form.Control
                 className="estimated-time-input"
-                inputMode="numeric"
+                type="number"
+                min={0}
+                max={MAX_MINUTES_FIELD}
+                step={1}
                 placeholder="0"
                 value={minutes}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  // The minutes field goes up to 59; more time goes in the hours field.
-                  setTime(
-                    hours,
-                    toTimeValue(e.target.value, MAX_MINUTES_FIELD),
-                  );
+                  setTime(hours, e.target.value);
                 }}
+                onInput={updateBadInput('minutes')}
               />
               <small>min</small>
             </Stack>

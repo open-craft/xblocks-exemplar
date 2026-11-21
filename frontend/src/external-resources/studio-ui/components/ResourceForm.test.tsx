@@ -1,4 +1,8 @@
-import { render, screen } from '@opencraft/xblock-react-utils/testing';
+import {
+  fireEvent,
+  render,
+  screen,
+} from '@opencraft/xblock-react-utils/testing';
 import userEvent, { type UserEvent } from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 
@@ -116,14 +120,76 @@ describe('ResourceForm', () => {
     expect(screen.getByText('Add a publisher.')).toBeInTheDocument();
   });
 
-  it('keeps only digits in the time fields, and at most 59 minutes', async () => {
-    const { user } = renderForm();
+  it('accepts more than 59 minutes, as part of the total time', async () => {
+    const { onSave, user } = renderForm();
 
-    await user.type(timeFields().hours, '2h');
+    await fillRequiredFields(user);
     await user.type(timeFields().minutes, '75');
+    await save(user);
 
-    expect(timeFields().hours).toHaveValue('2');
-    expect(timeFields().minutes).toHaveValue('59');
+    expect(onSave).toHaveBeenCalledWith(
+      expect.objectContaining({ expectedMinutes: 75 }),
+    );
+  });
+
+  it('shows more than 59 minutes as hours when reopened', () => {
+    renderForm({
+      initialResource: { ...savedResource, expectedMinutes: 75 },
+      isNewResource: false,
+    });
+
+    expect(timeFields().hours).toHaveValue(1);
+    expect(timeFields().minutes).toHaveValue(15);
+  });
+
+  it.each([
+    ['a decimal', '1.5'],
+    ['a negative number', '-1'],
+  ])('rejects %s in the time fields', async (_, value) => {
+    const { onSave, user } = renderForm();
+
+    await fillRequiredFields(user);
+    await user.type(timeFields().hours, value);
+    await user.type(timeFields().minutes, '5');
+    await save(user);
+
+    expect(
+      screen.getByText('Enter the estimated time in whole hours and minutes.'),
+    ).toBeInTheDocument();
+    expect(onSave).not.toHaveBeenCalled();
+  });
+
+  it('rejects text that is not a number, even if the field looks empty', async () => {
+    // The browser gives an empty value for text like "1e", and flags it as badInput.
+    // jsdom doesn't, so the flag is set by hand.
+    const { onSave, user } = renderForm();
+
+    await fillRequiredFields(user);
+    await user.type(timeFields().hours, '1');
+    const { minutes } = timeFields();
+    Object.defineProperty(minutes, 'validity', {
+      configurable: true,
+      value: { badInput: true },
+    });
+    fireEvent.input(minutes);
+    await save(user);
+
+    expect(
+      screen.getByText('Enter the estimated time in whole hours and minutes.'),
+    ).toBeInTheDocument();
+    expect(onSave).not.toHaveBeenCalled();
+
+    // Fixing the text removes the error.
+    Object.defineProperty(minutes, 'validity', {
+      configurable: true,
+      value: { badInput: false },
+    });
+    await user.type(minutes, '5');
+    expect(
+      screen.queryByText(
+        'Enter the estimated time in whole hours and minutes.',
+      ),
+    ).not.toBeInTheDocument();
   });
 
   it('edits an existing resource, keeping its id', async () => {
@@ -133,8 +199,8 @@ describe('ResourceForm', () => {
     });
 
     expect(screen.getByText('Edit resource')).toBeInTheDocument();
-    expect(timeFields().hours).toHaveValue('1');
-    expect(timeFields().minutes).toHaveValue('30');
+    expect(timeFields().hours).toHaveValue(1);
+    expect(timeFields().minutes).toHaveValue(30);
 
     await user.clear(field(/title/i));
     await user.type(field(/title/i), 'Updated title');
