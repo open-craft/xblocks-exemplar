@@ -30,6 +30,9 @@ export const App = ({ initialData, onSave, onCancel }: AppProps) => {
     Resource | undefined
   >();
 
+  // An open resource form would be lost on save, so it must be saved or cancelled first.
+  const isResourceFormOpen = addNewFormIsShow || editFormIsShow;
+
   const deleteResource = (resource: Resource) => {
     setData((current) => ({
       ...current,
@@ -150,7 +153,7 @@ export const App = ({ initialData, onSave, onCancel }: AppProps) => {
           <Button
             variant="primary"
             onClick={() => onSave(data)}
-            disabled={data.resources.length === 0}
+            disabled={data.resources.length === 0 || isResourceFormOpen}
           >
             Save
           </Button>

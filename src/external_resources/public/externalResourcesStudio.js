@@ -8626,7 +8626,7 @@ function Tb({ title: e, onTitleChange: t, activeTab: n, tabs: r = wb }) {
 //#endregion
 //#region src/external-resources/studio-ui/App.tsx
 var Eb = ({ initialData: e, onSave: t, onCancel: n }) => {
-	let [r, i] = (0, D.useState)(e), [a, o, s] = Bo(!1), [c, l, u] = Bo(!1), [d, f] = (0, D.useState)(), [p, m] = (0, D.useState)();
+	let [r, i] = (0, D.useState)(e), [a, o, s] = Bo(!1), [c, l, u] = Bo(!1), [d, f] = (0, D.useState)(), [p, m] = (0, D.useState)(), h = a || c;
 	return /* @__PURE__ */ (0, j.jsxs)("div", {
 		className: "react-studio-block external-resources-xblock-editor editor-with-buttons bg-light-200",
 		children: [
@@ -8724,7 +8724,7 @@ var Eb = ({ initialData: e, onSave: t, onCancel: n }) => {
 				}), /* @__PURE__ */ (0, j.jsx)(Sn, {
 					variant: "primary",
 					onClick: () => t(r),
-					disabled: r.resources.length === 0,
+					disabled: r.resources.length === 0 || h,
 					children: "Save"
 				})] })
 			})

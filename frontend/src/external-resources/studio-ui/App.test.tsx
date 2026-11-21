@@ -76,6 +76,70 @@ describe('Studio App', () => {
     ).toBeDisabled();
   });
 
+  describe('with an open resource form', () => {
+    const editorSave = () =>
+      editorActions().getByRole('button', { name: 'Save' });
+
+    it('does not allow saving the block while adding a resource', async () => {
+      const { onSave, user } = renderApp();
+
+      await user.click(
+        screen.getByRole('button', { name: 'Add resource link' }),
+      );
+      await user.type(
+        screen.getByLabelText(/resource link/i),
+        'https://example.com/new',
+      );
+      await user.type(screen.getByLabelText(/title/i), 'New article');
+
+      expect(editorSave()).toBeDisabled();
+      await user.click(editorSave());
+      expect(onSave).not.toHaveBeenCalled();
+      // The resource being added is still there.
+      expect(screen.getByLabelText(/title/i)).toHaveValue('New article');
+    });
+
+    it('does not allow saving the block while editing a resource', async () => {
+      const { onSave, user } = renderApp();
+
+      await user.click(
+        card('First article').getByRole('button', { name: 'Edit' }),
+      );
+      await user.type(screen.getByLabelText(/title/i), ' changed');
+
+      expect(editorSave()).toBeDisabled();
+      await user.click(editorSave());
+      expect(onSave).not.toHaveBeenCalled();
+      expect(screen.getByLabelText(/title/i)).toHaveValue(
+        'First article changed',
+      );
+    });
+
+    it('allows saving again once the resource form is cancelled', async () => {
+      const { user } = renderApp();
+
+      await user.click(
+        screen.getByRole('button', { name: 'Add resource link' }),
+      );
+      expect(editorSave()).toBeDisabled();
+
+      await user.click(
+        resourceForm('Add resource').getByRole('button', { name: 'Cancel' }),
+      );
+      expect(editorSave()).toBeEnabled();
+
+      await user.click(
+        card('First article').getByRole('button', { name: 'Edit' }),
+      );
+      expect(editorSave()).toBeDisabled();
+
+      await user.click(
+        resourceForm('Edit resource').getByRole('button', { name: 'Cancel' }),
+      );
+      expect(editorSave()).toBeEnabled();
+    });
+  });
+
   it('saves the display name edited in the header', async () => {
     const { onSave, user } = renderApp();
 
