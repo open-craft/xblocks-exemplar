@@ -7,7 +7,7 @@ import { FileType } from '@/external-resources/apiTypes';
 import { ContentTypeSelect } from './ContentTypeSelect';
 
 interface HarnessProps {
-  initialFileType?: FileType;
+  initialFileType?: FileType | null;
   initialCustomFileType?: string;
 }
 
@@ -19,8 +19,11 @@ const renderSelect = ({
   const onChange = vi.fn();
 
   const Harness = () => {
-    const [value, setValue] = useState({
-      fileType: initialFileType,
+    const [value, setValue] = useState<{
+      fileType?: FileType;
+      customFileType: string;
+    }>({
+      fileType: initialFileType ?? undefined,
       customFileType: initialCustomFileType,
     });
     return (
@@ -60,6 +63,32 @@ describe('ContentTypeSelect', () => {
     });
 
     expect(input()).toHaveValue('Podcast');
+  });
+
+  it('is empty, with a placeholder, when there is no type yet', () => {
+    renderSelect({ initialFileType: null });
+
+    expect(input()).toHaveValue('');
+    expect(input()).toHaveAttribute('placeholder', 'Select or add type');
+  });
+
+  it('opens the list when it gets the focus with Tab', async () => {
+    const { user } = renderSelect({ initialFileType: null });
+
+    await user.tab();
+
+    expect(input()).toHaveFocus();
+    expect(options()).toHaveLength(7);
+  });
+
+  it('stays empty when left without choosing a type', async () => {
+    const { onChange, user } = renderSelect({ initialFileType: null });
+
+    await user.click(input());
+    await user.click(screen.getByRole('button', { name: 'Outside' }));
+
+    expect(input()).toHaveValue('');
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   it('lists every predefined type and picks the clicked one', async () => {

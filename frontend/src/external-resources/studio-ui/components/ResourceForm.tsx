@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent } from 'react';
-import type { Resource } from '@/external-resources/apiTypes';
+import { FileType, type Resource } from '@/external-resources/apiTypes';
 import {
   ActionRow,
   Button,
@@ -13,6 +13,7 @@ import { ContentTypeSelect } from './ContentTypeSelect';
 import { ThumbnailSelect } from './ThumbnailSelect';
 import { FILE_TYPE_ICONS } from '@/external-resources/common/fileTypes';
 import { ResourceThumbnail } from '@/external-resources/common/ResourceThumbnail';
+import type { ResourceDraft } from '../resourceDraft';
 
 // Same rules as the backend: an absolute http(s) URL.
 const isValidUrl = (value: string): boolean => {
@@ -27,7 +28,7 @@ const isValidUrl = (value: string): boolean => {
 const MAX_MINUTES_FIELD = 59;
 
 type ResourceErrors = Partial<
-  Record<'url' | 'title' | 'publisher' | 'expectedMinutes', string>
+  Record<'url' | 'title' | 'publisher' | 'expectedMinutes' | 'fileType', string>
 >;
 
 const VALIDATION_ERRORS = {
@@ -36,9 +37,10 @@ const VALIDATION_ERRORS = {
   titleEmpty: 'Add a title.',
   publisherEmpty: 'Add a publisher.',
   timeTooShort: 'The estimated time must be at least 1 minute.',
+  typeEmpty: 'Choose a content type.',
 } as const;
 
-const validateResource = (resource: Resource): ResourceErrors => {
+const validateResource = (resource: ResourceDraft): ResourceErrors => {
   const errors: ResourceErrors = {};
   if (!resource.url.trim()) {
     errors.url = VALIDATION_ERRORS.urlEmpty;
@@ -54,11 +56,14 @@ const validateResource = (resource: Resource): ResourceErrors => {
   if (resource.expectedMinutes < 1) {
     errors.expectedMinutes = VALIDATION_ERRORS.timeTooShort;
   }
+  if (!resource.fileType) {
+    errors.fileType = VALIDATION_ERRORS.typeEmpty;
+  }
   return errors;
 };
 
 export interface ResourceFormProps {
-  initialResource: Resource;
+  initialResource: ResourceDraft;
   isNewResource?: boolean;
   onCancel: () => void;
   onSave: (resource: Resource) => void;
@@ -72,7 +77,7 @@ export const ResourceForm = ({
   onSave,
   onDelete,
 }: ResourceFormProps) => {
-  const [resource, setResource] = useState(initialResource);
+  const [resource, setResource] = useState<ResourceDraft>(initialResource);
   // Errors are shown after the first save attempt, and then update as the author types.
   const [showErrors, setShowErrors] = useState(false);
   const errors = showErrors ? validateResource(resource) : {};
@@ -86,7 +91,10 @@ export const ResourceForm = ({
     const m = initialResource.expectedMinutes % 60;
     return m ? String(m) : '';
   });
-  const iconName = resource.thumbnailIcon || FILE_TYPE_ICONS[resource.fileType];
+  // Without a content type yet, the preview shows the generic icon.
+  const iconName =
+    resource.thumbnailIcon ||
+    FILE_TYPE_ICONS[resource.fileType ?? FileType.CUSTOM];
 
   const setTime = (h: string, m: string) => {
     setHours(h);
@@ -108,11 +116,12 @@ export const ResourceForm = ({
   };
 
   const handleSave = () => {
-    if (Object.keys(validateResource(resource)).length > 0) {
+    const { fileType } = resource;
+    if (Object.keys(validateResource(resource)).length > 0 || !fileType) {
       setShowErrors(true);
       return;
     }
-    onSave(resource);
+    onSave({ ...resource, fileType });
   };
 
   return (
@@ -220,7 +229,7 @@ export const ResourceForm = ({
               </Form.Control.Feedback>
             )}
           </Form.Group>
-          <Form.Group>
+          <Form.Group isInvalid={!!errors.fileType}>
             <Form.Label>
               <span className="text-primary-500">Content type</span>
             </Form.Label>
@@ -231,6 +240,11 @@ export const ResourceForm = ({
                 setResource({ ...resource, fileType, customFileType })
               }
             />
+            {errors.fileType && (
+              <Form.Control.Feedback type="invalid">
+                {errors.fileType}
+              </Form.Control.Feedback>
+            )}
           </Form.Group>
           <Stack gap={3} direction="horizontal">
             <ResourceThumbnail

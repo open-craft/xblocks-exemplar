@@ -106,6 +106,8 @@ describe('Studio App', () => {
       await user.type(screen.getByLabelText(/title/i), 'New article');
       await user.type(screen.getByLabelText(/publisher/i), 'Open edX');
       await user.type(screen.getAllByPlaceholderText('0')[1], '10');
+      await user.click(screen.getByRole('combobox'));
+      await user.click(screen.getByRole('option', { name: 'Articles' }));
       await user.click(
         resourceForm('Add resource').getByRole('button', { name: 'Save' }),
       );

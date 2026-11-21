@@ -30,7 +30,7 @@ type MenuItem =
   | { kind: 'create'; label: string };
 
 export interface ContentTypeSelectProps {
-  fileType: FileType;
+  fileType?: FileType;
   customFileType: string;
   onChange: (fileType: FileType, customFileType: string) => void;
 }
@@ -52,8 +52,12 @@ export const ContentTypeSelect = ({
   // Highlighted menu item, -1 for none.
   const [activeIndex, setActiveIndex] = useState(-1);
 
-  const currentLabel =
-    fileType === FileType.CUSTOM ? customFileType : FILE_TYPE_LABELS[fileType];
+  let currentLabel = '';
+  if (fileType === FileType.CUSTOM) {
+    currentLabel = customFileType;
+  } else if (fileType) {
+    currentLabel = FILE_TYPE_LABELS[fileType];
+  }
   const query = (draft ?? '').trim();
 
   const items: MenuItem[] = FILE_TYPE_OPTIONS.filter(([, label]) =>
@@ -171,6 +175,7 @@ export const ContentTypeSelect = ({
           setIsOpen(true);
           setActiveIndex(-1);
         }}
+        onFocus={() => !isOpen && open()}
         onClick={() => !isOpen && open()}
         onKeyDown={handleKeyDown}
         trailingElement={

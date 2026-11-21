@@ -43,6 +43,8 @@ const fillRequiredFields = async (user: UserEvent) => {
   await user.type(field(/resource link/i), 'https://example.com/new');
   await user.type(field(/title/i), 'New article');
   await user.type(field(/publisher/i), 'Open edX');
+  await user.click(screen.getByRole('combobox'));
+  await user.click(screen.getByRole('option', { name: 'PDF' }));
 };
 
 describe('ResourceForm', () => {
@@ -60,8 +62,18 @@ describe('ResourceForm', () => {
         title: 'New article',
         publisher: 'Open edX',
         expectedMinutes: 90,
+        fileType: FileType.PDF,
       }),
     );
+  });
+
+  it('starts a new resource without a content type', () => {
+    renderForm();
+
+    expect(screen.getByRole('combobox')).toHaveValue('');
+    expect(
+      screen.getByPlaceholderText('Select or add type'),
+    ).toBeInTheDocument();
   });
 
   it('shows the errors of the required fields instead of saving', async () => {
@@ -75,6 +87,7 @@ describe('ResourceForm', () => {
     expect(
       screen.getByText('The estimated time must be at least 1 minute.'),
     ).toBeInTheDocument();
+    expect(screen.getByText('Choose a content type.')).toBeInTheDocument();
     expect(onSave).not.toHaveBeenCalled();
   });
 
