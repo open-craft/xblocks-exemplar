@@ -1,35 +1,61 @@
 // The component was originally created inside the Card Carousel XBlock
 // and hence uses the --ccblk prefix for defining its custom variables.
 .complex-card {
-  --pgn-color-headings-base: var(--ccblk-typography-headings-color);
-  --ccblk-spacing-badge-spacer-x: var(--pgn-spacing-card-spacer-x);
-  --ccblk-spacing-badge-spacer-y: var(--pgn-spacing-card-spacer-y);
-  --ccblk-typography-headings-color: var(--pgn-color-headings-base);
-  --ccblk-card-padding: var(--pgn-spacing-spacer-4-5, 32px);
-  --ccblk-grid-gap: var(--pgn-spacing-spacer-4-5, 32px);
-  --ccblk-card-radius-lg: var(--pgn-size-border-radius-lg, 24px);
+  --ccblk-spacing-badge-spacer-x: var(
+    --card-badge-spacer-x,
+    var(--pgn-spacing-card-spacer-x)
+  );
+  --ccblk-spacing-badge-spacer-y: var(
+    --card-badge-spacer-y,
+    var(--pgn-spacing-card-spacer-y)
+  );
+  // Was a circular reference with --pgn-color-headings-base (which made both
+  // invalid). Defaults to `inherit`, the colour cards render today, so the
+  // hook only changes anything when a theme sets it.
+  --ccblk-typography-headings-color: var(--card-heading-color, inherit);
+  --ccblk-card-padding: var(
+    --card-padding,
+    var(--pgn-spacing-spacer-4-5, 32px)
+  );
+  --ccblk-grid-gap: var(--card-gap, var(--pgn-spacing-spacer-4-5, 32px));
+  --ccblk-card-radius-lg: var(
+    --card-radius,
+    var(--pgn-size-border-radius-lg, 24px)
+  );
 
   height: 100%;
 
   .text-accent {
-    color: var(--pgn-color-accent-a);
+    color: var(--card-badge-color, var(--pgn-color-accent-a));
   }
 
   .btn-accent {
-    background-color: var(--pgn-color-accent-a);
-    color: var(--pgn-color-light-100);
+    background-color: var(
+      --card-badge-background-color,
+      var(--pgn-color-accent-a)
+    );
+    color: var(--card-inverse-color, var(--pgn-color-light-100));
     background-image: unset;
   }
 
   .card-badge {
-    margin: 0 0 var(--pgn-spacing-spacer-3, 16px);
+    margin: 0 0 var(--card-inner-gap, var(--pgn-spacing-spacer-3, 16px));
 
     .badge {
       padding: var(--ccblk-spacing-badge-spacer-y)
         var(--ccblk-spacing-badge-spacer-x);
-      font-family: var(--pgn-typography-headings-font-family);
-      font-size: var(--pgn-typography-font-size-h5-base);
-      font-weight: var(--pgn-typography-headings-font-weight);
+      font-family: var(
+        --card-heading-font-family,
+        var(--pgn-typography-headings-font-family)
+      );
+      font-size: var(
+        --card-badge-font-size,
+        var(--pgn-typography-font-size-h5-base)
+      );
+      font-weight: var(
+        --card-heading-font-weight,
+        var(--pgn-typography-headings-font-weight)
+      );
     }
   }
 
@@ -41,8 +67,11 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: var(--pgn-color-light-100);
-    --ccblk-typography-headings-color: var(--pgn-color-light-100);
+    color: var(--card-inverse-color, var(--pgn-color-light-100));
+    --ccblk-typography-headings-color: var(
+      --card-inverse-color,
+      var(--pgn-color-light-100)
+    );
 
     // The styles below make an overlay on the image to put the image in the background.
     // This is done via pseudo style so that the text is given more attention. Hence all other elements
@@ -63,7 +92,7 @@
 
     .pgn__card-section,
     .pgn__card-header-subtitle-md {
-      color: var(--pgn-color-light-100);
+      color: var(--card-inverse-color, var(--pgn-color-light-100));
     }
   }
 
@@ -90,20 +119,32 @@
 
     .pgn__card-header {
       .pgn__card-header-content {
-        margin-top: var(--pgn-spacing-card-spacer-x);
+        margin-top: var(--card-item-spacing, var(--pgn-spacing-card-spacer-x));
       }
 
       .pgn__card-header-title-md {
-        font-family: var(--pgn-typography-headings-font-family);
+        font-family: var(
+          --card-heading-font-family,
+          var(--pgn-typography-headings-font-family)
+        );
         color: var(--ccblk-typography-headings-color);
-        font-size: var(--pgn-typography-font-size-h4-base);
+        font-size: var(
+          --card-heading-font-size,
+          var(--pgn-typography-font-size-h4-base)
+        );
       }
 
       .pgn__card-header-subtitle-md {
         color: var(--ccblk-typography-headings-color);
-        font-size: var(--pgn-typography-font-size-base);
+        font-size: var(
+          --card-body-font-size,
+          var(--pgn-typography-font-size-base)
+        );
         font-weight: 700;
-        font-family: var(--pgn-typography-headings-font-family);
+        font-family: var(
+          --card-heading-font-family,
+          var(--pgn-typography-headings-font-family)
+        );
       }
     }
   }
@@ -150,18 +191,33 @@
 
 .content-highlight {
   height: 100%;
-  padding: var(--pgn-spacing-spacer-4-5, 32px);
-  background-color: var(--pgn-color-primary-500);
+  padding: var(--card-padding, var(--pgn-spacing-spacer-4-5, 32px));
+  background-color: var(
+    --card-accent-background-color,
+    var(--pgn-color-primary-500)
+  );
 }
 
 .content-highlight--horizontal {
-  border-top-right-radius: var(--pgn-size-border-radius-lg, 24px);
-  border-bottom-right-radius: var(--pgn-size-border-radius-lg, 24px);
+  border-top-right-radius: var(
+    --card-radius,
+    var(--pgn-size-border-radius-lg, 24px)
+  );
+  border-bottom-right-radius: var(
+    --card-radius,
+    var(--pgn-size-border-radius-lg, 24px)
+  );
 }
 
 .content-highlight--vertical {
-  border-bottom-right-radius: var(--pgn-size-border-radius-lg, 24px);
-  border-bottom-left-radius: var(--pgn-size-border-radius-lg, 24px);
+  border-bottom-right-radius: var(
+    --card-radius,
+    var(--pgn-size-border-radius-lg, 24px)
+  );
+  border-bottom-left-radius: var(
+    --card-radius,
+    var(--pgn-size-border-radius-lg, 24px)
+  );
 }
 
 .content-highlight-subtitle,
@@ -171,21 +227,21 @@
 }
 
 .content-highlight-title {
-  margin-bottom: var(--pgn-spacing-spacer-3, 16px);
-  color: var(--pgn-color-light-100);
+  margin-bottom: var(--card-inner-gap, var(--pgn-spacing-spacer-3, 16px));
+  color: var(--card-inverse-color, var(--pgn-color-light-100));
 }
 
 .content-highlight-description {
   margin-bottom: 0;
-  color: var(--pgn-color-light-100);
+  color: var(--card-inverse-color, var(--pgn-color-light-100));
 }
 
 .rich-list {
-  padding: var(--pgn-spacing-spacer-4-5, 32px);
+  padding: var(--card-padding, var(--pgn-spacing-spacer-4-5, 32px));
 }
 
 .rich-list-content {
-  margin-left: var(--pgn-spacing-spacer-4, 24px);
+  margin-left: var(--card-section-gap, var(--pgn-spacing-spacer-4, 24px));
 }
 
 .rich-list-title {
@@ -197,5 +253,5 @@
 }
 
 .rich-list-divider {
-  margin-block: var(--pgn-spacing-spacer-3, 16px);
+  margin-block: var(--card-inner-gap, var(--pgn-spacing-spacer-3, 16px));
 }

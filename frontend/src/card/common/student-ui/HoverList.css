@@ -1,10 +1,10 @@
 .horizontal .hover-list {
-  column-gap: var(--pgn-spacing-spacer-4-5, 32px);
+  column-gap: var(--card-gap, var(--pgn-spacing-spacer-4-5, 32px));
 }
 
 .hover-list-description,
 .hover-content {
-  padding: calc(var(--pgn-spacing-spacer-base));
+  padding: calc(var(--card-spacer-base, var(--pgn-spacing-spacer-base)));
 }
 
 .hover-list-content-wrapper {
@@ -12,8 +12,9 @@
   /* set the min height to 2 lines of text + top & bottom padding */
   min-height: calc(
     (
-        var(--pgn-spacing-spacer-base) + var(--pgn-typography-font-size-base) *
-          var(--pgn-typography-line-height-base)
+        var(--card-spacer-base, var(--pgn-spacing-spacer-base)) +
+          var(--card-body-font-size, var(--pgn-typography-font-size-base)) *
+          var(--card-body-line-height, var(--pgn-typography-line-height-base))
       ) *
       2
   );
@@ -31,9 +32,12 @@
   left: 0;
   width: 100%;
   display: flex;
-  background-color: var(--pgn-color-primary-500);
-  color: var(--pgn-color-light-100);
-  border-radius: var(--pgn-size-border-radius-base);
+  background-color: var(
+    --card-accent-background-color,
+    var(--pgn-color-primary-500)
+  );
+  color: var(--card-inverse-color, var(--pgn-color-light-100));
+  border-radius: var(--card-radius-sm, var(--pgn-size-border-radius-base));
   align-items: center;
   opacity: 0;
   visibility: hidden;
@@ -47,7 +51,9 @@
 .hover-list-item:has(.hover-content):hover,
 .hover-list-item:has(.hover-content).is-active {
   list-style: none;
-  margin-left: calc(var(--pgn-spacing-spacer-base) * -2.5);
+  margin-left: calc(
+    var(--card-spacer-base, var(--pgn-spacing-spacer-base)) * -2.5
+  );
 }
 
 .hover-list-item:has(.hover-content):hover .hover-list-description {
@@ -61,10 +67,10 @@
 }
 
 .hover-content-icon-wrapper {
-  color: var(--pgn-color-light-100);
-  margin-right: var(--pgn-spacing-spacer-base);
+  color: var(--card-inverse-color, var(--pgn-color-light-100));
+  margin-right: var(--card-spacer-base, var(--pgn-spacing-spacer-base));
 }
 
 .hover-content-text {
-  margin-left: var(--pgn-spacing-spacer-2, 8px);
+  margin-left: var(--card-row-gap, var(--pgn-spacing-spacer-2, 8px));
 }

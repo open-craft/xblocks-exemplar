@@ -1,15 +1,18 @@
 @import '@/card/common/studio-ui/main.css';
 
 .card-grid-layout-options {
-  gap: var(--pgn-spacing-spacer-3, 16px);
-  margin-top: var(--pgn-spacing-spacer-3, 16px);
+  gap: var(--card-studio-gap, var(--pgn-spacing-spacer-3, 16px));
+  margin-top: var(--card-studio-gap, var(--pgn-spacing-spacer-3, 16px));
 }
 
 .card-grid-layout-option {
   display: flex;
   flex: 1 1 0;
   flex-direction: column;
-  padding: var(--pgn-spacing-spacer-4, 24px);
+  padding: var(
+    --card-studio-section-padding,
+    var(--pgn-spacing-spacer-4, 24px)
+  );
 }
 
 .card-grid-layout-option-icon,
@@ -20,10 +23,13 @@
 
 .card-grid-layout-option-icon,
 .card-grid-layout-option-title {
-  margin-bottom: var(--pgn-spacing-spacer-2, 8px);
+  margin-bottom: var(--card-studio-row-gap, var(--pgn-spacing-spacer-2, 8px));
 }
 
 .card-grid-layout-option-description {
   margin-bottom: 0;
-  font-size: var(--pgn-typography-font-size-sm, 0.875rem);
+  font-size: var(
+    --card-studio-help-font-size,
+    var(--pgn-typography-font-size-sm, 0.875rem)
+  );
 }

@@ -1,5 +1,8 @@
 @import '@/card/common/studio-ui/main.css';
 
 .card-carousel-studio-help-text {
-  font-size: var(--pgn-typography-font-size-sm, 0.875rem);
+  font-size: var(
+    --card-studio-help-font-size,
+    var(--pgn-typography-font-size-sm, 0.875rem)
+  );
 }

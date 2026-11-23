@@ -7,22 +7,34 @@
   min-height: 242px;
   max-height: 300px;
   overflow: scroll;
-  background-color: var(--pgn-color-body-bg);
+  background-color: var(
+    --card-studio-icon-background,
+    var(--pgn-color-body-bg)
+  );
 }
 
 button:not(:disabled).icon-symbol {
   width: auto;
-  background-color: var(--pgn-color-body-bg);
-  color: var(--pgn-color-gray-600);
+  background-color: var(
+    --card-studio-icon-background,
+    var(--pgn-color-body-bg)
+  );
+  color: var(--card-studio-icon-color, var(--pgn-color-gray-600));
   border: 0;
 }
 
 button:not(:disabled).icon-symbol:hover {
-  background-color: var(--pgn-color-light);
-  color: var(--pgn-color-primary);
+  background-color: var(
+    --card-studio-icon-background-selected,
+    var(--pgn-color-light)
+  );
+  color: var(--card-studio-icon-color-selected, var(--pgn-color-primary));
 }
 button:not(:disabled).icon-symbol:focus {
-  background-color: var(--pgn-color-light);
-  color: var(--pgn-color-primary);
+  background-color: var(
+    --card-studio-icon-background-selected,
+    var(--pgn-color-light)
+  );
+  color: var(--card-studio-icon-color-selected, var(--pgn-color-primary));
   border: 0;
 }
