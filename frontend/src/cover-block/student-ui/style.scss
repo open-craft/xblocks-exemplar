@@ -1,3 +1,35 @@
+// The following CSS variables may be defined, in addition to the default paragon variables:
+//   --cover-section-height
+//   --cover-hero-height
+//   --cover-height-md
+//   --cover-height-lg
+//   --cover-accent-color
+//   --cover-image-border-radius
+//   --cover-heading-font-weight
+//   --cover-heading-line-height
+//   --cover-top-header-font-size
+//   --cover-course-top-header-font-size
+//   --cover-subheader-font-size
+//   --cover-description-font-size
+//   --cover-description-line-height
+//   --cover-separator-top-header-font-size
+//   --cover-separator-top-header-font-weight
+//   --cover-separator-main-header-font-size
+//   --cover-separator-subheader-font-size
+//   --cover-separator-description-font-size
+//   --cover-separator-description-line-height
+//   --cover-separator-top-header-font-size-md
+//   --cover-separator-main-header-font-size-md
+//   --cover-separator-subheader-font-size-md
+//   --cover-separator-description-font-size-md
+//   --cover-container-max-width
+//   --cover-container-padding
+//   --cover-section-gap
+//   --cover-content-max-width
+//   --cover-grid-gap
+//   --cover-heading-gap
+//   --cover-subheader-gap
+
 @import '../../base';
 
 .section-block-image,
@@ -9,12 +41,12 @@
 }
 
 .section-cover {
-  --cover-height: var(--pgn-cover-block-section-height, 460px);
+  --cover-height: var(--cover-section-height, 460px);
 }
 
 .separator-cover,
 .course-cover {
-  --cover-height: var(--pgn-cover-block-hero-height, 550px);
+  --cover-height: var(--cover-hero-height, 550px);
 }
 
 .section-cover,
@@ -24,9 +56,9 @@
 }
 
 .section-cover {
-  max-width: var(--pgn-exemplar-xblock-container-max-width, 1280px);
+  max-width: var(--cover-container-max-width, 1280px);
   margin: 0 auto;
-  padding: var(--pgn-exemplar-xblock-container-padding, 32px);
+  padding: var(--cover-container-padding, 32px);
 }
 
 .section-cover-layout {
@@ -38,7 +70,7 @@
 .section-cover-text-column {
   display: flex;
   justify-content: center;
-  padding-block: var(--pgn-exemplar-xblock-section-gap, 32px);
+  padding-block: var(--cover-section-gap, 32px);
 }
 
 .section-cover-text-column {
@@ -47,7 +79,7 @@
 
 .section-cover-text-content {
   width: 100%;
-  max-width: var(--pgn-exemplar-xblock-content-max-width, 640px);
+  max-width: var(--cover-content-max-width, 640px);
 }
 
 @media (min-width: 992px) {
@@ -57,7 +89,7 @@
 
   .section-cover--image-left .section-cover-text-column {
     order: 2;
-    padding-left: var(--pgn-exemplar-xblock-grid-gap, 32px);
+    padding-left: var(--cover-grid-gap, 32px);
   }
 
   .section-cover--image-right .section-cover-image-column {
@@ -66,7 +98,7 @@
 
   .section-cover--image-right .section-cover-text-column {
     order: 1;
-    padding-right: var(--pgn-exemplar-xblock-grid-gap, 32px);
+    padding-right: var(--cover-grid-gap, 32px);
   }
 }
 
@@ -74,7 +106,10 @@
   display: block;
   height: var(--cover-height);
   max-height: 80lvh;
-  border-radius: var(--pgn-size-card-image-border-radius, 24px);
+  border-radius: var(
+    --cover-image-border-radius,
+    var(--pgn-size-card-image-border-radius, 24px)
+  );
 }
 
 /* Separator and course variant CSS */
@@ -107,7 +142,7 @@
 }
 
 .course-cover-content-column {
-  padding-inline: var(--pgn-exemplar-xblock-container-padding, 32px);
+  padding-inline: var(--cover-container-padding, 32px);
 }
 
 .course-cover-text-container,
@@ -118,22 +153,22 @@
 
 .course-cover-text-content,
 .separator-cover-text-content {
-  max-width: var(--pgn-exemplar-xblock-content-max-width, 640px);
+  max-width: var(--cover-content-max-width, 640px);
 }
 
 @media (min-width: 992px) {
   .course-cover-content-column {
     order: 2;
-    margin-left: var(--pgn-exemplar-xblock-grid-gap, 32px);
-    padding-inline: var(--pgn-exemplar-xblock-section-gap, 32px);
+    margin-left: var(--cover-grid-gap, 32px);
+    padding-inline: var(--cover-section-gap, 32px);
   }
 
   .course-cover-text-container {
-    padding-left: var(--pgn-exemplar-xblock-section-gap, 32px);
+    padding-left: var(--cover-section-gap, 32px);
   }
 
   .course-cover-text-content {
-    margin-left: var(--pgn-exemplar-xblock-section-gap, 32px);
+    margin-left: var(--cover-section-gap, 32px);
   }
 }
 
@@ -144,7 +179,7 @@
 .separator-cover-content-column {
   justify-content: center;
   text-align: center;
-  padding-inline: var(--pgn-exemplar-xblock-container-padding, 32px);
+  padding-inline: var(--cover-container-padding, 32px);
 }
 
 .separator-cover-text-content {
@@ -156,7 +191,7 @@
   .section-cover,
   .separator-cover,
   .course-cover {
-    --cover-height: var(--pgn-cover-block-height-md, 680px);
+    --cover-height: var(--cover-height-md, 680px);
   }
 }
 
@@ -164,7 +199,7 @@
   .section-cover,
   .separator-cover,
   .course-cover {
-    --cover-height: var(--pgn-cover-block-height-lg, 800px);
+    --cover-height: var(--cover-height-lg, 800px);
   }
 }
 
@@ -176,7 +211,10 @@
 .course-cover-main-header,
 .separator-cover-main-header,
 .separator-cover-description {
-  font-weight: var(--pgn-typography-font-weight-bold, 700);
+  font-weight: var(
+    --cover-heading-font-weight,
+    var(--pgn-typography-font-weight-bold, 700)
+  );
 }
 
 .section-cover-top-header,
@@ -184,7 +222,10 @@
 .section-cover-subheader,
 .course-cover-subheader,
 .separator-cover-top-header {
-  line-height: var(--pgn-typography-line-height-base, 1.5);
+  line-height: var(
+    --cover-heading-line-height,
+    var(--pgn-typography-line-height-base, 1.5)
+  );
 }
 
 .section-cover-top-header,
@@ -207,12 +248,12 @@
 .section-cover-main-header,
 .course-cover-main-header,
 .course-cover-subheader {
-  margin-bottom: var(--pgn-exemplar-xblock-studio-field-gap, 16px);
+  margin-bottom: var(--cover-heading-gap, 16px);
 }
 
 .section-cover-subheader,
 .separator-cover-subheader {
-  margin-bottom: var(--pgn-exemplar-xblock-studio-section-gap, 24px);
+  margin-bottom: var(--cover-subheader-gap, 24px);
 }
 
 .section-cover-description,
@@ -223,66 +264,114 @@
 }
 
 .section-cover-top-header {
-  font-size: var(--pgn-typography-font-size-h4-base, 1.5rem);
-  color: var(--pgn-wgu-color-text-main-lake, var(--pgn-color-secondary-base));
+  font-size: var(
+    --cover-top-header-font-size,
+    var(--pgn-typography-font-size-h4-base, 1.5rem)
+  );
+  color: var(
+    --cover-accent-color,
+    var(--pgn-wgu-color-text-main-lake, var(--pgn-color-secondary-base))
+  );
 }
 
 .course-cover-top-header {
-  font-size: var(--pgn-typography-font-size-h3-base, 1.875rem);
+  font-size: var(
+    --cover-course-top-header-font-size,
+    var(--pgn-typography-font-size-h3-base, 1.875rem)
+  );
 }
 
 .course-cover-subheader {
-  font-size: var(--pgn-typography-font-size-h5-base, 1.25rem);
+  font-size: var(
+    --cover-subheader-font-size,
+    var(--pgn-typography-font-size-h5-base, 1.25rem)
+  );
   letter-spacing: 0;
 }
 
 .section-cover-description,
 .course-cover-description {
-  font-size: var(--pgn-typography-font-size-base, 1rem);
-  line-height: var(--pgn-typography-line-height-sm, 1.25);
+  font-size: var(
+    --cover-description-font-size,
+    var(--pgn-typography-font-size-base, 1rem)
+  );
+  line-height: var(
+    --cover-description-line-height,
+    var(--pgn-typography-line-height-sm, 1.25)
+  );
   letter-spacing: 0;
 }
 
 /* Separator responsive typography — reduced on smaller cover heights */
 .separator-cover-top-header {
-  font-size: var(--pgn-typography-font-size-h6-base, 1rem);
-  font-weight: var(--pgn-typography-font-weight-semi-bold, 600);
-  margin-bottom: var(--pgn-exemplar-xblock-studio-field-gap, 16px);
+  font-size: var(
+    --cover-separator-top-header-font-size,
+    var(--pgn-typography-font-size-h6-base, 1rem)
+  );
+  font-weight: var(
+    --cover-separator-top-header-font-weight,
+    var(--pgn-typography-font-weight-semi-bold, 600)
+  );
+  margin-bottom: var(--cover-heading-gap, 16px);
 }
 
 .separator-cover-main-header {
-  font-size: var(--pgn-typography-font-size-display-mobile-1, 3rem);
+  font-size: var(
+    --cover-separator-main-header-font-size,
+    var(--pgn-typography-font-size-display-mobile-1, 3rem)
+  );
   text-align: center;
 }
 
 .separator-cover-subheader {
-  font-size: var(--pgn-typography-font-size-h5-base, 1.25rem);
+  font-size: var(
+    --cover-separator-subheader-font-size,
+    var(--pgn-typography-font-size-h5-base, 1.25rem)
+  );
   text-align: center;
-  margin-top: var(--pgn-exemplar-xblock-studio-section-gap, 24px);
+  margin-top: var(--cover-subheader-gap, 24px);
 }
 
 .separator-cover-description {
   width: 100%;
-  max-width: var(--pgn-exemplar-xblock-content-max-width, 640px);
+  max-width: var(--cover-content-max-width, 640px);
   margin-inline: auto;
-  font-size: var(--pgn-typography-font-size-base, 1rem);
-  line-height: var(--pgn-typography-line-height-lg, 1.75);
+  font-size: var(
+    --cover-separator-description-font-size,
+    var(--pgn-typography-font-size-base, 1rem)
+  );
+  line-height: var(
+    --cover-separator-description-line-height,
+    var(--pgn-typography-line-height-lg, 1.75)
+  );
 }
 
 @media (min-width: 768px) {
   .separator-cover-top-header {
-    font-size: var(--pgn-typography-font-size-h5-base, 1.25rem);
+    font-size: var(
+      --cover-separator-top-header-font-size-md,
+      var(--pgn-typography-font-size-h5-base, 1.25rem)
+    );
   }
 
   .separator-cover-main-header {
-    font-size: var(--pgn-typography-font-size-display-1, 5rem);
+    font-size: var(
+      --cover-separator-main-header-font-size-md,
+      var(--pgn-typography-font-size-display-1, 5rem)
+    );
   }
 
   .separator-cover-subheader {
-    font-size: var(--pgn-typography-font-size-h4-base, 1.5rem);
+    font-size: var(
+      --cover-separator-subheader-font-size-md,
+      var(--pgn-typography-font-size-h4-base, 1.5rem)
+    );
   }
 
   .separator-cover-description {
-    font-size: var(--pgn-typography-font-size-lg, 1.25rem);
+    font-size: var(
+      --cover-separator-description-font-size-md,
+      var(--pgn-typography-font-size-lg, 1.25rem)
+    );
   }
 }
