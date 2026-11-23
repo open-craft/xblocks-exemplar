@@ -1,3 +1,8 @@
+// The following CSS variables may be defined, in addition to the default paragon variables:
+//   --cover-studio-stack-padding
+//   --cover-studio-field-gap
+//   --cover-studio-actions-padding
+
 @import '../../base';
 @import '../../studio';
 
@@ -8,21 +13,21 @@
 }
 
 .cover-editor-body {
-  padding: var(--pgn-exemplar-xblock-studio-stack-padding, 16px);
+  padding: var(--cover-studio-stack-padding, 16px);
 }
 
 .cover-editor-form {
-  padding: var(--pgn-exemplar-xblock-studio-stack-padding, 16px);
+  padding: var(--cover-studio-stack-padding, 16px);
 }
 
 .cover-editor-grid {
-  row-gap: var(--pgn-exemplar-xblock-studio-field-gap, 16px);
+  row-gap: var(--cover-studio-field-gap, 16px);
 }
 
 .cover-editor-field {
-  margin-bottom: var(--pgn-exemplar-xblock-studio-field-gap, 16px);
+  margin-bottom: var(--cover-studio-field-gap, 16px);
 }
 
 .cover-editor-actions {
-  padding: var(--pgn-exemplar-xblock-studio-actions-padding, 16px);
+  padding: var(--cover-studio-actions-padding, 16px);
 }

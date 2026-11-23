@@ -1,3 +1,13 @@
+// The following CSS variables may be defined, in addition to the default paragon variables:
+//   --keypoints-studio-empty-color
+//   --keypoints-studio-entry-border-color
+//   --keypoints-studio-entry-background-color
+//   --keypoints-studio-stack-padding
+//   --keypoints-studio-section-gap
+//   --keypoints-studio-field-gap
+//   --keypoints-studio-entry-padding
+//   --keypoints-studio-entry-radius
+
 @import '../../base';
 @import '../../studio';
 @import '@/shared/components/StudioHeader.css';
@@ -11,18 +21,18 @@
   min-height: 435px;
 
   .keypoints-studio-stack {
-    gap: var(--pgn-exemplar-xblock-studio-section-gap, 24px);
-    padding: var(--pgn-exemplar-xblock-studio-stack-padding, 16px);
+    gap: var(--keypoints-studio-section-gap, 24px);
+    padding: var(--keypoints-studio-stack-padding, 16px);
   }
 
   .keypoints-studio-section-title {
-    margin: 0 0 var(--pgn-exemplar-xblock-studio-field-gap, 16px);
+    margin: 0 0 var(--keypoints-studio-field-gap, 16px);
     font-weight: 700;
   }
 
   .keypoints-studio-row,
   .keypoints-studio-entry-header {
-    margin-bottom: var(--pgn-exemplar-xblock-studio-field-gap, 16px);
+    margin-bottom: var(--keypoints-studio-field-gap, 16px);
   }
 
   .keypoints-studio-row .keypoints-studio-section-title {
@@ -31,15 +41,19 @@
 
   .keypoints-studio-empty {
     margin: 0;
-    color: var(--pgn-color-gray-500);
+    color: var(--keypoints-studio-empty-color, var(--pgn-color-gray-500));
   }
 
   .keypoint-entry {
-    border: 1px solid var(--pgn-color-gray-200);
-    border-radius: var(--pgn-exemplar-xblock-studio-entry-radius, 8px);
-    padding: var(--pgn-exemplar-xblock-studio-entry-padding, 24px);
-    margin-bottom: var(--pgn-exemplar-xblock-studio-field-gap, 16px);
-    background-color: var(--pgn-color-gray-100);
+    border: 1px solid
+      var(--keypoints-studio-entry-border-color, var(--pgn-color-gray-200));
+    border-radius: var(--keypoints-studio-entry-radius, 8px);
+    padding: var(--keypoints-studio-entry-padding, 24px);
+    margin-bottom: var(--keypoints-studio-field-gap, 16px);
+    background-color: var(
+      --keypoints-studio-entry-background-color,
+      var(--pgn-color-gray-100)
+    );
   }
 
   .keypoint-entry:last-child {
@@ -51,7 +65,7 @@
   }
 
   .keypoints-studio-field {
-    margin-bottom: var(--pgn-exemplar-xblock-studio-field-gap, 16px);
+    margin-bottom: var(--keypoints-studio-field-gap, 16px);
   }
 
   .tab-content {

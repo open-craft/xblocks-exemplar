@@ -11,15 +11,15 @@
 .card-carousel-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: var(--pgn-spacing-spacer-4-5, 32px);
+  padding: var(--card-container-padding, var(--pgn-spacing-spacer-4-5, 32px));
 }
 
 .card-carousel-container .pgn__card-carousel-title {
-  margin-bottom: var(--pgn-spacing-spacer-4-5, 32px);
+  margin-bottom: var(--card-section-gap, var(--pgn-spacing-spacer-4-5, 32px));
 }
 
 .card-grid-xblock {
-  --card-grid-gap: var(--pgn-spacing-spacer-4-5, 32px);
+  --card-grid-gap: var(--card-gap, var(--pgn-spacing-spacer-4-5, 32px));
 }
 
 .card-grid-xblock *,
@@ -31,7 +31,7 @@
 .card-grid-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: var(--pgn-spacing-spacer-4-5, 32px);
+  padding: var(--card-container-padding, var(--pgn-spacing-spacer-4-5, 32px));
 }
 
 .card-grid-description-row,
@@ -47,7 +47,7 @@
 }
 
 .card-grid-description-row {
-  margin-bottom: var(--pgn-spacing-spacer-4-5, 32px);
+  margin-bottom: var(--card-section-gap, var(--pgn-spacing-spacer-4-5, 32px));
 }
 
 .card-grid-cards-row {
@@ -59,12 +59,15 @@
 }
 
 .card-grid-footer-row {
-  margin-top: var(--pgn-spacing-spacer-4-5, 32px);
+  margin-top: var(--card-section-gap, var(--pgn-spacing-spacer-4-5, 32px));
 }
 
 .card-grid-description,
 .card-grid-footer-description {
-  line-height: var(--pgn-typography-line-height-base, 1.5);
+  line-height: var(
+    --card-body-line-height,
+    var(--pgn-typography-line-height-base, 1.5)
+  );
 }
 
 .card-grid-description > :last-child,

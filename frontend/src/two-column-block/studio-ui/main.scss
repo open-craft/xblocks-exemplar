@@ -1,3 +1,13 @@
+// The following CSS variables may be defined, in addition to the default paragon variables:
+//   --two-column-studio-panel-border-color
+//   --two-column-studio-label-font-size
+//   --two-column-studio-stack-padding
+//   --two-column-studio-section-gap
+//   --two-column-studio-field-gap
+//   --two-column-studio-entry-padding
+//   --two-column-studio-entry-radius
+//   --two-column-studio-actions-padding
+
 @import '../../studio';
 
 // Hide the "close" button at the bottom of the editor modal.
@@ -13,11 +23,11 @@
 }
 
 .two-column-editor-body {
-  padding: var(--pgn-exemplar-xblock-studio-stack-padding, 16px);
+  padding: var(--two-column-studio-stack-padding, 16px);
 }
 
 .two-column-editor-columns {
-  row-gap: var(--pgn-exemplar-xblock-studio-section-gap, 24px);
+  row-gap: var(--two-column-studio-section-gap, 24px);
 }
 
 .two-column-editor-column {
@@ -26,7 +36,7 @@
 }
 
 .two-column-editor-column-header {
-  margin: var(--pgn-exemplar-xblock-studio-field-gap, 16px) 0;
+  margin: var(--two-column-studio-field-gap, 16px) 0;
 }
 
 .two-column-editor-column-title,
@@ -35,7 +45,7 @@
 }
 
 .two-column-editor-column-title {
-  margin: var(--pgn-exemplar-xblock-studio-field-gap, 16px) 0;
+  margin: var(--two-column-studio-field-gap, 16px) 0;
 }
 
 .two-column-editor-column-header .two-column-editor-column-title {
@@ -43,19 +53,20 @@
 }
 
 .two-column-editor-section-title {
-  margin: var(--pgn-exemplar-xblock-studio-section-gap, 24px) 0
-    var(--pgn-exemplar-xblock-studio-field-gap, 16px);
+  margin: var(--two-column-studio-section-gap, 24px) 0
+    var(--two-column-studio-field-gap, 16px);
 }
 
 .two-column-editor-panel {
   flex-grow: 1;
-  padding: var(--pgn-exemplar-xblock-studio-entry-padding, 24px);
-  border: 1px solid var(--pgn-color-gray-200);
-  border-radius: var(--pgn-exemplar-xblock-studio-entry-radius, 8px);
+  padding: var(--two-column-studio-entry-padding, 24px);
+  border: 1px solid
+    var(--two-column-studio-panel-border-color, var(--pgn-color-gray-200));
+  border-radius: var(--two-column-studio-entry-radius, 8px);
 }
 
 .two-column-editor-field {
-  margin-bottom: var(--pgn-exemplar-xblock-studio-field-gap, 16px);
+  margin-bottom: var(--two-column-studio-field-gap, 16px);
 }
 
 .two-column-editor-control-auto {
@@ -67,7 +78,7 @@
 }
 
 .two-column-editor-actions {
-  padding: var(--pgn-exemplar-xblock-studio-actions-padding, 16px);
+  padding: var(--two-column-studio-actions-padding, 16px);
 }
 
 .two-column-editor-tall-textarea {
@@ -79,7 +90,7 @@
 }
 
 .two-column-editor-subsection-title {
-  margin: var(--pgn-exemplar-xblock-studio-section-gap, 24px) 0 0;
+  margin: var(--two-column-studio-section-gap, 24px) 0 0;
 }
 
 .two-column-editor-subsection-description {
@@ -91,7 +102,10 @@
 }
 
 .two-column-editor-label-sm {
-  font-size: var(--pgn-typography-font-size-sm, 0.875rem);
+  font-size: var(
+    --two-column-studio-label-font-size,
+    var(--pgn-typography-font-size-sm, 0.875rem)
+  );
 }
 
 .two-column-editor-checkbox {
@@ -105,5 +119,5 @@
 
 .two-column-editor-inline-color-field {
   display: flex;
-  gap: var(--pgn-exemplar-xblock-studio-field-gap, 16px);
+  gap: var(--two-column-studio-field-gap, 16px);
 }

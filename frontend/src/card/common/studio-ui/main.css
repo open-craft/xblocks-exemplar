@@ -18,11 +18,14 @@
 }
 
 .card-studio-form {
-  padding: var(--pgn-spacing-spacer-3, 16px);
+  padding: var(--card-studio-padding, var(--pgn-spacing-spacer-3, 16px));
 }
 
 .card-studio-field {
-  margin-bottom: var(--pgn-spacing-spacer-4, 24px);
+  margin-bottom: var(
+    --card-studio-section-gap,
+    var(--pgn-spacing-spacer-4, 24px)
+  );
 }
 
 .card-studio-field--last {

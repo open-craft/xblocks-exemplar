@@ -19,9 +19,13 @@ function StudentUi({
   buttonLink,
   backgroundColor,
 }: StudentUiProps) {
-  const keypointsStyle = {
-    '--keypoints-background-color': backgroundColor,
-  } as CSSProperties;
+  // Only set the property when the author picked a colour: an empty inline
+  // custom property would block the theme's background variant.
+  const keypointsStyle = backgroundColor
+    ? ({
+        '--keypoints-background-color': backgroundColor,
+      } as CSSProperties)
+    : undefined;
 
   return (
     <div className="xblock-keypoints" style={keypointsStyle}>

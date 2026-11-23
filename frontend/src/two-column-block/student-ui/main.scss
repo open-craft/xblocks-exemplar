@@ -1,27 +1,41 @@
 // The following CSS variables may be defined, in addition to the default paragon variables:
-//   --pgn-two-column-block-image-size-border-radius-lg
-//   --pgn-two-column-block-image-size-border-radius-sm
+//   --two-column-background-color
+//   --two-column-image-grid-text-background-color
+//   --two-column-image-grid-text-color
+//   --two-column-image-grid-gap
+//   --two-column-list-divider-color
+//   --two-column-list-number-color
+//   --two-column-intro-id-color
+//   --two-column-lead-font-size
+//   --two-column-lead-font-weight
+//   --two-column-image-border-radius-lg
+//   --two-column-image-border-radius-sm
+//   --two-column-container-max-width
+//   --two-column-container-padding
+//   --two-column-card-padding
+//   --two-column-section-gap
+//   --two-column-list-item-spacing
+//   --two-column-heading-line-height
 
 .xblock-two-column-wrapper {
-  --two-column-background-color: transparent;
-  --two-column-image-grid-text-background-color: transparent;
-  --two-column-image-grid-text-color: inherit;
-  --two-column-image-grid-gap: var(--pgn-spacing-spacer-1, 4px);
-
-  background-color: var(--two-column-background-color);
+  // Nothing is declared here: an author-set colour is applied inline and wins,
+  // otherwise the theme's value applies. Declaring the variables locally would
+  // shadow the theme.
+  background-color: var(--two-column-background-color, transparent);
 }
 
 .two-column-container {
-  max-width: var(--pgn-exemplar-xblock-container-max-width, 1280px);
+  max-width: var(--two-column-container-max-width, 1280px);
   margin: 0 auto;
-  padding: var(--pgn-exemplar-xblock-container-padding, 32px);
+  padding: var(--two-column-container-padding, 32px);
 }
 
 .xblock-two-column {
-  padding: var(--pgn-exemplar-xblock-card-padding, 32px);
+  padding: var(--two-column-card-padding, 32px);
 
   .lesson-list-item + .lesson-list-item {
-    border-top: 1px solid var(--pgn-color-gray-200);
+    border-top: 1px solid
+      var(--two-column-list-divider-color, var(--pgn-color-gray-200));
   }
 
   // implement reversed order on small screens
@@ -57,24 +71,24 @@
 }
 
 .lesson-list-item {
-  padding-block: var(--pgn-exemplar-xblock-studio-section-gap, 24px);
+  padding-block: var(--two-column-list-item-spacing, 24px);
 }
 
 .lesson-list-item-number {
-  color: var(--pgn-color-secondary-base);
+  color: var(--two-column-list-number-color, var(--pgn-color-secondary-base));
   font-weight: 700;
 }
 
 .lesson-intro-title {
-  margin: 0 0 var(--pgn-exemplar-xblock-section-gap, 32px);
+  margin: 0 0 var(--two-column-section-gap, 32px);
 }
 
 .lesson-intro-heading {
-  line-height: var(--pgn-exemplar-xblock-heading-line-height, 2);
+  line-height: var(--two-column-heading-line-height, 2);
 }
 
 .lesson-intro-id {
-  color: var(--pgn-color-secondary-base);
+  color: var(--two-column-intro-id-color, var(--pgn-color-secondary-base));
 }
 
 .lesson-intro-actions {
@@ -82,15 +96,24 @@
 }
 
 .image-grid-featured {
-  padding-bottom: var(--two-column-image-grid-gap);
+  padding-bottom: var(
+    --two-column-image-grid-gap,
+    var(--pgn-spacing-spacer-1, 4px)
+  );
 }
 
 .image-grid-bottom-cell-left {
-  padding-right: var(--two-column-image-grid-gap);
+  padding-right: var(
+    --two-column-image-grid-gap,
+    var(--pgn-spacing-spacer-1, 4px)
+  );
 }
 
 .image-grid-bottom-cell-right {
-  padding-left: var(--two-column-image-grid-gap);
+  padding-left: var(
+    --two-column-image-grid-gap,
+    var(--pgn-spacing-spacer-1, 4px)
+  );
 }
 
 .image-grid-link {
@@ -107,9 +130,12 @@
   display: flex;
   align-items: center;
   height: 100%;
-  padding: var(--pgn-exemplar-xblock-card-padding, 32px);
-  background-color: var(--two-column-image-grid-text-background-color);
-  color: var(--two-column-image-grid-text-color);
+  padding: var(--two-column-card-padding, 32px);
+  background-color: var(
+    --two-column-image-grid-text-background-color,
+    transparent
+  );
+  color: var(--two-column-image-grid-text-color, inherit);
 }
 
 .image-grid-text-align-start {
@@ -125,45 +151,27 @@
 }
 
 .image-grid-text-content-large {
-  font-size: var(--pgn-typography-font-size-lead-base, 1.25rem);
-  font-weight: var(--pgn-typography-font-weight-lead-base, 300);
+  font-size: var(
+    --two-column-lead-font-size,
+    var(--pgn-typography-font-size-lead-base, 1.25rem)
+  );
+  font-weight: var(
+    --two-column-lead-font-weight,
+    var(--pgn-typography-font-weight-lead-base, 300)
+  );
 }
 
 .top-image-grid-item {
-  border-top-left-radius: var(
-    --pgn-two-column-block-image-size-border-radius-lg,
-    24px
-  );
-  border-top-right-radius: var(
-    --pgn-two-column-block-image-size-border-radius-lg,
-    24px
-  );
-  border-bottom-left-radius: var(
-    --pgn-two-column-block-image-size-border-radius-sm,
-    8px
-  );
-  border-bottom-right-radius: var(
-    --pgn-two-column-block-image-size-border-radius-sm,
-    8px
-  );
+  border-top-left-radius: var(--two-column-image-border-radius-lg, 24px);
+  border-top-right-radius: var(--two-column-image-border-radius-lg, 24px);
+  border-bottom-left-radius: var(--two-column-image-border-radius-sm, 8px);
+  border-bottom-right-radius: var(--two-column-image-border-radius-sm, 8px);
 }
 
 .bottom-image-grid-item,
 .image-grid-bottom-text {
-  border-top-left-radius: var(
-    --pgn-two-column-block-image-size-border-radius-sm,
-    8px
-  );
-  border-top-right-radius: var(
-    --pgn-two-column-block-image-size-border-radius-sm,
-    8px
-  );
-  border-bottom-left-radius: var(
-    --pgn-two-column-block-image-size-border-radius-lg,
-    24px
-  );
-  border-bottom-right-radius: var(
-    --pgn-two-column-block-image-size-border-radius-lg,
-    24px
-  );
+  border-top-left-radius: var(--two-column-image-border-radius-sm, 8px);
+  border-top-right-radius: var(--two-column-image-border-radius-sm, 8px);
+  border-bottom-left-radius: var(--two-column-image-border-radius-lg, 24px);
+  border-bottom-right-radius: var(--two-column-image-border-radius-lg, 24px);
 }
