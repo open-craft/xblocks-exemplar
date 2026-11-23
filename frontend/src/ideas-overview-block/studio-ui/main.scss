@@ -1,3 +1,11 @@
+// The following CSS variables may be defined, in addition to the default paragon variables:
+//   --ideas-overview-studio-padding
+//   --ideas-overview-studio-section-gap
+//   --ideas-overview-studio-field-gap
+//   --ideas-overview-studio-card-padding
+//   --ideas-overview-studio-empty-color
+//   --ideas-overview-studio-heading-font-weight
+
 @import '../../studio';
 
 // Hide the "close" button at the bottom of the editor modal.
@@ -13,16 +21,25 @@
 }
 
 .ideas-overview-editor-body {
-  padding: var(--pgn-spacing-spacer-3, 16px);
+  padding: var(
+    --ideas-overview-studio-padding,
+    var(--pgn-spacing-spacer-3, 16px)
+  );
 }
 
 .ideas-overview-editor-stack,
 .ideas-overview-editor-points-stack {
-  gap: var(--pgn-spacing-spacer-4, 24px);
+  gap: var(
+    --ideas-overview-studio-section-gap,
+    var(--pgn-spacing-spacer-4, 24px)
+  );
 }
 
 .ideas-overview-editor-field {
-  margin-bottom: var(--pgn-spacing-spacer-3, 16px);
+  margin-bottom: var(
+    --ideas-overview-studio-field-gap,
+    var(--pgn-spacing-spacer-3, 16px)
+  );
 }
 
 .ideas-overview-editor-field--last {
@@ -30,12 +47,16 @@
 }
 
 .ideas-overview-editor-section-title {
-  margin: 0 0 var(--pgn-spacing-spacer-3, 16px);
-  font-weight: 700;
+  margin: 0 0
+    var(--ideas-overview-studio-field-gap, var(--pgn-spacing-spacer-3, 16px));
+  font-weight: var(--ideas-overview-studio-heading-font-weight, 700);
 }
 
 .ideas-overview-editor-card {
-  margin-bottom: var(--pgn-spacing-spacer-3, 16px);
+  margin-bottom: var(
+    --ideas-overview-studio-field-gap,
+    var(--pgn-spacing-spacer-3, 16px)
+  );
 }
 
 .ideas-overview-editor-card:last-of-type {
@@ -43,16 +64,22 @@
 }
 
 .ideas-overview-editor-card-section {
-  padding: var(--pgn-spacing-spacer-4, 24px);
+  padding: var(
+    --ideas-overview-studio-card-padding,
+    var(--pgn-spacing-spacer-4, 24px)
+  );
 }
 
 .ideas-overview-editor-empty {
-  color: var(--pgn-color-gray-500);
+  color: var(--ideas-overview-studio-empty-color, var(--pgn-color-gray-500));
 }
 
 .ideas-overview-editor-add-idea,
 .ideas-overview-editor-add-point {
-  margin-top: var(--pgn-spacing-spacer-3, 16px);
+  margin-top: var(
+    --ideas-overview-studio-field-gap,
+    var(--pgn-spacing-spacer-3, 16px)
+  );
 }
 
 .ideas-overview-editor-point-row {
@@ -65,5 +92,8 @@
 }
 
 .ideas-overview-editor-actions {
-  padding: var(--pgn-spacing-spacer-3, 16px);
+  padding: var(
+    --ideas-overview-studio-padding,
+    var(--pgn-spacing-spacer-3, 16px)
+  );
 }

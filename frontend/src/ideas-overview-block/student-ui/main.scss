@@ -1,3 +1,18 @@
+// The following CSS variables may be defined, in addition to the default paragon variables:
+//   --ideas-overview-container-max-width
+//   --ideas-overview-container-padding
+//   --ideas-overview-row-padding
+//   --ideas-overview-divider-color
+//   --ideas-overview-title-gap
+//   --ideas-overview-icon-color
+//   --ideas-overview-title-color
+//   --ideas-overview-title-font-weight
+//   --ideas-overview-title-line-height
+//   --ideas-overview-points-indent
+//   --ideas-overview-point-gap
+//   --ideas-overview-line-height
+//   --ideas-overview-title-mobile-gap
+
 @import '../../base';
 
 .ideas-overview-xblock *,
@@ -7,25 +22,33 @@
 }
 
 .ideas-overview-container {
-  max-width: 1280px;
+  max-width: var(--ideas-overview-container-max-width, 1280px);
   margin: 0 auto;
-  padding: var(--pgn-spacing-spacer-4-5, 32px);
+  padding: var(
+    --ideas-overview-container-padding,
+    var(--pgn-spacing-spacer-4-5, 32px)
+  );
 }
 
 .ideas-overview-header-row,
 .ideas-overview-idea-row,
 .ideas-overview-footer-row {
-  padding-block: var(--pgn-spacing-spacer-4-5, 32px);
+  padding-block: var(
+    --ideas-overview-row-padding,
+    var(--pgn-spacing-spacer-4-5, 32px)
+  );
 }
 
 .ideas-overview-header-row {
   padding-top: 0;
-  border-bottom: 1px solid var(--pgn-color-gray-200);
+  border-bottom: 1px solid
+    var(--ideas-overview-divider-color, var(--pgn-color-gray-200));
 }
 
 .ideas-overview-idea-row + .ideas-overview-idea-row,
 .ideas-overview-footer-row {
-  border-top: 1px solid var(--pgn-color-gray-200);
+  border-top: 1px solid
+    var(--ideas-overview-divider-color, var(--pgn-color-gray-200));
 }
 
 .ideas-overview-footer-row {
@@ -40,31 +63,40 @@
 .ideas-overview-title-wrapper {
   display: inline-flex;
   align-items: center;
-  gap: var(--pgn-spacing-spacer-2, 8px);
+  gap: var(--ideas-overview-title-gap, var(--pgn-spacing-spacer-2, 8px));
 }
 
 .ideas-overview-icon {
-  color: var(--pgn-color-info-500);
+  color: var(--ideas-overview-icon-color, var(--pgn-color-info-500));
   flex: 0 0 auto;
 }
 
 .ideas-overview-title {
-  color: var(--pgn-color-primary-500);
-  font-weight: 700;
-  line-height: var(--pgn-typography-line-height-base, 1.5);
+  color: var(--ideas-overview-title-color, var(--pgn-color-primary-500));
+  font-weight: var(--ideas-overview-title-font-weight, 700);
+  line-height: var(
+    --ideas-overview-title-line-height,
+    var(--pgn-typography-line-height-base, 1.5)
+  );
 }
 
 .ideas-overview-points {
   margin: 0;
-  padding-left: var(--pgn-spacing-spacer-4-5, 32px);
+  padding-left: var(
+    --ideas-overview-points-indent,
+    var(--pgn-spacing-spacer-4-5, 32px)
+  );
 }
 
 .ideas-overview-point + .ideas-overview-point {
-  margin-top: var(--pgn-spacing-spacer-2, 8px);
+  margin-top: var(--ideas-overview-point-gap, var(--pgn-spacing-spacer-2, 8px));
 }
 
 .ideas-overview-rich-text {
-  line-height: var(--pgn-typography-line-height-base, 1.5);
+  line-height: var(
+    --ideas-overview-line-height,
+    var(--pgn-typography-line-height-base, 1.5)
+  );
 }
 
 .ideas-overview-rich-text > :last-child {
@@ -73,6 +105,9 @@
 
 @media (max-width: 575.98px) {
   .ideas-overview-title-column {
-    margin-bottom: var(--pgn-spacing-spacer-3, 16px);
+    margin-bottom: var(
+      --ideas-overview-title-mobile-gap,
+      var(--pgn-spacing-spacer-3, 16px)
+    );
   }
 }
