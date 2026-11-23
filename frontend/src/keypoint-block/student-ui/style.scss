@@ -6,6 +6,12 @@
 //   --keypoints-label-color
 //   --keypoints-description-color
 //   --keypoints-summary-color
+//   --keypoints-container-max-width
+//   --keypoints-container-padding
+//   --keypoints-card-padding
+//   --keypoints-grid-gap
+//   --keypoints-section-gap
+//   --keypoints-label-font-size
 
 @import '../../base';
 
@@ -23,24 +29,24 @@
   }
 
   .keypoints-container {
-    max-width: var(--pgn-exemplar-xblock-container-max-width, 1280px);
+    max-width: var(--keypoints-container-max-width, 1280px);
     margin: 0 auto;
-    padding: var(--pgn-exemplar-xblock-container-padding, 32px);
+    padding: var(--keypoints-container-padding, 32px);
   }
 
   .keypoints-header {
-    margin: 0 0 var(--pgn-exemplar-xblock-section-gap, 32px);
+    margin: 0 0 var(--keypoints-section-gap, 32px);
     font-weight: 700;
   }
 
   .keypoints-card-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--pgn-exemplar-xblock-grid-gap, 32px);
+    gap: var(--keypoints-grid-gap, 32px);
   }
 
   .keypoint {
-    padding: var(--pgn-exemplar-xblock-card-padding, 32px);
+    padding: var(--keypoints-card-padding, 32px);
     background-color: var(
       --keypoints-card-background-color,
       var(--pgn-color-white)
@@ -55,7 +61,7 @@
     margin: 0 0
       var(--keypoints-label-margin-bottom, var(--pgn-spacing-spacer-2));
     color: var(--keypoints-label-color, var(--pgn-color-primary-base));
-    font-size: var(--pgn-exemplar-xblock-label-font-size, 1.1rem);
+    font-size: var(--keypoints-label-font-size, 1.1rem);
     font-weight: 700;
     line-height: 1.4;
   }
@@ -67,7 +73,7 @@
   }
 
   .keypoints-summary {
-    margin: var(--pgn-exemplar-xblock-section-gap, 32px) 0 0;
+    margin: var(--keypoints-section-gap, 32px) 0 0;
     color: var(--keypoints-summary-color, var(--pgn-color-primary-base));
     font-weight: 700;
     line-height: 1.5;
@@ -76,7 +82,7 @@
   .keypoints-action {
     display: flex;
     justify-content: flex-end;
-    margin-top: var(--pgn-exemplar-xblock-section-gap, 32px);
+    margin-top: var(--keypoints-section-gap, 32px);
   }
 
   @media (max-width: 767.98px) {
