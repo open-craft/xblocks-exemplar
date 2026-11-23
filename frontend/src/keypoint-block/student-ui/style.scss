@@ -1,18 +1,18 @@
 // The following CSS variables may be defined, in addition to the default paragon variables:
-//   --keypoint-color-background
-//   --keypoint-color-card-background
-//   --keypoint-size-card-border-radius
-//   --keypoint-spacing-label-gap
-//   --keypoint-color-label
-//   --keypoint-color-description
-//   --keypoint-color-summary
+//   --keypoints-background-color
+//   --keypoints-card-background-color
+//   --keypoints-card-border-radius
+//   --keypoints-label-margin-bottom
+//   --keypoints-label-color
+//   --keypoints-description-color
+//   --keypoints-summary-color
 
 @import '../../base';
 
 .xblock-keypoints {
   // An author-set background colour is applied inline on this element and wins
   // over the theme value; otherwise the theme's variant is used.
-  background-color: var(--keypoint-color-background, transparent);
+  background-color: var(--keypoints-background-color, transparent);
 
   // Bootstrap grid requires border-box sizing. Since we don't import
   // the full reboot (to avoid affecting LMS global styles), scope it here.
@@ -42,18 +42,19 @@
   .keypoint {
     padding: var(--pgn-exemplar-xblock-card-padding, 32px);
     background-color: var(
-      --keypoint-color-card-background,
+      --keypoints-card-background-color,
       var(--pgn-color-white)
     );
     border-radius: var(
-      --keypoint-size-card-border-radius,
+      --keypoints-card-border-radius,
       var(--pgn-size-card-border-radius-base)
     );
   }
 
   .keypoint-label {
-    margin: 0 0 var(--keypoint-spacing-label-gap, var(--pgn-spacing-spacer-2));
-    color: var(--keypoint-color-label, var(--pgn-color-primary-base));
+    margin: 0 0
+      var(--keypoints-label-margin-bottom, var(--pgn-spacing-spacer-2));
+    color: var(--keypoints-label-color, var(--pgn-color-primary-base));
     font-size: var(--pgn-exemplar-xblock-label-font-size, 1.1rem);
     font-weight: 700;
     line-height: 1.4;
@@ -61,13 +62,13 @@
 
   .keypoint-description {
     margin: 0;
-    color: var(--keypoint-color-description, var(--pgn-color-gray-700));
+    color: var(--keypoints-description-color, var(--pgn-color-gray-700));
     line-height: 1.6;
   }
 
   .keypoints-summary {
     margin: var(--pgn-exemplar-xblock-section-gap, 32px) 0 0;
-    color: var(--keypoint-color-summary, var(--pgn-color-primary-base));
+    color: var(--keypoints-summary-color, var(--pgn-color-primary-base));
     font-weight: 700;
     line-height: 1.5;
   }
