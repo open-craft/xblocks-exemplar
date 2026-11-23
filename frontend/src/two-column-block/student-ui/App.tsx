@@ -180,8 +180,15 @@ const ImageGridColumnView = ({ data }: ImageGridColumnViewProps) => {
   );
 
   const bottomTextStyle = {
-    '--two-column-image-grid-text-background-color': data.text.backgroundColor,
-    '--two-column-image-grid-text-color': data.text.color,
+    ...(data.text.backgroundColor
+      ? {
+          '--two-column-image-grid-text-background-color':
+            data.text.backgroundColor,
+        }
+      : {}),
+    ...(data.text.color
+      ? { '--two-column-image-grid-text-color': data.text.color }
+      : {}),
   } as CSSProperties;
 
   const bottomText = (
