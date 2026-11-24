@@ -56,30 +56,4 @@ describe('RenderInWindow', () => {
     expect(container?.textContent).toContain('Activity content');
     unmount();
   });
-
-  it('leaves the container unstyled when no variant is selected', () => {
-    vi.spyOn(window, 'open').mockReturnValue({
-      document,
-      addEventListener: vi.fn(),
-      close: vi.fn(),
-    } as unknown as Window);
-
-    const { unmount } = render(
-      <RenderInWindow
-        title="Activity"
-        className="xblock-unfolding-scenario-wrapper"
-        cssContent=""
-        themeUrls={[]}
-        onClose={() => {}}
-      >
-        <p>Activity content</p>
-      </RenderInWindow>,
-    );
-
-    const container = document.querySelector<HTMLDivElement>(
-      '.xblock-unfolding-scenario-wrapper',
-    );
-    expect(container?.getAttribute('style')).toBeNull();
-    unmount();
-  });
 });

@@ -11,6 +11,7 @@ import {
   Warning,
 } from '@openedx/paragon/icons';
 import { SimpleRichTextEditor } from '@/shared/components/TinyMCE';
+import { BODY_PLUGINS, BODY_TOOLBAR } from '../richText';
 import type { Data, FeedbackType } from '../../apiTypes';
 import { emptyOption } from '../utils';
 import { useFieldError, useFieldErrors } from '../ValidationContext';
@@ -91,7 +92,8 @@ export default function ScenarioSection({ index }: { index: number }) {
               setFieldValue(`${path}.description`, content)
             }
             ariaLabel="Scenario introduction paragraph"
-            preset="body"
+            plugins={BODY_PLUGINS}
+            toolbar={BODY_TOOLBAR}
             height="240px"
             placeholder="Describe the scenario or context for the question"
           />
@@ -127,7 +129,8 @@ export default function ScenarioSection({ index }: { index: number }) {
               setFieldValue(`${path}.instructionDescription`, content)
             }
             ariaLabel="Scenario instructions paragraph"
-            preset="body"
+            plugins={BODY_PLUGINS}
+            toolbar={BODY_TOOLBAR}
             height="240px"
             placeholder={
               'Describe to the learner what they need to do e.g. “Choose the explanation that best matches your first reaction”'

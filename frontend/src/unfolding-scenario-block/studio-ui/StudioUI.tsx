@@ -93,7 +93,6 @@ function EditorBody({
             title={values.displayName}
             onTitleChange={(title) => setFieldValue('displayName', title)}
             showEditingPrefix={false}
-            onClose={onCancel}
           />
           <ModalDialog.Body className="us-editor-body">
             <EditorSidebar

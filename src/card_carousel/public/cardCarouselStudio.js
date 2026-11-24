@@ -18614,59 +18614,39 @@ function DN({ liveData: e }) {
 	});
 }
 //#endregion
-//#region src/shared/components/constants.ts
-var ON = [
-	{
-		key: "content",
-		label: "Content"
-	},
-	{
-		key: "settings",
-		label: "Settings"
-	},
-	{
-		key: "json",
-		label: "JSON"
-	}
-];
-//#endregion
 //#region src/shared/components/StudioHeader.tsx
-function kN({ title: e, onTitleChange: t, activeTab: n, tabs: r = ON }) {
-	let [i, a] = (0, I.useState)(!1);
+function ON({ title: e, onTitleChange: t, activeTab: n, tabs: r, showEditingPrefix: i = !0 }) {
+	let [a, o] = (0, I.useState)(!1);
 	return /* @__PURE__ */ (0, F.jsx)(eu.Header, {
 		className: "shadow-sm studio-header",
 		children: /* @__PURE__ */ (0, F.jsxs)("div", {
 			className: "d-flex flex-row justify-content-between",
 			children: [
-				/* @__PURE__ */ (0, F.jsx)(ke, { children: i ? /* @__PURE__ */ (0, F.jsx)(H.Control, {
+				/* @__PURE__ */ (0, F.jsx)(ke, { children: a ? /* @__PURE__ */ (0, F.jsx)(H.Control, {
 					type: "text",
 					name: "studio-title",
 					"aria-label": "Display name",
 					value: e,
 					onChange: (e) => t(e.target.value),
-					onBlur: () => a(!1),
+					onBlur: () => o(!1),
 					onKeyDown: (e) => {
-						(e.key === "Enter" || e.key === "Escape") && (a(!1), e.preventDefault());
+						(e.key === "Enter" || e.key === "Escape") && (o(!1), e.preventDefault());
 					}
 				}) : /* @__PURE__ */ (0, F.jsx)("h3", {
 					className: "h3 col pl-0",
 					children: /* @__PURE__ */ (0, F.jsxs)("div", {
 						className: "d-flex flex-row align-items-center mt-1",
-						children: [
-							"Editing: ",
-							e || "<Untitled>",
-							/* @__PURE__ */ (0, F.jsx)(le, {
-								alt: "Edit display name",
-								className: "studio-header-title-edit",
-								size: "sm",
-								src: Kr,
-								onClick: () => a(!0)
-							})
-						]
+						children: [i ? `Editing: ${e || "<Untitled>"}` : e, /* @__PURE__ */ (0, F.jsx)(le, {
+							alt: "Edit display name",
+							className: "studio-header-title-edit",
+							size: "sm",
+							src: Kr,
+							onClick: () => o(!0)
+						})]
 					})
 				}) }),
 				/* @__PURE__ */ (0, F.jsx)(ke.Spacer, {}),
-				/* @__PURE__ */ (0, F.jsx)(_u, {
+				r && r.length > 0 && n !== void 0 && /* @__PURE__ */ (0, F.jsx)(_u, {
 					role: "tablist",
 					variant: "button-group",
 					activeKey: n,
@@ -18685,9 +18665,25 @@ function kN({ title: e, onTitleChange: t, activeTab: n, tabs: r = ON }) {
 	});
 }
 //#endregion
+//#region src/shared/components/constants.ts
+var kN = [
+	{
+		key: "content",
+		label: "Content"
+	},
+	{
+		key: "settings",
+		label: "Settings"
+	},
+	{
+		key: "json",
+		label: "JSON"
+	}
+];
+//#endregion
 //#region src/card/common/studio-ui/StudioForm.tsx
 function AN({ id: e, contentTab: t, settingsTab: n }) {
-	let r = ON[0].key, [i, a] = (0, I.useState)(r), { values: o, setFieldValue: s } = sy(), c = !!Tp()?.enable_json_editing, l = c ? ON : ON.filter((e) => e.key !== "json");
+	let r = kN[0].key, [i, a] = (0, I.useState)(r), { values: o, setFieldValue: s } = sy(), c = !!Tp()?.enable_json_editing, l = c ? kN : kN.filter((e) => e.key !== "json");
 	return /* @__PURE__ */ (0, F.jsx)(jy, { children: /* @__PURE__ */ (0, F.jsx)(Yn, {
 		id: e,
 		activeKey: i,
@@ -18696,7 +18692,7 @@ function AN({ id: e, contentTab: t, settingsTab: n }) {
 		children: /* @__PURE__ */ (0, F.jsxs)("div", {
 			className: "studio-ui card-studio",
 			children: [
-				/* @__PURE__ */ (0, F.jsx)(kN, {
+				/* @__PURE__ */ (0, F.jsx)(ON, {
 					activeTab: i,
 					title: o.displayName,
 					onTitleChange: (e) => s("displayName", e),

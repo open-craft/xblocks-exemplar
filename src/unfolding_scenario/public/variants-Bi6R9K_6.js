@@ -13058,10 +13058,6 @@ var cd = [
 			"--color-bg-main": "var(--pgn-wgu-color-background-main-navy, #002855)",
 			"--color-bg-emphasis": "var(--pgn-wgu-color-navy-900, #001124)",
 			"--color-txt-content": "var(--pgn-wgu-color-text-pure-white, #ffffff)"
-		},
-		swatch: {
-			background: "var(--pgn-wgu-color-background-main-navy, #002855)",
-			foregrounds: ["var(--pgn-wgu-color-text-pure-white, #ffffff)", "var(--pgn-wgu-color-navy-200, #8a9cb1)"]
 		}
 	},
 	{
@@ -13072,10 +13068,6 @@ var cd = [
 			"--color-bg-main": "var(--pgn-wgu-color-background-main-blue, #0070f0)",
 			"--color-bg-emphasis": "var(--pgn-wgu-color-blue-800, #003e84)",
 			"--color-txt-content": "var(--pgn-wgu-color-text-pure-white, #ffffff)"
-		},
-		swatch: {
-			background: "var(--pgn-wgu-color-background-main-blue, #0070f0)",
-			foregrounds: ["var(--pgn-wgu-color-text-pure-white, #ffffff)", "var(--pgn-wgu-color-navy-200, #8a9cb1)"]
 		}
 	},
 	{
@@ -13086,15 +13078,17 @@ var cd = [
 			"--color-bg-main": "var(--pgn-wgu-color-background-main-lake, #46b1ef)",
 			"--color-bg-emphasis": "var(--pgn-wgu-color-lake-900, #1d4a64)",
 			"--color-txt-content": "var(--pgn-wgu-color-text-main-navy, #002855)"
-		},
-		swatch: {
-			background: "var(--pgn-wgu-color-background-main-lake, #46b1ef)",
-			foregrounds: ["var(--pgn-wgu-color-text-main-navy, #002855)", "var(--pgn-wgu-color-text-pure-white, #ffffff)"]
 		}
 	}
-], ld = (e) => cd.find((t) => t.id === e), ud = (e) => {
-	let t = ld(e);
+], ld = (e) => [{
+	background: e.tokens["--color-bg-main"],
+	color: e.tokens["--color-txt-content"]
+}, {
+	background: e.tokens["--color-bg-emphasis"],
+	color: e.tokens["--color-txt-content"]
+}], ud = (e) => cd.find((t) => t.id === e), dd = (e) => {
+	let t = ud(e);
 	return t ? t.tokens : void 0;
 };
 //#endregion
-export { Vr as A, Pn as B, io as C, $r as D, si as E, Kn as F, On as G, In as H, Hn as I, m as J, hn as K, Vn as L, pr as M, er as N, Xr as O, qn as P, H as R, mo as S, ci as T, jn as U, zn as V, kn as W, o as X, u as Y, c as Z, Vo as _, od as a, yo as b, fs as c, ts as d, es as f, Go as g, Zo as h, ad as i, kr as j, qr as k, us as l, Qo as m, ud as n, sd as o, $o as p, dn as q, ld as r, rd as s, cd as t, ns as u, Co as v, no as w, _o as x, So as y, Bn as z };
+export { qr as A, Bn as B, mo as C, si as D, ci as E, qn as F, kn as G, zn as H, Kn as I, dn as J, On as K, Hn as L, kr as M, pr as N, $r as O, er as P, c as Q, Vn as R, _o as S, no as T, In as U, Pn as V, jn as W, u as X, m as Y, o as Z, Go as _, ad as a, So as b, rd as c, ns as d, ts as f, Zo as g, Qo as h, ld as i, Vr as j, Xr as k, fs as l, $o as m, dd as n, od as o, es as p, hn as q, ud as r, sd as s, cd as t, us as u, Vo as v, io as w, yo as x, Co as y, H as z };
