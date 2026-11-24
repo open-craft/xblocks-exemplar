@@ -1,3 +1,9 @@
+// Registered here (the bundle entry) rather than in the shared editor, so the
+// lists plugin is only pulled into this block's bundle and never loaded in
+// unit tests. TinyMCE core must be imported first: plugins reference the
+// global `tinymce`, and side-effect imports evaluate in source order.
+import 'tinymce/tinymce';
+import 'tinymce/plugins/lists';
 import type { XBlockConfig } from '../../types.ts';
 import { App } from './App.tsx';
 import {

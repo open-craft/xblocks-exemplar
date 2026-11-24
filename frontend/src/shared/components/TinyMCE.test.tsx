@@ -13,8 +13,8 @@ const props = {
   onEditorChange: vi.fn(),
 };
 
-describe('SimpleRichTextEditor presets', () => {
-  it('leaves the default toolbar and plugins unchanged for other blocks', () => {
+describe('SimpleRichTextEditor', () => {
+  it('keeps the default toolbar and plugins for blocks that pass nothing', () => {
     render(<SimpleRichTextEditor {...props} />);
     expect(vi.mocked(Editor).mock.lastCall?.[0].init).toMatchObject({
       plugins: ['help'],
@@ -22,23 +22,19 @@ describe('SimpleRichTextEditor presets', () => {
     });
   });
 
-  it('enables only supported body formatting and the lists plugin for the body preset', () => {
+  it('uses the caller-provided plugins and toolbar', () => {
     render(
       <SimpleRichTextEditor
         {...props}
-        preset="body"
+        plugins={['help', 'lists']}
+        toolbar="undo redo | bullist numlist"
         placeholder="Describe the situation"
       />,
     );
-    const init = vi.mocked(Editor).mock.lastCall?.[0].init;
-    expect(init).toMatchObject({
+    expect(vi.mocked(Editor).mock.lastCall?.[0].init).toMatchObject({
       plugins: ['help', 'lists'],
+      toolbar: 'undo redo | bullist numlist',
       placeholder: 'Describe the situation',
     });
-    expect(init?.toolbar).toContain('bullist numlist');
-    expect(init?.toolbar).toContain('alignleft');
-    expect(init?.toolbar).toContain('underline');
-    expect(init?.toolbar).not.toContain('forecolor');
-    expect(init?.toolbar).not.toContain('blocks');
   });
 });

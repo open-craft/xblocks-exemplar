@@ -2,6 +2,7 @@ import { useId } from 'react';
 import Form from '@openedx/paragon/dist/Form';
 import { useFormikContext } from 'formik';
 import { SimpleRichTextEditor } from '@/shared/components/TinyMCE';
+import { BODY_PLUGINS, BODY_TOOLBAR } from '../richText';
 import type { Data } from '../../apiTypes';
 import { useFieldError } from '../ValidationContext';
 
@@ -75,7 +76,8 @@ export default function OutcomeSection() {
               setFieldValue('scenarioData.outcome.description', content)
             }
             ariaLabel="Outcome paragraph"
-            preset="body"
+            plugins={BODY_PLUGINS}
+            toolbar={BODY_TOOLBAR}
           />
           {descriptionError && (
             <Form.Control.Feedback type="invalid" className="d-block">
