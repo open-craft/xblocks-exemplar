@@ -81,9 +81,6 @@ describe('Studio editor shell', () => {
     expect(
       rendered.getByRole('heading', { name: 'Unfolding Scenario' }),
     ).toBeInTheDocument();
-    expect(
-      rendered.getByRole('button', { name: 'Close editor' }),
-    ).toBeInTheDocument();
 
     const sidebar = rendered.getByRole('navigation', {
       name: 'Editor sections',
@@ -275,14 +272,11 @@ describe('Studio editor shell', () => {
     ]);
   });
 
-  it('calls onCancel from the footer and the header close button', async () => {
+  it('calls onCancel from the footer', async () => {
     const { screen: rendered, user, mockOnCancel } = specRender();
 
     await user.click(rendered.getByRole('button', { name: 'Cancel' }));
     expect(mockOnCancel).toHaveBeenCalledTimes(1);
-
-    await user.click(rendered.getByRole('button', { name: 'Close editor' }));
-    expect(mockOnCancel).toHaveBeenCalledTimes(2);
   });
 
   it('saves the edited title', async () => {

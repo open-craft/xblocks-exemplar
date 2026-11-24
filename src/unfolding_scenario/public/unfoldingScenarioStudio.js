@@ -52566,8 +52566,7 @@ function Jw({ activeSection: e, onSelectSection: t, attempted: n, serverErrors: 
 				/* @__PURE__ */ (0, K.jsx)(Hd, {
 					title: o.displayName,
 					onTitleChange: (e) => s("displayName", e),
-					showEditingPrefix: !1,
-					onClose: a
+					showEditingPrefix: !1
 				}),
 				/* @__PURE__ */ (0, K.jsxs)(_a.Body, {
 					className: "us-editor-body",
