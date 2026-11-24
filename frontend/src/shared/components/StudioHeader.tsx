@@ -54,7 +54,9 @@ export default function StudioHeader({
           ) : (
             <h3 className="h3 col pl-0">
               <div className="d-flex flex-row align-items-center mt-1">
-                {showEditingPrefix ? `Editing: ${title || '<Untitled>'}` : title}
+                {showEditingPrefix
+                  ? `Editing: ${title || '<Untitled>'}`
+                  : title}
                 <IconButton
                   alt="Edit display name"
                   className="studio-header-title-edit"
