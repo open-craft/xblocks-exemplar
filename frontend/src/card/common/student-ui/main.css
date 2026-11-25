@@ -18,6 +18,11 @@
   margin-bottom: var(--pgn-spacing-spacer-4-5, 32px);
 }
 
+/* Hide the scrollbar for the carousel; navigation between cards should be done with the previous/next buttons. */
+.card-carousel-container .pgn__overflow-scroll-overflow-container {
+  scrollbar-width: none;
+}
+
 .card-grid-xblock {
   --card-grid-gap: var(--pgn-spacing-spacer-4-5, 32px);
 }
