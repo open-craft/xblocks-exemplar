@@ -1,7 +1,337 @@
 @import '../../studio';
+@import '../../shared/components/StudioHeader.css';
 
 // Hide the "close" button at the bottom of the editor modal.
 // We want our own save and cancel buttons.
 .edit-xblock-modal > .modal-actions {
   display: none !important;
+}
+
+.us-editor {
+  --us-editor-sidebar-width: 268px;
+  --us-panel-padding: var(--pgn-spacing-spacer-4-5, 32px);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+}
+
+// Scoped above Paragon's `.pgn__modal-body` (padding/overflow), which is
+// appended after this stylesheet in Studio and would otherwise win the tie.
+.us-editor .us-editor-body {
+  flex: 1 1 auto;
+  padding: 0;
+  overflow: hidden;
+
+  // ModalDialog.Body wraps the sidebar and panel; its other children are
+  // scroll sentinels, not grid items.
+  > .pgn__modal-body-content {
+    display: grid;
+    grid-template-columns: var(--us-editor-sidebar-width) minmax(0, 1fr);
+  }
+}
+
+.us-editor-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+  padding: var(--pgn-spacing-spacer-3, 16px);
+  border-right: 1px solid var(--pgn-color-light-300);
+  background-color: var(--pgn-color-light-100);
+  overflow-y: auto;
+}
+
+.us-editor-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+  min-height: 40px;
+  padding: var(--pgn-spacing-spacer-2, 8px);
+  border-radius: var(--pgn-size-radius-xs, 8px);
+
+  &--active {
+    background-color: var(--pgn-color-light-300);
+  }
+}
+
+.us-editor-nav-link {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.us-editor-drag-handle {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--pgn-color-gray-500);
+  cursor: grab;
+  touch-action: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--pgn-color-primary-500, #002855);
+    outline-offset: 2px;
+  }
+}
+
+.us-editor-nav-item--dragging {
+  opacity: 0.6;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+}
+
+.us-editor-error-badge {
+  flex: 0 0 auto;
+}
+
+.us-editor-add-scenario {
+  display: flex;
+  align-items: center;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+  white-space: nowrap;
+  min-height: 40px;
+  padding: var(--pgn-spacing-spacer-2, 8px);
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.us-editor-panel {
+  min-width: 0;
+  padding: var(--us-panel-padding);
+  overflow-y: auto;
+}
+
+/* ---------- Scenario fields and feedback ---------- */
+
+.us-rich-text-label {
+  margin-bottom: var(--pgn-spacing-spacer-2, 8px);
+}
+
+.us-options-editor {
+  padding: var(--pgn-spacing-spacer-3, 16px);
+  border: 1px solid var(--pgn-color-light-300, #dee2e6);
+  border-radius: 4px;
+}
+
+.us-option {
+  margin-bottom: var(--pgn-spacing-spacer-3, 16px);
+}
+
+.us-option-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+}
+
+.us-option-input {
+  min-width: 0;
+}
+
+.us-editor-panel .us-editor-alert {
+  margin-bottom: var(--pgn-spacing-spacer-4, 24px);
+
+  ul {
+    padding-left: var(--pgn-spacing-spacer-4, 24px);
+  }
+}
+
+.us-option-feedback {
+  margin-top: var(--pgn-spacing-spacer-2, 8px);
+  padding: var(--pgn-spacing-spacer-4, 24px);
+  border-radius: 4px;
+  background: var(--pgn-color-light-300, #eeeeee);
+}
+
+.us-feedback-icon-picker {
+  display: flex;
+  align-items: center;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+}
+
+/* ---------- Section panels ---------- */
+
+.us-panel {
+  h4 {
+    margin-bottom: var(--pgn-spacing-spacer-4, 24px);
+  }
+}
+
+.us-section {
+  margin-bottom: var(--pgn-spacing-spacer-4-5, 32px);
+}
+
+.us-section-help {
+  color: var(--pgn-color-gray-600, #475569);
+}
+
+.us-field {
+  margin-bottom: var(--pgn-spacing-spacer-4, 24px);
+}
+
+// Paragon's `.pgn__form-control-set` (applied to every RadioSet) declares
+// `display: flex; flex-direction: column` and a sibling margin. The theme CSS
+// is appended *after* this file in Studio, so equal-specificity rules lose;
+// scoping under .us-panel keeps the grid layout authoritative.
+.us-panel .us-interaction-grid,
+.us-panel .us-swatch-grid {
+  display: grid;
+  align-items: stretch;
+
+  > * + * {
+    margin: 0;
+  }
+}
+
+.us-panel .us-interaction-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--pgn-spacing-spacer-4-5, 32px);
+}
+
+.us-panel .us-swatch-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--pgn-spacing-spacer-3, 16px);
+  // Clearance for the selected-state badge, which straddles the card corner.
+  margin-top: var(--pgn-spacing-spacer-3, 16px);
+}
+
+.us-panel .us-interaction-card,
+.us-panel .us-swatch {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: var(--pgn-spacing-spacer-2, 8px);
+  border: 2px solid var(--pgn-color-light-300, #dee2e6);
+  border-radius: 16px;
+  background: var(--pgn-color-white, #ffffff);
+  cursor: pointer;
+
+  > div {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  .pgn__form-radio-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  label {
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+
+  &--selected {
+    border-color: var(--pgn-color-primary-500, #002855);
+    box-shadow: 0 0 0 1px var(--pgn-color-primary-500, #002855);
+  }
+
+  &:focus-within {
+    outline: 2px solid var(--pgn-color-primary-500, #002855);
+    outline-offset: 2px;
+  }
+}
+
+.us-panel .us-interaction-card {
+  padding: var(--pgn-spacing-spacer-4, 24px);
+
+  label {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--pgn-spacing-spacer-2, 8px);
+  }
+
+  .pgn__form-control-description {
+    color: var(--pgn-color-gray-600, #475569);
+    text-align: center;
+  }
+}
+
+.us-panel .us-interaction-card-icon {
+  color: var(--pgn-color-primary-500, #002855);
+}
+
+.us-panel .us-interaction-card-label {
+  font-weight: 700;
+}
+
+.us-panel .us-swatch-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+}
+
+.us-panel .us-swatch-preview {
+  display: flex;
+  align-self: stretch;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+  padding: var(--pgn-spacing-spacer-2, 8px);
+}
+
+.us-panel .us-swatch-tile {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--pgn-spacing-spacer-2, 8px);
+  padding: var(--pgn-spacing-spacer-3, 16px) var(--pgn-spacing-spacer-2, 8px);
+  border-radius: 8px;
+}
+
+.us-panel .us-swatch-rule {
+  display: block;
+  height: 3px;
+  border-radius: 9999px;
+  background: currentcolor;
+  opacity: 0.9;
+}
+
+.us-panel .us-swatch-sample {
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.us-panel .us-swatch-check {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  border-radius: 9999px;
+  background: var(--pgn-color-primary-500, #002855);
+  color: var(--pgn-color-white, #ffffff);
+}
+
+.us-swatch-name {
+  font-weight: 600;
+}
+
+.us-image-preview {
+  margin-top: var(--pgn-spacing-spacer-3, 16px);
+
+  img {
+    max-width: 150px;
+    border-radius: 8px;
+  }
 }

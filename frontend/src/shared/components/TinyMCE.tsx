@@ -52,6 +52,11 @@ interface TinyMceEditorProps {
   onEditorChange: (content: string) => void;
   ariaLabel: string;
   height?: string;
+  /** TinyMCE plugins the caller has imported; defaults to the help dialog only. */
+  plugins?: string[];
+  /** Toolbar override; defaults to the shared simple-text toolbar. */
+  toolbar?: string;
+  placeholder?: string;
 }
 
 // A simple editor with restricted styling,
@@ -64,6 +69,9 @@ export const SimpleRichTextEditor = ({
   onEditorChange,
   ariaLabel,
   height,
+  plugins = ['help'],
+  toolbar = 'undo redo | blocks | bold italic forecolor',
+  placeholder,
 }: TinyMceEditorProps) => {
   return (
     <>
@@ -75,9 +83,10 @@ export const SimpleRichTextEditor = ({
           iframe_aria_text: ariaLabel,
           promotion: false,
           menubar: false,
-          plugins: ['help'],
-          toolbar: 'undo redo | blocks | bold italic forecolor',
+          plugins,
+          toolbar,
           height,
+          placeholder,
         }}
       />
     </>

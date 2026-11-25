@@ -10,6 +10,7 @@ interface HarnessProps {
   activeTab?: string;
   tabs?: StudioTab[];
   onTitleChange?: (title: string) => void;
+  showEditingPrefix?: boolean;
 }
 
 function Harness({
@@ -17,6 +18,7 @@ function Harness({
   activeTab = 'content',
   tabs = EDITOR_TABS,
   onTitleChange,
+  showEditingPrefix,
 }: HarnessProps) {
   const [title, setTitle] = useState(initialTitle);
 
@@ -25,6 +27,7 @@ function Harness({
       activeTab={activeTab}
       tabs={tabs}
       title={title}
+      showEditingPrefix={showEditingPrefix}
       onTitleChange={(nextTitle) => {
         onTitleChange?.(nextTitle);
         setTitle(nextTitle);
@@ -134,5 +137,22 @@ describe('StudioHeader', () => {
     expect(
       screen.getByRole('heading', { name: 'Editing: My Component' }),
     ).toBeInTheDocument();
+  });
+
+  it('renders no tabs when tabs are empty', () => {
+    render(<Harness tabs={[]} />);
+
+    expect(screen.queryByRole('tablist')).not.toBeInTheDocument();
+  });
+
+  it('hides the Editing: prefix when showEditingPrefix is false', () => {
+    render(<Harness showEditingPrefix={false} />);
+
+    expect(
+      screen.getByRole('heading', { name: 'My Component' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('heading', { name: 'Editing: My Component' }),
+    ).not.toBeInTheDocument();
   });
 });

@@ -13107,42 +13107,38 @@ var vg = [
 ];
 //#endregion
 //#region src/shared/components/StudioHeader.tsx
-function yg({ title: e, onTitleChange: t, activeTab: n, tabs: r = vg }) {
-	let [i, a] = (0, j.useState)(!1);
+function yg({ title: e, onTitleChange: t, activeTab: n, tabs: r, showEditingPrefix: i = !0 }) {
+	let [a, o] = (0, j.useState)(!1);
 	return /* @__PURE__ */ (0, k.jsx)(np.Header, {
 		className: "shadow-sm studio-header",
 		children: /* @__PURE__ */ (0, k.jsxs)("div", {
 			className: "d-flex flex-row justify-content-between",
 			children: [
-				/* @__PURE__ */ (0, k.jsx)(N, { children: i ? /* @__PURE__ */ (0, k.jsx)(X.Control, {
+				/* @__PURE__ */ (0, k.jsx)(N, { children: a ? /* @__PURE__ */ (0, k.jsx)(X.Control, {
 					type: "text",
 					name: "studio-title",
 					"aria-label": "Display name",
 					value: e,
 					onChange: (e) => t(e.target.value),
-					onBlur: () => a(!1),
+					onBlur: () => o(!1),
 					onKeyDown: (e) => {
-						(e.key === "Enter" || e.key === "Escape") && (a(!1), e.preventDefault());
+						(e.key === "Enter" || e.key === "Escape") && (o(!1), e.preventDefault());
 					}
 				}) : /* @__PURE__ */ (0, k.jsx)("h3", {
 					className: "h3 col pl-0",
 					children: /* @__PURE__ */ (0, k.jsxs)("div", {
 						className: "d-flex flex-row align-items-center mt-1",
-						children: [
-							"Editing: ",
-							e || "<Untitled>",
-							/* @__PURE__ */ (0, k.jsx)(es, {
-								alt: "Edit display name",
-								className: "studio-header-title-edit",
-								size: "sm",
-								src: Bo,
-								onClick: () => a(!0)
-							})
-						]
+						children: [i ? `Editing: ${e || "<Untitled>"}` : e, /* @__PURE__ */ (0, k.jsx)(es, {
+							alt: "Edit display name",
+							className: "studio-header-title-edit",
+							size: "sm",
+							src: Bo,
+							onClick: () => o(!0)
+						})]
 					})
 				}) }),
 				/* @__PURE__ */ (0, k.jsx)(N.Spacer, {}),
-				/* @__PURE__ */ (0, k.jsx)(gp, {
+				r && r.length > 0 && n !== void 0 && /* @__PURE__ */ (0, k.jsx)(gp, {
 					role: "tablist",
 					variant: "button-group",
 					activeKey: n,
