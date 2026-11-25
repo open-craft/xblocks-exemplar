@@ -12,10 +12,9 @@ interface ModalBaseProps {
 }
 
 // NOTE: we cannot use high level Paragon modals here,
-// because they are attached to a root object outside of the xblock tree, so:
-// - the custom styles aren't applied
-// - they will open in the parent window, but we need it to open in the new tab created for the activity.
-// So this base modal is a simplified and opinionated implementation of the Paragon modal, without the createPortal.
+// because they are attached to a root object outside of the xblock tree,
+// so the custom styles aren't applied.
+// This base modal is a simplified and opinionated implementation of the Paragon modal, without the createPortal.
 export const ModalBase = ({ onCancel, title, children }: ModalBaseProps) => {
   return (
     <FocusOn
@@ -23,7 +22,8 @@ export const ModalBase = ({ onCancel, title, children }: ModalBaseProps) => {
       scrollLock
       enabled={true}
       onEscapeKey={onCancel}
-      onClickOutside={onCancel}
+      // Disable clickoutside because it doesn't interact well when on top of the activity fullscreen modal (clicking on the modal buttons just triggers clickoutside).
+      onClickOutside={() => {}}
       className="pgn__modal-layer"
     >
       <ModalContentContainer>

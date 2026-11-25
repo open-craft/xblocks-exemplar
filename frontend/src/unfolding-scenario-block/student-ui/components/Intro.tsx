@@ -7,15 +7,9 @@ interface IntroProps {
   name: string;
   introduction: Introduction;
   onLaunch: () => void;
-  activityOpen: boolean;
 }
 
-export const Intro = ({
-  name,
-  introduction,
-  onLaunch,
-  activityOpen,
-}: IntroProps) => {
+export const Intro = ({ name, introduction, onLaunch }: IntroProps) => {
   const windowSize = useWindowSize();
   const width = windowSize.width || window.innerWidth;
   const isMobile = width < breakpoints.extraSmall.maxWidth!;
@@ -40,7 +34,6 @@ export const Intro = ({
               variant="primary"
               className={`mt-4 ${isMobile ? 'w-100' : ''}`}
               onClick={onLaunch}
-              disabled={activityOpen}
               block={isMobile}
             >
               Launch Interactive

@@ -30,9 +30,9 @@ export const OutcomeComponent = ({
   }
 
   return (
-    <div className="d-flex flex-grow-1 flex-wrap">
+    <div className="d-flex flex-grow-1 flex-wrap mh-100 overflow-auto">
       <div
-        className="p-3 m-3 bg-interact-default"
+        className="p-4 bg-interact-default"
         style={{
           flex: `0 0 ${variant == 'desktop' ? '60%' : '100%'}`,
         }}

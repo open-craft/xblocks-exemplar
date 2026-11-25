@@ -25,7 +25,7 @@ export const Activity = ({ data, onExit }: ActivityProps) => {
   };
 
   return (
-    <div className="h-100 min-vh-100 bg-interact-default d-flex flex-column">
+    <div className="fullscreen-activity">
       <ResponsiveActivityHeader
         onClose={() => setModalType('leave')}
         title={data.name}
