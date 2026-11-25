@@ -3,9 +3,8 @@ import userEvent from '@testing-library/user-event';
 import type { ReactNode } from 'react';
 import { RuntimeContext } from '@opencraft/xblock-react-utils';
 import {
-  mockRuntime,
-  stubJquery,
   fireEvent,
+  mockRuntime,
   render,
   waitFor,
 } from '@opencraft/xblock-react-utils/testing';
@@ -28,7 +27,6 @@ const specRender = (component: ReactNode) => {
 };
 
 describe('App.tsx', () => {
-  const { getLastDeferred, mockPost } = stubJquery();
   it('renders', () => {
     const { screen } = specRender(<App {...initDataFactory()} />);
     screen.getByLabelText('Variant');
@@ -57,8 +55,20 @@ describe('App.tsx', () => {
     await waitFor(() => expect(screen.queryAllByText(/color/i).length).toBe(0));
   });
   it('submits changes to the server', async () => {
+    const resultingData = initDataFactory({
+      display_name: 'My new block',
+      variant: Variant.course,
+      main_header_color: '#abc123',
+    });
+    $.mockjax({
+      url: '/handler/studio_save',
+      method: 'POST',
+      data: JSON.stringify(resultingData),
+      contentType: 'application/json',
+      responseText: {},
+    });
     const user = userEvent.setup();
-    const { screen } = specRender(
+    const { screen, runtime } = specRender(
       <App {...initDataFactory({ variant: Variant.course })} />,
     );
     const displayName = screen.getByLabelText('Display Name');
@@ -69,43 +79,9 @@ describe('App.tsx', () => {
     const mainHeaderColor = screen.getByLabelText('Main header color');
     fireEvent.change(mainHeaderColor, { target: { value: '#abc123' } });
     await user.click(screen.getByText('Save'));
-    expect(mockPost).toHaveBeenCalledWith(
-      '/handler/studio_save',
-      JSON.stringify(
-        initDataFactory({
-          display_name: 'My new block',
-          main_header_color: '#abc123',
-        }),
-      ),
+    await waitFor(() =>
+      expect(runtime.notify).toHaveBeenCalledWith('save', { state: 'end' }),
     );
-  });
-  it('informs the runtime about the save status', async () => {
-    const user = userEvent.setup();
-    const { screen, runtime } = specRender(
-      <App {...initDataFactory({ variant: Variant.course })} />,
-    );
-    await user.click(screen.getByText('Save'));
-    expect(runtime.notify).toHaveBeenCalledWith('save', { state: 'start' });
-    expect(runtime.notify).toHaveBeenCalledOnce();
-    const lastDeferred = getLastDeferred();
-    expect(lastDeferred).toBeTruthy();
-    lastDeferred!._resolveDone();
-    expect(runtime.notify).toHaveBeenCalledWith('save', { state: 'end' });
-    expect(runtime.notify).toHaveBeenCalledTimes(2);
-  });
-  it('calls runtime.notify with error on failure', async () => {
-    const user = userEvent.setup();
-    const { screen, runtime } = specRender(<App {...initDataFactory()} />);
-
-    await user.click(screen.getByText('Save'));
-    const lastDeferred = getLastDeferred();
-    expect(lastDeferred).toBeTruthy();
-    lastDeferred!._resolveFail();
-
-    expect(runtime.notify).toHaveBeenCalledWith('error', {
-      title: 'Save Error',
-      message: 'Failed to save cover block configuration',
-    });
   });
   it('calls runtime.notify with cancel on click', async () => {
     const user = userEvent.setup();

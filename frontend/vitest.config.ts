@@ -56,6 +56,11 @@ export default defineConfig(({ mode }) => {
         if (log.includes('Bogus color found for')) {
           return false;
         }
+        // MockJax doesn't allow us to suppress this info with the way
+        // we import it.
+        if (log.includes('Initializing Mockjax and adding methods to jQuery')) {
+          return false;
+        }
       },
       coverage: {
         provider: 'v8',

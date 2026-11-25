@@ -1,4 +1,4 @@
-import type { XBlockConfig } from '../../types.ts';
+import type { XBlockConfig } from '@/types.ts';
 import StudioUi from './studio-ui';
 import { type XBlockData } from '../type';
 import {
@@ -10,7 +10,7 @@ import { XBlockConfigContext } from '@/lib/context.ts';
 
 export const renderBlock = (
   runtime: XBlockRuntime,
-  element: Element | null,
+  element: Element,
   context: { data: XBlockData; config: XBlockConfig },
 ) => {
   createXBlockRoot({ runtime, element, config: context.config, styles })(

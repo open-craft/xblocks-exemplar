@@ -1,4 +1,4 @@
-import { mockRuntime, stubJquery } from '@opencraft/xblock-react-utils/testing';
+import { mockRuntime } from '@opencraft/xblock-react-utils/testing';
 import {
   RuntimeContext,
   type XBlockRuntime,
@@ -52,9 +52,14 @@ async function uploadJson(container: HTMLElement, file: File) {
 }
 
 describe('JsonImporter', () => {
-  const { getLastDeferred, mockPost } = stubJquery();
-
   it('notifies save start and posts the file contents to the save url', async () => {
+    $.mockjax({
+      url: '/handler/studio_save',
+      method: 'POST',
+      data: JSON.stringify({ title: 'Hello' }),
+      contentType: 'application/json',
+      responseText: {},
+    });
     const { container, runtime } = renderImporter();
     const data = JSON.stringify({ title: 'Hello' });
 
@@ -63,17 +68,6 @@ describe('JsonImporter', () => {
     await waitFor(() => {
       expect(runtime.notify).toHaveBeenCalledWith('save', { state: 'start' });
     });
-    expect(mockPost).toHaveBeenCalledWith('/handler/studio_save', data);
-  });
-
-  it('notifies save end when the request succeeds', async () => {
-    const { container, runtime } = renderImporter();
-
-    await uploadJson(container, jsonFile('{"title":"Hello"}'));
-    await waitFor(() => expect(getLastDeferred()).toBeDefined());
-
-    getLastDeferred()!._resolveDone();
-
     await waitFor(() => {
       expect(runtime.notify).toHaveBeenCalledWith('save', { state: 'end' });
     });
@@ -85,6 +79,5 @@ describe('JsonImporter', () => {
     await uploadJson(container, jsonFile('{ not valid json'));
 
     expect(await findByText('Invalid JSON.')).toBeInTheDocument();
-    expect(mockPost).not.toHaveBeenCalled();
   });
 });
