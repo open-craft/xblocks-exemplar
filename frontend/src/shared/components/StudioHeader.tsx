@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ActionRow, Nav, ModalDialog } from '@openedx/paragon';
 import Form from '@openedx/paragon/dist/Form';
 import IconButton from '@openedx/paragon/dist/IconButton';
-import { Close, EditOutline } from '@openedx/paragon/icons';
+import { EditOutline } from '@openedx/paragon/icons';
 import type { StudioTab } from './constants';
 
 export interface StudioHeaderProps {
@@ -14,8 +14,6 @@ export interface StudioHeaderProps {
   activeTab?: string;
   /** Tabs to render in the navigation, in display order. Omit to hide the tabs. */
   tabs?: StudioTab[];
-  /** Called when the user clicks the close button, if provided. */
-  onClose?: () => void;
   /** Prefix the title with "Editing: ". Defaults to true. */
   showEditingPrefix?: boolean;
 }
@@ -25,7 +23,6 @@ export default function StudioHeader({
   onTitleChange,
   activeTab,
   tabs,
-  onClose,
   showEditingPrefix = true,
 }: StudioHeaderProps) {
   const [isEditingName, setIsEditingName] = useState(false);
@@ -89,15 +86,6 @@ export default function StudioHeader({
               </Nav.Link>
             ))}
           </Nav>
-        )}
-        {onClose && (
-          <IconButton
-            alt="Close editor"
-            className="studio-header-close"
-            size="sm"
-            src={Close}
-            onClick={onClose}
-          />
         )}
       </div>
     </ModalDialog.Header>
