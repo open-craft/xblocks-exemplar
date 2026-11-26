@@ -1,7 +1,15 @@
 @import '../../base';
 @import '../../studio';
+@import '@/shared/components/StudioHeader.css';
 
 .xblock-keypoints-studio {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // This is the default height of the modal body in studio.
+  // This ensures relative spacing calculations inside the shadow dom has reference.
+  min-height: 435px;
+
   .keypoints-studio-stack {
     gap: var(--pgn-exemplar-xblock-studio-section-gap, 24px);
     padding: var(--pgn-exemplar-xblock-studio-stack-padding, 16px);
@@ -46,11 +54,8 @@
     margin-bottom: var(--pgn-exemplar-xblock-studio-field-gap, 16px);
   }
 
-  .keypoints-studio-field--last {
-    margin-bottom: 0;
+  .tab-content {
+    flex: 1 1 auto;
+    min-height: 0;
   }
-}
-
-.keypoints-studio-actions {
-  padding: var(--pgn-exemplar-xblock-studio-actions-padding, 16px);
 }

@@ -1,26 +1,4 @@
-@import '@/card/common/studio-ui/secondary-content/IconSelector/index.css';
-@import '@/card/common/studio-ui/ModalFooter.css';
-@import '@/card/common/studio-ui/secondary-content/ImageForm.css';
-@import '@/shared/styles/materialIcons.css';
-@import '@/studio.scss';
-
-.card-grid-studio {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card-grid-create-form {
-  padding: var(--pgn-spacing-spacer-3, 16px);
-}
-
-.card-grid-studio-field {
-  margin-bottom: var(--pgn-spacing-spacer-4, 24px);
-}
-
-.card-grid-studio-field--last {
-  margin-bottom: 0;
-}
+@import '@/card/common/studio-ui/main.css';
 
 .card-grid-layout-options {
   gap: var(--pgn-spacing-spacer-3, 16px);

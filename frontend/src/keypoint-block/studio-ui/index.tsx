@@ -1,4 +1,4 @@
-import type { XBlockConfig } from '../../types.ts';
+import type { XBlockConfig } from '@/types.ts';
 import StudioUi from './studio-ui';
 import { type XBlockData } from '../type';
 import {
@@ -6,28 +6,16 @@ import {
   type XBlockRuntime,
 } from '@opencraft/xblock-react-utils';
 import styles from './style.scss?inline';
+import { XBlockConfigContext } from '@/lib/context.ts';
 
 export const renderBlock = (
   runtime: XBlockRuntime,
-  element: Element | null,
+  element: Element,
   context: { data: XBlockData; config: XBlockConfig },
 ) => {
-  const {
-    header,
-    keypoints,
-    summary,
-    button_text,
-    button_link,
-    background_color,
-  } = context.data;
   createXBlockRoot({ runtime, element, config: context.config, styles })(
-    <StudioUi
-      initialHeader={header || ''}
-      initialKeypoints={keypoints || []}
-      initialSummary={summary || ''}
-      initialButtonText={button_text || ''}
-      initialButtonLink={button_link || ''}
-      initialBackgroundColor={background_color || ''}
-    />,
+    <XBlockConfigContext.Provider value={context.config}>
+      <StudioUi data={context.data} />
+    </XBlockConfigContext.Provider>,
   );
 };

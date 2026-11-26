@@ -9,6 +9,7 @@ from pathlib import Path
 from exemplar_common.card_types import ImageData
 from pydantic import ValidationError
 from web_fragments.fragment import Fragment
+from webob.response import Response
 from xblock.core import XBlock
 from xblock.exceptions import JsonHandlerError
 from xblock.fields import List, Scope, String
@@ -154,6 +155,15 @@ class CardGridXBlock(XBlock):
             },
         )
         return frag
+
+    @XBlock.handler
+    def json_schema(self, request, suffix=""):
+        """Return the JSON data or schema of the Pydantic model as a file download."""
+        res = Response()
+        res.json = InitData.model_json_schema()
+        filename = "card-grid-schema.json"
+        res.content_disposition = f'attachment; filename="{filename}"'
+        return res
 
     @XBlock.json_handler
     def studio_save(self, data: dict, suffix=""):

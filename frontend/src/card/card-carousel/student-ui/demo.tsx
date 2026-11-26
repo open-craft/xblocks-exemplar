@@ -6,6 +6,9 @@ import type { XBlockRuntime } from '@opencraft/xblock-react-utils';
 import { type InitData } from '@/card/card-carousel/types.ts';
 
 import './demo.css';
+// Load the same styles the XBlock injects into its shadow root so the dev
+// preview matches the rendered block.
+import '@/card/common/student-ui/main.css';
 
 const mockRuntime: XBlockRuntime = {
   handlerUrl: () => '',
@@ -139,15 +142,3 @@ createRoot(document.getElementById('root')!).render(
     </IntlProvider>
   </StrictMode>,
 );
-
-if (import.meta.env.DEV) {
-  const core = document.createElement('link');
-  core.rel = 'stylesheet';
-  core.href = 'http://localhost:3000/core.css';
-  document.head.appendChild(core);
-
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = 'http://localhost:3000/light.css';
-  document.head.appendChild(link);
-}

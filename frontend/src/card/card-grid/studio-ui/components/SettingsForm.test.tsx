@@ -1,10 +1,10 @@
 import { act } from 'react';
-import { render, screen, within } from '@opencraft/xblock-react-utils/testing';
+import { render, screen } from '@opencraft/xblock-react-utils/testing';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect } from 'vitest';
 import { Formik } from 'formik';
 import { type InitData } from '@/card/card-grid/types';
-import CreateCardGridForm from './CreateCardGridForm';
+import SettingsForm from './SettingsForm';
 
 const makeInitData = (overrides: Partial<InitData> = {}): InitData => ({
   cards: [],
@@ -16,13 +16,9 @@ const makeInitData = (overrides: Partial<InitData> = {}): InitData => ({
   ...overrides,
 });
 
-const CreateCardGridFormWithContext = ({
-  initData,
-}: {
-  initData: InitData;
-}) => (
+const SettingsFormWithContext = ({ initData }: { initData: InitData }) => (
   <Formik initialValues={initData} onSubmit={() => {}}>
-    <CreateCardGridForm />
+    <SettingsForm />
   </Formik>
 );
 
@@ -30,53 +26,33 @@ const CreateCardGridFormWithContext = ({
 // state asynchronously after mount; flush that update inside act() so tests
 // don't warn about un-wrapped state updates.
 const renderForm = async (initData: InitData) => {
-  const result = render(<CreateCardGridFormWithContext initData={initData} />);
+  const result = render(<SettingsFormWithContext initData={initData} />);
   await act(async () => {});
   return result;
 };
 
-describe('CreateCardGridForm', () => {
-  it('shows the Title field with the current value', async () => {
-    await renderForm(makeInitData());
-    expect(screen.getByRole('textbox', { name: 'Display Name' })).toHaveValue(
-      'My Card Grid',
-    );
-  });
-
-  it('updates the Title field as the user types', async () => {
-    const user = userEvent.setup();
-    await renderForm(makeInitData({ displayName: '' }));
-    const title = screen.getByRole('textbox', { name: 'Display Name' });
-    await user.type(title, 'Updated');
-    expect(title).toHaveValue('Updated');
-  });
-
-  // The rich text editors aren't associated with their labels, so scope the
-  // textbox query to the Form.Group that contains the label.
-  const getEditor = (label: string) => {
-    const group = screen.getByText(label).closest('.pgn__form-group');
-    return within(group as HTMLElement).getByRole('textbox');
-  };
-
-  // NOTE: The actual editing of the content is not tested here
-  // as that would simply be testing the Mock set up in place of
-  // the TinyMCE Editor. So just testing that the components are
-  // wired correctly.
-  describe('Description', () => {
-    it('shows the description from the init data', async () => {
-      await renderForm(makeInitData({ description: 'Grid intro text' }));
-      expect(getEditor('Description')).toHaveValue('Grid intro text');
-    });
-  });
-
-  describe('Footer Description', () => {
-    it('shows the footer description from the init data', async () => {
-      await renderForm(makeInitData({ footerDescription: 'Grid footer text' }));
-      expect(getEditor('Footer Description')).toHaveValue('Grid footer text');
-    });
-  });
-
+describe('Card Grid > SettingsForm', () => {
   describe('Card layout orientation buttons', () => {
+    it('marks the vertical option as active when orientation is VERTICAL', async () => {
+      await renderForm(makeInitData({ orientation: 'VERTICAL' }));
+      expect(
+        screen.getByRole('button', { name: /Vertical Cards/ }),
+      ).toHaveClass('btn-outline-success');
+      expect(
+        screen.getByRole('button', { name: /Horizontal Cards/ }),
+      ).toHaveClass('btn-outline-secondary');
+    });
+
+    it('marks the horizontal option as active when orientation is HORIZONTAL', async () => {
+      await renderForm(makeInitData({ orientation: 'HORIZONTAL' }));
+      expect(
+        screen.getByRole('button', { name: /Horizontal Cards/ }),
+      ).toHaveClass('btn-outline-success');
+      expect(
+        screen.getByRole('button', { name: /Vertical Cards/ }),
+      ).toHaveClass('btn-outline-secondary');
+    });
+
     it('switches orientation to VERTICAL when the Vertical Cards button is clicked', async () => {
       const user = userEvent.setup();
       await renderForm(makeInitData({ orientation: 'HORIZONTAL' }));

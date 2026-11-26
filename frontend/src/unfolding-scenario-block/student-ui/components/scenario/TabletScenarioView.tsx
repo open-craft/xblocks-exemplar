@@ -27,7 +27,10 @@ export const TabletScenarioView = ({
   onSelectOption,
 }: TabletScenarioViewProps) => {
   return (
-    <div className="position-relative w-100 h-100 overflow-hidden">
+    <div
+      className="position-relative w-100 h-100"
+      style={{ overflowX: 'hidden' }}
+    >
       <div
         className={`w-100 h-100 position-absolute p-4 d-flex flex-column ${activeOptionIndex !== null ? 'active' : ''} tablet-options-pane tablet-options-pane-1`}
       >

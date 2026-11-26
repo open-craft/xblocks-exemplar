@@ -17,13 +17,13 @@ export const OutcomeSelectedOptions = ({
 
       return (
         <Row className="outcome-option-row">
-          <Col className="bg-interact-raised rounded-lg p-3">
+          <Col xs="12" md="6" className="bg-interact-raised rounded-lg p-3">
             <p className="font-weight-bold text-interact-headings">
               Step {index + 1}
             </p>
             <p className="text-interact-content">{option.value}</p>
           </Col>
-          <Col className="">
+          <Col xs="12" md="6" className="pt-4">
             <OptionFeedbackContent option={option} />
           </Col>
         </Row>

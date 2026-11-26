@@ -9,7 +9,7 @@ import styles from './style.scss?inline';
 
 export const renderBlock = (
   runtime: XBlockRuntime,
-  element: Element | null,
+  element: Element,
   context: { data: XBlockData; config: XBlockConfig },
 ) => {
   const {

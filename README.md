@@ -60,6 +60,24 @@ In the Advanced module list, add the following entries, depending on which block
 
 See the [Open edX documentation](https://docs.openedx.org/en/latest/educators/how-tos/course_development/exercise_tools/enable_exercises_tools.html#enable-additional-exercises-and-tools) for more information.
 
+### Enabling JSON Import & Export
+
+The following blocks support JSON import and export of the XBlock's content in the Studio's "Edit" dialog.
+* Card Carousel
+* Card Grid
+* Keypoint
+
+To turn it on, set `ENABLE_XBLOCK_JSON_EDITING` to `True` in the CMS Django settings.
+With Tutor, you can do this with a small plugin that patches `openedx-cms-common-settings`:
+
+```python
+from tutor import hooks
+
+hooks.Filters.ENV_PATCHES.add_item(
+    ("openedx-cms-common-settings", "ENABLE_XBLOCK_JSON_EDITING = True")
+)
+```
+
 ## Development Workflow
 
 ### Backend

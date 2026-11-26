@@ -61,36 +61,38 @@ const ScenarioDescription = ({
   scenario,
   onNext,
 }: ScenarioDescriptionProps) => (
-  <div className="p-4 d-flex flex-column w-100 h-100">
-    <p className="font-size-lg font-weight-bold text-interact-accent">
-      {scenario.heading}
-    </p>
-    <div
-      className="text-interact-content pb-3"
-      dangerouslySetInnerHTML={{ __html: scenario.description }}
-    />
-    <div className="d-flex align-items-center mt-3 mb-2">
-      <div className="arrow-bubble p-2 text-icon-interact-default">
-        <Icon src={ArrowOutward} />
+  <div className="d-flex flex-column h-100 w-100">
+    <div className="d-flex flex-column pt-4 px-4 flex-grow-1 w-100 bg-interact-default">
+      <p className="font-size-lg font-weight-bold text-interact-accent">
+        {scenario.heading}
+      </p>
+      <div
+        className="text-interact-content pb-3"
+        dangerouslySetInnerHTML={{ __html: scenario.description }}
+      />
+      <div className="d-flex align-items-center mt-3 mb-2">
+        <div className="arrow-bubble p-2 text-icon-interact-default">
+          <Icon src={ArrowOutward} />
+        </div>
+        <span className="text-interact-headings font-size-medium font-weight-bold pl-2">
+          {scenario.instructionTitle}
+        </span>
       </div>
-      <span className="text-interact-headings font-size-medium font-weight-bold pl-2">
-        {scenario.instructionTitle}
-      </span>
-    </div>
-    <div
-      className="text-interact-content"
-      dangerouslySetInnerHTML={{
-        __html: scenario.instructionDescription,
-      }}
-    />
-    <div className="d-flex flex-column justify-content-end flex-grow-1">
-      <Button
-        variant="unfolding-scenario-action"
-        className="rounded-pill w-100"
-        onClick={onNext}
-      >
-        Continue
-      </Button>
+      <div
+        className="text-interact-content"
+        dangerouslySetInnerHTML={{
+          __html: scenario.instructionDescription,
+        }}
+      />
+      <div className="d-flex flex-column justify-content-end flex-grow-1 w-100 bg-interact-default">
+        <Button
+          variant="unfolding-scenario-action"
+          className="rounded-pill w-100 mb-4"
+          onClick={onNext}
+        >
+          Continue
+        </Button>
+      </div>
     </div>
   </div>
 );
@@ -116,41 +118,37 @@ const ScenarioOptions = ({
   onSelectOption,
   onBack,
 }: ScenarioOptionsProps) => (
-  <div className="p-4 h-100 w-100">
-    <div className="flex-grow-1">
-      <IconButton
-        className="text-icon-action-sec-neutral"
-        src={KeyboardReturn}
-        alt="Return"
-        onClick={onBack}
-      />
-      <p className="text-interact-headings font-size-md font-weight-bold">
-        {scenario.prompt}
-      </p>
-      <div className="d-flex flex-column flex-grow-1">
-        {scenario.options.map((option, i) => (
-          <OptionComponent
-            active={activeOptionIndex === i}
-            onClick={() => onSelectOption(i)}
-            preSelected={preSelectedOptions.has(i)}
-          >
-            {option.value}
-          </OptionComponent>
-        ))}
-      </div>
-      {interactionType != 'SelectOne' && (
-        <div className="d-flex justify-content-end">
-          <Button
-            variant="unfolding-scenario-action"
-            className="rounded-pill w-100"
-            disabled={!isContinueEnabled}
-            onClick={onContinue}
-          >
-            Continue
-          </Button>
-        </div>
-      )}
+  <div className="p-4 h-100 w-100 d-flex flex-column bg-interact-default">
+    <IconButton
+      className="text-icon-action-sec-neutral"
+      src={KeyboardReturn}
+      alt="Return"
+      onClick={onBack}
+    />
+    <p className="text-interact-headings font-size-md font-weight-bold">
+      {scenario.prompt}
+    </p>
+    <div className="d-flex flex-column flex-grow-1">
+      {scenario.options.map((option, i) => (
+        <OptionComponent
+          active={activeOptionIndex === i}
+          onClick={() => onSelectOption(i)}
+          preSelected={preSelectedOptions.has(i)}
+        >
+          {option.value}
+        </OptionComponent>
+      ))}
     </div>
+    {interactionType != 'SelectOne' && (
+      <Button
+        variant="unfolding-scenario-action"
+        className="rounded-pill w-100"
+        disabled={!isContinueEnabled}
+        onClick={onContinue}
+      >
+        Continue
+      </Button>
+    )}
     {activeOptionIndex !== null ? (
       <OptionFeedback
         interactionType={interactionType}

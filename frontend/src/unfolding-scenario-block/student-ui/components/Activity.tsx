@@ -57,7 +57,7 @@ export const Activity = ({ data, onExit }: ActivityProps) => {
             scenarios={data.scenarios}
             selectedOptions={selectedOptions}
             onRestart={() => setModalType('restart')}
-            onExit={onExit}
+            onExit={() => setModalType('leave')}
             imageURL={data.introduction.imageURL}
           />
         )

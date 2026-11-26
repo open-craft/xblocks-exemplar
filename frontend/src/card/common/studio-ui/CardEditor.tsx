@@ -67,6 +67,7 @@ function SecondaryContentForm({ cardIndex }: { cardIndex: number }) {
     ? SecondaryForm[card.secondaryContent.kind]
     : null;
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShowButton(showCTAButton);
   }, [showCTAButton]);
 

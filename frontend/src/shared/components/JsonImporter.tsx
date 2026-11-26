@@ -3,7 +3,7 @@ import Dropzone from '@openedx/paragon/dist/Dropzone';
 import Button from '@openedx/paragon/dist/Button';
 import Form from '@openedx/paragon/dist/Form';
 import { Alert } from '@openedx/paragon';
-import { RuntimeContext } from '@opencraft/xblock-react-utils';
+import { callServer, RuntimeContext } from '@opencraft/xblock-react-utils';
 
 interface JsonIOTabContentProps {
   liveData: unknown;
@@ -71,25 +71,24 @@ export default function JsonImporter({ liveData }: JsonIOTabContentProps) {
   }
 
   /**
-   * A custom save function that's different from `savStudioBlock` that allows
-   * parsing the errors raised by Pydantic validation and present them in the
-   * modal instead of relying on the runtime's error presentation.
+   * A custom save function that handles errors raised by Pydantic
+   * validation and present them in the modal instead of relying on
+   * the runtime's error presentation.
    */
-  const saveJson = ({ fileData, handleError }: ProcessUploadParam) => {
+  const saveJson = async ({ fileData, handleError }: ProcessUploadParam) => {
     const saveUrl = runtime.handlerUrl(element, 'studio_save');
     runtime.notify('save', { state: 'start' });
     setUploadError(null);
     const blob = fileData.get('file');
-    blob.text().then((jsonData: string) => {
-      $.post(saveUrl, jsonData)
-        .done(() => {
-          runtime.notify('save', { state: 'end' });
-        })
-        .fail((e) => {
-          handleError(new Error('Upload rejected.'));
-          setUploadError(e.responseJSON?.error ?? e.responseText);
-        });
-    });
+    const text = await blob.text();
+    try {
+      await callServer({ url: saveUrl, data: text });
+      runtime.notify('save', { state: 'end' });
+    } catch (err: unknown) {
+      const error = err as JQuery.jqXHR;
+      handleError(new Error('Upload rejected.'));
+      setUploadError(error.responseJSON?.error ?? error.responseText);
+    }
   };
 
   /**
