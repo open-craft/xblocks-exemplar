@@ -24,6 +24,7 @@ interface OptionFeedbackProps {
   onReturn: () => void;
 }
 
+// The separate page for feedback on a selected option, shown for mobile and tablet viewports.
 export const OptionFeedback = ({
   option,
   interactionType,
@@ -33,14 +34,11 @@ export const OptionFeedback = ({
 }: OptionFeedbackProps) => {
   const windowSize = useWindowSize();
   const width = windowSize.width || window.innerWidth;
+  const isMobile = width < breakpoints.extraSmall.maxWidth!;
   return (
-    <div
-      className={`option-feedback-wrapper position-fixed fixed-top fixed-bottom w-100 h-100 bg-interact-raised ${width < breakpoints.extraSmall.maxWidth! ? 'p-4' : 'p-4-5'}`}
-    >
+    <div className="option-feedback-wrapper bg-interact-raised p-4">
       <div className="w-100 h-100 position-relative d-flex flex-column justify-content-center">
-        <p className="text-interact-headings font-size-md font-weight-bold">
-          {option.value}
-        </p>
+        <h5 className="text-interact-headings">{option.value}</h5>
         <OptionFeedbackContent option={option} />
         <IconButton
           className="text-icon-action-sec-neutral"
@@ -54,8 +52,8 @@ export const OptionFeedback = ({
             style={{ bottom: 0 }}
           >
             <Button
-              variant="unfolding-scenario-action"
-              className={`rounded-pill ${width < breakpoints.extraSmall.maxWidth! ? 'w-100' : ''}`}
+              variant="primary"
+              className={`${isMobile ? 'w-100' : ''}`}
               disabled={!isContinueEnabled}
               onClick={onContinue}
             >
