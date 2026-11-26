@@ -104,9 +104,7 @@ describe('Student App', () => {
 
     await user.click(getCheckbox('Second article'));
 
-    await waitFor(() =>
-      expect(getCheckbox('First article')).not.toBeChecked(),
-    );
+    await waitFor(() => expect(getCheckbox('First article')).not.toBeChecked());
     expect(getCheckbox('Second article')).toBeChecked();
   });
 
