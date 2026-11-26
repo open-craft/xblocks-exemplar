@@ -16,13 +16,11 @@ export const MobileActivityHeader = ({
           total={totalScenarios}
         />
         <div className="px-2 mx-1 flex-grow-1">
-          <div className="typography-headings font-weight-bold font-size-md text-interact-headings">
-            {title}
-          </div>
+          <h5 className="text-interact-headings">{title}</h5>
           {activeScenarioIndex >= totalScenarios && (
-            <div className="text-interact-accent font-size-sm-md font-weight-lessbold typography-headings mt-n1">
-              Completed!
-            </div>
+            <small className="text-interact-accent mt-n1">
+              <strong>Completed!</strong>
+            </small>
           )}
         </div>
         <ActivityCloseButton onClose={onClose} />
@@ -69,7 +67,10 @@ const ProgressCircle = ({ current, total }: ProgressCircleProps) => {
         transform={`rotate(-90 ${cy} ${cy})`}
       ></circle>
       <foreignObject x="0" y="0" width={size} height={size}>
-        <div className="h-100 d-flex justify-content-center align-items-center text-interact-content font-size-sm">
+        <div
+          className="h-100 d-flex justify-content-center align-items-center text-interact-content"
+          style={{ fontSize: '12px' }}
+        >
           {current} of {total}
         </div>
       </foreignObject>
