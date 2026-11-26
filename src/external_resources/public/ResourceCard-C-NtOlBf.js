@@ -14995,9 +14995,10 @@ var Ul = yl(Hl, "Card", { muted: {
 Ul.Status = Bl, Ul.Header = Al, Ul.Divider = jl, Ul.Section = Nl, Ul.Footer = Fl, Ul.ImageCap = zl, Ul.Context = Cl, Ul.Body = bl;
 // src/external-resources/apiTypes.ts
 var Wl = /* @__PURE__ */ function(e) {
-	return e.ARTICLE = "ARTICLE", e.VIDEO = "VIDEO", e.PDF = "PDF", e.TEXTBOOK = "TEXTBOOK", e.VIRTUAL_MACHINE = "VIRTUAL_MACHINE", e.INTERACTIVE_ACTIVITY = "INTERACTIVE_ACTIVITY", e.LIBRARY = "LIBRARY", e.CUSTOM = "CUSTOM", e;
+	return e.ARTICLE = "ARTICLE", e.AUDIO = "AUDIO", e.VIDEO = "VIDEO", e.PDF = "PDF", e.TEXTBOOK = "TEXTBOOK", e.VIRTUAL_MACHINE = "VIRTUAL_MACHINE", e.INTERACTIVE_ACTIVITY = "INTERACTIVE_ACTIVITY", e.LIBRARY = "LIBRARY", e.CUSTOM = "CUSTOM", e;
 }({}), Gl = {
 	[Wl.ARTICLE]: "Articles",
+	[Wl.AUDIO]: "Audio",
 	[Wl.VIDEO]: "Video",
 	[Wl.PDF]: "PDF",
 	[Wl.TEXTBOOK]: "Textbook / Book",
@@ -15006,6 +15007,7 @@ var Wl = /* @__PURE__ */ function(e) {
 	[Wl.LIBRARY]: "Library"
 }, Kl = {
 	[Wl.ARTICLE]: "article",
+	[Wl.AUDIO]: "audio_file",
 	[Wl.VIDEO]: "smart_display",
 	[Wl.PDF]: "picture_as_pdf",
 	[Wl.TEXTBOOK]: "menu_book",

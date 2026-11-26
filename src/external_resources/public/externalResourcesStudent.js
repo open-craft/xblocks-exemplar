@@ -1,5 +1,5 @@
 import { n as e } from "./rolldown-runtime-CYdcPHCu.js";
-import { H as t, R as n, V as r, X as i, c as a, t as o } from "./ResourceCard-BWrHna24.js";
+import { H as t, R as n, V as r, X as i, c as a, t as o } from "./ResourceCard-C-NtOlBf.js";
 // src/external-resources/student-ui/App.tsx
 var s = /* @__PURE__ */ e(i(), 1), c = t(), l = ({ data: e }) => {
 	let t = r("set_read"), [n, i] = (0, s.useState)(e.readResources), l = (e, r) => {

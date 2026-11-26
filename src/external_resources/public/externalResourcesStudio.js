@@ -1,5 +1,5 @@
 import { n as e, t } from "./rolldown-runtime-CYdcPHCu.js";
-import { A as n, B as r, C as i, D as a, E as o, F as s, G as c, H as l, I as u, J as d, K as f, L as p, M as m, N as h, O as g, P as _, R as v, S as y, T as b, U as x, W as S, X as C, Y as ee, _ as te, a as w, b as ne, c as T, d as re, f as ie, g as ae, h as oe, i as se, j as ce, k as E, l as D, m as le, n as ue, o as de, p as fe, q as pe, r as me, s as he, t as ge, u as _e, v as ve, w as ye, x as be, y as xe, z as Se } from "./ResourceCard-BWrHna24.js";
+import { A as n, B as r, C as i, D as a, E as o, F as s, G as c, H as l, I as u, J as d, K as f, L as p, M as m, N as h, O as g, P as _, R as v, S as y, T as b, U as x, W as S, X as C, Y as ee, _ as te, a as w, b as ne, c as T, d as re, f as ie, g as ae, h as oe, i as se, j as ce, k as E, l as D, m as le, n as ue, o as de, p as fe, q as pe, r as me, s as he, t as ge, u as _e, v as ve, w as ye, x as be, y as xe, z as Se } from "./ResourceCard-C-NtOlBf.js";
 // node_modules/.pnpm/@openedx+paragon@23.23.2_@types+node@24.19.2_@types+react@18.3.31_jquery@4.0.0_popper.j_4d3d78a27b7b6469417ee8e6fd4ead53/node_modules/@openedx/paragon/dist/ActionRow/index.js
 var O = /* @__PURE__ */ e(C()), k = /* @__PURE__ */ e(u());
 function Ce({ as: e = "div", isStacked: t = !1, children: n, ...r }) {
@@ -4117,7 +4117,6 @@ var Ec = (0, O.createContext)(null), Dc = () => (0, O.useContext)(Ec), Oc = ({ f
 	] }) : e;
 }, Ac = [
 	...Object.entries(me).filter(([e]) => e !== w.CUSTOM).map(([, e]) => e),
-	"volume_up",
 	"link",
 	"school",
 	"slideshow",

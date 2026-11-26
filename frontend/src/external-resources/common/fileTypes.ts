@@ -5,6 +5,7 @@ export const FILE_TYPE_LABELS: Record<
   string
 > = {
   [FileType.ARTICLE]: 'Articles',
+  [FileType.AUDIO]: 'Audio',
   [FileType.VIDEO]: 'Video',
   [FileType.PDF]: 'PDF',
   [FileType.TEXTBOOK]: 'Textbook / Book',
@@ -15,6 +16,7 @@ export const FILE_TYPE_LABELS: Record<
 
 export const FILE_TYPE_ICONS: Record<FileType, string> = {
   [FileType.ARTICLE]: 'article',
+  [FileType.AUDIO]: 'audio_file',
   [FileType.VIDEO]: 'smart_display',
   [FileType.PDF]: 'picture_as_pdf',
   [FileType.TEXTBOOK]: 'menu_book',

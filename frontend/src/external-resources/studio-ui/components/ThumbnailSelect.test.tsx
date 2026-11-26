@@ -45,8 +45,9 @@ describe('ThumbnailSelect', () => {
     const icons = within(popover())
       .getAllByRole('button')
       .map((button) => button.getAttribute('aria-label'));
-    expect(icons.slice(0, 7)).toEqual([
+    expect(icons.slice(0, 8)).toEqual([
       'article',
+      'audio_file',
       'smart_display',
       'picture_as_pdf',
       'menu_book',

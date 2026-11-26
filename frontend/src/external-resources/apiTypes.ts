@@ -34,6 +34,7 @@ export interface Resource {
  */
 export const enum FileType {
   ARTICLE = "ARTICLE",
+  AUDIO = "AUDIO",
   VIDEO = "VIDEO",
   PDF = "PDF",
   TEXTBOOK = "TEXTBOOK",

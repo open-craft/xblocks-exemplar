@@ -15,6 +15,7 @@ class FileType(StrEnum):
     """
 
     ARTICLE = "ARTICLE"
+    AUDIO = "AUDIO"
     VIDEO = "VIDEO"
     PDF = "PDF"
     TEXTBOOK = "TEXTBOOK"

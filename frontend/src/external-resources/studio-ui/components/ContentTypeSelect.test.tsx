@@ -78,7 +78,7 @@ describe('ContentTypeSelect', () => {
     await user.tab();
 
     expect(input()).toHaveFocus();
-    expect(options()).toHaveLength(7);
+    expect(options()).toHaveLength(8);
   });
 
   it('stays empty when left without choosing a type', async () => {
@@ -95,7 +95,7 @@ describe('ContentTypeSelect', () => {
     const { onChange, user } = renderSelect();
 
     await user.click(input());
-    expect(options()).toHaveLength(7);
+    expect(options()).toHaveLength(8);
 
     await user.click(screen.getByRole('option', { name: 'PDF' }));
 
@@ -171,7 +171,7 @@ describe('ContentTypeSelect', () => {
     await user.click(input());
     await user.keyboard('{ArrowDown}{ArrowDown}{Enter}');
 
-    expect(onChange).toHaveBeenCalledWith(FileType.VIDEO, '');
+    expect(onChange).toHaveBeenCalledWith(FileType.AUDIO, '');
   });
 
   it('keeps the typed text as a custom type when leaving the field', async () => {
