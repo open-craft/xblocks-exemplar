@@ -2,7 +2,7 @@
 @import '@/card/common/studio-ui/secondary-content/ImageForm.css';
 @import '@/shared/components/StudioHeader.css';
 @import '@/studio.scss';
-@import '@/card/common/material-icons.css';
+@import '@/shared/styles/materialIcons.css';
 
 .card-studio {
   display: flex;

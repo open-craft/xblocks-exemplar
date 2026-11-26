@@ -12738,7 +12738,7 @@ function hg({ title: e, onTitleChange: t, activeTab: n, tabs: r = mg }) {
 					})
 				}) }),
 				/* @__PURE__ */ (0, B.jsx)(H.Spacer, {}),
-				/* @__PURE__ */ (0, B.jsx)(hp, {
+				r.length > 0 && /* @__PURE__ */ (0, B.jsx)(hp, {
 					role: "tablist",
 					variant: "button-group",
 					activeKey: n,

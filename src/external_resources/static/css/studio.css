@@ -6,3 +6,18 @@
 html {
     font-size: 100%;
 }
+
+/*
+* Make the editor fill the editor modal, so its actions bar stays at the bottom even when
+* there are few resources. The modal content has a fixed height, but the wrappers between it
+* and the block have none, so the React app inside the shadow DOM can't use height: 100%.
+*/
+.modal-type-external_resources .xblock-editor {
+    height: 100%;
+}
+
+.xblock-studio_view-external_resources {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}

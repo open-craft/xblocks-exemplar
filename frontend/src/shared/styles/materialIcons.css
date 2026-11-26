@@ -3,7 +3,7 @@ The Material Icons styles are supposed to be loaded directly using the injects <
 While the font loads as expected, the CSS doesn't reach the UI due to the shadow dom boundary.
 They are redefined here explicitly to make sure they are available inside the shadow DOM.
 
-The following is copied verbatim from the Google Fonts guide: https://developers.google.com/fonts/docs/material_icons
+The following is copied from the Google Fonts guide: https://developers.google.com/fonts/docs/material_icons
 */
 .material-icons-outlined {
   font-family: 'Material Icons Outlined';

@@ -1,6 +1,6 @@
 @import '@/card/common/student-ui/ComplexCard.scss';
 @import '@/card/common/student-ui/HoverList.css';
-@import '@/card/common/material-icons.css';
+@import '@/shared/styles/materialIcons.css';
 
 .card-carousel-xblock *,
 .card-carousel-xblock *::before,

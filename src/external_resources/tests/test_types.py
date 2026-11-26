@@ -56,6 +56,30 @@ def test_resource_expected_minutes_must_be_positive(minutes):
         make_resource(expectedMinutes=minutes)
 
 
+@pytest.mark.parametrize(
+    "file_type",
+    [
+        "ARTICLE",
+        "AUDIO",
+        "VIDEO",
+        "PDF",
+        "TEXTBOOK",
+        "VIRTUAL_MACHINE",
+        "INTERACTIVE_ACTIVITY",
+        "LIBRARY",
+    ],
+)
+def test_resource_accepts_predefined_file_types(file_type):
+    """Every predefined file type is accepted without a custom type text."""
+    assert make_resource(fileType=file_type).fileType == file_type
+
+
+def test_resource_rejects_unknown_file_type():
+    """Unknown file types are rejected: they must be sent as CUSTOM."""
+    with pytest.raises(ValidationError):
+        make_resource(fileType="PODCAST")
+
+
 def test_resource_custom_file_type_required():
     """A CUSTOM file type needs the custom type text."""
     with pytest.raises(ValidationError):
