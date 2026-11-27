@@ -126,6 +126,7 @@ class UnfoldingScenarioXBlock(XBlock):
                 "data": {
                     "displayName": self.display_name,
                     "scenarioData": self.scenario_data,
+                    "usageId": self.usage_key,
                 },
                 "config": get_xblock_config(self.context_key, view=view),
             },

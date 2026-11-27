@@ -23,7 +23,7 @@ describe('App.tsx', () => {
         interactionType: 'Explore',
       },
     };
-    const screen = render(<App data={data} themeUrls={[]} cssContent="" />);
+    const screen = render(<App usageId="example-usage-id" data={data} />);
     screen.getByText(/introduction to this unfolding scenario/);
     screen.getByText(/Launch/);
 

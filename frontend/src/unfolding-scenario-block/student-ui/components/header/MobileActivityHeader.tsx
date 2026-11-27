@@ -49,7 +49,7 @@ const ProgressCircle = ({ current, total }: ProgressCircleProps) => {
         cx={cy}
         cy={cy}
         fill="none"
-        stroke="var(--color-interact-raised-emphasis)"
+        stroke="var(--unfolding-scenario-color-interact-emphasis-inner)"
         stroke-width={strokeWidth}
         stroke-dashoffset={circumference - progress}
         stroke-dasharray={circumference}
@@ -60,7 +60,7 @@ const ProgressCircle = ({ current, total }: ProgressCircleProps) => {
         cx={cy}
         cy={cy}
         fill="none"
-        stroke="var(--color-interact-emphasis)"
+        stroke="var(--unfolding-scenario-color-interact-raised-emphasis-inner)"
         stroke-width={strokeWidth}
         stroke-dashoffset={progress}
         stroke-dasharray={circumference}

@@ -364,6 +364,15 @@
     }
   }
 
+  // The full screen modal activity
+  .fullscreen-activity {
+    position: fixed;
+    inset: 0;
+    background-color: var(--unfolding-scenario-color-interact-default-inner);
+    display: flex;
+    flex-direction: column;
+  }
+
   //////////// Utility styles - these complement the existing bootstrap utilities and are used by several components
 
   // For the feedback icon/text in red (negative), green (positive), and yellow (warning).
